@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DayMap from "../../components/DayMap";
 
 const DAYS = [
   {
@@ -9,7 +10,7 @@ const DAYS = [
     icon: "⛴",
     schedule: [
       { time: "日中", label: "大阪観光", desc: "出港までの時間を大阪で楽しむ", icon: "🏙" },
-      { time: "18:05", label: "大阪南港 乗船手続き", desc: "出港60分前を目安に手続き", icon: "🎫", important: true, mapUrl: "https://maps.google.com/?q=大阪南港さんふらわあターミナル" },
+      { time: "18:05", label: "大阪南港 乗船手続き", desc: "出港60分前を目安に手続き", icon: "🎫", important: true, mapUrl: "https://maps.google.com/?q=大阪南港さんふらわあターミナル", coords: [34.6359, 135.4104] },
       { time: "19:05", label: "大阪南港 出港", desc: "さんふらわあ むらさき", icon: "⛴", url: "https://www.ferry-sunflower.co.jp/" },
       { time: "船中泊", label: "プライベートベッドでゆっくり", desc: "翌朝 別府着", icon: "🌙" },
     ],
@@ -32,29 +33,29 @@ const DAYS = [
     color: "#D94F4F",
     icon: "♨",
     schedule: [
-      { time: "06:55", label: "別府観光港 到着", desc: "さんふらわあ下船後、港のターミナルへ", icon: "🚢", mapUrl: "https://maps.google.com/?q=別府観光港" },
-      { time: "07:30", label: "レンタカー受取", desc: "ニッポンレンタカー 別府観光港前店", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+別府観光港前" },
-      { time: "08:00", label: "海地獄（共通観覧券を購入）", desc: "コバルトブルーの熱泉は圧巻！国指定名勝。温泉たまごも名物。共通観覧券 ¥2,400/人（公式HPのクーポンで¥200引き）", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/umi/", mapUrl: "https://maps.google.com/?q=海地獄+別府" },
-      { time: "08:30", label: "鬼石坊主地獄", desc: "灰色の熱泥がボコボコ湧く様子は迫力満点。海地獄のすぐ隣、徒歩すぐ", icon: "♨", url: "https://www.beppu-jigoku.com/onishi/", mapUrl: "https://maps.google.com/?q=鬼石坊主地獄" },
-      { time: "08:50", label: "かまど地獄", desc: "1丁目〜6丁目まで様々な泉質を一度に楽しめる。足湯あり！", icon: "♨", url: "https://www.beppu-jigoku.com/kamado/", mapUrl: "https://maps.google.com/?q=かまど地獄+別府" },
-      { time: "09:20", label: "鬼山地獄（ワニ地獄）", desc: "約80頭のワニが温泉熱で飼育されている。かまど地獄から徒歩1分", icon: "🐊", url: "https://www.beppu-jigoku.com/oniyama/", mapUrl: "https://maps.google.com/?q=鬼山地獄+別府" },
-      { time: "09:40", label: "白池地獄", desc: "青白い池と熱帯魚館。和風庭園の静かな雰囲気。国指定名勝", icon: "♨", url: "https://www.beppu-jigoku.com/shiraike/", mapUrl: "https://maps.google.com/?q=白池地獄+別府" },
+      { time: "06:55", label: "別府観光港 到着", desc: "さんふらわあ下船後、港のターミナルへ", icon: "🚢", mapUrl: "https://maps.google.com/?q=別府観光港", coords: [33.2803, 131.5054] },
+      { time: "07:30", label: "レンタカー受取", desc: "ニッポンレンタカー 別府観光港前店", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+別府観光港前", coords: [33.2800, 131.5060] },
+      { time: "08:00", label: "海地獄（共通観覧券を購入）", desc: "コバルトブルーの熱泉は圧巻！国指定名勝。温泉たまごも名物。共通観覧券 ¥2,400/人（公式HPのクーポンで¥200引き）", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/umi/", mapUrl: "https://maps.google.com/?q=海地獄+別府", coords: [33.3192, 131.4450] },
+      { time: "08:30", label: "鬼石坊主地獄", desc: "灰色の熱泥がボコボコ湧く様子は迫力満点。海地獄のすぐ隣、徒歩すぐ", icon: "♨", url: "https://www.beppu-jigoku.com/onishi/", mapUrl: "https://maps.google.com/?q=鬼石坊主地獄", coords: [33.3186, 131.4447] },
+      { time: "08:50", label: "かまど地獄", desc: "1丁目〜6丁目まで様々な泉質を一度に楽しめる。足湯あり！", icon: "♨", url: "https://www.beppu-jigoku.com/kamado/", mapUrl: "https://maps.google.com/?q=かまど地獄+別府", coords: [33.3178, 131.4456] },
+      { time: "09:20", label: "鬼山地獄（ワニ地獄）", desc: "約80頭のワニが温泉熱で飼育されている。かまど地獄から徒歩1分", icon: "🐊", url: "https://www.beppu-jigoku.com/oniyama/", mapUrl: "https://maps.google.com/?q=鬼山地獄+別府", coords: [33.3175, 131.4460] },
+      { time: "09:40", label: "白池地獄", desc: "青白い池と熱帯魚館。和風庭園の静かな雰囲気。国指定名勝", icon: "♨", url: "https://www.beppu-jigoku.com/shiraike/", mapUrl: "https://maps.google.com/?q=白池地獄+別府", coords: [33.3170, 131.4468] },
       { time: "10:00", label: "車で血の池エリアへ移動", desc: "鉄輪エリアから約3km、車で約5分", icon: "🚗" },
-      { time: "10:10", label: "血の池地獄", desc: "日本最古の天然地獄。赤い熱泥の池は約1,300㎡の迫力。展望台からの眺めが◎。名物「血の池軟膏」をお土産に", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/chinoike/", mapUrl: "https://maps.google.com/?q=血の池地獄+別府" },
-      { time: "10:40", label: "龍巻地獄", desc: "間欠泉の地獄。約30〜40分間隔で噴出するので、血の池地獄とどちらを先にするかは噴出タイミング次第で", icon: "♨", url: "https://www.beppu-jigoku.com/tatsumaki/", mapUrl: "https://maps.google.com/?q=龍巻地獄+別府" },
-      { time: "11:10", label: "地獄蒸し工房 鉄輪でランチ", desc: "温泉の蒸気で海鮮・野菜を蒸す別府名物！鉄輪エリアに戻って体験", icon: "🍽", url: "https://jigokumushi.com/", mapUrl: "https://maps.google.com/?q=地獄蒸し工房鉄輪" },
-      { time: "13:00", label: "鉄輪温泉街を散策", desc: "湯けむりの街並みを散歩。足湯や食べ歩きも楽しめる", icon: "🚶", mapUrl: "https://maps.google.com/?q=鉄輪温泉+別府" },
-      { time: "15:00", label: "ホテルチェックイン", desc: "美湯の宿 両築別邸", icon: "🏨", mapUrl: "https://maps.google.com/?q=美湯の宿+両築別邸" },
+      { time: "10:10", label: "血の池地獄", desc: "日本最古の天然地獄。赤い熱泥の池は約1,300㎡の迫力。展望台からの眺めが◎。名物「血の池軟膏」をお土産に", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/chinoike/", mapUrl: "https://maps.google.com/?q=血の池地獄+別府", coords: [33.3219, 131.4582] },
+      { time: "10:40", label: "龍巻地獄", desc: "間欠泉の地獄。約30〜40分間隔で噴出するので、血の池地獄とどちらを先にするかは噴出タイミング次第で", icon: "♨", url: "https://www.beppu-jigoku.com/tatsumaki/", mapUrl: "https://maps.google.com/?q=龍巻地獄+別府", coords: [33.3222, 131.4590] },
+      { time: "11:10", label: "地獄蒸し工房 鉄輪でランチ", desc: "温泉の蒸気で海鮮・野菜を蒸す別府名物！鉄輪エリアに戻って体験", icon: "🍽", url: "https://jigokumushi.com/", mapUrl: "https://maps.google.com/?q=地獄蒸し工房鉄輪", coords: [33.3165, 131.4478] },
+      { time: "13:00", label: "鉄輪温泉街を散策", desc: "湯けむりの街並みを散歩。足湯や食べ歩きも楽しめる", icon: "🚶", mapUrl: "https://maps.google.com/?q=鉄輪温泉+別府", coords: [33.3160, 131.4475] },
+      { time: "15:00", label: "ホテルチェックイン", desc: "美湯の宿 両築別邸", icon: "🏨", mapUrl: "https://maps.google.com/?q=美湯の宿+両築別邸", coords: [33.3006, 131.4753] },
       { time: "15:30", label: "温泉でゆっくり", desc: "宿の温泉を満喫。※入湯税 大人250円/人が別途必要", icon: "♨" },
       { time: "18:00", label: "夕食へ出発", desc: "別府グルメを食べに出かけよう！", icon: "🍽", important: true },
     ],
     dinner: {
       title: "別府ディナー候補",
       options: [
-        { name: "とよ常 本店", genre: "天丼", desc: "丼からはみ出す特大海老天の「特上天丼」が名物。創業以来の秘伝のタレ。人気店なので早めに", tel: "0977-23-3333", mapUrl: "https://maps.google.com/?q=とよ常+本店+別府" },
-        { name: "六盛 本店", genre: "別府冷麺", desc: "別府冷麺の名店。和風だしと牛骨スープにコシのある自家製麺。中華そばも通の間で人気", tel: "0977-21-2972", mapUrl: "https://maps.google.com/?q=六盛+本店+別府+冷麺" },
-        { name: "ひでさん", genre: "地鶏炭火焼", desc: "鉄輪の高台にある鶏肉料理店。七輪で焼く地鶏が絶品。夜景も◎。〆の別府冷麺も人気", mapUrl: "https://maps.google.com/?q=ひでさん+鉄輪+別府" },
-        { name: "海鮮いづつ", genre: "海鮮", desc: "魚屋直営の新鮮な海鮮。旬の魚が敷き詰められた海鮮丼が人気。リーズナブル", mapUrl: "https://maps.google.com/?q=海鮮いづつ+別府" },
+        { name: "とよ常 本店", genre: "天丼", desc: "丼からはみ出す特大海老天の「特上天丼」が名物。創業以来の秘伝のタレ。人気店なので早めに", tel: "0977-23-3333", mapUrl: "https://maps.google.com/?q=とよ常+本店+別府", coords: [33.2794, 131.4991] },
+        { name: "六盛 本店", genre: "別府冷麺", desc: "別府冷麺の名店。和風だしと牛骨スープにコシのある自家製麺。中華そばも通の間で人気", tel: "0977-21-2972", mapUrl: "https://maps.google.com/?q=六盛+本店+別府+冷麺", coords: [33.2801, 131.4950] },
+        { name: "ひでさん", genre: "地鶏炭火焼", desc: "鉄輪の高台にある鶏肉料理店。七輪で焼く地鶏が絶品。夜景も◎。〆の別府冷麺も人気", mapUrl: "https://maps.google.com/?q=ひでさん+鉄輪+別府", coords: [33.3130, 131.4500] },
+        { name: "海鮮いづつ", genre: "海鮮", desc: "魚屋直営の新鮮な海鮮。旬の魚が敷き詰められた海鮮丼が人気。リーズナブル", mapUrl: "https://maps.google.com/?q=海鮮いづつ+別府", coords: [33.2793, 131.4960] },
       ],
     },
     booking: {
@@ -81,16 +82,16 @@ const DAYS = [
     schedule: [
       { time: "〜10:00", label: "チェックアウト", desc: "美湯の宿 両築別邸", icon: "🏨" },
       { time: "10:00", label: "九重方面へドライブ", desc: "別府から車で約1時間。やまなみハイウェイ方面へ", icon: "🚗" },
-      { time: "11:00", label: "九重\"夢\"大吊橋", desc: "高さ173m・長さ390mの日本一の人道大吊橋！震動の滝や九酔渓の絶景を一望", icon: "🌉", important: true, url: "https://www.yumeooturihashi.com/", mapUrl: "https://maps.app.goo.gl/rB2jTpPDrqwPW96Y9" },
+      { time: "11:00", label: "九重\"夢\"大吊橋", desc: "高さ173m・長さ390mの日本一の人道大吊橋！震動の滝や九酔渓の絶景を一望", icon: "🌉", important: true, url: "https://www.yumeooturihashi.com/", mapUrl: "https://maps.app.goo.gl/rB2jTpPDrqwPW96Y9", coords: [33.1536, 131.2467] },
       { time: "11:45", label: "やまなみハイウェイで阿蘇へ", desc: "九重から阿蘇・大観峰まで約40分の絶景ドライブ", icon: "🚗" },
-      { time: "12:30", label: "大観峰", desc: "標高936mの阿蘇外輪山の最高峰。360度の大パノラマで阿蘇五岳の涅槃像を望む。お土産店・食堂あり", icon: "⛰", important: true, mapUrl: "https://maps.google.com/?q=大観峰+阿蘇" },
+      { time: "12:30", label: "大観峰", desc: "標高936mの阿蘇外輪山の最高峰。360度の大パノラマで阿蘇五岳の涅槃像を望む。お土産店・食堂あり", icon: "⛰", important: true, mapUrl: "https://maps.google.com/?q=大観峰+阿蘇", coords: [33.0550, 131.0589] },
       { time: "13:15", label: "カルデラ内へ下る", desc: "大観峰からカルデラ盆地へ。約20分", icon: "🚗" },
-      { time: "13:30", label: "阿蘇神社 ＆ 門前町でランチ", desc: "肥後国一の宮。復興した楼門は必見。門前町「仲町通り」であか牛グルメや食べ歩き、湧水の水基めぐりも", icon: "⛩", url: "https://asojinja.or.jp/", mapUrl: "https://maps.google.com/?q=阿蘇神社" },
+      { time: "13:30", label: "阿蘇神社 ＆ 門前町でランチ", desc: "肥後国一の宮。復興した楼門は必見。門前町「仲町通り」であか牛グルメや食べ歩き、湧水の水基めぐりも", icon: "⛩", url: "https://asojinja.or.jp/", mapUrl: "https://maps.google.com/?q=阿蘇神社", coords: [32.9494, 131.1230] },
       { time: "14:30", label: "阿蘇パノラマラインを南へ", desc: "阿蘇山の山腹を走る絶景ルート。約30分", icon: "🚗" },
-      { time: "15:00", label: "草千里ヶ浜", desc: "直径約1kmの大草原に馬が放牧される牧歌的風景。中岳の噴煙をバックに。乗馬体験も可能。阿蘇火山博物館も併設", icon: "🌿", important: true, mapUrl: "https://maps.google.com/?q=草千里ヶ浜" },
-      { time: "15:45", label: "阿蘇中岳火口（規制状況次第）", desc: "直径600m・深さ130mの火口から噴き上がる白煙は圧巻。※火山活動により立入規制の場合あり。事前に要確認", icon: "🌋", url: "https://www.aso.ne.jp/~volcano/", mapUrl: "https://maps.google.com/?q=阿蘇中岳火口" },
+      { time: "15:00", label: "草千里ヶ浜", desc: "直径約1kmの大草原に馬が放牧される牧歌的風景。中岳の噴煙をバックに。乗馬体験も可能。阿蘇火山博物館も併設", icon: "🌿", important: true, mapUrl: "https://maps.google.com/?q=草千里ヶ浜", coords: [32.8914, 131.0661] },
+      { time: "15:45", label: "阿蘇中岳火口（規制状況次第）", desc: "直径600m・深さ130mの火口から噴き上がる白煙は圧巻。※火山活動により立入規制の場合あり。事前に要確認", icon: "🌋", url: "https://www.aso.ne.jp/~volcano/", mapUrl: "https://maps.google.com/?q=阿蘇中岳火口", coords: [32.8842, 131.0843] },
       { time: "16:30", label: "南阿蘇方面へ", desc: "中岳から休暇村 南阿蘇まで約30分", icon: "🚗" },
-      { time: "17:00", label: "ホテルチェックイン", desc: "休暇村 南阿蘇", icon: "🏨", mapUrl: "https://maps.google.com/?q=休暇村+南阿蘇" },
+      { time: "17:00", label: "ホテルチェックイン", desc: "休暇村 南阿蘇", icon: "🏨", mapUrl: "https://maps.google.com/?q=休暇村+南阿蘇", coords: [32.8553, 131.1367] },
       { time: "夜", label: "夕朝食付プラン", desc: "フルーツキングダムKumamoto春の収穫祭×プレミアムビュッフェ", icon: "🍽" },
     ],
     booking: {
@@ -116,14 +117,14 @@ const DAYS = [
     schedule: [
       { time: "〜10:00", label: "チェックアウト", desc: "休暇村 南阿蘇", icon: "🏨" },
       { time: "10:00", label: "南阿蘇から高千穂へ", desc: "車で約1時間。南阿蘇の田園風景を抜けて高千穂町へ", icon: "🚗" },
-      { time: "11:00", label: "天岩戸神社（西本宮）", desc: "天照大御神が隠れた天岩戸を祀る神社。神職の案内で遥拝所から御神体を参拝できる（9:00〜16:40・無料・所要約15分）", icon: "⛩", important: true, url: "https://amanoiwato-jinja.jp/", mapUrl: "https://maps.google.com/?q=天岩戸神社+西本宮" },
-      { time: "11:30", label: "天安河原", desc: "西本宮から川沿いを徒歩約10分。八百万の神が集まったとされる大洞窟。無数に積まれた石が神秘的", icon: "⛩", mapUrl: "https://maps.google.com/?q=天安河原" },
-      { time: "12:15", label: "高千穂でランチ", desc: "高千穂牛の「肉めし定食」が名物。道の駅高千穂のレストランもおすすめ", icon: "🍽", mapUrl: "https://maps.google.com/?q=道の駅+高千穂" },
-      { time: "13:15", label: "高千穂神社", desc: "高千穂郷八十八社の総社。夫婦杉は縁結びのパワースポット。樹齢800年の秩父杉も見事", icon: "⛩", url: "https://takachiho-kanko.info/sightseeing/3/", mapUrl: "https://maps.google.com/?q=高千穂神社" },
-      { time: "13:45", label: "高千穂峡 貸しボート", desc: "真名井の滝を間近で見上げる絶景体験！柱状節理の断崖が迫力満点。乗船時間30分", icon: "🛶", important: true, url: "https://takachiho-kanko.info/boat/detail.php", mapUrl: "https://maps.google.com/?q=高千穂峡+ボート乗り場" },
-      { time: "14:30", label: "高千穂峡 遊歩道を散策", desc: "ボート後は遊歩道からも真名井の滝や峡谷の絶景を楽しむ", icon: "🚶", mapUrl: "https://maps.google.com/?q=高千穂峡+遊歩道" },
+      { time: "11:00", label: "天岩戸神社（西本宮）", desc: "天照大御神が隠れた天岩戸を祀る神社。神職の案内で遥拝所から御神体を参拝できる（9:00〜16:40・無料・所要約15分）", icon: "⛩", important: true, url: "https://amanoiwato-jinja.jp/", mapUrl: "https://maps.google.com/?q=天岩戸神社+西本宮", coords: [32.7625, 131.3575] },
+      { time: "11:30", label: "天安河原", desc: "西本宮から川沿いを徒歩約10分。八百万の神が集まったとされる大洞窟。無数に積まれた石が神秘的", icon: "⛩", mapUrl: "https://maps.google.com/?q=天安河原", coords: [32.7595, 131.3545] },
+      { time: "12:15", label: "高千穂でランチ", desc: "高千穂牛の「肉めし定食」が名物。道の駅高千穂のレストランもおすすめ", icon: "🍽", mapUrl: "https://maps.google.com/?q=道の駅+高千穂", coords: [32.7230, 131.3120] },
+      { time: "13:15", label: "高千穂神社", desc: "高千穂郷八十八社の総社。夫婦杉は縁結びのパワースポット。樹齢800年の秩父杉も見事", icon: "⛩", url: "https://takachiho-kanko.info/sightseeing/3/", mapUrl: "https://maps.google.com/?q=高千穂神社", coords: [32.7132, 131.3070] },
+      { time: "13:45", label: "高千穂峡 貸しボート", desc: "真名井の滝を間近で見上げる絶景体験！柱状節理の断崖が迫力満点。乗船時間30分", icon: "🛶", important: true, url: "https://takachiho-kanko.info/boat/detail.php", mapUrl: "https://maps.google.com/?q=高千穂峡+ボート乗り場", coords: [32.7160, 131.2990] },
+      { time: "14:30", label: "高千穂峡 遊歩道を散策", desc: "ボート後は遊歩道からも真名井の滝や峡谷の絶景を楽しむ", icon: "🚶", mapUrl: "https://maps.google.com/?q=高千穂峡+遊歩道", coords: [32.7155, 131.2985] },
       { time: "15:15", label: "熊本市内へ出発", desc: "高千穂から熊本市内まで車で約2時間", icon: "🚗" },
-      { time: "17:15", label: "ホテルチェックイン", desc: "熊本ホテルキャッスル（城側キングダブル）", icon: "🏨", mapUrl: "https://maps.google.com/?q=熊本ホテルキャッスル" },
+      { time: "17:15", label: "ホテルチェックイン", desc: "熊本ホテルキャッスル（城側キングダブル）", icon: "🏨", mapUrl: "https://maps.google.com/?q=熊本ホテルキャッスル", coords: [32.8064, 130.7057] },
       { time: "18:00", label: "熊本グルメを満喫", desc: "馬刺し・太平燕・辛子蓮根など（食事なしプラン）", icon: "🍜" },
     ],
     booking: {
@@ -148,13 +149,13 @@ const DAYS = [
     icon: "✈",
     schedule: [
       { time: "〜09:00", label: "チェックアウト", desc: "熊本ホテルキャッスル。ホテルから熊本城は徒歩すぐ！", icon: "🏨" },
-      { time: "09:00", label: "熊本城 見学", desc: "日本三名城。2021年に天守閣の復旧完了、内部はミュージアムに。最上階からの360度パノラマは必見。特別見学通路から復旧工事の様子も", icon: "🏯", important: true, mapUrl: "https://maps.google.com/?q=熊本城", url: "https://castle.kumamoto-guide.jp/" },
-      { time: "11:00", label: "熊本市内でランチ", desc: "馬刺し・太平燕・辛子蓮根など熊本名物を。上通・下通アーケード周辺に名店多数", icon: "🍽", mapUrl: "https://maps.google.com/?q=下通アーケード+熊本" },
+      { time: "09:00", label: "熊本城 見学", desc: "日本三名城。2021年に天守閣の復旧完了、内部はミュージアムに。最上階からの360度パノラマは必見。特別見学通路から復旧工事の様子も", icon: "🏯", important: true, mapUrl: "https://maps.google.com/?q=熊本城", url: "https://castle.kumamoto-guide.jp/", coords: [32.8060, 130.7058] },
+      { time: "11:00", label: "熊本市内でランチ", desc: "馬刺し・太平燕・辛子蓮根など熊本名物を。上通・下通アーケード周辺に名店多数", icon: "🍽", mapUrl: "https://maps.google.com/?q=下通アーケード+熊本", coords: [32.8018, 130.7110] },
       { time: "15:30", label: "熊本空港方面へ出発", desc: "市内から空港まで車で約40〜50分。余裕を持って移動", icon: "🚗" },
-      { time: "16:30", label: "レンタカー返却", desc: "ニッポンレンタカー 熊本空港店。返却後に空港へ送迎あり", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+熊本空港" },
-      { time: "17:00", label: "阿蘇くまもと空港", desc: "搭乗手続き＆空港でお土産の最終チェック", icon: "✈", mapUrl: "https://maps.google.com/?q=阿蘇くまもと空港" },
+      { time: "16:30", label: "レンタカー返却", desc: "ニッポンレンタカー 熊本空港店。返却後に空港へ送迎あり", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+熊本空港", coords: [32.8372, 130.8555] },
+      { time: "17:00", label: "阿蘇くまもと空港", desc: "搭乗手続き＆空港でお土産の最終チェック", icon: "✈", mapUrl: "https://maps.google.com/?q=阿蘇くまもと空港", coords: [32.8373, 130.8553] },
       { time: "18:55", label: "熊本空港 出発（FDA2026便）", desc: "搭乗15分前までにチェックイン。予約番号 or QRコードを持参", icon: "✈", important: true, url: "https://www.fujidreamairlines.com/" },
-      { time: "20:15", label: "名古屋（小牧）到着", desc: "おつかれさまでした！素敵な九州旅行の思い出を！", icon: "🏠", mapUrl: "https://maps.google.com/?q=県営名古屋空港" },
+      { time: "20:15", label: "名古屋（小牧）到着", desc: "おつかれさまでした！素敵な九州旅行の思い出を！", icon: "🏠", mapUrl: "https://maps.google.com/?q=県営名古屋空港", coords: [35.2550, 136.9237] },
     ],
     booking: {
       title: "FDA フジドリームエアラインズ",
@@ -388,6 +389,14 @@ export default function TravelItinerary() {
                 <b>TIP</b>：ホテルキャッスルから熊本城は徒歩圏内。朝一番（9:00開園）なら混雑前にゆっくり見学できる
               </div>
             </div>
+          )}
+
+          {DAYS[activeDay].schedule.some(s => s.coords) && (
+            <DayMap
+              schedule={DAYS[activeDay].schedule}
+              color={DAYS[activeDay].color}
+              dinner={DAYS[activeDay].dinner}
+            />
           )}
 
           <div className="timeline">
