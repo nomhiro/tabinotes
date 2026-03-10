@@ -28,7 +28,10 @@ export default function TripList({ trips }) {
       </div>
 
       <div className="trip-grid">
-        {trips.map((trip, i) => (
+        {[...trips].sort((a, b) => {
+          const parse = t => { const [y, m, d] = t.dates.split('—')[0].trim().split('.').map(Number); return new Date(y, m - 1, d); };
+          return parse(b) - parse(a);
+        }).map((trip, i) => (
           <a
             key={trip.id}
             className="trip-card"

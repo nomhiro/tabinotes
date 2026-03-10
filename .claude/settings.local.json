@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm run:*)",
       "Bash(npm install:*)",
-      "WebFetch(domain:maps.app.goo.gl)"
+      "WebFetch(domain:maps.app.goo.gl)",
+      "Bash(find /c/Users/nom40/.claude -type f -name *.md -o -name *.jsx -o -name *.js)",
+      "WebFetch(domain:www.google.co.jp)",
+      "WebFetch(domain:www.biwako-marriott.com)",
+      "WebFetch(domain:www.navitime.co.jp)"
     ]
   }
 }

@@ -6,6 +6,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 
 ## 技術スタック
 - React (Vite)、CSS-in-JS (inline style + `<style>`)
+- Leaflet + react-leaflet（日別マップ表示、OpenStreetMap タイル）
 - フォント: Noto Serif JP + Zen Maru Gothic (Google Fonts CDN)
 - デプロイ: GitHub Pages (GitHub Actions 自動ビルド)
 
@@ -19,6 +20,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - `src/trips/TripList.jsx` - 旅行一覧ページ
 - `src/trips/registry.js` - 旅行メタデータ配列（TRIPS）
 - `src/trips/kyushu-2026/KyushuTrip.jsx` - 九州旅行しおり（データ・スタイル・UI含む）
+- `src/components/DayMap.jsx` - 日別マップコンポーネント（Leaflet、ピン＋ルート線）
 - `src/main.jsx` - エントリポイント
 - `vite.config.js` - base を GitHub リポジトリ名に合わせて設定
 - `.github/workflows/deploy.yml` - GitHub Pages 自動デプロイ

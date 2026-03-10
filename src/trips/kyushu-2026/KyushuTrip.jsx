@@ -206,7 +206,7 @@ export default function TravelItinerary() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        .cover { position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(175deg,#1a3a4a 0%,#2d5a4a 35%,#3a6b55 55%,#c85a3a 85%,#e87040 100%); overflow:hidden; padding:2rem; }
+        .cover { position:relative; min-height:30vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(175deg,#1a3a4a 0%,#2d5a4a 35%,#3a6b55 55%,#c85a3a 85%,#e87040 100%); overflow:hidden; padding:2rem; }
         .cover::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 80%,rgba(232,112,64,.3) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(26,58,74,.4) 0%,transparent 50%); }
         .cover-pattern { position:absolute; inset:0; opacity:.06; background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,#fff 40px,#fff 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,#fff 40px,#fff 41px); }
         .cover-content { position:relative; z-index:2; text-align:center; color:white; animation:fadeUp 1.2s ease-out; }
@@ -217,8 +217,6 @@ export default function TravelItinerary() {
         .cover-sub { font-size:clamp(1rem,3vw,1.4rem); font-weight:300; letter-spacing:.3em; opacity:.85; margin-bottom:2rem; }
         .cover-date { font-family:'Zen Maru Gothic',sans-serif; display:inline-block; border:1px solid rgba(255,255,255,.4); padding:.6rem 2rem; font-size:.95rem; letter-spacing:.2em; border-radius:2px; }
         .cover-members { margin-top:2rem; font-size:.95rem; opacity:.75; letter-spacing:.15em; }
-        .cover-scroll { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.5); font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; letter-spacing:.2em; animation:bounce 2s infinite; }
-        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
         .cover-back { position:absolute; top:1.5rem; left:1.5rem; z-index:3; color:rgba(255,255,255,.7); text-decoration:none; font-family:'Zen Maru Gothic',sans-serif; font-size:.85rem; letter-spacing:.05em; transition:color .2s; }
         .cover-back:hover { color:white; }
         .nav-bar { position:sticky; top:0; z-index:100; background:rgba(247,243,237,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,.08); display:flex; justify-content:center; overflow-x:auto; }
@@ -280,7 +278,6 @@ export default function TravelItinerary() {
           <div className="cover-date">2026. 5. 5 tue — 5. 9 sat</div>
           <div className="cover-members">のむら ひろき ・ りの</div>
         </div>
-        <div className="cover-scroll">▽ scroll</div>
       </div>
 
       <div className="nav-bar">

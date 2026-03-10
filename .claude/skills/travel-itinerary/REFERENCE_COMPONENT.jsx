@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DayMap from "../../components/DayMap";
 
 const DAYS = [
   {
@@ -9,7 +10,7 @@ const DAYS = [
     icon: "⛴",
     schedule: [
       { time: "日中", label: "大阪観光", desc: "出港までの時間を大阪で楽しむ", icon: "🏙" },
-      { time: "18:05", label: "大阪南港 乗船手続き", desc: "出港60分前を目安に手続き", icon: "🎫", important: true, mapUrl: "https://maps.google.com/?q=大阪南港さんふらわあターミナル" },
+      { time: "18:05", label: "大阪南港 乗船手続き", desc: "出港60分前を目安に手続き", icon: "🎫", important: true, mapUrl: "https://maps.google.com/?q=大阪南港さんふらわあターミナル", coords: [34.6359, 135.4104] },
       { time: "19:05", label: "大阪南港 出港", desc: "さんふらわあ むらさき", icon: "⛴", url: "https://www.ferry-sunflower.co.jp/" },
       { time: "船中泊", label: "プライベートベッドでゆっくり", desc: "翌朝 別府着", icon: "🌙" },
     ],
@@ -32,13 +33,13 @@ const DAYS = [
     color: "#D94F4F",
     icon: "♨",
     schedule: [
-      { time: "06:55", label: "別府観光港 到着", desc: "さんふらわあ下船後、港のターミナルへ", icon: "🚢", mapUrl: "https://maps.google.com/?q=別府観光港" },
-      { time: "07:30", label: "レンタカー受取", desc: "ニッポンレンタカー 別府観光港前店", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+別府観光港前" },
-      { time: "08:00", label: "海地獄（共通観覧券を購入）", desc: "コバルトブルーの熱泉は圧巻！国指定名勝。温泉たまごも名物。共通観覧券 ¥2,400/人（公式HPのクーポンで¥200引き）", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/umi/", mapUrl: "https://maps.google.com/?q=海地獄+別府" },
-      { time: "08:30", label: "鬼石坊主地獄", desc: "灰色の熱泥がボコボコ湧く様子は迫力満点。海地獄のすぐ隣、徒歩すぐ", icon: "♨", url: "https://www.beppu-jigoku.com/onishi/", mapUrl: "https://maps.google.com/?q=鬼石坊主地獄" },
-      { time: "08:50", label: "かまど地獄", desc: "1丁目〜6丁目まで様々な泉質を一度に楽しめる。足湯あり！", icon: "♨", url: "https://www.beppu-jigoku.com/kamado/", mapUrl: "https://maps.google.com/?q=かまど地獄+別府" },
-      { time: "09:20", label: "鬼山地獄（ワニ地獄）", desc: "約80頭のワニが温泉熱で飼育されている。かまど地獄から徒歩1分", icon: "🐊", url: "https://www.beppu-jigoku.com/oniyama/", mapUrl: "https://maps.google.com/?q=鬼山地獄+別府" },
-      { time: "09:40", label: "白池地獄", desc: "青白い池と熱帯魚館。和風庭園の静かな雰囲気。国指定名勝", icon: "♨", url: "https://www.beppu-jigoku.com/shiraike/", mapUrl: "https://maps.google.com/?q=白池地獄+別府" },
+      { time: "06:55", label: "別府観光港 到着", desc: "さんふらわあ下船後、港のターミナルへ", icon: "🚢", mapUrl: "https://maps.google.com/?q=別府観光港", coords: [33.2803, 131.5054] },
+      { time: "07:30", label: "レンタカー受取", desc: "ニッポンレンタカー 別府観光港前店", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+別府観光港前", coords: [33.2800, 131.5060] },
+      { time: "08:00", label: "海地獄（共通観覧券を購入）", desc: "コバルトブルーの熱泉は圧巻！国指定名勝。温泉たまごも名物。共通観覧券 ¥2,400/人（公式HPのクーポンで¥200引き）", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/umi/", mapUrl: "https://maps.google.com/?q=海地獄+別府", coords: [33.3192, 131.4450] },
+      { time: "08:30", label: "鬼石坊主地獄", desc: "灰色の熱泥がボコボコ湧く様子は迫力満点。海地獄のすぐ隣、徒歩すぐ", icon: "♨", url: "https://www.beppu-jigoku.com/onishi/", mapUrl: "https://maps.google.com/?q=鬼石坊主地獄", coords: [33.3186, 131.4447] },
+      { time: "08:50", label: "かまど地獄", desc: "1丁目〜6丁目まで様々な泉質を一度に楽しめる。足湯あり！", icon: "♨", url: "https://www.beppu-jigoku.com/kamado/", mapUrl: "https://maps.google.com/?q=かまど地獄+別府", coords: [33.3178, 131.4456] },
+      { time: "09:20", label: "鬼山地獄（ワニ地獄）", desc: "約80頭のワニが温泉熱で飼育されている。かまど地獄から徒歩1分", icon: "🐊", url: "https://www.beppu-jigoku.com/oniyama/", mapUrl: "https://maps.google.com/?q=鬼山地獄+別府", coords: [33.3175, 131.4460] },
+      { time: "09:40", label: "白池地獄", desc: "青白い池と熱帯魚館。和風庭園の静かな雰囲気。国指定名勝", icon: "♨", url: "https://www.beppu-jigoku.com/shiraike/", mapUrl: "https://maps.google.com/?q=白池地獄+別府", coords: [33.3170, 131.4468] },
       { time: "10:00", label: "車で血の池エリアへ移動", desc: "鉄輪エリアから約3km、車で約5分", icon: "🚗" },
       { time: "10:10", label: "血の池地獄", desc: "日本最古の天然地獄。赤い熱泥の池は約1,300㎡の迫力。展望台からの眺めが◎。名物「血の池軟膏」をお土産に", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/chinoike/", mapUrl: "https://maps.google.com/?q=血の池地獄+別府" },
       { time: "10:40", label: "龍巻地獄", desc: "間欠泉の地獄。約30〜40分間隔で噴出するので、血の池地獄とどちらを先にするかは噴出タイミング次第で", icon: "♨", url: "https://www.beppu-jigoku.com/tatsumaki/", mapUrl: "https://maps.google.com/?q=龍巻地獄+別府" },
@@ -205,7 +206,7 @@ export default function TravelItinerary() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        .cover { position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(175deg,#1a3a4a 0%,#2d5a4a 35%,#3a6b55 55%,#c85a3a 85%,#e87040 100%); overflow:hidden; padding:2rem; }
+        .cover { position:relative; min-height:30vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(175deg,#1a3a4a 0%,#2d5a4a 35%,#3a6b55 55%,#c85a3a 85%,#e87040 100%); overflow:hidden; padding:2rem; }
         .cover::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 80%,rgba(232,112,64,.3) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(26,58,74,.4) 0%,transparent 50%); }
         .cover-pattern { position:absolute; inset:0; opacity:.06; background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,#fff 40px,#fff 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,#fff 40px,#fff 41px); }
         .cover-content { position:relative; z-index:2; text-align:center; color:white; animation:fadeUp 1.2s ease-out; }
@@ -216,8 +217,6 @@ export default function TravelItinerary() {
         .cover-sub { font-size:clamp(1rem,3vw,1.4rem); font-weight:300; letter-spacing:.3em; opacity:.85; margin-bottom:2rem; }
         .cover-date { font-family:'Zen Maru Gothic',sans-serif; display:inline-block; border:1px solid rgba(255,255,255,.4); padding:.6rem 2rem; font-size:.95rem; letter-spacing:.2em; border-radius:2px; }
         .cover-members { margin-top:2rem; font-size:.95rem; opacity:.75; letter-spacing:.15em; }
-        .cover-scroll { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.5); font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; letter-spacing:.2em; animation:bounce 2s infinite; }
-        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
         .nav-bar { position:sticky; top:0; z-index:100; background:rgba(247,243,237,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,.08); display:flex; justify-content:center; overflow-x:auto; }
         .nav-btn { font-family:'Zen Maru Gothic',sans-serif; border:none; background:none; padding:1rem 1.2rem; font-size:.82rem; cursor:pointer; color:#7a7068; letter-spacing:.05em; white-space:nowrap; transition:all .3s; border-bottom:2px solid transparent; }
         .nav-btn:hover { color:#2C2421; }
@@ -276,7 +275,6 @@ export default function TravelItinerary() {
           <div className="cover-date">2026. 5. 5 tue — 5. 9 sat</div>
           <div className="cover-members">のむら ひろき ・ りの</div>
         </div>
-        <div className="cover-scroll">▽ scroll</div>
       </div>
 
       <div className="nav-bar">
@@ -385,6 +383,14 @@ export default function TravelItinerary() {
                 <b>TIP</b>：ホテルキャッスルから熊本城は徒歩圏内。朝一番（9:00開園）なら混雑前にゆっくり見学できる
               </div>
             </div>
+          )}
+
+          {DAYS[activeDay].schedule.some(s => s.coords) && (
+            <DayMap
+              schedule={DAYS[activeDay].schedule}
+              color={DAYS[activeDay].color}
+              dinner={DAYS[activeDay].dinner}
+            />
           )}
 
           <div className="timeline">
