@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/kyushu-travel/', // ← GitHubリポジトリ名に合わせて変更
+  base: '/tabinotes/', // ← GitHubリポジトリ名に合わせて変更
 })
