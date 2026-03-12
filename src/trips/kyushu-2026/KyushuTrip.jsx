@@ -194,6 +194,7 @@ const COSTS = [
 
 const WebLink = ({ href }) => href ? (<a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none", fontSize:"0.82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }} title="公式サイト" onClick={e=>e.stopPropagation()}>🌐</a>) : null;
 const MapLink = ({ href }) => href ? (<a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none", fontSize:"0.82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }} title="Google Map" onClick={e=>e.stopPropagation()}>📍</a>) : null;
+const PhotoLink = ({ href }) => href ? (<a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none", fontSize:"0.82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }} title="予約スクリーンショット" onClick={e=>e.stopPropagation()}>📷</a>) : null;
 
 export default function TravelItinerary() {
   const [activeDay, setActiveDay] = useState(0);
@@ -404,10 +405,11 @@ export default function TravelItinerary() {
                 <div className="tl-label">
                   <span className="emoji">{item.icon}</span>
                   {item.label}
-                  {(item.url || item.mapUrl) && (
+                  {(item.url || item.mapUrl || item.photo) && (
                     <span className="tl-links">
                       <WebLink href={item.url} />
                       <MapLink href={item.mapUrl} />
+                      <PhotoLink href={item.photo} />
                     </span>
                   )}
                 </div>
@@ -431,10 +433,11 @@ export default function TravelItinerary() {
                     </div>
                   ))}
                 </div>
-                {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl) && (
+                {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl || DAYS[activeDay].booking.photo) && (
                   <div className="booking-links">
                     {DAYS[activeDay].booking.url && (<a href={DAYS[activeDay].booking.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>🌐 公式サイト</a>)}
                     {DAYS[activeDay].booking.mapUrl && (<a href={DAYS[activeDay].booking.mapUrl} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📍 Google Map</a>)}
+                    {DAYS[activeDay].booking.photo && (<a href={DAYS[activeDay].booking.photo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📷 予約確認</a>)}
                   </div>
                 )}
               </>
@@ -456,6 +459,7 @@ export default function TravelItinerary() {
                   </div>
                   <div className="booking-links">
                     <a href={RENTAL_CAR.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>🌐 公式サイト</a>
+                    {RENTAL_CAR.photo && (<a href={RENTAL_CAR.photo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📷 予約確認</a>)}
                   </div>
                 </>
               )}
