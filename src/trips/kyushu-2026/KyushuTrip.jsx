@@ -154,13 +154,12 @@ const DAYS = [
       { time: "15:30", label: "熊本空港方面へ出発", desc: "市内から空港まで車で約40〜50分。余裕を持って移動", icon: "🚗" },
       { time: "16:30", label: "レンタカー返却", desc: "ニッポンレンタカー 熊本空港店。返却後に空港へ送迎あり", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+熊本空港", coords: [32.8372, 130.8555] },
       { time: "17:00", label: "阿蘇くまもと空港", desc: "搭乗手続き＆空港でお土産の最終チェック", icon: "✈", mapUrl: "https://maps.google.com/?q=阿蘇くまもと空港", coords: [32.8373, 130.8553] },
-      { time: "18:55", label: "熊本空港 出発（FDA2026便）", desc: "搭乗15分前までにチェックイン。予約番号 or QRコードを持参", icon: "✈", important: true, url: "https://www.fujidreamairlines.com/" },
+      { time: "18:55", label: "熊本空港 出発（FDA2026便）", desc: "搭乗15分前までにチェックイン。予約番号 or QRコードを持参", icon: "✈", important: true, url: "https://www.fujidreamairlines.com/", photo: "https://photos.app.goo.gl/gScHdSE65EV4Vasu6" },
       { time: "20:15", label: "名古屋（小牧）到着", desc: "おつかれさまでした！素敵な九州旅行の思い出を！", icon: "🏠", mapUrl: "https://maps.google.com/?q=県営名古屋空港", coords: [35.2550, 136.9237] },
     ],
     booking: {
       title: "FDA フジドリームエアラインズ",
       url: "https://www.fujidreamairlines.com/",
-      photo: "https://photos.app.goo.gl/gScHdSE65EV4Vasu6",
       details: [
         { label: "予約番号", value: "TV3H25" },
         { label: "便名", value: "FDA2026" },
@@ -434,11 +433,10 @@ export default function TravelItinerary() {
                     </div>
                   ))}
                 </div>
-                {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl || DAYS[activeDay].booking.photo) && (
+                {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl) && (
                   <div className="booking-links">
                     {DAYS[activeDay].booking.url && (<a href={DAYS[activeDay].booking.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>🌐 公式サイト</a>)}
                     {DAYS[activeDay].booking.mapUrl && (<a href={DAYS[activeDay].booking.mapUrl} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📍 Google Map</a>)}
-                    {DAYS[activeDay].booking.photo && (<a href={DAYS[activeDay].booking.photo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📷 予約確認</a>)}
                   </div>
                 )}
               </>
@@ -460,7 +458,6 @@ export default function TravelItinerary() {
                   </div>
                   <div className="booking-links">
                     <a href={RENTAL_CAR.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>🌐 公式サイト</a>
-                    {RENTAL_CAR.photo && (<a href={RENTAL_CAR.photo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📷 予約確認</a>)}
                   </div>
                 </>
               )}
