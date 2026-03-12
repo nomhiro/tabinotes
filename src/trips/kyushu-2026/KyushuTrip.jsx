@@ -160,6 +160,7 @@ const DAYS = [
     booking: {
       title: "FDA フジドリームエアラインズ",
       url: "https://www.fujidreamairlines.com/",
+      photo: "https://photos.app.goo.gl/gScHdSE65EV4Vasu6",
       details: [
         { label: "予約番号", value: "TV3H25" },
         { label: "便名", value: "FDA2026" },
