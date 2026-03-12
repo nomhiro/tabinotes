@@ -174,6 +174,7 @@ const DAYS = [
 const RENTAL_CAR = {
   title: "ニッポンレンタカー",
   url: "https://www.nipponrentacar.co.jp/",
+  photo: "https://photos.app.goo.gl/Yi25pgSzyhAHv85L6",
   details: [
     { label: "会員番号", value: "915853931" },
     { label: "クラス", value: "スタンダード" },
@@ -458,6 +459,7 @@ export default function TravelItinerary() {
                   </div>
                   <div className="booking-links">
                     <a href={RENTAL_CAR.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>🌐 公式サイト</a>
+                    {RENTAL_CAR.photo && <a href={RENTAL_CAR.photo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📷 予約スクショ</a>}
                   </div>
                 </>
               )}
