@@ -30,24 +30,32 @@ export default function AuthGate({ children }) {
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         @keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+        #auth-email:focus-visible { outline:2px solid #4A7C59; outline-offset:2px; border-radius:8px; }
+        button[type="submit"]:focus-visible { outline:2px solid #2C2421; outline-offset:2px; border-radius:8px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } }
       `}</style>
-      <div style={styles.card}>
-        <div style={styles.icon}>🧳</div>
-        <div style={styles.title}>旅のしおり</div>
-        <div style={styles.subtitle}>メールアドレスを入力してください</div>
+      <main style={styles.card}>
+        <div style={styles.icon} aria-hidden="true">🧳</div>
+        <h1 style={styles.title}>旅のしおり</h1>
+        <div style={styles.subtitle} id="login-desc">メールアドレスを入力してください</div>
         <form onSubmit={handleSubmit} style={styles.form}>
+          <label htmlFor="auth-email" style={styles.label}>メールアドレス</label>
           <input
+            id="auth-email"
             type="email"
             value={email}
             onChange={(e) => { setEmail(e.target.value); setError(""); }}
             placeholder="example@gmail.com"
             style={styles.input}
             autoFocus
+            aria-describedby={error ? "auth-error" : "login-desc"}
+            aria-invalid={error ? "true" : undefined}
+            required
           />
           <button type="submit" style={styles.button}>ログイン</button>
         </form>
-        {error && <div style={styles.error}>{error}</div>}
-      </div>
+        {error && <div id="auth-error" style={styles.error} role="alert">{error}</div>}
+      </main>
     </div>
   );
 }
@@ -86,7 +94,7 @@ const styles = {
   subtitle: {
     fontFamily: "'Zen Maru Gothic', sans-serif",
     fontSize: ".85rem",
-    color: "#9a918a",
+    color: "#756d65",
     letterSpacing: ".08em",
     marginBottom: "2rem",
   },
@@ -95,13 +103,19 @@ const styles = {
     flexDirection: "column",
     gap: ".8rem",
   },
+  label: {
+    fontFamily: "'Zen Maru Gothic', sans-serif",
+    fontSize: ".82rem",
+    color: "#5a5048",
+    textAlign: "left",
+    letterSpacing: ".05em",
+  },
   input: {
     fontFamily: "'Zen Maru Gothic', sans-serif",
     fontSize: ".95rem",
     padding: ".75rem 1rem",
     border: "1px solid #d9d3cc",
     borderRadius: "8px",
-    outline: "none",
     color: "#2C2421",
     background: "#FAFAF8",
   },

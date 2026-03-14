@@ -53,12 +53,16 @@ export default function DayMap({ schedule, color, dinner }) {
   if (spots.length === 0) return null;
 
   return (
-    <div style={{
-      marginBottom: "2rem",
-      borderRadius: "6px",
-      overflow: "hidden",
-      boxShadow: "0 1px 8px rgba(0,0,0,.06)",
-    }}>
+    <div
+      role="region"
+      aria-label="本日のルートマップ"
+      style={{
+        marginBottom: "2rem",
+        borderRadius: "6px",
+        overflow: "hidden",
+        boxShadow: "0 1px 8px rgba(0,0,0,.06)",
+      }}
+    >
       <MapContainer
         center={spots[0].coords}
         zoom={12}
@@ -74,9 +78,9 @@ export default function DayMap({ schedule, color, dinner }) {
           <Marker key={i} position={s.coords} icon={numberedIcon(s.n, color)}>
             <Popup>
               <div style={{ fontFamily: "'Zen Maru Gothic',sans-serif", fontSize: "13px", lineHeight: 1.5 }}>
-                <strong>{s.icon} {s.label}</strong>
-                {s.time && <div style={{ fontSize: "11px", color: "#888" }}>{s.time}</div>}
-                {s.desc && <div style={{ fontSize: "12px", color: "#555", marginTop: "2px" }}>{s.desc}</div>}
+                <strong><span aria-hidden="true">{s.icon}</span> {s.label}</strong>
+                {s.time && <div style={{ fontSize: "11px", color: "#756d65" }}>{s.time}</div>}
+                {s.desc && <div style={{ fontSize: "12px", color: "#6a6058", marginTop: "2px" }}>{s.desc}</div>}
               </div>
             </Popup>
           </Marker>

@@ -1,6 +1,5 @@
 import KyushuTrip from './kyushu-2026/KyushuTrip.jsx';
 import OsakaShigaTrip from './osaka-shiga-2026/OsakaShigaTrip.jsx';
-import ShizuokaTrip from './shizuoka-2026/ShizuokaTrip.jsx';
 
 export const TRIPS = [
   {
@@ -24,16 +23,5 @@ export const TRIPS = [
     colorEnd: '#e87040',
     members: 'のむら ひろき ・ りの',
     component: KyushuTrip,
-  },
-  {
-    id: 'shizuoka-2026',
-    title: '静岡・桜の旅',
-    subtitle: '浜松 ・ 静岡 ・ 日本平',
-    dates: '2026. 4. 4 — 4. 5',
-    icon: '🌸',
-    color: '#E87EA1',
-    colorEnd: '#7BAF5E',
-    members: 'のむら ひろき ・ ふとし',
-    component: ShizuokaTrip,
   },
 ];

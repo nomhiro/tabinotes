@@ -19,15 +19,29 @@ export default function App() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
+  let content;
+  let pageTitle = "旅のしおり";
+
   if (route.page === "trip") {
     const trip = TRIPS.find((t) => t.id === route.tripId);
     if (trip) {
       const TripComponent = trip.component;
-      return <TripComponent />;
+      content = <TripComponent />;
+      pageTitle = trip.title;
+    } else {
+      window.location.hash = "#/";
+      return null;
     }
-    window.location.hash = "#/";
-    return null;
+  } else {
+    content = <TripList trips={TRIPS} />;
   }
 
-  return <TripList trips={TRIPS} />;
+  return (
+    <>
+      <div aria-live="polite" aria-atomic="true" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clipPath: "inset(50%)", whiteSpace: "nowrap" }}>
+        {pageTitle}を表示中
+      </div>
+      {content}
+    </>
+  );
 }

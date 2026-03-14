@@ -88,9 +88,9 @@ export default function DayMap({ schedule, color, dinner }) {
           <Marker key={i} position={s.coords} icon={numberedIcon(s.n, color)}>
             <Popup>
               <div style={{ fontFamily: "'Zen Maru Gothic',sans-serif", fontSize: "13px", lineHeight: 1.5 }}>
-                <strong>{s.icon} {s.label}</strong>
-                {s.time && <div style={{ fontSize: "11px", color: "#888" }}>{s.time}</div>}
-                {s.desc && <div style={{ fontSize: "12px", color: "#555", marginTop: "2px" }}>{s.desc}</div>}
+                <strong><span aria-hidden="true">{s.icon}</span> {s.label}</strong>
+                {s.time && <div style={{ fontSize: "11px", color: "#756d65" }}>{s.time}</div>}
+                {s.desc && <div style={{ fontSize: "12px", color: "#6a6058", marginTop: "2px" }}>{s.desc}</div>}
               </div>
             </Popup>
           </Marker>
