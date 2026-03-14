@@ -30,6 +30,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - 新しい旅行を追加するには: `src/trips/{id}/` にコンポーネント作成 → `registry.js` にエントリ追加
 - schedule の `icon` と `label` で絵文字を重複させない
 - 未確定の観光スポット・飲食店は勝手に追加しない
+- 予約スクリーンショットは Google Photos 共有リンクで管理。schedule に `photo` フィールド（URL文字列）を追加するとタイムライン上に📷アイコンが表示される
 
 ## アクセシビリティ規約
 新規コンポーネント作成・既存修正時に必ず守ること。
@@ -94,6 +95,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 ## カスタムコマンド
 - `/add-day-detail Day2` - 指定日のスケジュールを Web 検索で詳細化
 - `/add-spot 水前寺成趣園をDay5に追加` - スポットを検索して追加
+- `/add-photo {URL} を {場所名} に追加` - Google Photos リンクを予約データに紐づけ
 - `/build-deploy` - ビルド＆コミット準備
 
 ## スキル

@@ -278,10 +278,11 @@ export default function TravelItinerary() {
                 <div className="tl-label">
                   <span className="emoji" aria-hidden="true">{item.icon}</span>
                   {item.label}
-                  {(item.url || item.mapUrl) && (
+                  {(item.url || item.mapUrl || item.photo) && (
                     <span className="tl-links">
                       <WebLink href={item.url} />
                       <MapLink href={item.mapUrl} />
+                      <PhotoLink href={item.photo} />
                     </span>
                   )}
                 </div>
@@ -308,10 +309,11 @@ export default function TravelItinerary() {
                     </div>
                   ))}
                 </div>
-                {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl) && (
+                {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl || DAYS[activeDay].booking.photo) && (
                   <div className="booking-links">
-                    {DAYS[activeDay].booking.url && (<a href={DAYS[activeDay].booking.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">🌐</span> 公式サイト</a>)}
-                    {DAYS[activeDay].booking.mapUrl && (<a href={DAYS[activeDay].booking.mapUrl} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">📍</span> Google Map</a>)}
+                    {DAYS[activeDay].booking.url && (<a href={DAYS[activeDay].booking.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>🌐 公式サイト</a>)}
+                    {DAYS[activeDay].booking.mapUrl && (<a href={DAYS[activeDay].booking.mapUrl} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📍 Google Map</a>)}
+                    {DAYS[activeDay].booking.photo && (<a href={DAYS[activeDay].booking.photo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📷 予約確認</a>)}
                   </div>
                 )}
               </>

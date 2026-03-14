@@ -154,7 +154,7 @@ const DAYS = [
       { time: "15:30", label: "熊本空港方面へ出発", desc: "市内から空港まで車で約40〜50分。余裕を持って移動", icon: "🚗" },
       { time: "16:30", label: "レンタカー返却", desc: "ニッポンレンタカー 熊本空港店。返却後に空港へ送迎あり", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+熊本空港", coords: [32.8372, 130.8555] },
       { time: "17:00", label: "阿蘇くまもと空港", desc: "搭乗手続き＆空港でお土産の最終チェック", icon: "✈", mapUrl: "https://maps.google.com/?q=阿蘇くまもと空港", coords: [32.8373, 130.8553] },
-      { time: "18:55", label: "熊本空港 出発（FDA2026便）", desc: "搭乗15分前までにチェックイン。予約番号 or QRコードを持参", icon: "✈", important: true, url: "https://www.fujidreamairlines.com/" },
+      { time: "18:55", label: "熊本空港 出発（FDA2026便）", desc: "搭乗15分前までにチェックイン。予約番号 or QRコードを持参", icon: "✈", important: true, url: "https://www.fujidreamairlines.com/", photo: "https://photos.app.goo.gl/gScHdSE65EV4Vasu6" },
       { time: "20:15", label: "名古屋（小牧）到着", desc: "おつかれさまでした！素敵な九州旅行の思い出を！", icon: "🏠", mapUrl: "https://maps.google.com/?q=県営名古屋空港", coords: [35.2550, 136.9237] },
     ],
     booking: {
@@ -174,6 +174,7 @@ const DAYS = [
 const RENTAL_CAR = {
   title: "ニッポンレンタカー",
   url: "https://www.nipponrentacar.co.jp/",
+  photo: "https://photos.app.goo.gl/Yi25pgSzyhAHv85L6",
   details: [
     { label: "会員番号", value: "915853931" },
     { label: "クラス", value: "スタンダード" },
@@ -419,10 +420,11 @@ export default function TravelItinerary() {
                 <div className="tl-label">
                   <span className="emoji" aria-hidden="true">{item.icon}</span>
                   {item.label}
-                  {(item.url || item.mapUrl) && (
+                  {(item.url || item.mapUrl || item.photo) && (
                     <span className="tl-links">
                       <WebLink href={item.url} />
                       <MapLink href={item.mapUrl} />
+                      <PhotoLink href={item.photo} />
                     </span>
                   )}
                 </div>
@@ -476,7 +478,8 @@ export default function TravelItinerary() {
                     ))}
                   </div>
                   <div className="booking-links">
-                    <a href={RENTAL_CAR.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">🌐</span> 公式サイト</a>
+                    <a href={RENTAL_CAR.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>🌐 公式サイト</a>
+                    {RENTAL_CAR.photo && <a href={RENTAL_CAR.photo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>📷 予約スクショ</a>}
                   </div>
                 </>
               )}
