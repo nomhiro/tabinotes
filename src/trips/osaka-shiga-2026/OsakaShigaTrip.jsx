@@ -4,40 +4,33 @@ import DayMap from "../../components/DayMap";
 const DAYS = [
   {
     day: 1,
-    date: "3月21日（土）",
-    title: "大阪集合 → 寿司ディナー",
+    date: "3月19日（木）",
+    title: "りの → 大阪（江坂）",
     color: "#4A7FB5",
-    icon: "🍣",
+    icon: "🏠",
     schedule: [
-      { time: "夕方", label: "立ち寿司 杉尾 西中島店", desc: "西中島南方駅から徒歩1分。1貫110円〜の本格立ち食い寿司。営業 17:00〜23:00（土曜）", icon: "🍣", important: true, mapUrl: "https://maps.app.goo.gl/ZatLMrg1RoqmF6617", coords: [34.72667, 135.49929] },
-      { time: "夜", label: "りの：江坂の父の家へ", desc: "ファーストフィオーレ江坂ネクシス", icon: "🏠", mapUrl: "https://maps.app.goo.gl/9QawGCpdtMXDNPbK9", coords: [34.7562728, 135.5005592] },
-      { time: "深夜", label: "ひろき：SARASA HOTEL 新大阪へ", desc: "チェックイン 24:00〜。御堂筋線 新大阪駅7番出口より徒歩3分", icon: "🏨", mapUrl: "https://maps.google.com/?q=SARASA+HOTEL+新大阪", coords: [34.7335, 135.5005] },
+      { time: "夕方", label: "りの：大阪へ出発", desc: "江坂の父の家へ", icon: "🚃" },
+      { time: "夜", label: "ファーストフィオーレ江坂ネクシス到着", desc: "3/22昼まで滞在。ひろきは自宅待機", icon: "🏠", mapUrl: "https://maps.app.goo.gl/9QawGCpdtMXDNPbK9", coords: [34.7562728, 135.5005592] },
     ],
     booking: {
-      title: "SARASA HOTEL 新大阪",
-      url: "https://hotel.travel.yahoo.co.jp/",
-      mapUrl: "https://maps.google.com/?q=SARASA+HOTEL+新大阪",
+      title: "父の家（ファーストフィオーレ江坂ネクシス）",
+      mapUrl: "https://maps.app.goo.gl/9QawGCpdtMXDNPbK9",
       details: [
-        { label: "予約番号", value: "IN1548587770" },
-        { label: "プラン", value: "シンデレラプラン（素泊まり）" },
-        { label: "チェックイン", value: "24:00〜29:00" },
-        { label: "チェックアウト", value: "10:00" },
-        { label: "部屋", value: "禁煙スタンダードシングルルーム 14平米" },
-        { label: "住所", value: "大阪市淀川区西中島7-1-17" },
-        { label: "TEL", value: "06-6304-9300" },
-        { label: "料金", value: "¥9,800" },
+        { label: "滞在期間", value: "3/19（木）夜 〜 3/22（日）昼" },
+        { label: "住所", value: "大阪府吹田市（江坂駅周辺）" },
       ],
     },
   },
   {
     day: 2,
     date: "3月22日（日）",
-    title: "ヘアドネーション → 琵琶湖マリオット",
+    title: "南草津集合 → ヘアドネーション → 琵琶湖マリオット",
     color: "#5B8C5A",
     icon: "✂",
     schedule: [
-      { time: "10:00", label: "SARASA HOTEL チェックアウト", desc: "ひろき：ホテルを出発", icon: "🚪" },
-      { time: "午前", label: "大阪でランチ（未定）", desc: "お店は現地で決定", icon: "🍽" },
+      { time: "〜9:30", label: "ひろき：勝川駅 出発", desc: "勝川→名古屋→（東海道本線）→米原→（琵琶湖線）→南草津。鈍行で約2.5時間・¥2,640", icon: "🚃", coords: [35.2264, 136.9720] },
+      { time: "〜11:00", label: "りの：江坂 出発", desc: "江坂→（御堂筋線）→新大阪→（JR新快速）→南草津。約1時間・¥1,150", icon: "🚃", coords: [34.7562728, 135.5005592] },
+      { time: "〜12:15", label: "南草津駅で合流", desc: "東口で待ち合わせ → 徒歩4分でエイブル美容室へ", icon: "🚶", important: true, coords: [35.00376, 135.94726] },
       { time: "12:30", label: "エイブル美容室（ヘアドネーション）", desc: "南草津駅東口から徒歩4分。TEL: 077-567-2828", icon: "✂", important: true, mapUrl: "https://maps.google.com/?q=エイブル美容室+南草津", coords: [35.00376, 135.94726] },
       { time: "ヘアドネ後", label: "南草津駅へ徒歩移動", desc: "美容室から徒歩4分で駅へ", icon: "🚶" },
       { time: "〜14:20", label: "南草津駅 → 守山駅", desc: "JR琵琶湖線で約10分・¥200", icon: "🚃", coords: [35.00376, 135.94726] },
@@ -68,7 +61,7 @@ const DAYS = [
     icon: "🚄",
     schedule: [
       { time: "朝", label: "ホテルで朝食", desc: "TOYOTAプラン特典の無料朝食", icon: "🍳", coords: [35.125023, 135.954697] },
-      { time: "〜9:45", label: "マリオット → 堅田駅", desc: "無料シャトルバスで約15分。時刻はフロントで要確認", icon: "🚌", important: true, coords: [35.125023, 135.954697] },
+      { time: "9:30", label: "マリオット → 堅田駅（シャトルバス）", desc: "無料シャトル 9:30発 → 約15分で堅田駅着。毎時00分・30分発", icon: "🚌", important: true, coords: [35.125023, 135.954697] },
       { time: "10:08", label: "堅田駅 発（JR湖西線）", desc: "京都行。6駅・約22分。着ホーム6番線", icon: "🚃", coords: [35.1212, 135.9152] },
       { time: "10:30", label: "京都駅 着", desc: "乗換15分。12番線へ移動", icon: "🚶", coords: [34.9856, 135.7584] },
       { time: "10:45", label: "のぞみ10号 発（東京行）", desc: "N700S系。12番線発 → 14番線着。自由席 ¥2,530", icon: "🚄", important: true, coords: [34.9856, 135.7584] },
@@ -81,18 +74,19 @@ const DAYS = [
       details: [
         { label: "チェックアウト", value: "11:00まで（ひろきは早朝出発）" },
         { label: "朝食", value: "プラン特典で無料" },
-        { label: "シャトルバス", value: "堅田駅行き（フロントで時刻確認）" },
+        { label: "シャトルバス", value: "9:30発 堅田駅行き（毎時00分・30分運行・無料）" },
       ],
     },
   },
 ];
 
 const COSTS = [
-  { item: "SARASA HOTEL 新大阪（ひろき1泊）", cost: 9800 },
   { item: "琵琶湖マリオット（1泊2名）", cost: 16300 },
+  { item: "JR 勝川→南草津（ひろき・鈍行）", cost: 2640 },
+  { item: "地下鉄+JR 江坂→南草津（りの）", cost: 1150 },
   { item: "JR 南草津→守山", cost: 200 },
   { item: "近江鉄道バス 守山→マリオット", cost: 520 },
-  { item: "JR 堅田→京都→名古屋", cost: 5170 },
+  { item: "JR 堅田→京都→名古屋（ひろき）", cost: 5170 },
 ];
 
 const WebLink = ({ href }) => href ? (<a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none", fontSize:"0.82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }} aria-label="公式サイト" onClick={e=>e.stopPropagation()}><span aria-hidden="true">🌐</span></a>) : null;
@@ -186,8 +180,8 @@ export default function TravelItinerary() {
         <div className="cover-content">
           <div className="cover-label">Travel Booklet</div>
           <h1 className="cover-title">大阪・滋賀の旅</h1>
-          <div className="cover-sub">新大阪 ・ 南草津 ・ 琵琶湖</div>
-          <div className="cover-date">2026. 3. 21 sat — 3. 23 mon</div>
+          <div className="cover-sub">大阪 ・ 南草津 ・ 琵琶湖</div>
+          <div className="cover-date">2026. 3. 19 thu — 3. 23 mon</div>
           <div className="cover-members">のむら ひろき ・ りの</div>
         </div>
       </header>
@@ -241,6 +235,8 @@ export default function TravelItinerary() {
               <div>
                 <b>ヘアドネーション予約</b>：12:30〜 エイブル美容室（南草津駅東口 徒歩4分）<br/>
                 <b>TEL</b>：077-567-2828<br/>
+                <b>ひろきの移動</b>：勝川 →（中央線 20分）→ 名古屋 →（東海道本線 約2h）→ 米原 →（琵琶湖線 約40分）→ 南草津<br/>
+                <b>りのの移動</b>：江坂 →（御堂筋線 4分）→ 新大阪 →（JR新快速 約55分）→ 南草津<br/>
                 <b>マリオットへの移動</b>：南草津 →（JR 10分）→ 守山 →（バス 34分）→ マリオット<br/>
                 <b>守山駅バス時刻</b>：<b>14:30発 → 15:04着</b>（本数少ないので注意！次は17:20発）<br/>
                 <b>バス乗り場</b>：守山駅<b>西口1番</b>乗り場（近江鉄道バス 木の浜線）<br/>
@@ -256,8 +252,8 @@ export default function TravelItinerary() {
               </h3>
               <div>
                 <b>朝食</b>：TOYOTAプラン特典で無料<br/>
-                <b>シャトルバス</b>：マリオット → 堅田駅（約15分・無料）※時刻はフロントで要確認<br/>
-                <b>堅田駅 10:08発</b>に間に合うよう、9:45頃までにシャトルに乗る<br/>
+                <b>シャトルバス</b>：マリオット → 堅田駅（約15分・無料）毎時00分・30分発（8:00〜19:00）<br/>
+                <b>堅田駅 10:08発</b>に間に合うよう、<b>9:30発</b>のシャトルに乗車 → 9:45頃着<br/>
                 <b>京都駅で乗換</b>：6番線着 → 12番線発（乗換15分）<br/>
                 <b>運賃</b>：¥2,640（湖西線）＋ ¥2,530（新幹線自由席）＝ <b>¥5,170</b>（IC優先）
               </div>
