@@ -5,8 +5,8 @@ export const TRIPS = [
   {
     id: 'osaka-shiga-2026',
     title: '大阪・滋賀の旅',
-    subtitle: '新大阪 ・ 南草津 ・ 琵琶湖',
-    dates: '2026. 3. 21 — 3. 23',
+    subtitle: '大阪 ・ 南草津 ・ 琵琶湖',
+    dates: '2026. 3. 19 — 3. 23',
     icon: '🏨',
     color: '#1a3a5c',
     colorEnd: '#6b4c9a',
