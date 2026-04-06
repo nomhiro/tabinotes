@@ -156,9 +156,9 @@ const DAYS = [
       { time: "16:30", label: "レンタカー返却", desc: "ニッポンレンタカー 熊本空港店。返却後に空港へ送迎あり", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+熊本空港", coords: [32.8372, 130.8555] },
       { time: "17:00", label: "阿蘇くまもと空港", desc: "搭乗手続き＆空港でお土産の最終チェック", icon: "✈", mapUrl: "https://maps.google.com/?q=阿蘇くまもと空港", coords: [32.8373, 130.8553] },
       { time: "18:55", label: "熊本空港 出発（FDA2026便）", desc: "搭乗15分前までにチェックイン。予約番号 or QRコードを持参", icon: "✈", important: true, url: "https://www.fujidreamairlines.com/", photo: "https://photos.app.goo.gl/gScHdSE65EV4Vasu6" },
-      { time: "20:15", label: "名古屋（小牧）到着", desc: "県営名古屋空港", icon: "✈", mapUrl: "https://maps.google.com/?q=県営名古屋空港", coords: [35.2550, 136.9237] },
-      { time: "20:30頃", label: "空港バスで勝川駅へ", desc: "あおい交通 名古屋空港直行バス。約23分、¥300/人。勝川駅2番乗り場着", icon: "🚌", url: "https://aoi-komaki.jp/apshuttle2", mapUrl: "https://maps.google.com/?q=勝川駅", coords: [35.1953, 136.9408] },
-      { time: "21:00頃", label: "勝川駅 到着", desc: "おつかれさまでした！素敵な九州旅行の思い出を！", icon: "🏠" },
+      { time: "20:15", label: "名古屋（小牧）到着", desc: "県営名古屋空港。降機〜手荷物受取〜バス乗り場まで約20〜30分かかる", icon: "✈", mapUrl: "https://maps.google.com/?q=県営名古屋空港", coords: [35.2550, 136.9237] },
+      { time: "20:40頃", label: "空港バスで勝川駅へ", desc: "あおい交通 名古屋空港直行バス（約23分、¥300/人）。20:30発に間に合えばそれに乗車、間に合わなければ次は22:00発。タクシーなら約15〜20分（¥3,000〜4,000程度）", icon: "🚌", url: "https://aoi-komaki.jp/apshuttle2", mapUrl: "https://maps.google.com/?q=勝川駅", coords: [35.1953, 136.9408] },
+      { time: "21:00〜22:30頃", label: "勝川駅 到着", desc: "20:30バスなら21:00頃、22:00バスなら22:23頃着。おつかれさまでした！", icon: "🏠" },
     ],
     booking: {
       title: "FDA フジドリームエアラインズ",
