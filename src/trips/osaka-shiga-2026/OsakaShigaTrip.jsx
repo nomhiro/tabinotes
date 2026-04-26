@@ -9,7 +9,7 @@ const DAYS = [
     title: "りの → 大阪（江坂）",
     color: "#4A7FB5",
     icon: "🏠",
-    weather: { name: "大阪・江坂", lat: 34.7562, lon: 135.5005 },
+    weather: { name: "大阪・江坂", lat: 34.7562, lon: 135.5005, tripDate: "2026-03-19" },
     schedule: [
       { time: "夕方", label: "りの：大阪へ出発", desc: "江坂の父の家へ", icon: "🚃" },
       { time: "夜", label: "ファーストフィオーレ江坂ネクシス到着", desc: "3/22昼まで滞在。ひろきは自宅待機", icon: "🏠", mapUrl: "https://maps.app.goo.gl/9QawGCpdtMXDNPbK9", coords: [34.7562728, 135.5005592] },
@@ -29,7 +29,7 @@ const DAYS = [
     title: "南草津集合 → ヘアドネーション → 琵琶湖マリオット",
     color: "#5B8C5A",
     icon: "✂",
-    weather: { name: "琵琶湖（守山）", lat: 35.1250, lon: 135.9547 },
+    weather: { name: "琵琶湖（守山）", lat: 35.1250, lon: 135.9547, tripDate: "2026-03-22" },
     schedule: [
       { time: "〜9:30", label: "ひろき：勝川駅 出発", desc: "勝川→名古屋→（東海道本線）→米原→（琵琶湖線）→南草津。鈍行で約2.5時間・¥2,640", icon: "🚃", coords: [35.2264, 136.9720] },
       { time: "〜11:00", label: "りの：江坂 出発", desc: "江坂→（御堂筋線）→新大阪→（JR新快速）→南草津。約1時間・¥1,150", icon: "🚃", coords: [34.7562728, 135.5005592] },
@@ -62,7 +62,7 @@ const DAYS = [
     title: "チェックアウト → ひろき名古屋へ",
     color: "#8B6BAE",
     icon: "🚄",
-    weather: { name: "琵琶湖（守山）", lat: 35.1250, lon: 135.9547 },
+    weather: { name: "琵琶湖（守山）", lat: 35.1250, lon: 135.9547, tripDate: "2026-03-23" },
     schedule: [
       { time: "朝", label: "ホテルで朝食", desc: "TOYOTAプラン特典の無料朝食", icon: "🍳", coords: [35.125023, 135.954697] },
       { time: "9:30", label: "マリオット → 堅田駅（シャトルバス）", desc: "無料シャトル 9:30発 → 約15分で堅田駅着。毎時00分・30分発", icon: "🚌", important: true, coords: [35.125023, 135.954697] },
@@ -231,6 +231,7 @@ export default function TravelItinerary() {
               lat={DAYS[activeDay].weather.lat}
               lon={DAYS[activeDay].weather.lon}
               locationName={DAYS[activeDay].weather.name}
+              tripDate={DAYS[activeDay].weather.tripDate}
               color={DAYS[activeDay].color}
             />
           )}
