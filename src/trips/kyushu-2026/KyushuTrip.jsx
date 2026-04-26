@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DayMap from "../../components/DayMap";
+import WeatherWidget from "../../components/WeatherWidget";
 
 const DAYS = [
   {
@@ -8,6 +9,7 @@ const DAYS = [
     title: "新幹線で新大阪 → 大阪観光 → さんふらわあ乗船",
     color: "#E8734A",
     icon: "⛴",
+    weather: { name: "大阪", lat: 34.6937, lon: 135.5023 },
     schedule: [
       { time: "12:21", label: "名古屋駅 出発", desc: "ひかり639号 / N700系16両 / 6号車14番D・E席", icon: "🚄", important: true, mapUrl: "https://maps.google.com/?q=名古屋駅", coords: [35.1709, 136.8815] },
       { time: "13:27", label: "新大阪駅 到着", desc: "ここから大阪観光へ", icon: "🚉", mapUrl: "https://maps.google.com/?q=新大阪駅", coords: [34.7335, 135.5003] },
@@ -50,6 +52,7 @@ const DAYS = [
     title: "別府到着 → 地獄めぐり",
     color: "#D94F4F",
     icon: "♨",
+    weather: { name: "別府", lat: 33.2803, lon: 131.5054 },
     schedule: [
       { time: "06:55", label: "別府観光港 到着", desc: "さんふらわあ下船後、港のターミナルへ", icon: "🚢", mapUrl: "https://maps.google.com/?q=別府観光港", coords: [33.2803, 131.5054] },
       { time: "07:00", label: "資さんうどん 別府店（朝食）", desc: "別府港から徒歩約6分。24時間営業の北九州発祥うどんチェーン", icon: "🍽", mapUrl: "https://maps.google.com/?q=資さんうどん+別府店", coords: [33.2838, 131.5050] },
@@ -97,6 +100,7 @@ const DAYS = [
     title: "やまなみハイウェイ → 大観峰 → いまきん食堂 → 阿蘇",
     color: "#3A8C6E",
     icon: "🌿",
+    weather: { name: "阿蘇", lat: 32.8853, lon: 131.0741 },
     schedule: [
       { time: "〜08:00", label: "チェックアウト", desc: "日本旅館 器 別府鉄輪｜大観峰の朝の絶景を目指して早めに出発", icon: "🏨" },
       { time: "08:00", label: "やまなみハイウェイで大観峰へ", desc: "別府から大観峰まで約1時間半の絶景ドライブ。くじゅう連山や草原の中を走る", icon: "🚗" },
@@ -133,6 +137,7 @@ const DAYS = [
     title: "高千穂峡 → 熊本",
     color: "#2B7A9E",
     icon: "🛶",
+    weather: { name: "高千穂", lat: 32.7132, lon: 131.3070 },
     schedule: [
       { time: "〜10:00", label: "チェックアウト", desc: "休暇村 南阿蘇", icon: "🏨" },
       { time: "10:00", label: "南阿蘇から高千穂へ", desc: "車で約1時間。南阿蘇の田園風景を抜けて高千穂町へ", icon: "🚗" },
@@ -166,6 +171,7 @@ const DAYS = [
     title: "熊本観光 → 小牧へ帰還",
     color: "#6B5CA5",
     icon: "✈",
+    weather: { name: "熊本", lat: 32.8064, lon: 130.7057 },
     schedule: [
       { time: "〜09:00", label: "チェックアウト", desc: "熊本ホテルキャッスル。ホテルから熊本城は徒歩すぐ！", icon: "🏨" },
       { time: "09:00", label: "熊本城 見学", desc: "日本三名城。2021年に天守閣の復旧完了、内部はミュージアムに。最上階からの360度パノラマは必見。特別見学通路から復旧工事の様子も", icon: "🏯", important: true, mapUrl: "https://maps.google.com/?q=熊本城", url: "https://castle.kumamoto-guide.jp/", coords: [32.8060, 130.7058] },
@@ -348,6 +354,15 @@ export default function TravelItinerary() {
         </div>
       ) : (
         <div className="day-section" key={`day-${activeDay}`}>
+          {DAYS[activeDay].weather && (
+            <WeatherWidget
+              key={`weather-${activeDay}`}
+              lat={DAYS[activeDay].weather.lat}
+              lon={DAYS[activeDay].weather.lon}
+              locationName={DAYS[activeDay].weather.name}
+              color={DAYS[activeDay].color}
+            />
+          )}
           <div className="day-header">
             <span className="day-number" style={{ background: DAYS[activeDay].color }}>DAY {DAYS[activeDay].day}</span>
             <span className="day-date">{DAYS[activeDay].date}</span>
