@@ -39,6 +39,7 @@ const DAYS = [
           { label: "列車", value: "ひかり639号 / N700系16両" },
           { label: "座席", value: "6号車14番D席・E席" },
           { label: "人数", value: "おとな2名" },
+          { label: "料金", value: "¥13,340" },
         ],
       },
     ],
@@ -205,6 +206,7 @@ const RENTAL_CAR = {
 };
 
 const COSTS = [
+  { item: "新幹線ひかり（名古屋→新大阪）", cost: 13340 },
   { item: "さんふらわあ（大阪→別府）", cost: 31160 },
   { item: "レンタカー（3日間＋乗捨）", cost: 28820 },
   { item: "日本旅館 器 別府鉄輪", cost: 20234 },
