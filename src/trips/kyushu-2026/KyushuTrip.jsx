@@ -12,7 +12,6 @@ const DAYS = [
       { time: "日中", label: "大阪観光", desc: "出港までの時間を大阪で楽しむ", icon: "🏙" },
       { time: "18:05", label: "大阪南港 乗船手続き", desc: "出港60分前を目安に手続き", icon: "🎫", important: true, mapUrl: "https://maps.google.com/?q=大阪南港さんふらわあターミナル", coords: [34.6359, 135.4104] },
       { time: "19:05", label: "大阪南港 出港", desc: "さんふらわあ むらさき", icon: "⛴", url: "https://www.ferry-sunflower.co.jp/" },
-      { time: "19:30", label: "瀬戸内ビュッフェ（夕食）", desc: "船内レストランのバイキング（18:00〜21:00）。大分名物とり天・りゅうきゅうも。ソフトドリンク込、アルコール別料金。¥2,300/人", icon: "🍽" },
       { time: "船中泊", label: "プライベートベッドでゆっくり", desc: "翌朝 別府着", icon: "🌙" },
     ],
     booking: {
@@ -190,7 +189,6 @@ const RENTAL_CAR = {
 
 const COSTS = [
   { item: "さんふらわあ（大阪→別府）", cost: 31160 },
-  { item: "さんふらわあ 夕食ビュッフェ（2名）", cost: 4600 },
   { item: "レンタカー（3日間＋乗捨）", cost: 28820 },
   { item: "日本旅館 器 別府鉄輪", cost: 20234 },
   { item: "休暇村 南阿蘇", cost: 28800 },
