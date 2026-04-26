@@ -5,11 +5,13 @@ const DAYS = [
   {
     day: 1,
     date: "5月5日（火）",
-    title: "大阪観光 → さんふらわあ乗船",
+    title: "新幹線で新大阪 → 大阪観光 → さんふらわあ乗船",
     color: "#E8734A",
     icon: "⛴",
     schedule: [
-      { time: "日中", label: "大阪観光", desc: "出港までの時間を大阪で楽しむ", icon: "🏙" },
+      { time: "12:21", label: "名古屋駅 出発", desc: "ひかり639号 / N700系16両 / 6号車14番D・E席", icon: "🚄", important: true, mapUrl: "https://maps.google.com/?q=名古屋駅", coords: [35.1709, 136.8815] },
+      { time: "13:27", label: "新大阪駅 到着", desc: "ここから大阪観光へ", icon: "🚉", mapUrl: "https://maps.google.com/?q=新大阪駅", coords: [34.7335, 135.5003] },
+      { time: "午後", label: "大阪観光", desc: "出港までの時間を大阪で楽しむ", icon: "🏙" },
       { time: "18:05", label: "大阪南港 乗船手続き", desc: "出港60分前を目安に手続き", icon: "🎫", important: true, mapUrl: "https://maps.google.com/?q=大阪南港さんふらわあターミナル", coords: [34.6359, 135.4104] },
       { time: "19:05", label: "大阪南港 出港", desc: "さんふらわあ むらさき", icon: "⛴", url: "https://www.ferry-sunflower.co.jp/" },
       { time: "船中泊", label: "プライベートベッドでゆっくり", desc: "翌朝 別府着", icon: "🌙" },
@@ -25,6 +27,22 @@ const DAYS = [
         { label: "料金", value: "¥31,160" },
       ],
     },
+    extraBookings: [
+      {
+        key: "shinkansen",
+        title: "ひかり639号 名古屋→新大阪",
+        icon: "🚄",
+        url: "https://smart-ex.jp/",
+        details: [
+          { label: "予約", value: "スマートEX" },
+          { label: "区間", value: "名古屋 12:21 → 新大阪 13:27" },
+          { label: "列車", value: "ひかり639号 / N700系16両" },
+          { label: "座席", value: "6号車14番D席・E席" },
+          { label: "人数", value: "おとな2名" },
+          { label: "料金", value: "¥13,340" },
+        ],
+      },
+    ],
   },
   {
     day: 2,
@@ -188,6 +206,7 @@ const RENTAL_CAR = {
 };
 
 const COSTS = [
+  { item: "新幹線ひかり（名古屋→新大阪）", cost: 13340 },
   { item: "さんふらわあ（大阪→別府）", cost: 31160 },
   { item: "レンタカー（3日間＋乗捨）", cost: 28820 },
   { item: "日本旅館 器 別府鉄輪", cost: 20234 },
@@ -464,6 +483,33 @@ export default function TravelItinerary() {
               </>
             )}
           </div>
+
+          {DAYS[activeDay].extraBookings?.map((b) => (
+            <div key={b.key} className="booking-card" style={{ marginTop: "1.5rem" }} role="button" tabIndex={0}
+              aria-expanded={expandedBooking === b.key}
+              onClick={() => setExpandedBooking(expandedBooking === b.key ? null : b.key)}
+              onKeyDown={e => handleCardKeyDown(e, () => setExpandedBooking(expandedBooking === b.key ? null : b.key))}>
+              <div className="booking-header" style={{ borderLeft: `3px solid ${DAYS[activeDay].color}` }}>
+                <span><span aria-hidden="true">{b.icon || "📋"}</span> {b.title}</span>
+                <span className="booking-toggle" aria-hidden="true" style={{ transform: expandedBooking === b.key ? "rotate(180deg)" : "none" }}>▼</span>
+              </div>
+              {expandedBooking === b.key && (
+                <>
+                  <div className="booking-details">
+                    {b.details.map((d, i) => (
+                      <div className="booking-row" key={i}><span className="booking-row-label">{d.label}</span><span className="booking-row-value">{d.value}</span></div>
+                    ))}
+                  </div>
+                  {(b.url || b.mapUrl) && (
+                    <div className="booking-links">
+                      {b.url && (<a href={b.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">🌐</span> 公式サイト</a>)}
+                      {b.mapUrl && (<a href={b.mapUrl} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">📍</span> Google Map</a>)}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          ))}
 
           {(activeDay === 1 || activeDay === 4) && (
             <div className="booking-card" style={{ marginTop: "1.5rem" }} role="button" tabIndex={0}
