@@ -115,7 +115,7 @@ const DAYS = [
       { time: "14:15", label: "阿蘇中岳火口（規制状況次第）", desc: "直径600m・深さ130mの火口から噴き上がる白煙は圧巻。※火山活動により立入規制の場合あり。事前に要確認", icon: "🌋", url: "https://www.aso.ne.jp/~volcano/", mapUrl: "https://maps.google.com/?q=阿蘇中岳火口", coords: [32.8842, 131.0843] },
       { time: "15:00", label: "南阿蘇方面へ", desc: "中岳から休暇村 南阿蘇まで約30分", icon: "🚗" },
       { time: "15:30", label: "ホテルチェックイン", desc: "休暇村 南阿蘇", icon: "🏨", mapUrl: "https://maps.google.com/?q=休暇村+南阿蘇", coords: [32.8553, 131.1367] },
-      { time: "夜", label: "夕朝食付プラン", desc: "フルーツキングダムKumamoto春の収穫祭×プレミアムビュッフェ", icon: "🍽" },
+      { time: "17:30", label: "高森田楽の里（夕食）", desc: "築200年超の茅葺き古民家を移築した郷土料理店。囲炉裏を囲んで里芋・豆腐・ヤマメ等の田楽串や肥後赤牛・地鶏定食を味わう。要予約 0967-62-1899。ホテルから車で約10分", icon: "🍢", important: true, url: "https://www.dengakunosato.com/", mapUrl: "https://maps.google.com/?q=高森田楽の里", coords: [32.8244, 131.1232] },
     ],
     booking: {
       title: "休暇村 南阿蘇",
@@ -124,7 +124,7 @@ const DAYS = [
       details: [
         { label: "予約番号", value: "IY1549837713" },
         { label: "部屋", value: "和室8畳（禁煙・バスなし・トイレ付）" },
-        { label: "食事", value: "夕朝食付" },
+        { label: "食事", value: "なし" },
         { label: "住所", value: "熊本県阿蘇郡高森町高森3219" },
         { label: "TEL", value: "0967-62-2111" },
         { label: "料金", value: "¥28,800" },
@@ -399,6 +399,26 @@ export default function TravelItinerary() {
                 <b>中岳火口</b>：火山活動により立入規制になることあり。<a href="https://www.aso.ne.jp/~volcano/" target="_blank" rel="noopener noreferrer" className="memo-link" style={{ color:"#3A8C6E" }}>阿蘇火山防災会議</a>で当日の規制状況を要確認<br/>
                 <b>ランチ</b>：阿蘇神社門前町であか牛丼がおすすめ！<br/>
                 <b>TIP</b>：草千里は5月の新緑シーズンが最高。乗馬体験（約5分¥1,500〜）もできる
+              </div>
+            </div>
+          )}
+
+          {activeDay === 2 && (
+            <div style={{ background:"linear-gradient(135deg,#fdf6ec,#fbf0e0)", border:"1px solid #e6d3b3", borderRadius:"6px", padding:"1rem 1.2rem", marginBottom:"2rem", fontSize:".82rem", lineHeight:1.7, color:"#5a4a30" }}>
+              <h3 style={{ fontFamily:"'Zen Maru Gothic',sans-serif", fontWeight:700, fontSize:".88rem", marginBottom:".5rem", color:"#a8741f", display:"flex", alignItems:"center", gap:".5rem", flexWrap:"wrap" }}>
+                <span aria-hidden="true">🍢</span> 高森田楽の里メモ
+                <a href="https://www.dengakunosato.com/" target="_blank" rel="noopener noreferrer" className="memo-link" style={{ fontSize:".75rem", color:"#a8741f", textDecoration:"none", border:"1px solid #e6d3b3", padding:".15rem .5rem", borderRadius:"3px" }}>
+                  <span aria-hidden="true">🌐</span> 公式サイト
+                </a>
+              </h3>
+              <div>
+                <b>予約</b>：5/7（木）<b>17:30〜</b>（予約済み）<br/>
+                <b>住所</b>：熊本県阿蘇郡高森町大字高森2685-2<br/>
+                <b>TEL</b>：0967-62-1899<br/>
+                <b>営業時間</b>：平日 11:00〜19:00 ／ 土日祝 10:00〜19:00（3月下旬〜11月）<br/>
+                <b>名物</b>：囲炉裏で焼く里芋・豆腐・ヤマメの田楽串、肥後赤牛・地鶏定食<br/>
+                <b>アクセス</b>：休暇村 南阿蘇から車で約10分<br/>
+                <b>TIP</b>：築200年超の茅葺き古民家×広い庭園で雰囲気抜群。囲炉裏席は人気のため予約時間より少し早めに到着が◎
               </div>
             </div>
           )}
