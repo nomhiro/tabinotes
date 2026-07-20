@@ -34,7 +34,7 @@ const DAYS = [
   {
     day: 2,
     date: "8月1日（土）",
-    title: "宏樹は広島へ＆技術イベント／理乃は宮島 → 夜ホテルで合流",
+    title: "宏樹はAzure勉強会／理乃は宮島 → 夜ホテルで合流",
     color: "#C0554E",
     icon: "🚄",
     weather: { name: "広島", lat: 34.3853, lon: 132.4553, tripDate: "2026-08-01" },
@@ -43,15 +43,15 @@ const DAYS = [
       { time: "07:00", label: "【宏樹】ホテルビナリオ梅田 チェックアウト", desc: "梅田から新大阪へ", icon: "🏨" },
       { time: "08:00頃", label: "【宏樹】新大阪 → 広島（のぞみ）", desc: "山陽新幹線で約1時間25分", icon: "🚅", important: true },
       { time: "09:00頃", label: "【理乃】広島駅 → 宮島口 → フェリーで宮島へ", desc: "JR山陽本線で宮島口まで約27分＋フェリー約10分", icon: "⛴" },
-      { time: "09:25頃", label: "【宏樹】広島駅 到着", desc: "イベント会場へ移動", icon: "🚉" },
-      { time: "10:00", label: "【宏樹】JAT 技術イベント 参加", desc: "日中〜夕方。会場・開始/終了時刻はconnpassのリンクから当日確認（下のメモ参照）", icon: "💻", important: true, url: "https://jat.connpass.com/event/382813/" },
+      { time: "09:25頃", label: "【宏樹】広島駅 到着", desc: "会場のおりづるタワー6F（ドリーム・アーツ広島本社）へ。受付は10:30から", icon: "🚉" },
+      { time: "10:30", label: "【宏樹】Azure Travelers 勉強会 広島の旅", desc: "受付10:30／11:00〜18:00。会場はおりづるタワー6F（ドリーム・アーツ広島本社）。パネルディスカッション・LT・Azureクイズ等。理乃が夕日を見るタワーと同じ建物！", icon: "💻", important: true, url: "https://jat.connpass.com/event/382813/", mapUrl: "https://maps.google.com/?q=おりづるタワー", coords: [34.3956, 132.4538] },
       { time: "10:20", label: "【理乃】宮島到着・厳島神社 参拝", desc: "海に浮かぶ朱塗りの大鳥居と社殿。世界遺産をじっくり", icon: "⛩", important: true, mapUrl: "https://maps.google.com/?q=厳島神社", coords: [34.2959, 132.3197] },
       { time: "11:30", label: "【理乃】焼き牡蠣ランチ・食べ歩き", desc: "牡蠣は必食！焼がきのはやし／牡蠣屋 など。もみじ饅頭・あなごめしも◎", icon: "🦪", mapUrl: "https://maps.google.com/?q=宮島+表参道商店街", coords: [34.2977, 132.3213] },
       { time: "〜14:30", label: "【理乃】宮島を出発（早めに！）", desc: "護国神社の御朱印は16:30締切。フェリー＋JRで広島市内へ（下のメモ参照）", icon: "⛴", important: true },
       { time: "16:00", label: "【理乃】広島護国神社 参拝・御朱印", desc: "広島城内に鎮座。授与所は9:00〜16:30。初穂料¥500", icon: "🖌", important: true, url: "https://www.h-gokoku.or.jp/", mapUrl: "https://maps.google.com/?q=広島護国神社", coords: [34.4026, 132.4590] },
       { time: "16:50", label: "【理乃】広島城 散策", desc: "護国神社のすぐ隣。天守や堀を眺めておりづるタワーへ", icon: "🏯", mapUrl: "https://maps.google.com/?q=広島城", coords: [34.4033, 132.4593] },
-      { time: "18:00", label: "【理乃】おりづるタワー（夕日）", desc: "屋上「ひろしまの丘」から原爆ドーム越しの夕日。7〜9月は20:00まで（最終入場19:00）／日没は約19:10。大人¥2,200", icon: "🌇", important: true, url: "https://www.orizurutower.jp/", mapUrl: "https://maps.google.com/?q=おりづるタワー", coords: [34.3954, 132.4536] },
-      { time: "19:00", label: "【宏樹】懇親会", desc: "イベントの懇親会に参加。夜まで（会場・時刻はconnpassリンクで確認）", icon: "🍻", url: "https://connpass.com/event/382815/" },
+      { time: "18:00", label: "【理乃】おりづるタワー（夕日）", desc: "屋上「ひろしまの丘」から原爆ドーム越しの夕日。7〜9月は20:00まで（最終入場19:00）／日没は約19:10。大人¥2,200。※宏樹のイベント会場もこのおりづるタワー6F！", icon: "🌇", important: true, url: "https://www.orizurutower.jp/", mapUrl: "https://maps.google.com/?q=おりづるタワー", coords: [34.3954, 132.4536] },
+      { time: "18:30", label: "【宏樹】懇親会", desc: "18:30〜20:30。会費¥6,000（会場払い・概算）。会場は当日案内（申込時点で場所未定）", icon: "🍻", url: "https://connpass.com/event/382815/" },
       { time: "19:30", label: "【理乃】紙屋町・本通りで夕食", desc: "平和大通り〜本通り商店街エリアで。宏樹は懇親会のため各自で", icon: "🍽", mapUrl: "https://maps.google.com/?q=広島+本通り商店街", coords: [34.3927, 132.4575] },
       { time: "21:00頃", label: "アパホテル〈広島駅前大橋〉で合流・チェックイン", desc: "JR広島駅南口 徒歩4分。大浴殿でゆっくり", icon: "🏨", important: true, mapUrl: "https://maps.google.com/?q=アパホテル+広島駅前大橋", coords: [34.3958, 132.4757] },
     ],
@@ -104,6 +104,7 @@ const COSTS = [
   { item: "アパホテル〈広島駅前大橋〉（8/1・2名）", cost: 16200 },
   { item: "新幹線 新大阪⇔広島（宏樹・往復 ※概算）", cost: 21000 },
   { item: "おりづるタワー 入場（8/1・理乃）", cost: 2200 },
+  { item: "懇親会 会費（8/1・宏樹 ※概算）", cost: 6000 },
   { item: "広島護国神社 御朱印 初穂料", cost: 500 },
 ];
 
@@ -275,13 +276,15 @@ export default function HiroshimaTrip() {
           {activeDay === 1 && (
             <div style={{ background:"linear-gradient(135deg,#eef4fa,#f0f6fb)", border:"1px solid #c0d4e8", borderRadius:"6px", padding:"1rem 1.2rem", marginBottom:"2rem", fontSize:".82rem", lineHeight:1.7, color:"#2a4a6a" }}>
               <h3 style={{ fontFamily:"'Zen Maru Gothic',sans-serif", fontWeight:700, fontSize:".88rem", marginBottom:".5rem", color:"#3060a0", display:"flex", alignItems:"center", gap:".5rem", flexWrap:"wrap" }}>
-                <span aria-hidden="true">💻</span> JAT 技術イベントメモ（宏樹）
+                <span aria-hidden="true">💻</span> Azure Travelers 勉強会メモ（宏樹）
                 <a href="https://jat.connpass.com/event/382813/" target="_blank" rel="noopener noreferrer" className="memo-link" style={{ fontSize:".75rem", color:"#3060a0", textDecoration:"none", border:"1px solid #c0d4e8", padding:".15rem .5rem", borderRadius:"3px" }}><span aria-hidden="true">🌐</span> イベント</a>
               </h3>
               <div>
-                <b>参加</b>：宏樹は朝、新大阪から広島に移動して日中の技術イベントに参加<br/>
-                <b>会場・時刻</b>：<span style={{color:"#c0554e"}}>connpassのイベントページで当日確認</span>（本文の取得ができなかったため要チェック）<br/>
-                <b>懇親会</b>：夜まで懇親会にも参加 → <a href="https://connpass.com/event/382815/" target="_blank" rel="noopener noreferrer" className="memo-link" style={{ color:"#3060a0" }}>懇親会ページ</a>（会場・時刻・会費を確認）<br/>
+                <b>イベント</b>：第10回 Azure Travelers 勉強会 広島の旅（#AzureTravelers）<br/>
+                <b>日時</b>：8/1（土）受付10:30 ／ 11:00〜18:00<br/>
+                <b>会場</b>：ドリーム・アーツ広島本社（<b>おりづるタワー6F</b>・広島市中区大手町1-2-1）→ <span style={{color:"#c0554e"}}>理乃が夕日を見るタワーと同じ建物！</span><br/>
+                <b>内容</b>：パネルディスカッション、LT（5分）、Azureクイズ等。お土産を持ち寄る文化あり<br/>
+                <b>懇親会</b>：18:30〜20:30／会費¥6,000（会場払い・概算）→ <a href="https://connpass.com/event/382815/" target="_blank" rel="noopener noreferrer" className="memo-link" style={{ color:"#3060a0" }}>懇親会ページ</a>（会場は当日案内）<br/>
                 <b>合流</b>：夜、アパホテル〈広島駅前大橋〉で理乃と合流
               </div>
             </div>
