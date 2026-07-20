@@ -125,7 +125,7 @@ dinner の options アイテムにも `coords` を追加可能:
 
 <nav className="nav-bar" aria-label="日程ナビゲーション">  {/* div ではなく nav */}
   <button aria-pressed={isActive}>  {/* 選択状態を通知 */}
-    <span aria-hidden="true">{icon}</span> Day1  {/* 絵文字は aria-hidden */}
+    <span aria-hidden="true">{icon}</span> Day1 <span className="nav-btn-date">5/6(水)</span>  {/* 絵文字は aria-hidden、日付・曜日を必ず併記 */}
   </button>
 </nav>
 
@@ -134,6 +134,7 @@ dinner の options アイテムにも `coords` を追加可能:
   <h2 className="cost-title">...</h2>
 </main>
 ```
+タブ名は「Day1」だけでなく、`DAYS[].date`（例:"5月6日（水）"）から `formatShortDate()` ヘルパーで生成した短縮日付（例:"5/6(水)"）を必ず併記する。実装は `REFERENCE_COMPONENT.jsx` の `formatShortDate` と `.nav-btn-date` を参照。
 
 #### 情報メモボックスの見出し
 ```jsx

@@ -115,6 +115,10 @@ const WebLink = ({ href }) => href ? (<a href={href} target="_blank" rel="noopen
 const MapLink = ({ href }) => href ? (<a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none", fontSize:"0.82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }} aria-label="Google Map" onClick={e=>e.stopPropagation()}><span aria-hidden="true">📍</span></a>) : null;
 const PhotoLink = ({ href }) => href ? (<a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none", fontSize:"0.82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }} aria-label="予約写真" onClick={e=>e.stopPropagation()}><span aria-hidden="true">📷</span></a>) : null;
 const handleCardKeyDown = (e, callback) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); callback(); } };
+const formatShortDate = (date) => {
+  const m = date.match(/(\d+)月(\d+)日（(.)）/);
+  return m ? `${m[1]}/${m[2]}(${m[3]})` : "";
+};
 
 export default function HiroshimaTrip() {
   const [activeDay, setActiveDay] = useState(0);
@@ -146,6 +150,8 @@ export default function HiroshimaTrip() {
         .nav-btn:hover { color:#2C2421; }
         .nav-btn:focus-visible { color:#2C2421; outline:2px solid #2C2421; outline-offset:-2px; border-radius:2px; }
         .nav-btn.active { color:#2C2421; font-weight:700; border-bottom-color:currentColor; }
+        .nav-btn-date { font-size:.72rem; color:#6a6058; letter-spacing:0; }
+        .nav-btn.active .nav-btn-date { color:currentColor; }
         .nav-btn.cost-btn { color:#8B6914; }
         .nav-btn.cost-btn.active { color:#8B6914; border-bottom-color:#8B6914; }
         .day-section { max-width:720px; margin:0 auto; padding:3rem 1.5rem; animation:fadeIn .5s ease-out; }
@@ -193,7 +199,7 @@ export default function HiroshimaTrip() {
         .cost-total-label { font-family:'Zen Maru Gothic',sans-serif; font-size:.9rem; letter-spacing:.1em; }
         .cost-total-value { font-size:1.3rem; font-weight:700; font-variant-numeric:tabular-nums; text-align:right; }
         .cost-note { text-align:center; margin-top:1.5rem; font-size:.78rem; color:#756d65; line-height:1.7; }
-        @media (max-width:500px) { .nav-btn{padding:.8rem .7rem;font-size:.72rem} .day-section{padding:2rem 1rem} .booking-row-label{min-width:75px} }
+        @media (max-width:500px) { .nav-btn{padding:.8rem .7rem;font-size:.72rem} .nav-btn-date{font-size:.65rem} .day-section{padding:2rem 1rem} .booking-row-label{min-width:75px} }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } }
       `}</style>
 
@@ -214,7 +220,7 @@ export default function HiroshimaTrip() {
           <button key={i} className={`nav-btn ${!showCost && activeDay === i ? "active" : ""}`}
             aria-pressed={!showCost && activeDay === i}
             onClick={() => { setActiveDay(i); setShowCost(false); setExpandedBooking(null); }}>
-            <span aria-hidden="true">{d.icon}</span> Day{d.day}
+            <span aria-hidden="true">{d.icon}</span> Day{d.day} <span className="nav-btn-date">{formatShortDate(d.date)}</span>
           </button>
         ))}
         <button className={`nav-btn cost-btn ${showCost ? "active" : ""}`} aria-pressed={showCost} onClick={() => setShowCost(true)}><span aria-hidden="true">💰</span> 費用</button>
