@@ -47,9 +47,9 @@ const DAYS = [
       { time: "10:30", label: "【宏樹】Azure Travelers 勉強会 広島の旅", desc: "受付10:30／11:00〜18:00。会場はおりづるタワー6F（ドリーム・アーツ広島本社）。パネルディスカッション・LT・Azureクイズ等。理乃が夕日を見るタワーと同じ建物！", icon: "💻", important: true, url: "https://jat.connpass.com/event/382813/", mapUrl: "https://maps.google.com/?q=おりづるタワー", coords: [34.3956, 132.4538] },
       { time: "10:20", label: "【理乃】宮島到着・厳島神社 参拝", desc: "海に浮かぶ朱塗りの大鳥居と社殿。世界遺産をじっくり", icon: "⛩", important: true, mapUrl: "https://maps.google.com/?q=厳島神社", coords: [34.2959, 132.3197] },
       { time: "11:30", label: "【理乃】焼き牡蠣ランチ・食べ歩き", desc: "牡蠣は必食！焼がきのはやし／牡蠣屋 など。もみじ饅頭・あなごめしも◎", icon: "🦪", mapUrl: "https://maps.google.com/?q=宮島+表参道商店街", coords: [34.2977, 132.3213] },
-      { time: "〜14:30", label: "【理乃】宮島を出発（早めに！）", desc: "護国神社の御朱印は16:30締切。フェリー＋JRで広島市内へ（下のメモ参照）", icon: "⛴", important: true },
-      { time: "16:00", label: "【理乃】広島護国神社 参拝・御朱印", desc: "広島城内に鎮座。授与所は9:00〜16:30。初穂料¥500", icon: "🖌", important: true, url: "https://www.h-gokoku.or.jp/", mapUrl: "https://maps.google.com/?q=広島護国神社", coords: [34.4026, 132.4590] },
-      { time: "16:50", label: "【理乃】広島城 散策", desc: "護国神社のすぐ隣。天守や堀を眺めておりづるタワーへ", icon: "🏯", mapUrl: "https://maps.google.com/?q=広島城", coords: [34.4033, 132.4593] },
+      { time: "14時台", label: "【理乃】世界遺産航路（ガイド付き高速船）で宮島 → 平和公園", desc: "宮島桟橋 → 元安桟橋（原爆ドーム・平和公園すぐ、おりづるタワー隣＝宏樹のイベント会場ビル）。船内ガイド付きで瀬戸内の島々を眺めながら約45分。大人¥2,200・要予約（TEL 082-240-5955／潮位で欠航・ルート変更あり）。正確な発時刻は予約時に確認", icon: "⛴", important: true, url: "https://www.aqua-net-h.co.jp/heritage/", mapUrl: "https://maps.google.com/?q=宮島+世界遺産航路+乗り場", coords: [34.2995, 132.3226] },
+      { time: "15:45", label: "【理乃】広島護国神社 参拝・御朱印", desc: "元安桟橋から市電＋徒歩で約20分。広島城内に鎮座、授与所は9:00〜16:30・初穂料¥500", icon: "🖌", important: true, url: "https://www.h-gokoku.or.jp/", mapUrl: "https://maps.google.com/?q=広島護国神社", coords: [34.4026, 132.4590] },
+      { time: "16:20", label: "【理乃】広島城 散策", desc: "護国神社のすぐ隣。天守や堀を眺めておりづるタワー方面へ", icon: "🏯", mapUrl: "https://maps.google.com/?q=広島城", coords: [34.4033, 132.4593] },
       { time: "18:00", label: "【理乃】おりづるタワー（夕日）", desc: "屋上「ひろしまの丘」から原爆ドーム越しの夕日。7〜9月は20:00まで（最終入場19:00）／日没は約19:10。大人¥2,200。※宏樹のイベント会場もこのおりづるタワー6F！", icon: "🌇", important: true, url: "https://www.orizurutower.jp/", mapUrl: "https://maps.google.com/?q=おりづるタワー", coords: [34.3954, 132.4536] },
       { time: "18:30", label: "【宏樹】懇親会", desc: "18:30〜20:30。会費¥6,000（会場払い・概算）。会場は当日案内（申込時点で場所未定）", icon: "🍻", url: "https://connpass.com/event/382815/" },
       { time: "19:30", label: "【理乃】紙屋町・本通りで夕食", desc: "平和大通り〜本通り商店街エリアで。宏樹は懇親会のため各自で", icon: "🍽", mapUrl: "https://maps.google.com/?q=広島+本通り商店街", coords: [34.3927, 132.4575] },
@@ -103,6 +103,7 @@ const COSTS = [
   { item: "ホテルビナリオ梅田（7/31・宏樹）", cost: 5865 },
   { item: "アパホテル〈広島駅前大橋〉（8/1・2名）", cost: 16200 },
   { item: "新幹線 新大阪⇔広島（宏樹・往復 ※概算）", cost: 21000 },
+  { item: "世界遺産航路 宮島→平和公園（8/1・理乃）", cost: 2200 },
   { item: "おりづるタワー 入場（8/1・理乃）", cost: 2200 },
   { item: "懇親会 会費（8/1・宏樹 ※概算）", cost: 6000 },
   { item: "広島護国神社 御朱印 初穂料", cost: 500 },
@@ -268,7 +269,8 @@ export default function HiroshimaTrip() {
                 <b>フェリー</b>：JR宮島フェリー／宮島松大汽船の2社。どちらもICカード可<br/>
                 <b>牡蠣</b>：焼がきのはやし（焼がき発祥）／牡蠣屋 が名店。もみじ饅頭・あなごめしの食べ歩きも◎<br/>
                 <b>大鳥居</b>：干潮時は歩いて近くまで、満潮時は海に浮かぶ姿に。当日の潮汐は観光協会サイトで確認<br/>
-                <b>⚠ 御朱印の時間に注意</b>：<span style={{color:"#c0554e"}}>広島護国神社の御朱印は16:30まで</span>。宮島→護国神社は約1時間15分かかるので、<b>遅くとも14:30には宮島を出発</b>すると安心
+                <b>帰りの移動</b>：<b>世界遺産航路（ガイド付き高速船）</b>で宮島桟橋→平和公園（元安桟橋）。約45分・大人¥2,200・<b>要予約</b>（TEL 082-240-5955／潮位で欠航・ルート変更あり）。原爆ドーム・おりづるタワーのすぐそばに着くので午後がスムーズ<br/>
+                <b>⚠ 御朱印</b>：<span style={{color:"#c0554e"}}>広島護国神社は16:30まで</span>。14時台の便なら15時ごろ着で余裕あり
               </div>
             </div>
           )}
