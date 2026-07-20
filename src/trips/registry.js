@@ -1,7 +1,19 @@
 import KyushuTrip from './kyushu-2026/KyushuTrip.jsx';
 import OsakaShigaTrip from './osaka-shiga-2026/OsakaShigaTrip.jsx';
+import HiroshimaTrip from './hiroshima-2026/HiroshimaTrip.jsx';
 
 export const TRIPS = [
+  {
+    id: 'hiroshima-2026',
+    title: '広島の旅',
+    subtitle: '宮島 ・ 呉 ・ 広島',
+    dates: '2026. 7. 31 — 8. 2',
+    icon: '⛩',
+    color: '#b34a4a',
+    colorEnd: '#e0955a',
+    members: 'のむら ひろき ・ りの',
+    component: HiroshimaTrip,
+  },
   {
     id: 'osaka-shiga-2026',
     title: '大阪・滋賀の旅',
