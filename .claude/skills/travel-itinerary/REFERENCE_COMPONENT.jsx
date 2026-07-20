@@ -34,6 +34,12 @@ const handleCardKeyDown = (e, callback) => {
   if (e.key === "Enter" || e.key === " ") { e.preventDefault(); callback(); }
 };
 
+// DAYS[].date（例:"5月6日（水）"）からナビタブ用の短縮日付("5/6(水)")を作る
+const formatShortDate = (date) => {
+  const m = date.match(/(\d+)月(\d+)日（(.)）/);
+  return m ? `${m[1]}/${m[2]}(${m[3]})` : "";
+};
+
 export default function TravelItinerary() {
   const [activeDay, setActiveDay] = useState(0);
   const [showCost, setShowCost] = useState(false);
@@ -68,6 +74,8 @@ export default function TravelItinerary() {
         .nav-btn:hover { color:#2C2421; }
         .nav-btn:focus-visible { color:#2C2421; outline:2px solid #2C2421; outline-offset:-2px; border-radius:2px; }
         .nav-btn.active { color:#2C2421; font-weight:700; border-bottom-color:currentColor; }
+        .nav-btn-date { font-size:.72rem; color:#6a6058; letter-spacing:0; }
+        .nav-btn.active .nav-btn-date { color:currentColor; }
         .nav-btn.cost-btn { color:#8B6914; }
         .nav-btn.cost-btn.active { color:#8B6914; border-bottom-color:#8B6914; }
 
@@ -125,7 +133,7 @@ export default function TravelItinerary() {
         .cost-note { text-align:center; margin-top:1.5rem; font-size:.78rem; color:#756d65; line-height:1.7; }
 
         /* === レスポンシブ & モーション === */
-        @media (max-width:500px) { .nav-btn{padding:.8rem .7rem;font-size:.72rem} .day-section{padding:2rem 1rem} .booking-row-label{min-width:75px} }
+        @media (max-width:500px) { .nav-btn{padding:.8rem .7rem;font-size:.72rem} .nav-btn-date{font-size:.65rem} .day-section{padding:2rem 1rem} .booking-row-label{min-width:75px} }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } }
       `}</style>
 
@@ -148,7 +156,7 @@ export default function TravelItinerary() {
           <button key={i} className={`nav-btn ${!showCost && activeDay === i ? "active" : ""}`}
             aria-pressed={!showCost && activeDay === i}
             onClick={() => { setActiveDay(i); setShowCost(false); setExpandedBooking(null); }}>
-            <span aria-hidden="true">{d.icon}</span> Day{d.day}
+            <span aria-hidden="true">{d.icon}</span> Day{d.day} <span className="nav-btn-date">{formatShortDate(d.date)}</span>
           </button>
         ))}
         <button className={`nav-btn cost-btn ${showCost ? "active" : ""}`}
