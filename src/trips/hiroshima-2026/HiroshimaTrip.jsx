@@ -96,6 +96,7 @@ const DAYS = [
         { name: "電光石火 駅前ひろば店", genre: "お好み焼き", desc: "ふわとろ卵が名物。ミシュラン「ビブグルマン」掲載。広島駅すぐの駅前ひろば（お好み共和国ひろしま村）内", mapUrl: "https://maps.google.com/?q=電光石火+駅前ひろば店", coords: [34.3970, 132.4753] },
         { name: "お好み焼みっちゃん総本店 ekie店", genre: "お好み焼き", desc: "広島風お好み焼きの元祖といわれる老舗。広島駅ビルekie内でアクセス抜群", mapUrl: "https://maps.google.com/?q=みっちゃん総本店+ekie", coords: [34.3976, 132.4762] },
         { name: "麗ちゃん", genre: "お好み焼き", desc: "広島駅ビルASSE内・駅徒歩1分の老舗。地元でも定番の一軒", mapUrl: "https://maps.google.com/?q=麗ちゃん+広島駅", coords: [34.3972, 132.4758] },
+        { name: "もみちゃん", genre: "広島焼き", desc: "フルフォーカスビル6F「ひろしまお好み物語 駅前ひろば」内。ふんわり食感の広島焼きが人気。広島駅から徒歩2分", mapUrl: "https://maps.app.goo.gl/78w32VfJDmWQ55Yy7", coords: [34.3964, 132.4756] },
       ],
     },
   },
