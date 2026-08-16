@@ -30,7 +30,7 @@ function numberedIcon(n, color) {
   });
 }
 
-export default function DayMap({ schedule, color, dinner }) {
+export default function DayMap({ schedule, color, dinner, label = "本日のルートマップ" }) {
   const spots = useMemo(() => {
     const items = [];
     let n = 1;
@@ -55,7 +55,7 @@ export default function DayMap({ schedule, color, dinner }) {
   return (
     <div
       role="region"
-      aria-label="本日のルートマップ"
+      aria-label={label}
       style={{
         marginBottom: "2rem",
         borderRadius: "6px",

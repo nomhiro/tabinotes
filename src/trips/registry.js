@@ -1,8 +1,20 @@
 import KyushuTrip from './kyushu-2026/KyushuTrip.jsx';
 import OsakaShigaTrip from './osaka-shiga-2026/OsakaShigaTrip.jsx';
 import HiroshimaTrip from './hiroshima-2026/HiroshimaTrip.jsx';
+import EuropePlansTrip from './europe-2026-plans/EuropePlansTrip.jsx';
 
 export const TRIPS = [
+  {
+    id: 'europe-2026-plans',
+    title: 'ヨーロッパの旅（候補）',
+    subtitle: 'A案 ・ C案 ・ D案',
+    dates: '2026. 11. 22 — 12. 1',
+    icon: '🎄',
+    color: '#0d2847',
+    colorEnd: '#7a3b8f',
+    members: 'のむら ひろき ・ りの',
+    component: EuropePlansTrip,
+  },
   {
     id: 'hiroshima-2026',
     title: '広島の旅',
