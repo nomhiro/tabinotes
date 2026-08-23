@@ -1,0 +1,71 @@
+.place-preview {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #ded7ce;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.place-preview--timeline {
+  margin-top: 0.75rem;
+  max-width: 520px;
+}
+
+.place-preview--booking {
+  margin: 0 1.2rem 1.2rem;
+}
+
+.place-preview-image {
+  display: block;
+  width: 100%;
+  height: clamp(150px, 28vw, 230px);
+  object-fit: cover;
+}
+
+.place-preview--booking .place-preview-image {
+  height: clamp(180px, 35vw, 280px);
+}
+
+.place-preview-caption {
+  padding: 0.4rem 0.65rem;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: #756d65;
+}
+
+.place-preview-caption a {
+  color: #5a5048;
+  text-underline-offset: 2px;
+}
+
+.place-preview-caption a:hover {
+  color: #2c2421;
+}
+
+.place-preview-caption a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (max-width: 500px) {
+  .place-preview--timeline {
+    max-width: none;
+  }
+
+  .place-preview-image {
+    height: 170px;
+  }
+
+  .place-preview--booking .place-preview-image {
+    height: 200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .place-preview,
+  .place-preview * {
+    scroll-behavior: auto;
+  }
+}

@@ -1,6 +1,21 @@
 import { useState } from "react";
 import DayMap from "../../components/DayMap";
+import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
+
+const HOTEL_BINARIO_IMAGE = {
+  src: "https://hotel-binario.jp/umeda/ogp.jpg",
+  alt: "ホテルビナリオ梅田の外観と客室",
+  credit: "ホテルビナリオ梅田 公式サイト",
+  sourceUrl: "https://hotel-binario.jp/umeda/",
+};
+
+const ITSUKUSHIMA_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%8E%B3%E5%B3%B6%E7%A5%9E%E7%A4%BE%E3%81%A8%E5%A4%A7%E9%B3%A5%E5%B1%85.JPG?width=1200",
+  alt: "厳島神社の朱塗りの社殿と海に立つ大鳥居",
+  credit: "Pistachio001 / Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:%E5%8E%B3%E5%B3%B6%E7%A5%9E%E7%A4%BE%E3%81%A8%E5%A4%A7%E9%B3%A5%E5%B1%85.JPG",
+};
 
 const DAYS = [
   {
@@ -18,6 +33,7 @@ const DAYS = [
     booking: {
       title: "ホテルビナリオ梅田（宏樹）",
       mapUrl: "https://maps.google.com/?q=ホテルビナリオ梅田",
+      image: HOTEL_BINARIO_IMAGE,
       details: [
         { label: "予約番号", value: "IN1637290819" },
         { label: "部屋", value: "バリューシングル<禁煙>" },
@@ -46,7 +62,7 @@ const DAYS = [
       { time: "09:20頃", label: "【理乃】広島駅 → 宮島口 → フェリーで宮島へ", desc: "JR山陽本線で宮島口まで約27分＋フェリー約10分", icon: "⛴" },
       { time: "09:25頃", label: "【宏樹】広島駅 到着", desc: "会場のおりづるタワー6F（ドリーム・アーツ広島本社）へ。受付は10:30から", icon: "🚉" },
       { time: "10:30", label: "【宏樹】Azure Travelers 勉強会 広島の旅", desc: "受付10:30／11:00〜18:00。会場はおりづるタワー6F（ドリーム・アーツ広島本社）。パネルディスカッション・LT・Azureクイズ等。理乃が夕日を見るタワーと同じ建物！", icon: "💻", important: true, url: "https://jat.connpass.com/event/382813/", mapUrl: "https://maps.google.com/?q=おりづるタワー", coords: [34.3956, 132.4538] },
-      { time: "10:20", label: "【理乃】宮島到着・厳島神社 参拝", desc: "海に浮かぶ朱塗りの大鳥居と社殿。世界遺産をじっくり", icon: "⛩", important: true, mapUrl: "https://maps.google.com/?q=厳島神社", coords: [34.2959, 132.3197] },
+      { time: "10:20", label: "【理乃】宮島到着・厳島神社 参拝", desc: "海に浮かぶ朱塗りの大鳥居と社殿。世界遺産をじっくり", icon: "⛩", important: true, mapUrl: "https://maps.google.com/?q=厳島神社", coords: [34.2959, 132.3197], image: ITSUKUSHIMA_IMAGE },
       { time: "11:30", label: "【理乃】焼き牡蠣ランチ・食べ歩き", desc: "牡蠣は必食！焼がきのはやし／牡蠣屋 など。もみじ饅頭・あなごめしも◎", icon: "🦪", mapUrl: "https://maps.google.com/?q=宮島+表参道商店街", coords: [34.2977, 132.3213] },
       { time: "14:20発", label: "【理乃】世界遺産航路（ガイド付き高速船）で宮島 → 平和公園", desc: "宮島桟橋 14:20発 → 元安桟橋 15:05着（原爆ドーム・平和公園すぐ、おりづるタワー隣＝宏樹のイベント会場ビル）。船内ガイド付きで瀬戸内の島々を眺めながら約45分。大人¥2,200・要予約（TEL 082-240-5955）。14:45発（15:30着）も可。※この日は15:20発以降が潮位の影響で欠航予定＝14時台が実質最終便", icon: "⛴", important: true, url: "https://www.aqua-net-h.co.jp/heritage/", mapUrl: "https://maps.google.com/?q=宮島+世界遺産航路+乗り場", coords: [34.2995, 132.3226] },
       { time: "15:30", label: "【理乃】広島護国神社 参拝・御朱印", desc: "元安桟橋から市電＋徒歩で約20分。広島城内に鎮座、授与所は9:00〜16:30・初穂料¥500", icon: "🖌", important: true, url: "https://www.h-gokoku.or.jp/", mapUrl: "https://maps.google.com/?q=広島護国神社", coords: [34.4026, 132.4590] },
@@ -357,6 +373,7 @@ export default function HiroshimaTrip() {
                   )}
                 </div>
                 {item.desc && <div className="tl-desc">{item.desc}</div>}
+                <PlacePreview image={item.image} />
               </li>
             ))}
           </ol>
@@ -380,6 +397,7 @@ export default function HiroshimaTrip() {
                       </div>
                     ))}
                   </div>
+                  <PlacePreview image={DAYS[activeDay].booking.image} variant="booking" />
                   {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl) && (
                     <div className="booking-links">
                       {DAYS[activeDay].booking.url && (<a href={DAYS[activeDay].booking.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">🌐</span> 公式サイト</a>)}
@@ -407,6 +425,7 @@ export default function HiroshimaTrip() {
                       <div className="booking-row" key={i}><span className="booking-row-label">{d.label}</span><span className="booking-row-value">{d.value}</span></div>
                     ))}
                   </div>
+                  <PlacePreview image={b.image} variant="booking" />
                   {(b.url || b.mapUrl) && (
                     <div className="booking-links">
                       {b.url && (<a href={b.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">🌐</span> 公式サイト</a>)}
