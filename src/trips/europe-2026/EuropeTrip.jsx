@@ -263,7 +263,7 @@ const COSTS = [
 // ─── ヘルパー ──────────────────────────────────────────────────────────────────
 
 const WebLink = ({ href }) => href ? (
-  <a href={href} target="_blank" rel="noopener noreferrer"
+  <a href={href} target="_blank" rel="noopener noreferrer" className="eu-tl-icon-link"
     style={{ textDecoration:"none", fontSize:".82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }}
     aria-label="公式サイト" onClick={e => e.stopPropagation()}>
     <span aria-hidden="true">🌐</span>
@@ -271,7 +271,7 @@ const WebLink = ({ href }) => href ? (
 ) : null;
 
 const MapLink = ({ href }) => href ? (
-  <a href={href} target="_blank" rel="noopener noreferrer"
+  <a href={href} target="_blank" rel="noopener noreferrer" className="eu-tl-icon-link"
     style={{ textDecoration:"none", fontSize:".82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }}
     aria-label="Google Map" onClick={e => e.stopPropagation()}>
     <span aria-hidden="true">📍</span>
@@ -279,7 +279,7 @@ const MapLink = ({ href }) => href ? (
 ) : null;
 
 const PhotoLink = ({ href }) => href ? (
-  <a href={href} target="_blank" rel="noopener noreferrer"
+  <a href={href} target="_blank" rel="noopener noreferrer" className="eu-tl-icon-link"
     style={{ textDecoration:"none", fontSize:".82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }}
     aria-label="予約写真" onClick={e => e.stopPropagation()}>
     <span aria-hidden="true">📷</span>
@@ -350,6 +350,7 @@ export default function EuropeTrip() {
         .eu-tl-links { display:inline-flex; gap:.35rem; margin-left:.2rem; }
         .eu-tl-links a:hover { opacity:1!important; }
         .eu-tl-links a:focus-visible { outline:2px solid #2C2421; outline-offset:1px; border-radius:2px; }
+        .eu-tl-icon-link:focus-visible { outline:2px solid #2C2421; outline-offset:1px; border-radius:2px; }
         .eu-booking-card { margin-top:2.5rem; background:white; border-radius:6px; overflow:hidden; box-shadow:0 1px 8px rgba(0,0,0,.06); cursor:pointer; transition:box-shadow .3s; }
         .eu-booking-card:hover { box-shadow:0 2px 16px rgba(0,0,0,.1); }
         .eu-booking-card:focus-visible { outline:2px solid #2C2421; outline-offset:1px; box-shadow:0 2px 16px rgba(0,0,0,.1); }
