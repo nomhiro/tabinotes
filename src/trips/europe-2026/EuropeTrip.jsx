@@ -22,13 +22,28 @@ const DAYS = [
     color: "#7a5c9a",
     icon: "🛫",
     schedule: [
-      { time: "00:05 JST", label: "羽田（HND）出発", desc: "エミレーツ。第3ターミナル。機内で一眠りを", icon: "✈", important: true },
-      { time: "06:55頃 DXB", label: "ドバイ（DXB）着（推定）", desc: "乗継 3時間10分。ターミナル3内で移動。JST 11:55頃", icon: "🇦🇪" },
-      { time: "10:05頃 DXB", label: "ドバイ（DXB）発（推定）", desc: "JST 15:05頃。時刻は予約画面「View more details」で確認を", icon: "✈" },
-      { time: "13:05 BUD", label: "ブダペスト（BUD）着", desc: "ターミナル2b。入国審査でEES（EU新入域システム）の生体登録があり通常より時間がかかる可能性あり。JST 21:05", icon: "🏁", important: true, coords: [47.4369, 19.2556] },
+      { time: "00:05 JST", label: "羽田（HND）出発", desc: "EK313・エミレーツ。第3ターミナル。Boeing 777-300ER／飛行11時間50分", icon: "✈", important: true },
+      { time: "06:55 DXB", label: "ドバイ（DXB）着", desc: "EK313到着。乗継 3時間10分。ターミナル3内で乗り継ぎ", icon: "🇦🇪" },
+      { time: "10:05 DXB", label: "ドバイ（DXB）発", desc: "EK111・エミレーツ。Boeing 777-300ER／飛行6時間。現地時間", icon: "✈" },
+      { time: "13:05 BUD", label: "ブダペスト（BUD）着", desc: "EK111到着。ターミナル2B。入国審査でEES（EU新入域システム）の生体登録があり通常より時間がかかる可能性あり。総所要21時間", icon: "🏁", important: true, coords: [47.4369, 19.2556] },
       { time: "14:00頃", label: "100E エアポートエクスプレス 乗車", desc: "Deák Ferenc tér まで約40分・2,500HUF/人。市内交通パスは使えず専用券が必要", icon: "🚌", coords: [47.4369, 19.2556] },
       { time: "15:00頃", label: "ホテル チェックイン", desc: "到着日は無理をせず夕食・両替まわりで。翌朝に備えて早めに就寝", icon: "🏨", important: true, coords: [47.4979, 19.0402] },
     ],
+    booking: {
+      title: "エミレーツ航空券（往路）",
+      details: [
+        { label: "予約番号", value: "K78ZN2" },
+        { label: "搭乗者", value: "Mr Hiroki Nomura ／ Ms Rino Nomura" },
+        { label: "区間", value: "東京（羽田）→ ドバイ → ブダペスト" },
+        { label: "便名", value: "EK313 ／ EK111" },
+        { label: "出発", value: "2026年11月18日（水）00:05 羽田（HND）" },
+        { label: "到着", value: "2026年11月18日（水）13:05 ブダペスト（BUD）" },
+        { label: "所要時間", value: "21時間00分（ドバイ乗継 3時間10分）" },
+        { label: "機材", value: "Boeing 777-300ER（両便）" },
+        { label: "運賃", value: "エコノミー ／ Saver（確定）" },
+      ],
+      url: "https://www.emirates.com/jp/japanese/manage-booking/",
+    },
     memo: {
       bg: "linear-gradient(135deg,#f0eef8,#ede8f5)",
       border: "#c8bce8",
@@ -198,10 +213,25 @@ const DAYS = [
       { time: "朝", label: "チェックアウト", desc: "荷物はフロントに預け、午前だけプラハを満喫", icon: "🧳", important: true },
       { time: "10:30", label: "ホテル発", desc: "トロリーバス59＋地下鉄A線（Nádraží Veleslavín 乗換）で45〜60分。90分券1枚で通し・約50CZK/人", icon: "🚌", important: true },
       { time: "11:45", label: "プラハ空港 着", desc: "出発3時間前。第1ターミナル", icon: "✈", coords: [50.1008, 14.26] },
-      { time: "14:45 PRG", label: "プラハ（PRG）出発", desc: "エミレーツ。第1ターミナル。JST 22:45", icon: "✈", important: true, coords: [50.1008, 14.26] },
-      { time: "23:15頃 DXB", label: "ドバイ（DXB）着（推定）", desc: "乗継 3時間15分の深夜乗継。JST 翌04:15頃", icon: "🇦🇪" },
-      { time: "機中泊", label: "ドバイ発 02:30頃（推定）", desc: "JST 07:30頃。時刻は予約画面で確認を", icon: "😴" },
+      { time: "14:45 PRG", label: "プラハ（PRG）出発", desc: "EK140・エミレーツ。第1ターミナル。Airbus A380-800／飛行5時間55分。JST 22:45", icon: "✈", important: true, coords: [50.1008, 14.26] },
+      { time: "23:40 DXB", label: "ドバイ（DXB）着", desc: "EK140到着。乗継 3時間15分の深夜乗継。JST 翌04:40頃", icon: "🇦🇪" },
+      { time: "02:55 DXB", label: "ドバイ（DXB）発", desc: "EK318・エミレーツ。Airbus A380-800／飛行9時間25分。日付は11月25日（水）", icon: "😴" },
     ],
+    booking: {
+      title: "エミレーツ航空券（復路）",
+      details: [
+        { label: "予約番号", value: "K78ZN2" },
+        { label: "搭乗者", value: "Mr Hiroki Nomura ／ Ms Rino Nomura" },
+        { label: "区間", value: "プラハ → ドバイ → 東京（成田）" },
+        { label: "便名", value: "EK140 ／ EK318" },
+        { label: "出発", value: "2026年11月24日（火）14:45 プラハ（PRG）" },
+        { label: "到着", value: "2026年11月25日（水）17:20 成田（NRT）" },
+        { label: "所要時間", value: "18時間35分（ドバイ乗継 3時間15分）" },
+        { label: "機材", value: "Airbus A380-800（両便）" },
+        { label: "運賃", value: "エコノミー ／ Saver（確定）" },
+      ],
+      url: "https://www.emirates.com/jp/japanese/manage-booking/",
+    },
     memo: {
       bg: "linear-gradient(135deg,#f8f0e8,#f5ebe0)",
       border: "#e0c8a8",
@@ -225,7 +255,7 @@ const DAYS = [
     color: "#5a6a8a",
     icon: "🏠",
     schedule: [
-      { time: "02:30頃 DXB", label: "ドバイ（DXB）発（推定）", desc: "JST 07:30頃", icon: "✈" },
+      { time: "02:55 DXB", label: "ドバイ（DXB）発", desc: "EK318・エミレーツ。Airbus A380-800／飛行9時間25分", icon: "✈" },
       { time: "17:20 NRT", label: "成田（NRT）着", desc: "第2ターミナル。Visit Japan Web の入国・税関申告は機内で済ませておくと並ばずに済む", icon: "🏁", important: true },
       { time: "18:30頃", label: "入国・手荷物受取 完了", desc: "首都圏外へ向かう場合、この時刻から在来線＋新幹線の最終に間に合うか事前確認を。厳しければ都内1泊を検討", icon: "🚄" },
     ],
@@ -248,7 +278,7 @@ const DAYS = [
 ];
 
 const COSTS = [
-  { item: "エミレーツ 往復航空券（大人2名・エコノミー）", cost: 0, note: "予約済・金額は予約画面で確認" },
+  { item: "エミレーツ 往復航空券（大人2名・エコノミー）", cost: 0, note: "予約済・予約番号 K78ZN2（料金は未共有）" },
   { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "手配要 €13〜/人（MÁV）または €19.90〜/人（ÖBB）" },
   { item: "鉄道 ウィーン→プラハ（2名）", cost: 0, note: "手配要 €14.90〜/人（ÖBB）または €15〜/人（RegioJet）" },
   { item: "ブダペスト 2泊（2名）", cost: 0, note: "手配要" },
@@ -450,7 +480,7 @@ export default function EuropeTrip() {
               </tfoot>
             </table>
             <div className="eu-cost-note">
-              ※ 航空券・宿泊・鉄道は予約後に金額を更新します。<br />
+              ※ 航空券は予約済みです（料金未共有）。宿泊・鉄道は予約後に金額を更新します。<br />
               宿泊税（ブダペスト4%・ウィーン5%・プラハ50CZK/人泊）は現地払いです。<br />
               食費・市内交通・観光入場料は含まれていません。
             </div>
