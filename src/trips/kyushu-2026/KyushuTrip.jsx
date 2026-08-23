@@ -1,6 +1,21 @@
 import { useState } from "react";
 import DayMap from "../../components/DayMap";
+import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
+
+const UMI_JIGOKU_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/180131_Umi-Jigoku.jpg?width=1200",
+  alt: "湯気が立つコバルトブルーの海地獄",
+  credit: "Totti / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:180131_Umi-Jigoku.jpg",
+};
+
+const QKAMURA_ASO_IMAGE = {
+  src: "https://www.qkamura.or.jp/cms/cash/800_20170407172805.jpg",
+  alt: "阿蘇の山々を望む休暇村南阿蘇",
+  credit: "休暇村南阿蘇 公式サイト",
+  sourceUrl: "https://www.qkamura.or.jp/aso/",
+};
 
 const DAYS = [
   {
@@ -57,7 +72,7 @@ const DAYS = [
       { time: "06:55", label: "別府観光港 到着", desc: "さんふらわあ下船後、港のターミナルへ", icon: "🚢", mapUrl: "https://maps.google.com/?q=別府観光港", coords: [33.2803, 131.5054] },
       { time: "07:00", label: "資さんうどん 別府店（朝食）", desc: "別府港から徒歩約6分。24時間営業の北九州発祥うどんチェーン", icon: "🍽", mapUrl: "https://maps.google.com/?q=資さんうどん+別府店", coords: [33.2838, 131.5050] },
       { time: "07:45", label: "レンタカー受取", desc: "ニッポンレンタカー 別府観光港前店", icon: "🚗", important: true, url: "https://www.nipponrentacar.co.jp/", mapUrl: "https://maps.google.com/?q=ニッポンレンタカー+別府観光港前", coords: [33.2800, 131.5060] },
-      { time: "08:00", label: "海地獄（共通観覧券を購入）", desc: "コバルトブルーの熱泉は圧巻！国指定名勝。温泉たまごも名物。共通観覧券 ¥2,400/人（公式HPのクーポンで¥200引き）", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/umi/", mapUrl: "https://maps.google.com/?q=海地獄+別府", coords: [33.3192, 131.4450] },
+      { time: "08:00", label: "海地獄（共通観覧券を購入）", desc: "コバルトブルーの熱泉は圧巻！国指定名勝。温泉たまごも名物。共通観覧券 ¥2,400/人（公式HPのクーポンで¥200引き）", icon: "♨", important: true, url: "https://www.beppu-jigoku.com/umi/", mapUrl: "https://maps.google.com/?q=海地獄+別府", coords: [33.3192, 131.4450], image: UMI_JIGOKU_IMAGE },
       { time: "08:30", label: "鬼石坊主地獄", desc: "灰色の熱泥がボコボコ湧く様子は迫力満点。海地獄のすぐ隣、徒歩すぐ", icon: "♨", url: "https://www.beppu-jigoku.com/onishi/", mapUrl: "https://maps.google.com/?q=鬼石坊主地獄", coords: [33.3186, 131.4447] },
       { time: "08:50", label: "かまど地獄", desc: "1丁目〜6丁目まで様々な泉質を一度に楽しめる。足湯あり！", icon: "♨", url: "https://www.beppu-jigoku.com/kamado/", mapUrl: "https://maps.google.com/?q=かまど地獄+別府", coords: [33.3178, 131.4456] },
       { time: "09:20", label: "鬼山地獄（ワニ地獄）", desc: "約80頭のワニが温泉熱で飼育されている。かまど地獄から徒歩1分", icon: "🐊", url: "https://www.beppu-jigoku.com/oniyama/", mapUrl: "https://maps.google.com/?q=鬼山地獄+別府", coords: [33.3175, 131.4460] },
@@ -121,6 +136,7 @@ const DAYS = [
       title: "休暇村 南阿蘇",
       url: "https://www.qkamura.or.jp/aso/",
       mapUrl: "https://maps.google.com/?q=休暇村+南阿蘇",
+      image: QKAMURA_ASO_IMAGE,
       details: [
         { label: "予約番号", value: "IY1549837713" },
         { label: "部屋", value: "和室8畳（禁煙・バスなし・トイレ付）" },
@@ -494,6 +510,7 @@ export default function TravelItinerary() {
                   )}
                 </div>
                 {item.desc && <div className="tl-desc">{item.desc}</div>}
+                <PlacePreview image={item.image} />
               </li>
             ))}
           </ol>
@@ -516,6 +533,7 @@ export default function TravelItinerary() {
                     </div>
                   ))}
                 </div>
+                <PlacePreview image={DAYS[activeDay].booking.image} variant="booking" />
                 {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl) && (
                   <div className="booking-links">
                     {DAYS[activeDay].booking.url && (<a href={DAYS[activeDay].booking.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">🌐</span> 公式サイト</a>)}
@@ -542,6 +560,7 @@ export default function TravelItinerary() {
                       <div className="booking-row" key={i}><span className="booking-row-label">{d.label}</span><span className="booking-row-value">{d.value}</span></div>
                     ))}
                   </div>
+                  <PlacePreview image={b.image} variant="booking" />
                   {(b.url || b.mapUrl) && (
                     <div className="booking-links">
                       {b.url && (<a href={b.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}><span aria-hidden="true">🌐</span> 公式サイト</a>)}

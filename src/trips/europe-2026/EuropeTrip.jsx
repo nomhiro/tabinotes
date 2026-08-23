@@ -1,5 +1,13 @@
 import { useState } from "react";
 import DayMap from "../../components/DayMap";
+import PlacePreview from "../../components/PlacePreview";
+
+const PRAGUE_OLD_TOWN_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Prague_Old_Town.JPG?width=1200",
+  alt: "赤い屋根が連なるプラハ旧市街の街並み",
+  credit: "Kallerna / Wikimedia Commons / Public domain",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Prague_Old_Town.JPG",
+};
 
 // ─── データ定数 ───────────────────────────────────────────────────────────────
 
@@ -178,7 +186,7 @@ const DAYS = [
       { time: "07:10", label: "ウィーン中央駅（Wien Hbf）発", desc: "Railjet 72（直通・約4時間13分）。※ゆっくり出発の場合は09:10発（Railjet 256）も選択肢。日曜は混雑するため座席指定必須", icon: "🚆", important: true, coords: [48.1848, 16.3765] },
       { time: "11:23", label: "プラハ本駅（hlavní nádraží）着", desc: "地下鉄C線またはトラム・徒歩でホテルへ。明るいお昼前に到着でき安全・スムーズ", icon: "🚉", coords: [50.0833, 14.4356] },
       { time: "12:00", label: "ホテルへ荷物預け ＆ チェコランチ", desc: "荷物を預けて旧市街へ。伝統的なグヤーシュやチェコビールで乾杯", icon: "🍺", coords: [50.087, 14.4208] },
-      { time: "13:30〜", label: "プラハ 旧市街散策", desc: "旧市街広場、天文時計、カレル橋を散策。日没（16:15頃）のカレル橋ライトアップへ", icon: "🏰", important: true, coords: [50.087, 14.4208] },
+      { time: "13:30〜", label: "プラハ 旧市街散策", desc: "旧市街広場、天文時計、カレル橋を散策。日没（16:15頃）のカレル橋ライトアップへ", icon: "🏰", important: true, coords: [50.087, 14.4208], image: PRAGUE_OLD_TOWN_IMAGE },
     ],
     booking: {
       title: "鉄道チケット（ウィーン → プラハ）",
@@ -595,6 +603,7 @@ export default function EuropeTrip() {
                     )}
                   </div>
                   {item.desc && <div className="eu-tl-desc">{item.desc}</div>}
+                  <PlacePreview image={item.image} />
                 </li>
               ))}
             </ol>
@@ -621,6 +630,7 @@ export default function EuropeTrip() {
                         </div>
                       ))}
                     </div>
+                    <PlacePreview image={DAYS[activeDay].booking.image} variant="booking" />
                     {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl) && (
                       <div className="eu-booking-links">
                         {DAYS[activeDay].booking.url && (

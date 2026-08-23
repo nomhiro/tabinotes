@@ -1,6 +1,14 @@
 import { useState } from "react";
 import DayMap from "../../components/DayMap";
+import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
+
+const BIWAKO_MARRIOTT_IMAGE = {
+  src: "https://www.biwako-marriott.com/images/og/ogp.jpg",
+  alt: "琵琶湖マリオットホテルの外観と琵琶湖",
+  credit: "琵琶湖マリオットホテル 公式サイト",
+  sourceUrl: "https://www.biwako-marriott.com/",
+};
 
 const DAYS = [
   {
@@ -38,12 +46,13 @@ const DAYS = [
       { time: "ヘアドネ後", label: "南草津駅へ徒歩移動", desc: "美容室から徒歩4分で駅へ", icon: "🚶" },
       { time: "〜14:20", label: "南草津駅 → 守山駅", desc: "JR琵琶湖線で約10分・¥200", icon: "🚃", coords: [35.00376, 135.94726] },
       { time: "14:30", label: "守山駅西口 → バスでマリオットへ", desc: "近江鉄道バス 木の浜線 1番乗り場発。約34分・¥520", icon: "🚌", important: true, mapUrl: "https://maps.google.com/?q=守山駅+滋賀", coords: [35.0504, 135.9957] },
-      { time: "15:04", label: "琵琶湖マリオットホテル到着", desc: "チェックイン 15:00〜。温泉でゆっくり", icon: "🏨", mapUrl: "https://maps.google.com/?q=琵琶湖マリオットホテル", coords: [35.125023, 135.954697] },
+      { time: "15:04", label: "琵琶湖マリオットホテル到着", desc: "チェックイン 15:00〜。温泉でゆっくり", icon: "🏨", mapUrl: "https://maps.google.com/?q=琵琶湖マリオットホテル", coords: [35.125023, 135.954697], image: BIWAKO_MARRIOTT_IMAGE },
     ],
     booking: {
       title: "琵琶湖マリオットホテル",
       url: "https://www.biwako-marriott.com/",
       mapUrl: "https://maps.google.com/?q=琵琶湖マリオットホテル",
+      image: BIWAKO_MARRIOTT_IMAGE,
       details: [
         { label: "予約番号", value: "2026021730913387" },
         { label: "プラン", value: "TOYOTAプラン（朝食無料＋レストラン20%OFF）" },
@@ -75,6 +84,7 @@ const DAYS = [
       title: "琵琶湖マリオットホテル（チェックアウト）",
       url: "https://www.biwako-marriott.com/",
       mapUrl: "https://maps.google.com/?q=琵琶湖マリオットホテル",
+      image: BIWAKO_MARRIOTT_IMAGE,
       details: [
         { label: "チェックアウト", value: "11:00まで（ひろきは早朝出発）" },
         { label: "朝食", value: "プラン特典で無料" },
@@ -304,6 +314,7 @@ export default function TravelItinerary() {
                   )}
                 </div>
                 {item.desc && <div className="tl-desc">{item.desc}</div>}
+                <PlacePreview image={item.image} />
               </li>
             ))}
           </ol>
@@ -326,6 +337,7 @@ export default function TravelItinerary() {
                     </div>
                   ))}
                 </div>
+                <PlacePreview image={DAYS[activeDay].booking.image} variant="booking" />
                 {(DAYS[activeDay].booking.url || DAYS[activeDay].booking.mapUrl || DAYS[activeDay].booking.photo) && (
                   <div className="booking-links">
                     {DAYS[activeDay].booking.url && (<a href={DAYS[activeDay].booking.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>🌐 公式サイト</a>)}
