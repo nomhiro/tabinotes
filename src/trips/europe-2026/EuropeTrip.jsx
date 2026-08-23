@@ -26,7 +26,7 @@ const DAYS = [
   {
     day: 1,
     date: "11月18日（水）",
-    title: "羽田発 ─ ドバイ乗継 ─ ブダペスト着",
+    title: "羽田発 ─ ドバイ乗継 ─ ブダペスト着 ＆ ホテルチェックイン",
     color: "#7a5c9a",
     icon: "🛫",
     schedule: [
@@ -34,8 +34,10 @@ const DAYS = [
       { time: "06:55 DXB", label: "ドバイ（DXB）着", desc: "EK313到着。乗継 3時間10分。ターミナル3内で乗り継ぎ", icon: "🇦🇪" },
       { time: "10:05 DXB", label: "ドバイ（DXB）発", desc: "EK111・エミレーツ。Boeing 777-300ER／飛行6時間。現地時間", icon: "✈" },
       { time: "13:05 BUD", label: "ブダペスト（BUD）着", desc: "EK111到着。ターミナル2B。入国審査でEES（EU新入域システム）の生体登録があり通常より時間がかかる可能性あり。総所要21時間", icon: "🏁", important: true, coords: [47.4369, 19.2556] },
-      { time: "14:00頃", label: "100E エアポートエクスプレス 乗車", desc: "市内行き停車駅: Kálvin tér / Astoria / 終点 Deák Ferenc tér（ホテルの場所に応じて降車）。専用券 2,500HUF/人・約35〜40分。車内クレカタッチ決済（Budapest Pay&GO）対応", icon: "🚌", coords: [47.4369, 19.2556] },
-      { time: "15:00頃", label: "ホテル チェックイン", desc: "到着日は無理をせず夕食・両替まわりで。翌朝に備えて早めに就寝", icon: "🏨", important: true, coords: [47.4979, 19.0402] },
+      { time: "14:00頃", label: "100E エアポートエクスプレス 乗車", desc: "市内行き直通バスに乗車。ホテル最寄りの「Kálvin tér M（カービン広場）」で降車（約35分・専用券 2,500HUF/人・クレカタッチ決済可）", icon: "🚌", coords: [47.4369, 19.2556] },
+      { time: "14:45頃", label: "Kálvin tér M 降車 ─ ホテルへ移動", desc: "Kálvin térから徒歩約10分、または地下鉄M4線で1駅「Rákóczi tér」へ（徒歩3分）", icon: "🚶", coords: [47.4896, 19.0617] },
+      { time: "15:00頃", label: "The Amberlyn Suite Hotel チェックイン", desc: "チェックインして荷物を置きひと息。キッチン・リビング付きスイートアパートホテル（2泊）", icon: "🏨", important: true, url: "https://www.booking.com/hotel/hu/the-amberlyn-aparthotel.ja.html", mapUrl: "https://maps.google.com/?q=The+Amberlyn+Suite+Hotel+Budapest", coords: [47.4937, 19.0682] },
+      { time: "16:30〜", label: "パレス地区散策 ＆ 夕食・買い出し", desc: "歴史ある宮殿街（パレス地区）の雰囲気を味わい、近隣レストランで夕食やスーパーでの買い出し。翌日の終日観光に備えて早めに就寝", icon: "🍽", coords: [47.4937, 19.0682] },
     ],
     booking: {
       title: "エミレーツ航空券（往路）",
@@ -52,24 +54,38 @@ const DAYS = [
       ],
       url: "https://www.emirates.com/jp/japanese/manage-booking/",
     },
+    extraBookings: [
+      {
+        key: "amberlyn-hotel-d1",
+        icon: "🏨",
+        title: "The Amberlyn Suite Hotel（ブダペスト 2泊）",
+        url: "https://www.booking.com/hotel/hu/the-amberlyn-aparthotel.ja.html",
+        mapUrl: "https://maps.google.com/?q=The+Amberlyn+Suite+Hotel+Budapest",
+        details: [
+          { label: "施設名", value: "The Amberlyn Suite Hotel（ジ・アンバリン スイート ホテル）" },
+          { label: "宿泊期間", value: "2026年11月18日（水）〜 11月20日（金）（2泊）" },
+          { label: "部屋・人数", value: "大人2名 ／ 1部屋（スイート）" },
+          { label: "住所", value: "1085 Budapest, Rökk Szilárd u. 4, Hungary" },
+          { label: "最寄り", value: "地下鉄M4「Rákóczi tér」駅 徒歩3分 ／ 100Eバス「Kálvin tér」徒歩約10分" },
+          { label: "チェックイン", value: "15:00〜 ／ チェックアウト 〜11:00" },
+          { label: "料金目安", value: "約 €150（約¥25,000 / 2泊・現地宿泊税4%別途）" },
+          { label: "予約状況", value: "Booking.com（手配予定）" },
+        ],
+      },
+    ],
     memo: {
       bg: "linear-gradient(135deg,#f0eef8,#ede8f5)",
       border: "#c8bce8",
       titleColor: "#5a3a9a",
       textColor: "#3a2a6a",
       icon: "🇭🇺",
-      title: "ブダペスト空港 → 市内アクセス ＆ 100Eバス",
+      title: "ブダペスト空港 → ホテルアクセス ＆ 100Eバス",
       body: (
         <>
-          <b>100E エアポートエクスプレス（直通・推奨）</b>：約35〜40分・専用券 2,500HUF/人。10〜15分間隔で頻発運行（24時間）。<br/>
-          <b>市内行きの停車バス停（降車場所）</b>：空港発は市内3箇所に停車するため、ホテルの位置に合わせて最寄りバス停で降車可能。<br/>
-          ・<b>① Kálvin tér M（カービン広場）</b>：地下鉄M3・M4接続。国立博物館、中央市場、ペシュト南部エリアの宿に便利。<br/>
-          ・<b>② Astoria M（アストリア）</b>：地下鉄M2接続。ユダヤ人街（大シナゴーグ）、エルジェーベト大通り方面の宿に便利。<br/>
-          ・<b>③ Deák Ferenc tér M（デアーク・フェレンツ広場・終点）</b>：地下鉄M1・M2・M3接続。市内最中心部、ヴァーツィ通り、くさり橋・ドナウ川沿い方面の宿に便利。<br/>
-          <b>予約不要・支払い方法</b>：事前予約は一切不要。乗車時に車内端末（Budapest Pay&GO）にタッチ決済対応クレカやApple Pay等をピッとかざすだけで即乗車可能。空港のBKK自動券売機や公式アプリ「BudapestGO」でも購入可。<br/>
-          <b>混雑・満車の心配なし</b>：大型連節バスのため収容力が高く、座席指定制ではないため売り切れで乗れない心配はありません。万が一混雑していても10分待てば次が来ます（座りたい場合は1本見送って先頭に並ぶと確実）。<br/>
-          <b>節約：200E バス＋地下鉄M3</b>：Kőbánya-Kispest 乗換、所要約50分・通常券2枚（約900HUF）。スーツケースがあると乗換が負担。<br/>
-          <b>EES（EU新入域システム）</b>：シェンゲン圏初入域時に指紋と顔写真の登録が必要。列が伸びる場合があります。
+          <b>100E エアポートエクスプレス（直通・推奨）</b>：空港 ⇄ 市内を約35〜40分で結ぶ直通バス（専用券 2,500HUF/人・約¥1,050）。10〜15分間隔で頻発運行。<br/>
+          <b>降車バス停：Kálvin tér M（カービン広場）</b>：空港から最初の停車駅で降車。ホテル「The Amberlyn Suite Hotel」まで北東へ徒歩約10分（800m）、または地下鉄M4線に乗換えて1駅「Rákóczi tér」で下車（徒歩3分）。<br/>
+          <b>乗車方法・支払い</b>：事前予約不要。車内の決済端末（Budapest Pay&GO）にタッチ決済対応クレカやApple Pay等をタッチするだけで乗車可能。BudapestGOアプリでも購入可。<br/>
+          <b>EES（EU新入域システム）</b>：シェンゲン圏初入域時に指紋・顔写真の登録が必要となるため、空港での入国手続きに余裕をみています。
         </>
       ),
     },
@@ -77,28 +93,63 @@ const DAYS = [
   {
     day: 2,
     date: "11月19日（木）",
-    title: "ブダペスト ─ 終日観光",
+    title: "ブダペスト ─ 英雄広場・国会議事堂・ブダ城 ＆ ナイトクルーズ",
     color: "#7a5c9a",
     icon: "🏰",
     schedule: [
-      { time: "終日", label: "ブダペスト 市内観光", desc: "観光先は後で確定。日の入りが16:15頃と早いので、夜景・屋内施設を後半に組み込む順が有利", icon: "🗺", important: true },
-      { time: "どこかで", label: "翌朝の列車を確認", desc: "ブダペスト東駅（Keleti）までの経路と所要を確認しておくと翌朝が楽。座席指定はÖBBサイトまたはMÁV START Europaで", icon: "🚆" },
+      { time: "09:00", label: "ホテル出発 → 英雄広場へ", desc: "地下鉄M4（Rákóczi tér → Kálvin tér）＋ M3/M1線に乗換えて「Hősök tere」駅へ移動", icon: "🚇", coords: [47.4937, 19.0682] },
+      { time: "09:30", label: "英雄広場（Hősök tere）", desc: "ハンガリー建国1000年記念碑がそびえる大広場。世界遺産アンドラーシ通りの北東端。両脇の西洋美術館や市民公園の景観も満喫。見学無料", icon: "🏛", important: true, mapUrl: "https://maps.app.goo.gl/v3HrnJKqKnkVZPdM7", coords: [47.5149, 19.0779] },
+      { time: "11:30", label: "アンドラーシ通り散策 ＆ ランチ", desc: "世界遺産の地下鉄M1線（レトロな黄色い車両）で市内中心へ。ペシュト側のカフェや伝統レストランでランチ（グヤーシュ等）", icon: "🍽", coords: [47.5025, 19.0600] },
+      { time: "13:30", label: "ハンガリー国会議事堂（Országház）", desc: "ドナウ河畔に佇む壮麗なネオゴシック建築。内部ツアーは要予約（非EU大人14,000HUF/約¥5,800）。ドナウ川沿いの「ドナウ川遊歩道の靴」記念碑もすぐ近く", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.app.goo.gl/87vHVdpjJWZBukHfA", coords: [47.5071, 19.0457] },
+      { time: "15:30", label: "セーチェニ鎖橋（くさり橋）を渡り 王宮の丘へ", desc: "歴史あるくさり橋を徒歩で渡りブダ側へ。ケーブルカー（シクロー往復5,000HUF）または徒歩・バスで王宮の丘へ。日没（16:15頃）のグラデーションに備える", icon: "🌉", coords: [47.4990, 19.0437] },
+      { time: "16:15", label: "ブダ城（Budavári Palota）＆ 王宮の丘", desc: "王宮の高台から、夕暮れ〜ライトアップで黄金色に輝く国会議事堂・くさり橋・ドナウ川を一望する絶景スポット。外観・敷地散策は無料", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.app.goo.gl/kSXKokVYeVN7rS2G8", coords: [47.4962, 19.0396] },
+      { time: "18:30", label: "市内ディナー ＆ 桟橋へ移動", desc: "ペシュト側へ戻りディナー。乗船場所のヴィガード広場（Vigadó tér）へ移動", icon: "🍷", coords: [47.4950, 19.0505] },
+      { time: "20:00", label: "ドナウ川 ナイト観光クルーズ（ウェルカムドリンク付）", desc: "Vigadó tér 5番桟橋（Mahart Cruises）から出航。漆黒のドナウ川から黄金色に輝く国会議事堂・ブダ城・くさり橋を船上から一望する約1時間のパノラマクルーズ（ドリンク1杯付）", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88", coords: [47.4950, 19.0505] },
+      { time: "21:30", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "The Amberlyn Suite Hotelへ帰着。翌朝のウィーン行きRailjet（Keleti 08:40発）に向けて荷造り・就寝", icon: "🏨", coords: [47.4937, 19.0682] },
+    ],
+    booking: {
+      title: "ドナウ川 ナイト観光クルーズ（GetYourGuide）",
+      details: [
+        { label: "ツアー名", value: "ブダペスト：ウェルカムドリンク付き ナイト観光クルーズ" },
+        { label: "日時目安", value: "2026年11月19日（木）夜（20:00頃出航便推奨）" },
+        { label: "所要時間", value: "約50〜60分" },
+        { label: "集合場所", value: "Vigadó tér 5. ponton（ヴィガード広場 第5桟橋・Mahart Cruises）" },
+        { label: "含まれるもの", value: "クルーズ乗船券、ウェルカムドリンク1杯（スパークリングワイン/ワイン/ジュース等）" },
+        { label: "料金目安", value: "約 €18 / 人（2名で約 ¥6,000）" },
+        { label: "予約サイト", value: "GetYourGuide（商品コード: t69093）" },
+      ],
+      url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88",
+    },
+    extraBookings: [
+      {
+        key: "amberlyn-hotel-d2",
+        icon: "🏨",
+        title: "The Amberlyn Suite Hotel（連泊 2日目）",
+        url: "https://www.booking.com/hotel/hu/the-amberlyn-aparthotel.ja.html",
+        mapUrl: "https://maps.google.com/?q=The+Amberlyn+Suite+Hotel+Budapest",
+        details: [
+          { label: "施設名", value: "The Amberlyn Suite Hotel（ジ・アンバリン スイート ホテル）" },
+          { label: "住所", value: "1085 Budapest, Rökk Szilárd u. 4, Hungary" },
+          { label: "最寄り", value: "地下鉄M4「Rákóczi tér」駅 徒歩3分" },
+          { label: "翌朝アクセス", value: "チェックアウト後、地下鉄M4でKeleti駅へ直通2駅（約5分）" },
+        ],
+      },
     ],
     memo: {
       bg: "linear-gradient(135deg,#f8f0ec,#f5ece8)",
       border: "#e8c8b8",
       titleColor: "#9a4a2a",
       textColor: "#5a3020",
-      icon: "♨",
-      title: "ブダペスト 観光メモ",
+      icon: "🇭🇺",
+      title: "ブダペスト 観光＆料金メモ",
       body: (
         <>
-          <b>王宮の丘・漁夫の砦</b>：ドナウ越しに国会議事堂を望む定番の眺め。夜景も◎<br/>
-          <b>マーチャーシュ教会</b>：王宮の丘に隣接。11月は営業中（時間確認を）<br/>
-          <b>セーチェニ温泉</b>：ネオバロックの建物で屋外の湯。11月の寒さがむしろ効く。水着・サンダル持参<br/>
-          <b>ハンガリー国会議事堂</b>：ガイドツアー要予約（英語ツアーは公式サイトから）<br/>
-          <b>ヴェレシュマルティ広場</b>：11月中旬からクリスマスマーケット開催。食のクオリティが高いと評判<br/>
-          <b>日本との時差</b>：現地時間＋8時間が日本時間。現地9時＝日本17時
+          <b>英雄広場（Hősök tere）</b>：見学無料。地下鉄M1線（世界遺産）直結。広大な広場と記念碑の迫力。<br/>
+          <b>国会議事堂（Országház）</b>：外観見学は無料。内部ガイドツアーは非EU大人14,000HUF（約¥5,800/人・要事前予約）。チケットは公式サイトから早めの確保を推奨。<br/>
+          <b>ブダ城・王宮の丘</b>：外観・城壁・展望テラス散策は無料。王宮ケーブルカー（シクロー）利用時は往復約5,000HUF/人（徒歩または16番バスでも登城可能）。<br/>
+          <b>ドナウ川 ナイトクルーズ</b>：GetYourGuideにて約€18/人（約¥3,000/人・ウェルカムドリンク付）。出航15分前にはVigadó tér 5番桟橋へ。<br/>
+          <b>市内交通 24時間乗車券</b>：2,500HUF（約¥1,050/人）。地下鉄M1〜M4・トラム・路線バスが24時間乗り放題。BudapestGOアプリまたは券売機で購入。<br/>
+          <b>日の入り時刻</b>：11月中旬は16:15頃と早め。16時頃からライトアップが点灯し、夕景〜夜景のゴールデンタイムに入ります。
         </>
       ),
     },
@@ -110,7 +161,7 @@ const DAYS = [
     color: "#4a7a9a",
     icon: "🚄",
     schedule: [
-      { time: "07:45頃", label: "ホテル チェックアウト・駅へ移動", desc: "地下鉄M2またはM4でブダペスト東駅（Keleti）へ。出発30分前には駅に到着", icon: "🏨", coords: [47.4979, 19.0402] },
+      { time: "07:45頃", label: "ホテル チェックアウト・Keleti駅へ移動", desc: "The Amberlyn Suite Hotelをチェックアウト。地下鉄M4「Rákóczi tér」から「Keleti pályaudvar」へ直通2駅（約5分）。出発30分前には駅に到着", icon: "🏨", coords: [47.4937, 19.0682] },
       { time: "08:40", label: "ブダペスト東駅（Keleti）発", desc: "Railjet 62（直通・約2時間40分）。ÖBB/MÁV共同運行。車内Wi-Fi・電源あり。早割券は変更不可", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
       { time: "11:20", label: "ウィーン中央駅（Wien Hbf）着", desc: "地下鉄U1で市内中心（Stephansplatz）まで直通約5分。明るい時間に到着", icon: "🚉", coords: [48.1848, 16.3765] },
       { time: "11:50", label: "ホテルへ荷物預け ＆ ランチ", desc: "ホテルにスーツケースを預けて身軽になり、ウィーン風シュニッツェル等のランチへ", icon: "🍽", coords: [48.2085, 16.3721] },
@@ -324,14 +375,18 @@ const DAYS = [
 
 const COSTS = [
   { item: "エミレーツ 往復航空券（大人2名・エコノミー）", cost: 457440, note: "予約済・予約番号 K78ZN2 ／ 運賃¥222,400・航空会社サーチャージ¥202,400・税金等¥32,640" },
-  { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "手配要 €13〜/人（MÁV）または €19.90〜/人（ÖBB）" },
-  { item: "鉄道 ウィーン→プラハ（2名）", cost: 0, note: "手配要 €14.90〜/人（ÖBB）または €15〜/人（RegioJet）" },
-  { item: "ブダペスト 2泊（2名）", cost: 0, note: "手配要" },
+  { item: "ブダペスト 2泊（The Amberlyn Suite Hotel）", cost: 25000, note: "手配予定 目安 €150（約¥25,000 / 2名1室2泊）" },
+  { item: "ドナウ川 ナイトクルーズ（ウェルカムドリンク付・2名）", cost: 6000, note: "GetYourGuide 約€18×2名（約¥6,000）" },
+  { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "手配要 早割€13〜/人（MÁV）または €19.90〜/人（ÖBB）" },
+  { item: "鉄道 ウィーン→プラハ（2名）", cost: 0, note: "手配要 早割€14.90〜/人（ÖBB）または €15〜/人（RegioJet）" },
   { item: "ウィーン 2泊（2名）", cost: 0, note: "手配要" },
   { item: "プラハ 2泊（2名）", cost: 0, note: "手配要" },
-  { item: "空港バス 100E（ブダペスト空港→市内、2名）", cost: 5000, note: "2,500HUF×2名（概算¥2,500/人）" },
-  { item: "宿泊税 ブダペスト（室料の4%×2泊）", cost: 0, note: "現地払い（概算）" },
-  { item: "宿泊税 ウィーン（室料の5%×2泊）", cost: 0, note: "現地払い（2027/7から8%）" },
+  { item: "空港バス 100E（ブダペスト空港→Kálvin tér、2名）", cost: 2100, note: "2,500HUF×2名（クレカタッチ決済 約¥2,100）" },
+  { item: "ブダペスト市内交通 24時間券（2名）", cost: 2100, note: "2,500HUF×2名（地下鉄・トラム乗り放題 約¥2,100）" },
+  { item: "国会議事堂 ガイドツアー（2名・任意）", cost: 0, note: "見学希望時 14,000HUF×2名（約¥11,600・要事前予約）／外観散策は無料" },
+  { item: "ブダ城 ＆ 英雄広場 散策", cost: 0, note: "外観・敷地散策無料（シクロー利用時 往復約5,000HUF/人）" },
+  { item: "宿泊税 ブダペスト（室料の4%×2泊）", cost: 1000, note: "現地ホテル払い 目安約¥1,000" },
+  { item: "宿泊税 ウィーン（室料の5%×2泊）", cost: 0, note: "現地払い（目安）" },
   { item: "宿泊税 プラハ（50CZK×2名×2泊）", cost: 0, note: "現地払い 約¥1,200" },
 ];
 
@@ -612,15 +667,15 @@ export default function EuropeTrip() {
               <div
                 className="eu-booking-card"
                 role="button" tabIndex={0}
-                aria-expanded={expandedBooking === `day-${activeDay}`}
-                onClick={() => setExpandedBooking(expandedBooking === `day-${activeDay}` ? null : `day-${activeDay}`)}
-                onKeyDown={e => handleCardKeyDown(e, () => setExpandedBooking(expandedBooking === `day-${activeDay}` ? null : `day-${activeDay}`))}>
+                aria-expanded={expandedBooking === `booking-${activeDay}`}
+                onClick={() => setExpandedBooking(expandedBooking === `booking-${activeDay}` ? null : `booking-${activeDay}`)}
+                onKeyDown={e => handleCardKeyDown(e, () => setExpandedBooking(expandedBooking === `booking-${activeDay}` ? null : `booking-${activeDay}`))}>
                 <div className="eu-booking-header" style={{ borderLeft: `3px solid ${DAYS[activeDay].color}` }}>
-                  <span><span aria-hidden="true">📋</span> {DAYS[activeDay].booking.title}</span>
+                  <span><span aria-hidden="true">{DAYS[activeDay].booking.icon || "📋"}</span> {DAYS[activeDay].booking.title}</span>
                   <span className="eu-booking-toggle" aria-hidden="true"
-                    style={{ transform: expandedBooking === `day-${activeDay}` ? "rotate(180deg)" : "none" }}>▼</span>
+                    style={{ transform: expandedBooking === `booking-${activeDay}` ? "rotate(180deg)" : "none" }}>▼</span>
                 </div>
-                {expandedBooking === `day-${activeDay}` && (
+                {expandedBooking === `booking-${activeDay}` && (
                   <>
                     <div className="eu-booking-details">
                       {DAYS[activeDay].booking.details.map((d, i) => (
@@ -649,6 +704,54 @@ export default function EuropeTrip() {
                 )}
               </div>
             )}
+
+            {DAYS[activeDay].extraBookings && DAYS[activeDay].extraBookings.map((b, bIdx) => {
+              const bKey = b.key || `extra-${activeDay}-${bIdx}`;
+              const isExp = expandedBooking === bKey;
+              return (
+                <div
+                  key={bKey}
+                  className="eu-booking-card"
+                  style={{ marginTop: "1rem" }}
+                  role="button" tabIndex={0}
+                  aria-expanded={isExp}
+                  onClick={() => setExpandedBooking(isExp ? null : bKey)}
+                  onKeyDown={e => handleCardKeyDown(e, () => setExpandedBooking(isExp ? null : bKey))}>
+                  <div className="eu-booking-header" style={{ borderLeft: `3px solid ${DAYS[activeDay].color}` }}>
+                    <span><span aria-hidden="true">{b.icon || "📋"}</span> {b.title}</span>
+                    <span className="eu-booking-toggle" aria-hidden="true"
+                      style={{ transform: isExp ? "rotate(180deg)" : "none" }}>▼</span>
+                  </div>
+                  {isExp && (
+                    <>
+                      <div className="eu-booking-details">
+                        {b.details.map((d, i) => (
+                          <div className="eu-booking-row" key={i}>
+                            <span className="eu-booking-row-label">{d.label}</span>
+                            <span className="eu-booking-row-value">{d.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <PlacePreview image={b.image} variant="booking" />
+                      {(b.url || b.mapUrl) && (
+                        <div className="eu-booking-links">
+                          {b.url && (
+                            <a href={b.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
+                              <span aria-hidden="true">🌐</span> 公式サイト
+                            </a>
+                          )}
+                          {b.mapUrl && (
+                            <a href={b.mapUrl} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
+                              <span aria-hidden="true">📍</span> Google Map
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              );
+            })}
           </div>
         )}
       </main>
