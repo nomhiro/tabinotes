@@ -278,8 +278,10 @@ const DAYS = [
       { time: "07:45頃", label: "ホテル チェックアウト・Keleti駅へ移動", desc: "The Amberlyn Suite Hotelをチェックアウト。地下鉄M4「Rákóczi tér」から「Keleti pályaudvar」へ直通2駅（約5分）。出発30分前には駅に到着", icon: "🏨", coords: [47.4937, 19.0682] },
       { time: "08:40", label: "ブダペスト東駅（Keleti）発", desc: "Railjet 62（直通・約2時間40分）。ÖBB/MÁV共同運行。車内Wi-Fi・電源あり。早割券は変更不可", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
       { time: "11:20", label: "ウィーン中央駅（Wien Hbf）着", desc: "地下鉄U1で市内中心（Stephansplatz）まで直通約5分。明るい時間に到着", icon: "🚉", coords: [48.1848, 16.3765] },
-      { time: "11:50", label: "ホテルへ荷物預け ＆ ランチ", desc: "ホテルにスーツケースを預けて身軽になり、ウィーン風シュニッツェル等のランチへ", icon: "🍽", coords: [48.2085, 16.3721] },
-      { time: "13:30〜", label: "ウィーン市内散策", desc: "ケルントナー通り、シュテファン大聖堂、伝統カフェ（カフェ・ツェントラル等）をのんびり巡る", icon: "🗺", important: true, coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
+      { time: "11:50", label: "ウィーン中央駅 → ARCOTEL Wimberger Wien", desc: "Wien Hbfからホテルへ移動（トラムまたはU-Bahn利用）。ホテルはNeubaugürtel 34-36、ウィーン西側のノイバウ地区", icon: "🚋", coords: [48.2049, 16.3378] },
+      { time: "12:00〜13:00", label: "ホテル到着・荷物預け／アーリーチェックイン希望", desc: "12:00〜13:00のチェックインをリクエスト済み（空き状況による）。正式なチェックインは15:00から。入室できない場合は荷物を預けて市内観光へ", icon: "🏨", important: true, url: "https://www.arcotel.com/en/hotels/vienna/arcotel-wimberger/", mapUrl: "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien", coords: [48.2049, 16.3378] },
+      { time: "13:00頃", label: "ランチ ＆ ウィーン市内散策", desc: "荷物を身軽にして、ウィーン風シュニッツェル等のランチへ。ケルントナー通り、シュテファン大聖堂方面を散策", icon: "🍽", coords: [48.2085, 16.3721] },
+      { time: "14:00〜", label: "ウィーン市内散策", desc: "ケルントナー通り、シュテファン大聖堂、伝統カフェ（カフェ・ツェントラル等）をのんびり巡る", icon: "🗺", important: true, coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
     ],
     booking: {
       title: "鉄道チケット（ブダペスト → ウィーン）",
@@ -311,6 +313,27 @@ const DAYS = [
         </>
       ),
     },
+    extraBookings: [
+      {
+        key: "arcotel-wimberger-vienna",
+        icon: "🏨",
+        title: "ARCOTEL Wimberger Wien（ウィーン 2泊）",
+        url: "https://www.arcotel.com/en/hotels/vienna/arcotel-wimberger/",
+        mapUrl: "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien",
+        details: [
+          { label: "施設名", value: "ARCOTEL Wimberger Wien" },
+          { label: "宿泊期間", value: "2026年11月20日（金）〜 11月22日（日）（2泊）" },
+          { label: "部屋・人数", value: "コンフォート ダブルルーム ／ 大人2名・1部屋" },
+          { label: "住所", value: "Neubaugürtel 34-36, 07区 ノイバウ, 1070 ウィーン, オーストリア" },
+          { label: "電話", value: "+43 1 521650" },
+          { label: "チェックイン", value: "15:00から（12:00〜13:00の到着・チェックインをリクエスト済み／空き状況による）" },
+          { label: "チェックアウト", value: "2026年11月22日（日）11:00まで" },
+          { label: "食事", value: "なし（禁煙ルーム）" },
+          { label: "料金", value: "€198.61（支払済・約¥40,277／税・サービス料込み）" },
+          { label: "予約状況", value: "Booking.com 予約済（予約番号 5340692962）" },
+        ],
+      },
+    ],
   },
   {
     day: 4,
@@ -493,14 +516,14 @@ const COSTS = [
   { item: "ドナウ川 ナイトクルーズ（ウェルカムドリンク付・2名）", cost: 6000, note: "GetYourGuide 約€18×2名（約¥6,000）" },
   { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "手配要 早割€13〜/人（MÁV）または €19.90〜/人（ÖBB）" },
   { item: "鉄道 ウィーン→プラハ（2名）", cost: 0, note: "手配要 早割€14.90〜/人（ÖBB）または €15〜/人（RegioJet）" },
-  { item: "ウィーン 2泊（2名）", cost: 0, note: "手配要" },
+  { item: "ウィーン 2泊（ARCOTEL Wimberger Wien・2名）", cost: 40277, note: "予約済・支払済 €198.61（約¥40,277／税・サービス料込み）・予約番号 5340692962" },
   { item: "プラハ 2泊（2名）", cost: 0, note: "手配要" },
   { item: "空港バス 100E（ブダペスト空港→Kálvin tér、2名）", cost: 2100, note: "2,500HUF×2名（クレカタッチ決済 約¥2,100）" },
   { item: "ブダペスト市内交通 24時間券（2名）", cost: 2100, note: "2,500HUF×2名（地下鉄・トラム乗り放題 約¥2,100）" },
   { item: "国会議事堂 ガイドツアー（2名・任意）", cost: 0, note: "見学希望時 14,000HUF×2名（約¥11,600・要事前予約）／外観散策は無料" },
   { item: "ブダ城 ＆ 英雄広場 散策", cost: 0, note: "外観・敷地散策無料（シクロー利用時 往復約5,000HUF/人）" },
   { item: "宿泊税 ブダペスト（室料の4%×2泊）", cost: 1000, note: "現地ホテル払い 目安約¥1,000" },
-  { item: "宿泊税 ウィーン（室料の5%×2泊）", cost: 0, note: "現地払い（目安）" },
+  { item: "宿泊税 ウィーン", cost: 0, note: "宿泊料金に市税5%を含む（追加支払いなし）" },
   { item: "宿泊税 プラハ（50CZK×2名×2泊）", cost: 0, note: "現地払い 約¥1,200" },
 ];
 
@@ -694,8 +717,8 @@ export default function EuropeTrip() {
               </tfoot>
             </table>
             <div className="eu-cost-note">
-              ※ 航空券は予約済みです（2名合計¥457,440）。宿泊・鉄道は予約後に金額を更新します。<br />
-              宿泊税（ブダペスト4%・ウィーン5%・プラハ50CZK/人泊）は現地払いです。<br />
+              ※ 航空券（2名合計¥457,440）とウィーン宿泊（2名2泊・¥40,277相当）は予約済み・支払済みです。<br />
+              宿泊税（ブダペスト4%・プラハ50CZK/人泊）は現地払いです。ウィーン市税5%は宿泊料金に含まれています。<br />
               食費・市内交通・観光入場料は含まれていません。
             </div>
           </div>
