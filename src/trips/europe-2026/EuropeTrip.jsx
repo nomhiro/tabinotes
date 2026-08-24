@@ -26,7 +26,7 @@ const DAYS = [
   {
     day: 1,
     date: "11月18日（水）",
-    title: "羽田発 ─ ドバイ乗継 ─ ブダペスト着 ＆ ホテルチェックイン",
+    title: "羽田発 ─ ドバイ乗継 ─ ブダペスト着 ＆ 王宮の丘・夜景コース",
     color: "#7a5c9a",
     icon: "🛫",
     schedule: [
@@ -36,8 +36,17 @@ const DAYS = [
       { time: "13:05 BUD", label: "ブダペスト（BUD）着", desc: "EK111到着。ターミナル2B。入国審査でEES（EU新入域システム）の生体登録があり通常より時間がかかる可能性あり。総所要21時間", icon: "🏁", important: true, coords: [47.4369, 19.2556] },
       { time: "14:00頃", label: "100E エアポートエクスプレス 乗車", desc: "市内行き直通バスに乗車。ホテル最寄りの「Kálvin tér M（カービン広場）」で降車（約35分・専用券 2,500HUF/人・クレカタッチ決済可）", icon: "🚌", coords: [47.4369, 19.2556] },
       { time: "14:45頃", label: "Kálvin tér M 降車 ─ ホテルへ移動", desc: "Kálvin térから徒歩約10分、または地下鉄M4線で1駅「Rákóczi tér」へ（徒歩3分）", icon: "🚶", coords: [47.4896, 19.0617] },
-      { time: "15:00頃", label: "The Amberlyn Suite Hotel チェックイン", desc: "チェックインして荷物を置きひと息。キッチン・リビング付きスイートアパートホテル（2泊）", icon: "🏨", important: true, url: "https://www.booking.com/hotel/hu/the-amberlyn-aparthotel.ja.html", mapUrl: "https://maps.google.com/?q=The+Amberlyn+Suite+Hotel+Budapest", coords: [47.4937, 19.0682] },
-      { time: "16:30〜", label: "パレス地区散策 ＆ 夕食・買い出し", desc: "歴史ある宮殿街（パレス地区）の雰囲気を味わい、近隣レストランで夕食やスーパーでの買い出し。翌日の終日観光に備えて早めに就寝", icon: "🍽", coords: [47.4937, 19.0682] },
+      { time: "15:00頃", label: "The Amberlyn Suite Hotel チェックイン", desc: "チェックインして荷物を置きひと息・身支度。キッチン・リビング付きスイートアパートホテル（2泊）", icon: "🏨", important: true, url: "https://www.booking.com/hotel/hu/the-amberlyn-aparthotel.ja.html", mapUrl: "https://maps.google.com/?q=The+Amberlyn+Suite+Hotel+Budapest", coords: [47.4937, 19.0682] },
+      { time: "15:45", label: "ホテル出発 ─ ドナウ河畔・くさり橋へ", desc: "トラム47/49番でDeák Ferenc tér経由、または地下鉄M4＋トラム2番でドナウ河畔へ移動。くさり橋ペシュト側へ", icon: "🚃", coords: [47.4937, 19.0682] },
+      { time: "16:15", label: "くさり橋（Széchenyi Lánchíd）渡橋", desc: "【コース1】ドナウ川にかかるブダペスト最古の美しい吊り橋。歩行者専用歩道を歩きながらペシュト側からブダ側へ渡橋（徒歩約15分）。日没（16:15頃）の夕暮れの光が差し込む絶景", icon: "🌉", important: true, mapUrl: "https://maps.google.com/?q=Sz%C3%A9chenyi+L%C3%A1nch%C3%ADd", coords: [47.4990, 19.0437] },
+      { time: "16:30", label: "ヴァールケルト・バザール（Várkert Bazár）", desc: "【コース2】王宮の東麓に広がるネオルネサンス様式の庭園・回廊建築（ミクローシュ・イブル設計）。美しい庭園からエスカレーター/エレベーターを使って王宮の丘へ無料で上がれる（徒歩5分）", icon: "🏛", url: "https://varkertbazar.hu/", mapUrl: "https://maps.google.com/?q=V%C3%A1rkert+Baz%C3%A1r+Budapest", coords: [47.4947, 19.0416] },
+      { time: "16:45", label: "ブダ王宮（Budavári Palota）＆ 展望テラス", desc: "【コース3】歴代国王の居城であった壮大な宮殿。サヴォイア公オイゲン騎馬像前のテラスから、夕暮れ〜ライトアップで黄金に輝き始めるドナウ川・くさり橋・対岸の国会議事堂を一望（徒歩15分）", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.google.com/?q=Buda+Castle+Budapest", coords: [47.4962, 19.0396] },
+      { time: "17:15", label: "ルスヴルム・ツクラースダ（Ruszwurm Cukrászda）", desc: "【コース4】1827年創業、王宮の丘で最も古くハプスブルク皇妃エリザベート（シシィ）も愛した老舗カフェ。名物の伝統カスタードケーキ「ルスヴルム・クレーメシュ」で優雅なカフェ休憩（徒歩1分）", icon: "☕", important: true, url: "http://www.ruszwurm.hu/", mapUrl: "https://maps.google.com/?q=Ruszwurm+Cukr%C3%A1szda+Budapest", coords: [47.5015, 19.0331] },
+      { time: "17:50", label: "三位一体広場（Szentháromság tér）", desc: "【コース5】王宮地区の中心広場。ペスト終息を神に感謝して18世紀初頭に建てられたバロック様式の「三位一体の柱」が中央にそびえる（徒歩すぐ）", icon: "🏛", mapUrl: "https://maps.google.com/?q=Szenth%C3%A1roms%C3%A1g+t%C3%A9r+Budapest", coords: [47.5017, 19.0341] },
+      { time: "18:00", label: "マーチャーシュ教会（Mátyás-templom）", desc: "【コース6】歴代ハンガリー国王の戴冠式が行われたゴシック様式の名教会。色鮮やかなジョルナイ製ダイヤモンド柄の屋根瓦と壮麗な尖塔がライトアップされて夜空に浮かび上がる（徒歩すぐ）", icon: "⛪", important: true, url: "https://matyas-templom.hu/", mapUrl: "https://maps.google.com/?q=Matthias+Church+Budapest", coords: [47.5019, 19.0342] },
+      { time: "18:20", label: "漁夫の砦（Halászbástya）", desc: "【コース7】7つの尖塔と白亜の回廊が連なるロマンチックな展望砦。回廊のアーチ窓越しに、漆黒のドナウ川と黄金色に輝く国会議事堂を見渡すブダペスト随一の夜景名所（徒歩すぐ・夜間は上層テラスも無料開放）", icon: "🏰", important: true, url: "https://www.fishermansbastion.com/", mapUrl: "https://maps.google.com/?q=Fisherman%27s+Bastion+Budapest", coords: [47.5022, 19.0347] },
+      { time: "18:50", label: "ホワイト・レイヴン・スカイバー＆ラウンジ", desc: "【コース8・GOAL】ヒルトン・ブダペストの屋上に位置する最高峰ルーフトップバー。マーチャーシュ教会の屋根瓦とドナウ夜景を間近に見下ろしながら、特製カクテルとディナーで初日の夜を乾杯（スマートカジュアル・要事前予約）", icon: "🍸", important: true, url: "https://whiteravenskybar.com/", mapUrl: "https://maps.google.com/?q=White+Raven+Skybar+Budapest", coords: [47.5027, 19.0340] },
+      { time: "21:00", label: "ホテル帰着 ＆ 就寝", desc: "三位一体広場前から16番バスでDeák Ferenc térへ（約10分）。地下鉄M4でThe Amberlyn Suite Hotelへ戻り就寝", icon: "🏨", coords: [47.4937, 19.0682] },
     ],
     booking: {
       title: "エミレーツ航空券（往路）",
@@ -79,13 +88,15 @@ const DAYS = [
       titleColor: "#5a3a9a",
       textColor: "#3a2a6a",
       icon: "🇭🇺",
-      title: "ブダペスト空港 → ホテルアクセス ＆ 100Eバス",
+      title: "ブダペスト初日 ＆ 王宮の丘コース情報メモ",
       body: (
         <>
-          <b>100E エアポートエクスプレス（直通・推奨）</b>：空港 ⇄ 市内を約35〜40分で結ぶ直通バス（専用券 2,500HUF/人・約¥1,050）。10〜15分間隔で頻発運行。<br/>
-          <b>降車バス停：Kálvin tér M（カービン広場）</b>：空港から最初の停車駅で降車。ホテル「The Amberlyn Suite Hotel」まで北東へ徒歩約10分（800m）、または地下鉄M4線に乗換えて1駅「Rákóczi tér」で下車（徒歩3分）。<br/>
-          <b>乗車方法・支払い</b>：事前予約不要。車内の決済端末（Budapest Pay&GO）にタッチ決済対応クレカやApple Pay等をタッチするだけで乗車可能。BudapestGOアプリでも購入可。<br/>
-          <b>EES（EU新入域システム）</b>：シェンゲン圏初入域時に指紋・顔写真の登録が必要となるため、空港での入国手続きに余裕をみています。
+          <b>100E エアポートエクスプレス</b>：空港 ⇄ 市内を約35〜40分で結ぶ直通バス（専用券 2,500HUF/人・約¥1,050）。車内決済端末にクレカタッチ決済で乗車可能。<br/>
+          <b>王宮の丘へのアクセス</b>：くさり橋を渡った後、ヴァールケルト・バザール（Várkert Bazár）の庭園内にあるエレベーター＆エスカレーターを利用すると、王宮の丘上層まで無料でスムーズに上がれます。<br/>
+          <b>ルスヴルム・ツクラースダ（Ruszwurm）</b>：1827年創業。名物「ルスヴルム・クレーメシュ（Ruszwurm krémes）」は必食の伝統カスタードパイ。営業時間 10:00〜19:00。<br/>
+          <b>漁夫の砦（Halászbástya）</b>：夜間は上層展望テラスも無料開放。アーチ窓から国会議事堂のライトアップを望む絶景写真スポット。<br/>
+          <b>ホワイト・レイヴン・スカイバー（White Raven）</b>：ヒルトン屋上（14:00〜24:00）。人気店のため公式サイト（whiteravenskybar.com）から3週間前より要予約（スマートカジュアル）。<br/>
+          <b>日の入り時刻</b>：11月中旬は16:15頃。16時過ぎから日没のマジックアワーとライトアップが始まり、王宮の丘からの夜景が最も美しい時間帯になります。
         </>
       ),
     },
@@ -93,17 +104,21 @@ const DAYS = [
   {
     day: 2,
     date: "11月19日（木）",
-    title: "ブダペスト ─ 英雄広場・国会議事堂・ブダ城 ＆ ナイトクルーズ",
+    title: "ブダペスト ─ 国会議事堂・アンドラーシ通り・英雄広場 ＆ ナイトクルーズ",
     color: "#7a5c9a",
     icon: "🏰",
     schedule: [
-      { time: "09:00", label: "ホテル出発 → 英雄広場へ", desc: "地下鉄M4（Rákóczi tér → Kálvin tér）＋ M3/M1線に乗換えて「Hősök tere」駅へ移動", icon: "🚇", coords: [47.4937, 19.0682] },
-      { time: "09:30", label: "英雄広場（Hősök tere）", desc: "ハンガリー建国1000年記念碑がそびえる大広場。世界遺産アンドラーシ通りの北東端。両脇の西洋美術館や市民公園の景観も満喫。見学無料", icon: "🏛", important: true, mapUrl: "https://maps.app.goo.gl/v3HrnJKqKnkVZPdM7", coords: [47.5149, 19.0779] },
-      { time: "11:30", label: "アンドラーシ通り散策 ＆ ランチ", desc: "世界遺産の地下鉄M1線（レトロな黄色い車両）で市内中心へ。ペシュト側のカフェや伝統レストランでランチ（グヤーシュ等）", icon: "🍽", coords: [47.5025, 19.0600] },
-      { time: "13:30", label: "ハンガリー国会議事堂（Országház）", desc: "ドナウ河畔に佇む壮麗なネオゴシック建築。内部ツアーは要予約（非EU大人14,000HUF/約¥5,800）。ドナウ川沿いの「ドナウ川遊歩道の靴」記念碑もすぐ近く", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.app.goo.gl/87vHVdpjJWZBukHfA", coords: [47.5071, 19.0457] },
-      { time: "15:30", label: "セーチェニ鎖橋（くさり橋）を渡り 王宮の丘へ", desc: "歴史あるくさり橋を徒歩で渡りブダ側へ。ケーブルカー（シクロー往復5,000HUF）または徒歩・バスで王宮の丘へ。日没（16:15頃）のグラデーションに備える", icon: "🌉", coords: [47.4990, 19.0437] },
-      { time: "16:15", label: "ブダ城（Budavári Palota）＆ 王宮の丘", desc: "王宮の高台から、夕暮れ〜ライトアップで黄金色に輝く国会議事堂・くさり橋・ドナウ川を一望する絶景スポット。外観・敷地散策は無料", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.app.goo.gl/kSXKokVYeVN7rS2G8", coords: [47.4962, 19.0396] },
-      { time: "18:30", label: "市内ディナー ＆ 桟橋へ移動", desc: "ペシュト側へ戻りディナー。乗船場所のヴィガード広場（Vigadó tér）へ移動", icon: "🍷", coords: [47.4950, 19.0505] },
+      { time: "09:00", label: "ホテル出発 → Kossuth Lajos térへ", desc: "地下鉄M4（Rákóczi tér → Kálvin tér）＋ M3/M2線に乗換えて「Kossuth Lajos tér」駅へ移動（約20分）", icon: "🚇", coords: [47.4937, 19.0682] },
+      { time: "09:30", label: "ハンガリー国会議事堂（Országház）", desc: "【コース1】ドナウ河畔に佇む壮麗なネオゴシック建築。大階段の間・ドームの間（聖イシュトヴァーンの王冠）・旧上院議場を巡る内部ツアー（非EU大人14,000HUF・要事前予約）。河畔の「ドナウ川遊歩道の靴」もすぐ（徒歩10分）", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457] },
+      { time: "10:45", label: "旧郵便貯金局（Postatakarékpénztár）", desc: "【コース2】「ハンガリーのガウディ」レフネル・エデン設計のアール・ヌーヴォー建築傑作（現ハンガリー国立銀行別館・Hold u. 4）。ジョルナイ陶器のカラフルな屋根飾りやミツバチ・植物モチーフの外観レリーフが見どころ（外観見学・徒歩5分）", icon: "🏦", mapUrl: "https://maps.google.com/?q=Postatakar%C3%A9kp%C3%A9nzt%C3%A1r+Hold+utca+4+Budapest", coords: [47.5034, 19.0532] },
+      { time: "11:15", label: "聖イシュトヴァーン大聖堂（Szent István-bazilika）", desc: "【コース3】初代国王を祀るブダペスト最大のカトリック教会。高さ96mの大ドーム、黄金の天井装飾、聖遺物（右手のミイラ）が見どころ。展望パノラマテラスからは市内360度を一望（徒歩10分）", icon: "⛪", important: true, url: "https://www.bazilika.biz/", mapUrl: "https://maps.google.com/?q=St.+Stephen%27s+Basilica+Budapest", coords: [47.5009, 19.0540] },
+      { time: "12:00", label: "アンドラーシ通り（Andrássy út）散策 ＆ ランチ", desc: "【コース4】「ブダペストのシャンゼリゼ」と称される世界遺産の大通り。優美な19世紀貴族邸宅が並ぶ並木道を散策しながら、伝統レストランで名物グヤーシュやパプリカーシュ・チルケのランチ（徒歩3分）", icon: "🍽", important: true, mapUrl: "https://maps.google.com/?q=Andr%C3%A1ssy+%C3%BAt+Budapest", coords: [47.5018, 19.0583] },
+      { time: "13:30", label: "ハンガリー国立歌劇場（Magyar Állami Operaház）", desc: "【コース5】ミクローシュ・イブル設計によるネオルネサンス様式の豪奢な歌劇場。大理石の大階段、金箔とフレスコ画で飾られた壮麗な客席、スフィンクス像が美しい（徒歩10分）", icon: "🎭", url: "https://www.opera.hu/", mapUrl: "https://maps.google.com/?q=Hungarian+State+Opera+House", coords: [47.5028, 19.0582] },
+      { time: "14:15", label: "リスト・フェレンツ記念館（Liszt Ferenc Emlékmúzeum）", desc: "【コース6】大作曲家フランツ・リストが晩年に暮らした旧音楽院のアパートメント（Vörösmarty u. 35）。愛用のベーゼンドルファーやチッカリングのピアノ、直筆楽譜、書斎が当時のまま保存されている（入場2,000HUF・徒歩7分）", icon: "🎼", important: true, url: "https://lisztmuseum.hu/", mapUrl: "https://maps.google.com/?q=Liszt+Ferenc+Memorial+Museum+Budapest", coords: [47.5070, 19.0664] },
+      { time: "15:15", label: "英雄広場（Hősök tere）", desc: "【コース7】地下鉄M1線（世界遺産）に乗車またはアンドラーシ通りを進み、ハンガリー建国1000年を記念して造られた大広場へ。大天使ガブリエル像と歴代英雄の列柱像が立ち並ぶ（徒歩3分）", icon: "🏛", important: true, mapUrl: "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest", coords: [47.5149, 19.0779] },
+      { time: "15:45", label: "市民公園（Városliget）", desc: "【コース8】英雄広場の背後に広がる広大な歴史的公園。池やヴァイダフニャディ城の景観を楽しみながら散策（徒歩8分）", icon: "🌳", url: "https://ligetbudapest.hu/", mapUrl: "https://maps.google.com/?q=V%C3%A1rosliget+Budapest", coords: [47.5142, 19.0833] },
+      { time: "16:15", label: "国立民族博物館（Néprajzi Múzeum）", desc: "【コース9・GOAL】市民公園内に2022年オープンした世界最高峰の現代建築（リゲット・ブダペスト計画）。緩やかに湾曲した巨大な屋上緑地テラスから公園と市内を一望。伝統文化・民族資料の充実展示（GOAL）", icon: "🏛", important: true, url: "https://www.neprajz.hu/", mapUrl: "https://maps.google.com/?q=Museum+of+Ethnography+Budapest", coords: [47.5126, 19.0805] },
+      { time: "18:00", label: "ペシュト中心部へ移動 ＆ ディナー", desc: "世界遺産の地下鉄M1線（レトロな黄色い車両）で市内中心Vörösmarty tér方面へ戻りディナー。乗船場所のヴィガード広場（Vigadó tér）へ移動", icon: "🍽", coords: [47.4950, 19.0505] },
       { time: "20:00", label: "ドナウ川 ナイト観光クルーズ（ウェルカムドリンク付）", desc: "Vigadó tér 5番桟橋（Mahart Cruises）から出航。漆黒のドナウ川から黄金色に輝く国会議事堂・ブダ城・くさり橋を船上から一望する約1時間のパノラマクルーズ（ドリンク1杯付）", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88", coords: [47.4950, 19.0505] },
       { time: "21:30", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "The Amberlyn Suite Hotelへ帰着。翌朝のウィーン行きRailjet（Keleti 08:40発）に向けて荷造り・就寝", icon: "🏨", coords: [47.4937, 19.0682] },
     ],
@@ -141,15 +156,16 @@ const DAYS = [
       titleColor: "#9a4a2a",
       textColor: "#5a3020",
       icon: "🇭🇺",
-      title: "ブダペスト 観光＆料金メモ",
+      title: "ブダペスト2日目 観光＆料金メモ",
       body: (
         <>
-          <b>英雄広場（Hősök tere）</b>：見学無料。地下鉄M1線（世界遺産）直結。広大な広場と記念碑の迫力。<br/>
-          <b>国会議事堂（Országház）</b>：外観見学は無料。内部ガイドツアーは非EU大人14,000HUF（約¥5,800/人・要事前予約）。チケットは公式サイトから早めの確保を推奨。<br/>
-          <b>ブダ城・王宮の丘</b>：外観・城壁・展望テラス散策は無料。王宮ケーブルカー（シクロー）利用時は往復約5,000HUF/人（徒歩または16番バスでも登城可能）。<br/>
+          <b>国会議事堂（Országház）</b>：外観見学は無料。内部ガイドツアーは非EU大人14,000HUF（約¥5,800/人・要事前予約）。公式サイト（parlament.hu）から早めのチケット確保を推奨。<br/>
+          <b>郵便貯金局（Postatakarékpénztár）</b>：レフネル・エデン設計（Hold u. 4）。外観のジョルナイ陶器タイルや有機的装飾を鑑賞。<br/>
+          <b>聖イシュトヴァーン大聖堂</b>：教会入場料 2,300HUF、パノラマ展望テラス＋宝物館 4,300HUF。<br/>
+          <b>リスト・フェレンツ記念館</b>：大人 2,000HUF。月〜金 10:00〜18:00、土 9:00〜17:00（日祝休館）。地下鉄M1線 Vörösmarty utca駅すぐ。<br/>
+          <b>国立民族博物館（Néprajzi Múzeum）</b>：2022年オープンの現代建築。屋上庭園散策。常設展 1,700HUF〜（火〜日 10:00〜18:00/木〜20:00、月曜休館）。<br/>
           <b>ドナウ川 ナイトクルーズ</b>：GetYourGuideにて約€18/人（約¥3,000/人・ウェルカムドリンク付）。出航15分前にはVigadó tér 5番桟橋へ。<br/>
-          <b>市内交通 24時間乗車券</b>：2,500HUF（約¥1,050/人）。地下鉄M1〜M4・トラム・路線バスが24時間乗り放題。BudapestGOアプリまたは券売機で購入。<br/>
-          <b>日の入り時刻</b>：11月中旬は16:15頃と早め。16時頃からライトアップが点灯し、夕景〜夜景のゴールデンタイムに入ります。
+          <b>市内交通 24時間乗車券</b>：2,500HUF（約¥1,050/人）。地下鉄M1〜M4・トラム・路線バスが24時間乗り放題。BudapestGOアプリまたは券売機で購入。
         </>
       ),
     },
