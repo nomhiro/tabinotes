@@ -9,6 +9,104 @@ const PRAGUE_OLD_TOWN_IMAGE = {
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Prague_Old_Town.JPG",
 };
 
+const CHAIN_BRIDGE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Sz%C3%A9chenyi_Chain_Bridge_in_Budapest_at_night.jpg?width=1200",
+  alt: "夜間にライトアップされたセーチェニ鎖橋",
+  credit: "Wilfredor / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Sz%C3%A9chenyi_Chain_Bridge_in_Budapest_at_night.jpg",
+};
+
+const VARKERT_BAZAR_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/VarkertBazarFotoThalerTamas2.JPG?width=1200",
+  alt: "ヴァールケルト・バザールのネオルネサンス庭園と回廊",
+  credit: "Thaler Tamas / Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:VarkertBazarFotoThalerTamas2.JPG",
+};
+
+const BUDA_CASTLE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Buda_Castle_from_the_Danube_River.jpg?width=1200",
+  alt: "ドナウ川から望むブダ王宮のパノラマ",
+  credit: "Mgimelfarb / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Buda_Castle_from_the_Danube_River.jpg",
+};
+
+const MATTHIAS_CHURCH_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Matthias_Church,_Budapest,_2017.jpg?width=1200",
+  alt: "ジョルナイ瓦が鮮やかなマーチャーシュ教会",
+  credit: "Stefan Schäfer / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Matthias_Church,_Budapest,_2017.jpg",
+};
+
+const FISHERMANS_BASTION_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Fishermans_bastion_Budapest_IMG_1429.JPG?width=1200",
+  alt: "白亜の尖塔と回廊が美しい漁夫の砦",
+  credit: "Bjoertvedt / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Fishermans_bastion_Budapest_IMG_1429.JPG",
+};
+
+const PARLIAMENT_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_Building_(Budapest,_Hungary).jpg?width=1200",
+  alt: "ドナウ河畔に佇むハンガリー国会議事堂",
+  credit: "Andrew Shiva / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Parliament_Building_(Budapest,_Hungary).jpg",
+};
+
+const POSTAL_SAVINGS_BANK_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Budapest_-_Postatakar%C3%A9kp%C3%A9nzt%C3%A1r.jpg?width=1200",
+  alt: "レフネル・エデン設計の旧郵便貯金局（ハンガリー・アールヌーヴォー建築）",
+  credit: "Wikimedia Commons / CC BY-SA",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Budapest_-_Postatakar%C3%A9kp%C3%A9nzt%C3%A1r.jpg",
+};
+
+const ST_STEPHEN_BASILICA_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Saint_Stephen%27s_Basilica_Budapest.jpg?width=1200",
+  alt: "ブダペスト最大のカトリック教会 聖イシュトヴァーン大聖堂",
+  credit: "Jorge Láscar / Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Saint_Stephen%27s_Basilica_Budapest.jpg",
+};
+
+const OPERA_HOUSE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Hungarian_State_Opera_House_in_Budapest.jpg?width=1200",
+  alt: "ネオルネサンス様式の豪奢なハンガリー国立歌劇場",
+  credit: "Jeremy Oakley / Wikimedia Commons / CC BY 2.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Hungarian_State_Opera_House_in_Budapest.jpg",
+};
+
+const HEROES_SQUARE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Heroes_Square_Budapest,_Hungary.jpg?width=1200",
+  alt: "建国千年記念碑がそびえる英雄広場",
+  credit: "Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Heroes_Square_Budapest,_Hungary.jpg",
+};
+
+const VAJDAHUNYAD_CASTLE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Budapest,_Vajdahunyad_Castle.jpg?width=1200",
+  alt: "市民公園内のヴァイダフニャディ城",
+  credit: "Batomi / Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Budapest,_Vajdahunyad_Castle.jpg",
+};
+
+const ST_STEPHANS_VIENNA_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wien_-_Stephansdom_(1).JPG?width=1200",
+  alt: "ウィーンのシンボル シュテファン大聖堂",
+  credit: "C.Stadler/Bwag / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Wien_-_Stephansdom_(1).JPG",
+};
+
+const SCHONBRUNN_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Sch%C3%B6nbrunn_palace.jpg?width=1200",
+  alt: "ハプスブルク家の離宮 シェーンブルン宮殿",
+  credit: "Simon Matzinger / Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Sch%C3%B6nbrunn_palace.jpg",
+};
+
+const CHARLES_BRIDGE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Bridge,_Prague_pic1.JPG?width=1200",
+  alt: "ヴルタヴァ川にかかるカレル橋とプラハ城の遠景",
+  credit: "Alf van Beem / Wikimedia Commons / Public domain",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Charles_Bridge,_Prague_pic1.JPG",
+};
+
 // ─── データ定数 ───────────────────────────────────────────────────────────────
 
 const DAYS = [
@@ -38,13 +136,13 @@ const DAYS = [
       { time: "14:45頃", label: "Kálvin tér M 降車 ─ ホテルへ移動", desc: "Kálvin térから徒歩約10分、または地下鉄M4線で1駅「Rákóczi tér」へ（徒歩3分）", icon: "🚶", coords: [47.4896, 19.0617] },
       { time: "15:00頃", label: "The Amberlyn Suite Hotel チェックイン", desc: "チェックインして荷物を置きひと息・身支度。キッチン・リビング付きスイートアパートホテル（2泊）", icon: "🏨", important: true, url: "https://www.booking.com/hotel/hu/the-amberlyn-aparthotel.ja.html", mapUrl: "https://maps.google.com/?q=The+Amberlyn+Suite+Hotel+Budapest", coords: [47.4937, 19.0682] },
       { time: "15:45", label: "ホテル出発 ─ ドナウ河畔・くさり橋へ", desc: "トラム47/49番でDeák Ferenc tér経由、または地下鉄M4＋トラム2番でドナウ河畔へ移動。くさり橋ペシュト側へ", icon: "🚃", coords: [47.4937, 19.0682] },
-      { time: "16:15", label: "くさり橋（Széchenyi Lánchíd）渡橋", desc: "【コース1】ドナウ川にかかるブダペスト最古の美しい吊り橋。歩行者専用歩道を歩きながらペシュト側からブダ側へ渡橋（徒歩約15分）。日没（16:15頃）の夕暮れの光が差し込む絶景", icon: "🌉", important: true, mapUrl: "https://maps.google.com/?q=Sz%C3%A9chenyi+L%C3%A1nch%C3%ADd", coords: [47.4990, 19.0437] },
-      { time: "16:30", label: "ヴァールケルト・バザール（Várkert Bazár）", desc: "【コース2】王宮の東麓に広がるネオルネサンス様式の庭園・回廊建築（ミクローシュ・イブル設計）。美しい庭園からエスカレーター/エレベーターを使って王宮の丘へ無料で上がれる（徒歩5分）", icon: "🏛", url: "https://varkertbazar.hu/", mapUrl: "https://maps.google.com/?q=V%C3%A1rkert+Baz%C3%A1r+Budapest", coords: [47.4947, 19.0416] },
-      { time: "16:45", label: "ブダ王宮（Budavári Palota）＆ 展望テラス", desc: "【コース3】歴代国王の居城であった壮大な宮殿。サヴォイア公オイゲン騎馬像前のテラスから、夕暮れ〜ライトアップで黄金に輝き始めるドナウ川・くさり橋・対岸の国会議事堂を一望（徒歩15分）", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.google.com/?q=Buda+Castle+Budapest", coords: [47.4962, 19.0396] },
+      { time: "16:15", label: "くさり橋（Széchenyi Lánchíd）渡橋", desc: "【コース1】ドナウ川にかかるブダペスト最古の美しい吊り橋。歩行者専用歩道を歩きながらペシュト側からブダ側へ渡橋（徒歩約15分）。日没（16:15頃）の夕暮れの光が差し込む絶景", icon: "🌉", important: true, mapUrl: "https://maps.google.com/?q=Sz%C3%A9chenyi+L%C3%A1nch%C3%ADd", coords: [47.4990, 19.0437], image: CHAIN_BRIDGE_IMAGE },
+      { time: "16:30", label: "ヴァールケルト・バザール（Várkert Bazár）", desc: "【コース2】王宮の東麓に広がるネオルネサンス様式の庭園・回廊建築（ミクローシュ・イブル設計）。美しい庭園からエスカレーター/エレベーターを使って王宮の丘へ無料で上がれる（徒歩5分）", icon: "🏛", url: "https://varkertbazar.hu/", mapUrl: "https://maps.google.com/?q=V%C3%A1rkert+Baz%C3%A1r+Budapest", coords: [47.4947, 19.0416], image: VARKERT_BAZAR_IMAGE },
+      { time: "16:45", label: "ブダ王宮（Budavári Palota）＆ 展望テラス", desc: "【コース3】歴代国王の居城であった壮大な宮殿。サヴォイア公オイゲン騎馬像前のテラスから、夕暮れ〜ライトアップで黄金に輝き始めるドナウ川・くさり橋・対岸の国会議事堂を一望（徒歩15分）", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.google.com/?q=Buda+Castle+Budapest", coords: [47.4962, 19.0396], image: BUDA_CASTLE_IMAGE },
       { time: "17:15", label: "ルスヴルム・ツクラースダ（Ruszwurm Cukrászda）", desc: "【コース4】1827年創業、王宮の丘で最も古くハプスブルク皇妃エリザベート（シシィ）も愛した老舗カフェ。名物の伝統カスタードケーキ「ルスヴルム・クレーメシュ」で優雅なカフェ休憩（徒歩1分）", icon: "☕", important: true, url: "http://www.ruszwurm.hu/", mapUrl: "https://maps.google.com/?q=Ruszwurm+Cukr%C3%A1szda+Budapest", coords: [47.5015, 19.0331] },
       { time: "17:50", label: "三位一体広場（Szentháromság tér）", desc: "【コース5】王宮地区の中心広場。ペスト終息を神に感謝して18世紀初頭に建てられたバロック様式の「三位一体の柱」が中央にそびえる（徒歩すぐ）", icon: "🏛", mapUrl: "https://maps.google.com/?q=Szenth%C3%A1roms%C3%A1g+t%C3%A9r+Budapest", coords: [47.5017, 19.0341] },
-      { time: "18:00", label: "マーチャーシュ教会（Mátyás-templom）", desc: "【コース6】歴代ハンガリー国王の戴冠式が行われたゴシック様式の名教会。色鮮やかなジョルナイ製ダイヤモンド柄の屋根瓦と壮麗な尖塔がライトアップされて夜空に浮かび上がる（徒歩すぐ）", icon: "⛪", important: true, url: "https://matyas-templom.hu/", mapUrl: "https://maps.google.com/?q=Matthias+Church+Budapest", coords: [47.5019, 19.0342] },
-      { time: "18:20", label: "漁夫の砦（Halászbástya）", desc: "【コース7】7つの尖塔と白亜の回廊が連なるロマンチックな展望砦。回廊のアーチ窓越しに、漆黒のドナウ川と黄金色に輝く国会議事堂を見渡すブダペスト随一の夜景名所（徒歩すぐ・夜間は上層テラスも無料開放）", icon: "🏰", important: true, url: "https://www.fishermansbastion.com/", mapUrl: "https://maps.google.com/?q=Fisherman%27s+Bastion+Budapest", coords: [47.5022, 19.0347] },
+      { time: "18:00", label: "マーチャーシュ教会（Mátyás-templom）", desc: "【コース6】歴代ハンガリー国王の戴冠式が行われたゴシック様式の名教会。色鮮やかなジョルナイ製ダイヤモンド柄の屋根瓦と壮麗な尖塔がライトアップされて夜空に浮かび上がる（徒歩すぐ）", icon: "⛪", important: true, url: "https://matyas-templom.hu/", mapUrl: "https://maps.google.com/?q=Matthias+Church+Budapest", coords: [47.5019, 19.0342], image: MATTHIAS_CHURCH_IMAGE },
+      { time: "18:20", label: "漁夫の砦（Halászbástya）", desc: "【コース7】7つの尖塔と白亜の回廊が連なるロマンチックな展望砦。回廊のアーチ窓越しに、漆黒のドナウ川と黄金色に輝く国会議事堂を見渡すブダペスト随一の夜景名所（徒歩すぐ・夜間は上層テラスも無料開放）", icon: "🏰", important: true, url: "https://www.fishermansbastion.com/", mapUrl: "https://maps.google.com/?q=Fisherman%27s+Bastion+Budapest", coords: [47.5022, 19.0347], image: FISHERMANS_BASTION_IMAGE },
       { time: "18:50", label: "ホワイト・レイヴン・スカイバー＆ラウンジ", desc: "【コース8・GOAL】ヒルトン・ブダペストの屋上に位置する最高峰ルーフトップバー。マーチャーシュ教会の屋根瓦とドナウ夜景を間近に見下ろしながら、特製カクテルとディナーで初日の夜を乾杯（スマートカジュアル・要事前予約）", icon: "🍸", important: true, url: "https://whiteravenskybar.com/", mapUrl: "https://maps.google.com/?q=White+Raven+Skybar+Budapest", coords: [47.5027, 19.0340] },
       { time: "21:00", label: "ホテル帰着 ＆ 就寝", desc: "三位一体広場前から16番バスでDeák Ferenc térへ（約10分）。地下鉄M4でThe Amberlyn Suite Hotelへ戻り就寝", icon: "🏨", coords: [47.4937, 19.0682] },
     ],
@@ -109,14 +207,14 @@ const DAYS = [
     icon: "🏰",
     schedule: [
       { time: "09:00", label: "ホテル出発 → Kossuth Lajos térへ", desc: "地下鉄M4（Rákóczi tér → Kálvin tér）＋ M3/M2線に乗換えて「Kossuth Lajos tér」駅へ移動（約20分）", icon: "🚇", coords: [47.4937, 19.0682] },
-      { time: "09:30", label: "ハンガリー国会議事堂（Országház）", desc: "【コース1】ドナウ河畔に佇む壮麗なネオゴシック建築。大階段の間・ドームの間（聖イシュトヴァーンの王冠）・旧上院議場を巡る内部ツアー（非EU大人14,000HUF・要事前予約）。河畔の「ドナウ川遊歩道の靴」もすぐ（徒歩10分）", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457] },
-      { time: "10:45", label: "旧郵便貯金局（Postatakarékpénztár）", desc: "【コース2】「ハンガリーのガウディ」レフネル・エデン設計のアール・ヌーヴォー建築傑作（現ハンガリー国立銀行別館・Hold u. 4）。ジョルナイ陶器のカラフルな屋根飾りやミツバチ・植物モチーフの外観レリーフが見どころ（外観見学・徒歩5分）", icon: "🏦", mapUrl: "https://maps.google.com/?q=Postatakar%C3%A9kp%C3%A9nzt%C3%A1r+Hold+utca+4+Budapest", coords: [47.5034, 19.0532] },
-      { time: "11:15", label: "聖イシュトヴァーン大聖堂（Szent István-bazilika）", desc: "【コース3】初代国王を祀るブダペスト最大のカトリック教会。高さ96mの大ドーム、黄金の天井装飾、聖遺物（右手のミイラ）が見どころ。展望パノラマテラスからは市内360度を一望（徒歩10分）", icon: "⛪", important: true, url: "https://www.bazilika.biz/", mapUrl: "https://maps.google.com/?q=St.+Stephen%27s+Basilica+Budapest", coords: [47.5009, 19.0540] },
+      { time: "09:30", label: "ハンガリー国会議事堂（Országház）", desc: "【コース1】ドナウ河畔に佇む壮麗なネオゴシック建築。大階段の間・ドームの間（聖イシュトヴァーンの王冠）・旧上院議場を巡る内部ツアー（非EU大人14,000HUF・要事前予約）。河畔の「ドナウ川遊歩道の靴」もすぐ（徒歩10分）", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457], image: PARLIAMENT_IMAGE },
+      { time: "10:45", label: "旧郵便貯金局（Postatakarékpénztár）", desc: "【コース2】「ハンガリーのガウディ」レフネル・エデン設計のアール・ヌーヴォー建築傑作（現ハンガリー国立銀行別館・Hold u. 4）。ジョルナイ陶器のカラフルな屋根飾りやミツバチ・植物モチーフの外観レリーフが見どころ（外観見学・徒歩5分）", icon: "🏦", mapUrl: "https://maps.google.com/?q=Postatakar%C3%A9kp%C3%A9nzt%C3%A1r+Hold+utca+4+Budapest", coords: [47.5034, 19.0532], image: POSTAL_SAVINGS_BANK_IMAGE },
+      { time: "11:15", label: "聖イシュトヴァーン大聖堂（Szent István-bazilika）", desc: "【コース3】初代国王を祀るブダペスト最大のカトリック教会。高さ96mの大ドーム、黄金の天井装飾、聖遺物（右手のミイラ）が見どころ。展望パノラマテラスからは市内360度を一望（徒歩10分）", icon: "⛪", important: true, url: "https://www.bazilika.biz/", mapUrl: "https://maps.google.com/?q=St.+Stephen%27s+Basilica+Budapest", coords: [47.5009, 19.0540], image: ST_STEPHEN_BASILICA_IMAGE },
       { time: "12:00", label: "アンドラーシ通り（Andrássy út）散策 ＆ ランチ", desc: "【コース4】「ブダペストのシャンゼリゼ」と称される世界遺産の大通り。優美な19世紀貴族邸宅が並ぶ並木道を散策しながら、伝統レストランで名物グヤーシュやパプリカーシュ・チルケのランチ（徒歩3分）", icon: "🍽", important: true, mapUrl: "https://maps.google.com/?q=Andr%C3%A1ssy+%C3%BAt+Budapest", coords: [47.5018, 19.0583] },
-      { time: "13:30", label: "ハンガリー国立歌劇場（Magyar Állami Operaház）", desc: "【コース5】ミクローシュ・イブル設計によるネオルネサンス様式の豪奢な歌劇場。大理石の大階段、金箔とフレスコ画で飾られた壮麗な客席、スフィンクス像が美しい（徒歩10分）", icon: "🎭", url: "https://www.opera.hu/", mapUrl: "https://maps.google.com/?q=Hungarian+State+Opera+House", coords: [47.5028, 19.0582] },
+      { time: "13:30", label: "ハンガリー国立歌劇場（Magyar Állami Operaház）", desc: "【コース5】ミクローシュ・イブル設計によるネオルネサンス様式の豪奢な歌劇場。大理石の大階段、金箔とフレスコ画で飾られた壮麗な客席、スフィンクス像が美しい（徒歩10分）", icon: "🎭", url: "https://www.opera.hu/", mapUrl: "https://maps.google.com/?q=Hungarian+State+Opera+House", coords: [47.5028, 19.0582], image: OPERA_HOUSE_IMAGE },
       { time: "14:15", label: "リスト・フェレンツ記念館（Liszt Ferenc Emlékmúzeum）", desc: "【コース6】大作曲家フランツ・リストが晩年に暮らした旧音楽院のアパートメント（Vörösmarty u. 35）。愛用のベーゼンドルファーやチッカリングのピアノ、直筆楽譜、書斎が当時のまま保存されている（入場2,000HUF・徒歩7分）", icon: "🎼", important: true, url: "https://lisztmuseum.hu/", mapUrl: "https://maps.google.com/?q=Liszt+Ferenc+Memorial+Museum+Budapest", coords: [47.5070, 19.0664] },
-      { time: "15:15", label: "英雄広場（Hősök tere）", desc: "【コース7】地下鉄M1線（世界遺産）に乗車またはアンドラーシ通りを進み、ハンガリー建国1000年を記念して造られた大広場へ。大天使ガブリエル像と歴代英雄の列柱像が立ち並ぶ（徒歩3分）", icon: "🏛", important: true, mapUrl: "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest", coords: [47.5149, 19.0779] },
-      { time: "15:45", label: "市民公園（Városliget）", desc: "【コース8】英雄広場の背後に広がる広大な歴史的公園。池やヴァイダフニャディ城の景観を楽しみながら散策（徒歩8分）", icon: "🌳", url: "https://ligetbudapest.hu/", mapUrl: "https://maps.google.com/?q=V%C3%A1rosliget+Budapest", coords: [47.5142, 19.0833] },
+      { time: "15:15", label: "英雄広場（Hősök tere）", desc: "【コース7】地下鉄M1線（世界遺産）に乗車またはアンドラーシ通りを進み、ハンガリー建国1000年を記念して造られた大広場へ。大天使ガブリエル像と歴代英雄の列柱像が立ち並ぶ（徒歩3分）", icon: "🏛", important: true, mapUrl: "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest", coords: [47.5149, 19.0779], image: HEROES_SQUARE_IMAGE },
+      { time: "15:45", label: "市民公園（Városliget）", desc: "【コース8】英雄広場の背後に広がる広大な歴史的公園。池やヴァイダフニャディ城の景観を楽しみながら散策（徒歩8分）", icon: "🌳", url: "https://ligetbudapest.hu/", mapUrl: "https://maps.google.com/?q=V%C3%A1rosliget+Budapest", coords: [47.5142, 19.0833], image: VAJDAHUNYAD_CASTLE_IMAGE },
       { time: "16:15", label: "国立民族博物館（Néprajzi Múzeum）", desc: "【コース9・GOAL】市民公園内に2022年オープンした世界最高峰の現代建築（リゲット・ブダペスト計画）。緩やかに湾曲した巨大な屋上緑地テラスから公園と市内を一望。伝統文化・民族資料の充実展示（GOAL）", icon: "🏛", important: true, url: "https://www.neprajz.hu/", mapUrl: "https://maps.google.com/?q=Museum+of+Ethnography+Budapest", coords: [47.5126, 19.0805] },
       { time: "18:00", label: "ペシュト中心部へ移動 ＆ ディナー", desc: "世界遺産の地下鉄M1線（レトロな黄色い車両）で市内中心Vörösmarty tér方面へ戻りディナー。乗船場所のヴィガード広場（Vigadó tér）へ移動", icon: "🍽", coords: [47.4950, 19.0505] },
       { time: "20:00", label: "ドナウ川 ナイト観光クルーズ（ウェルカムドリンク付）", desc: "Vigadó tér 5番桟橋（Mahart Cruises）から出航。漆黒のドナウ川から黄金色に輝く国会議事堂・ブダ城・くさり橋を船上から一望する約1時間のパノラマクルーズ（ドリンク1杯付）", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88", coords: [47.4950, 19.0505] },
@@ -181,7 +279,7 @@ const DAYS = [
       { time: "08:40", label: "ブダペスト東駅（Keleti）発", desc: "Railjet 62（直通・約2時間40分）。ÖBB/MÁV共同運行。車内Wi-Fi・電源あり。早割券は変更不可", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
       { time: "11:20", label: "ウィーン中央駅（Wien Hbf）着", desc: "地下鉄U1で市内中心（Stephansplatz）まで直通約5分。明るい時間に到着", icon: "🚉", coords: [48.1848, 16.3765] },
       { time: "11:50", label: "ホテルへ荷物預け ＆ ランチ", desc: "ホテルにスーツケースを預けて身軽になり、ウィーン風シュニッツェル等のランチへ", icon: "🍽", coords: [48.2085, 16.3721] },
-      { time: "13:30〜", label: "ウィーン市内散策", desc: "ケルントナー通り、シュテファン大聖堂、伝統カフェ（カフェ・ツェントラル等）をのんびり巡る", icon: "🗺", important: true, coords: [48.2085, 16.3721] },
+      { time: "13:30〜", label: "ウィーン市内散策", desc: "ケルントナー通り、シュテファン大聖堂、伝統カフェ（カフェ・ツェントラル等）をのんびり巡る", icon: "🗺", important: true, coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
     ],
     booking: {
       title: "鉄道チケット（ブダペスト → ウィーン）",
@@ -221,7 +319,7 @@ const DAYS = [
     color: "#4a7a9a",
     icon: "👑",
     schedule: [
-      { time: "終日", label: "ウィーン 市内観光", desc: "観光先は後で確定。土曜なので美術館の混雑と、日曜休業の店を意識した順番にすると無駄がない", icon: "🗺", important: true },
+      { time: "終日", label: "ウィーン 市内観光", desc: "シェーンブルン宮殿、美術史美術館、ベルヴェデーレ宮殿、市庁舎前クリスマスマーケットなどを満喫。土曜なので美術館の混雑を考慮して早めの行動が吉", icon: "🗺", important: true, image: SCHONBRUNN_IMAGE },
     ],
     memo: {
       bg: "linear-gradient(135deg,#f8f4e8,#f5efdc)",
