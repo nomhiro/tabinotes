@@ -372,9 +372,10 @@ const DAYS = [
     schedule: [
       { time: "06:30頃", label: "ホテル チェックアウト・駅へ移動", desc: "ウィーン中央駅へ移動。駅構内のベーカリーで朝食・コーヒーを調達（車内食堂車も利用可能）", icon: "🥐", coords: [48.1848, 16.3765] },
       { time: "07:10", label: "ウィーン中央駅（Wien Hbf）発", desc: "Railjet 72（直通・約4時間13分）。※ゆっくり出発の場合は09:10発（Railjet 256）も選択肢。日曜は混雑するため座席指定必須", icon: "🚆", important: true, coords: [48.1848, 16.3765] },
-      { time: "11:23", label: "プラハ本駅（hlavní nádraží）着", desc: "地下鉄C線またはトラム・徒歩でホテルへ。明るいお昼前に到着でき安全・スムーズ", icon: "🚉", coords: [50.0833, 14.4356] },
-      { time: "12:00", label: "ホテルへ荷物預け ＆ チェコランチ", desc: "荷物を預けて旧市街へ。伝統的なグヤーシュやチェコビールで乾杯", icon: "🍺", coords: [50.087, 14.4208] },
+      { time: "11:23", label: "プラハ本駅（hlavní nádraží）着", desc: "地下鉄C線またはトラム・徒歩でYoungmann Houseへ。明るいお昼前に到着でき安全・スムーズ", icon: "🚉", coords: [50.0833, 14.4356] },
+      { time: "12:00", label: "Youngmann Houseへ荷物預け ＆ チェコランチ", desc: "宿に荷物を預けて旧市街へ。伝統的なグヤーシュやチェコビールで乾杯", icon: "🍺", mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
       { time: "13:30〜", label: "プラハ 旧市街散策", desc: "旧市街広場、天文時計、カレル橋を散策。日没（16:15頃）のカレル橋ライトアップへ", icon: "🏰", important: true, coords: [50.087, 14.4208], image: PRAGUE_OLD_TOWN_IMAGE },
+      { time: "15:00", label: "Youngmann House チェックイン", desc: "予約済みのダブルまたはツインルーム（2泊）へチェックイン", icon: "🏨", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
     ],
     booking: {
       title: "鉄道チケット（ウィーン → プラハ）",
@@ -406,6 +407,24 @@ const DAYS = [
         </>
       ),
     },
+    extraBookings: [
+      {
+        key: "youngmann-house-prague",
+        icon: "🏨",
+        title: "Youngmann House（プラハ 2泊）",
+        mapUrl: "https://maps.google.com/?q=Youngmann+House+Prague",
+        details: [
+          { label: "施設名", value: "Youngmann House" },
+          { label: "住所", value: "Jungmannovo náměstí 757/14, 110 00 Praha 1, Czech Republic" },
+          { label: "宿泊期間", value: "2026年11月22日（日）〜 11月24日（火）（2泊）" },
+          { label: "部屋・人数", value: "ダブルまたはツインルーム ／ 大人2名" },
+          { label: "チェックイン", value: "2026年11月22日（日）15:00〜" },
+          { label: "チェックアウト", value: "2026年11月24日（火）午前" },
+          { label: "料金", value: "¥28,407（支払い合計）／換算目安 ¥27,579" },
+          { label: "予約状況", value: "Booking.com 予約済・返金不可" },
+        ],
+      },
+    ],
   },
   {
     day: 6,
@@ -443,8 +462,8 @@ const DAYS = [
     color: "#7a5a3a",
     icon: "🛫",
     schedule: [
-      { time: "朝", label: "チェックアウト", desc: "荷物はフロントに預け、午前だけプラハを満喫", icon: "🧳", important: true },
-      { time: "10:30", label: "ホテル発", desc: "トロリーバス59＋地下鉄A線（Nádraží Veleslavín 乗換）で45〜60分。90分券1枚で通し・約50CZK/人", icon: "🚌", important: true },
+      { time: "朝", label: "Youngmann House チェックアウト", desc: "荷物は宿に預け、午前だけプラハを満喫", icon: "🧳", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague" },
+      { time: "10:30", label: "Youngmann House 発", desc: "荷物を受け取り、トロリーバス59＋地下鉄A線（Nádraží Veleslavín 乗換）で45〜60分。90分券1枚で通し・約50CZK/人", icon: "🚌", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague" },
       { time: "11:45", label: "プラハ空港 着", desc: "出発3時間前。第1ターミナル", icon: "✈", coords: [50.1008, 14.26] },
       { time: "14:45 PRG", label: "プラハ（PRG）出発", desc: "EK140・エミレーツ。第1ターミナル。Airbus A380-800／飛行5時間55分。JST 22:45", icon: "✈", important: true, coords: [50.1008, 14.26] },
       { time: "23:40 DXB", label: "ドバイ（DXB）着", desc: "EK140到着。乗継 3時間15分の深夜乗継。JST 翌04:40頃", icon: "🇦🇪" },
@@ -517,7 +536,7 @@ const COSTS = [
   { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "手配要 早割€13〜/人（MÁV）または €19.90〜/人（ÖBB）" },
   { item: "鉄道 ウィーン→プラハ（2名）", cost: 0, note: "手配要 早割€14.90〜/人（ÖBB）または €15〜/人（RegioJet）" },
   { item: "ウィーン 2泊（ARCOTEL Wimberger Wien・2名）", cost: 40277, note: "予約済・支払済 €198.61（約¥40,277／税・サービス料込み）・予約番号 5340692962" },
-  { item: "プラハ 2泊（2名）", cost: 0, note: "手配要" },
+  { item: "プラハ 2泊（Youngmann House・2名）", cost: 28407, note: "予約済・支払済 Booking.com（¥28,407／換算目安¥27,579）・返金不可" },
   { item: "空港バス 100E（ブダペスト空港→Kálvin tér、2名）", cost: 2100, note: "2,500HUF×2名（クレカタッチ決済 約¥2,100）" },
   { item: "ブダペスト市内交通 24時間券（2名）", cost: 2100, note: "2,500HUF×2名（地下鉄・トラム乗り放題 約¥2,100）" },
   { item: "国会議事堂 ガイドツアー（2名・任意）", cost: 0, note: "見学希望時 14,000HUF×2名（約¥11,600・要事前予約）／外観散策は無料" },
@@ -717,7 +736,7 @@ export default function EuropeTrip() {
               </tfoot>
             </table>
             <div className="eu-cost-note">
-              ※ 航空券（2名合計¥457,440）とウィーン宿泊（2名2泊・¥40,277相当）は予約済み・支払済みです。<br />
+              ※ 航空券（2名合計¥457,440）、ウィーン宿泊（2名2泊・¥40,277相当）、プラハ宿泊（2名2泊・¥28,407）は予約済み・支払済みです。<br />
               宿泊税（ブダペスト4%・プラハ50CZK/人泊）は現地払いです。ウィーン市税5%は宿泊料金に含まれています。<br />
               食費・市内交通・観光入場料は含まれていません。
             </div>
