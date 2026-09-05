@@ -100,6 +100,27 @@ const SCHONBRUNN_IMAGE = {
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Sch%C3%B6nbrunn_palace.jpg",
 };
 
+const PRUNKSAAL_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wien%2C_%C3%96sterreichische_Nationalbibliothek%2C_Prunksaal_(1726)_(27870057169).jpg?width=1200",
+  alt: "オーストリア国立図書館 プルンクザール（豪華絢爛なバロック建築）",
+  credit: "Herbert Frank / Wikimedia Commons / CC BY 2.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Wien,_%C3%96sterreichische_Nationalbibliothek,_Prunksaal_(1726)_(27870057169).jpg",
+};
+
+const BELVEDERE_PALACE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wien_-_Schloss_Belvedere%2C_oberes_(1).JPG?width=1200",
+  alt: "バロック建築の傑作 ベルヴェデーレ上宮",
+  credit: "C.Stadler/Bwag / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Wien_-_Schloss_Belvedere,_oberes_(1).JPG",
+};
+
+const RATHAUS_MARKET_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wien_-_Christkindlmarkt%2C_Rathausplatz.JPG?width=1200",
+  alt: "市庁舎前広場のクリスマスマーケット（ウィーン・クリスマス・ドリーム）",
+  credit: "C.Stadler/Bwag / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Wien_-_Christkindlmarkt,_Rathausplatz.JPG",
+};
+
 const CHARLES_BRIDGE_IMAGE = {
   src: "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Bridge,_Prague_pic1.JPG?width=1200",
   alt: "ヴルタヴァ川にかかるカレル橋とプラハ城の遠景",
@@ -272,18 +293,57 @@ const DAYS = [
   {
     day: 3,
     date: "11月20日（金）",
-    title: "ブダペスト → ウィーン（朝の鉄道移動・所要2時間40分）",
+    title: "ブダペスト → ウィーン ＆ 旧市街散策・バロック宮廷図書館・市庁舎クリスマスマーケット",
     color: "#4a7a9a",
     icon: "🚄",
     schedule: [
       { time: "07:45頃", label: "ホテル チェックアウト・Keleti駅へ移動", desc: "Budapest Panorama Centralをチェックアウト。地下鉄M2「Astoria」から「Keleti pályaudvar」へ直通2駅（約4分）。出発30分前には駅に到着", icon: "🏨", coords: [47.4947, 19.0595] },
-      { time: "08:40", label: "ブダペスト東駅（Keleti）発", desc: "Railjet 62（直通・約2時間40分）。ÖBB/MÁV共同運行。車内Wi-Fi・電源あり。早割券は変更不可", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
-      { time: "11:20", label: "ウィーン中央駅（Wien Hbf）着", desc: "地下鉄U1で市内中心（Stephansplatz）まで直通約5分。明るい時間に到着", icon: "🚉", coords: [48.1848, 16.3765] },
-      { time: "11:50", label: "ウィーン中央駅 → ARCOTEL Wimberger Wien", desc: "Wien Hbfからホテルへ移動（トラムまたはU-Bahn利用）。ホテルはNeubaugürtel 34-36、ウィーン西側のノイバウ地区", icon: "🚋", coords: [48.2049, 16.3378] },
-      { time: "12:00〜13:00", label: "ホテル到着・荷物預け／アーリーチェックイン希望", desc: "12:00〜13:00のチェックインをリクエスト済み（空き状況による）。正式なチェックインは15:00から。入室できない場合は荷物を預けて市内観光へ", icon: "🏨", important: true, url: "https://www.arcotel.com/en/hotels/vienna/arcotel-wimberger/", mapUrl: "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien", coords: [48.2049, 16.3378] },
-      { time: "13:00頃", label: "ランチ ＆ ウィーン市内散策", desc: "荷物を身軽にして、ウィーン風シュニッツェル等のランチへ。ケルントナー通り、シュテファン大聖堂方面を散策", icon: "🍽", coords: [48.2085, 16.3721] },
-      { time: "14:00〜", label: "ウィーン市内散策", desc: "ケルントナー通り、シュテファン大聖堂、伝統カフェ（カフェ・ツェントラル等）をのんびり巡る", icon: "🗺", important: true, coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
+      { time: "08:40", label: "ブダペスト東駅（Keleti）発", desc: "Railjet 62（直通・約2時間40分）。ÖBB/MÁV共同運行。車内Wi-Fi・電源あり。車窓の風景を眺めながら快適に移動", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
+      { time: "11:20", label: "ウィーン中央駅（Wien Hbf）着", desc: "音楽と芸術の都ウィーンに到着。駅構内で48時間市内交通券を購入（またはWienMobilアプリで有効化）", icon: "🚉", coords: [48.1848, 16.3765] },
+      { time: "11:50", label: "ウィーン中央駅 → ARCOTEL Wimberger Wien", desc: "Wien Hbfからトラム18番でWestbahnhof方面へ直通約18分。ホテルはNeubaugürtel 34-36、西駅・U6駅すぐの好立地", icon: "🚋", coords: [48.2049, 16.3378] },
+      { time: "12:15", label: "ホテル到着・荷物預け（アーリーチェックイン確認）", desc: "12:00〜13:00の到着をリクエスト済み。入室できれば身支度、できなければ荷物を預けて身軽になり旧市街へ", icon: "🏨", important: true, url: "https://www.arcotel.com/en/hotels/vienna/arcotel-wimberger/", mapUrl: "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien", coords: [48.2049, 16.3378] },
+      { time: "12:45", label: "地下鉄U3で旧市街中心へ移動", desc: "徒歩4分のWestbahnhof（西駅）から地下鉄U3に乗車。乗換なし直通8分で「Stephansplatz」駅へ到着", icon: "🚇", coords: [48.2085, 16.3721] },
+      { time: "13:00", label: "Lugeck（ルゲック）でウィーンランチ", desc: "【ランチ】フィグルミュラー系列のモダンタバーン。歴史的洋館（Regensburger Hof）で名物シュニッツェルやグラシュを気取らず上質に堪能（徒歩3分）", icon: "🍽", important: true, url: "https://www.lugeck.com/", mapUrl: "https://maps.google.com/?q=Lugeck+Vienna", coords: [48.2096, 16.3749] },
+      { time: "14:00", label: "シュテファン大聖堂（Stephansdom）＆ 北塔展望台", desc: "【コース1】ウィーンの象徴。壮麗なゴシック建築と色鮮やかなモザイク屋根。エレベーターで上がれる「北塔（Pummerinの大鐘）」から旧市街の街並みを一望（徒歩すぐ）", icon: "⛪", important: true, url: "https://www.stephanskirche.at/", mapUrl: "https://maps.google.com/?q=Stephansdom+Vienna", coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
+      { time: "14:45", label: "グラーベン ＆ ペーター教会（Peterskirche）散策", desc: "【コース2】歩行者天国の優美な大通り「グラーベン」を散策。ペスト記念柱と、壮麗なバロック装飾が施されたペーター教会へ立ち寄り（入場無料・徒歩5分）", icon: "🏛", url: "https://www.peterskirche.at/", mapUrl: "https://maps.google.com/?q=Peterskirche+Vienna", coords: [48.2094, 16.3700] },
+      { time: "15:30", label: "オーストリア国立図書館 プルンクザール（Prunksaal）", desc: "【コース3】ホーフブルク（王宮）ヨーゼフ広場にある「世界一美しいバロック宮廷図書館」。20万冊の革装丁古書と壮大な天井フレスコ画が織りなす空間（入場€10・徒歩5分）", icon: "📚", important: true, url: "https://www.onb.ac.at/en/museums/state-hall", mapUrl: "https://maps.google.com/?q=Prunksaal+der+%C3%96sterreichischen+Nationalbibliothek", coords: [48.2064, 16.3669], image: PRUNKSAAL_IMAGE },
+      { time: "16:30", label: "ゲルストナー皇室御用達菓子店（Gerstner）カフェ休憩", desc: "【カフェ】1847年創業、国立歌劇場向かいの老舗。1階ショップから3階サロンへ上がると宮殿のような豪奢な空間。本場のザッハトルテやメランジェで贅沢なティータイム（徒歩7分）", icon: "☕", important: true, url: "https://www.gerstner-konditorei.at/", mapUrl: "https://maps.google.com/?q=Gerstner+K.u.K.+Hofzuckerb%C3%A4cker+Vienna", coords: [48.2033, 16.3698] },
+      { time: "17:30", label: "市庁舎前広場 クリスマスマーケット（Christkindlmarkt）", desc: "【コース4】ウィーン最大規模の夢のマーケット。壮麗なネオゴシック様式の市庁舎が金色にライトアップされ、巨大ツリーと無数の屋台が輝く絶景。特製マグカップで温かいプンシュを味わう（トラム1番で移動約10分）", icon: "🎄", important: true, url: "https://www.christkindlmarkt.at/", mapUrl: "https://maps.google.com/?q=Christkindlmarkt+Rathausplatz+Vienna", coords: [48.2109, 16.3575], image: RATHAUS_MARKET_IMAGE },
+      { time: "19:15", label: "Meissl & Schadn で正統派ディナー", desc: "【ディナー】リング通り沿いの上品なレストラン。オープンキッチンで揚げる本場仔牛のウィーナーシュニッツェルをゆったりと堪能（市庁舎からトラム1番で約10分・要事前予約）", icon: "🍽", important: true, url: "https://meisslundschadn.at/en/meissl-schadn-vienna/", mapUrl: "https://maps.google.com/?q=Meissl+%26+Schadn+Wien", coords: [48.2017, 16.3734] },
+      { time: "21:15", label: "夜景トラム ＆ ホテル帰着", desc: "ライトアップされたリング通りの建築美を眺めながらトラムまたは地下鉄でWestbahnhofへ戻り、ARCOTEL Wimbergerでゆっくり休む", icon: "🏨", coords: [48.2049, 16.3378] },
     ],
+    dinner: {
+      title: "ウィーン初日 ディナー候補（金曜夜・予約推奨）",
+      options: [
+        {
+          name: "Meissl & Schadn Wien",
+          genre: "正統派仔牛シュニッツェル・オープンキッチン",
+          desc: "リング通り沿いの格式ある名店。職人が目の前で叩いて揚げる本場仔牛のシュニッツェル。落ち着いた夫婦ディナーに最適",
+          tel: "+43 1 90211",
+          url: "https://meisslundschadn.at/en/meissl-schadn-vienna/",
+          mapUrl: "https://maps.google.com/?q=Meissl+%26+Schadn+Wien",
+          coords: [48.2017, 16.3734],
+        },
+        {
+          name: "Plachutta Wollzeile",
+          genre: "皇帝が愛した名物宮廷料理ターフェルシュピッツ",
+          desc: "ブイヨンで柔らかく煮込んだ最高級牛肉。熱々スープから骨髄トースト、ホースラディッシュソースまで味わう至高の体験",
+          tel: "+43 1 5121577",
+          url: "https://www.plachutta.at/en/",
+          mapUrl: "https://maps.google.com/?q=Plachutta+Wollzeile+Vienna",
+          coords: [48.2089, 16.3780],
+        },
+        {
+          name: "Lugeck（フィグルミュラー系列）",
+          genre: "現代風ウィーン料理＆オーストリアワイン",
+          desc: "歴史あるRegensburger Hof内のスタイリッシュなタバーン。名物シュニッツェルやグラシュを気取らず上質な雰囲気で",
+          tel: "+43 1 5125060",
+          url: "https://www.lugeck.com/",
+          mapUrl: "https://maps.google.com/?q=Lugeck+Vienna",
+          coords: [48.2096, 16.3749],
+        },
+      ],
+    },
     booking: {
       title: "鉄道チケット（ブダペスト → ウィーン）",
       details: [
@@ -303,14 +363,15 @@ const DAYS = [
       titleColor: "#2a5a8a",
       textColor: "#1a3a5a",
       icon: "🚆",
-      title: "ブダペスト → ウィーン 鉄道予約メモ",
+      title: "ウィーン初日 到着＆市内観光メモ",
       body: (
         <>
-          <b>おすすめ便</b>：08:40発（Railjet 62）→ 11:20着。朝食後に出発し、お昼前にウィーンへ着けるベストな時間帯です。<br/>
-          <b>ÖBB Sparschiene Europa</b>：€19.90〜（早割・枚数限定・変更不可）。ÖBB公式アプリまたはwebで予約可能。<br/>
-          <b>MÁV START Europa</b>：€13〜（ハンガリー国鉄サイトのほうが安い場合あり・座席指定別途€3）。<br/>
-          <b>発着駅の注意</b>：ÖBB Railjetは「ブダペスト東駅（Keleti）」発、「ウィーン中央駅（Wien Hbf）」着です。<br/>
-          <b>座席指定</b>：混雑期でなくても2名並び席＆大型荷物置き場近くを確保するため、座席指定（約€3/人）の追加を強く推奨します。
+          <b>48時間市内交通券</b>：大人 €14.10 /人（WienMobilアプリまたは駅券売機で購入）。地下鉄・トラム・バスが48時間乗り放題。<br/>
+          <b>ホテルアクセス</b>：ウィーン西駅（Westbahnhof）から徒歩4分、U6 Burggasse-Stadthalleから徒歩1分。西駅から旧市街中心（Stephansplatz）へは地下鉄U3で直通わずか8分。<br/>
+          <b>国立図書館プルンクザール</b>：王宮ヨーゼフ広場。開館 10:00〜18:00。入場料大人€10。世界屈指のバロック宮廷図書館。<br/>
+          <b>ゲルストナー（Gerstner）</b>：オペラ座前（10:00〜21:00）。3階の宮殿サロンが格別。名物ザッハトルテとメランジェ。<br/>
+          <b>市庁舎前クリスマスマーケット</b>：10:00〜22:00（入場無料）。16:30の日没以降、市庁舎の黄金ライトアップとイルミネーションが最高潮を迎えます。<br/>
+          <b>ディナー予約</b>：金曜夜は混み合うため、Meissl & Schadn や Plachutta は日本出発前のweb予約を推奨。
         </>
       ),
     },
@@ -339,27 +400,68 @@ const DAYS = [
   {
     day: 4,
     date: "11月21日（土）",
-    title: "ウィーン ─ 終日観光",
+    title: "ウィーン ─ シェーンブルン宮殿・ベルヴェデーレ上宮 ＆ 芸術とマーケット巡り",
     color: "#4a7a9a",
     icon: "👑",
     schedule: [
-      { time: "終日", label: "ウィーン 市内観光", desc: "シェーンブルン宮殿、美術史美術館、ベルヴェデーレ宮殿、市庁舎前クリスマスマーケットなどを満喫。土曜なので美術館の混雑を考慮して早めの行動が吉", icon: "🗺", important: true, image: SCHONBRUNN_IMAGE },
+      { time: "08:45", label: "ホテル出発 → 西駅からシェーンブルンへ", desc: "Westbahnhofからトラム52/60番またはU6→U4で約15〜20分。朝の澄んだ空気の中、夏の離宮へ向かう", icon: "🚋", coords: [48.2049, 16.3378] },
+      { time: "09:15", label: "シェーンブルン宮殿（Schloss Schönbrunn）", desc: "【コース1】ハプスブルク家の夏の離宮（世界遺産）。マリア・テレジアが愛した壮麗な大広間やモーツァルトが演奏した鏡の間を巡るグランドツアー（要事前予約・日本語オーディオ付・約50分）", icon: "👑", important: true, url: "https://www.schoenbrunn.at/en/", mapUrl: "https://maps.google.com/?q=Sch%C3%B6nbrunn+Palace+Vienna", coords: [48.1858, 16.3128], image: SCHONBRUNN_IMAGE },
+      { time: "10:30", label: "宮殿庭園 ＆ グロリエッテ遠望", desc: "【コース2】幾何学模様の広大なバロック庭園を散策。丘の上に立つ優美な凱旋門「グロリエッテ」の景観を楽しむ（徒歩15分）", icon: "🌳", mapUrl: "https://maps.google.com/?q=Gloriette+Sch%C3%B6nbrunn", coords: [48.1782, 16.3087] },
+      { time: "11:15", label: "シェーンブルン宮殿前 クリスマスマーケット", desc: "【コース3】宮殿の前庭に広がる優雅なマーケット（11/6開幕）。壮麗な宮殿を背景に、質の高い伝統工芸品や木製オーナメントが並ぶ（徒歩すぐ）", icon: "🎄", important: true, url: "https://www.weihnachtsmarkt.co.at/", mapUrl: "https://maps.google.com/?q=Kultur-+und+Weihnachtsmarkt+Schloss+Sch%C3%B6nbrunn", coords: [48.1870, 16.3140] },
+      { time: "12:15", label: "地下鉄U4で市内中心へ移動", desc: "地下鉄U4「Schönbrunn」駅から「Karlsplatz」へ直通約9分。リンク通り方面へ移動", icon: "🚇", coords: [48.2000, 16.3690] },
+      { time: "12:45", label: "美術史美術館 カフェ・レストラン（KHM Café）でランチ", desc: "【ランチ＆カフェ】「世界一美しいミュージアムカフェ」。八角形の大ドーム直下、壮麗な大理石と金箔の空間で伝統料理やスイーツを堪能（美術館入場券が必要・徒歩7分）", icon: "🍽", important: true, url: "https://www.khm.at/en/visit/cafe-restaurant/", mapUrl: "https://maps.google.com/?q=Kunsthistorisches+Museum+Wien", coords: [48.2038, 16.3617] },
+      { time: "14:15", label: "ベルヴェデーレ上宮（Oberes Belvedere）", desc: "【コース4】バロックの傑作宮殿。クリムトの世界的名作『接吻（The Kiss）』や『ユディト』、エゴン・シーレの絵画を鑑賞。上宮南庭園からの眺めも格別（要日時指定予約・トラムD番または18番で移動）", icon: "🖼", important: true, url: "https://www.belvedere.at/en", mapUrl: "https://maps.google.com/?q=Upper+Belvedere+Vienna", coords: [48.1915, 16.3809], image: BELVEDERE_PALACE_IMAGE },
+      { time: "15:45", label: "ベルヴェデーレ宮殿 クリスマス村", desc: "【コース5】上宮前のバロック池を取り囲むロマンチックなクリスマス村。池の水面に宮殿とイルミネーションが映り込む絶好の写真スポット（徒歩すぐ）", icon: "🎄", mapUrl: "https://maps.google.com/?q=Weihnachtsdorf+Schloss+Belvedere", coords: [48.1925, 16.3815] },
+      { time: "17:00", label: "シュピッテルベルク クリスマスマーケット", desc: "【コース6】ホテル近くのノイバウ地区。石畳の小道に暖色のランプと屋台が並び、ウィーンっ子に最も親しまれる温かいマーケット。散策しながらオーガニックフードや温かいドリンクを楽しむ（トラム18番→西駅、またはU3 Volkstheater）", icon: "🧣", important: true, url: "https://spittelberg.at/", mapUrl: "https://maps.google.com/?q=Weihnachtsmarkt+am+Spittelberg", coords: [48.2033, 16.3536] },
+      { time: "18:45", label: "Glacis Beisl（グラシス・バイスル）で夫婦ディナー", desc: "【ディナー】ミュージアム・クォーター裏手の洗練されたビストロ。地元で評判のグラシュや旬のウィーン料理、オーストリアワインを落ち着いた雰囲気で堪能（シュピッテルベルクから徒歩5分・ホテルへも徒歩10分）", icon: "🍽", important: true, url: "https://www.glacisbeisl.at/", mapUrl: "https://maps.google.com/?q=Glacis+Beisl+Vienna", coords: [48.2040, 16.3570] },
+      { time: "20:45", label: "ホテル帰着 ＆ 翌朝プラハ移動の荷造り・就寝", desc: "ホテル（ARCOTEL Wimberger）へ徒歩で帰着。翌朝はウィーン中央駅07:10発のRailjet 72（プラハ行き）のため早めに就寝", icon: "🏨", coords: [48.2049, 16.3378] },
     ],
+    dinner: {
+      title: "ウィーン2日目 ディナー候補（ホテル近く＆名店）",
+      options: [
+        {
+          name: "Glacis Beisl（グラシス・バイスル）",
+          genre: "洗練されたウィーン郷土ビストロ・中庭",
+          desc: "MQ裏手、ホテルから徒歩10分。観光客の喧騒を離れ、地元の大人が通う本格グラシュや季節のウィーン料理を上質ワインとともに",
+          tel: "+43 1 5265660",
+          url: "https://www.glacisbeisl.at/",
+          mapUrl: "https://maps.google.com/?q=Glacis+Beisl+Vienna",
+          coords: [48.2040, 16.3570],
+        },
+        {
+          name: "Zum Schwarzen Kameel（黒ラクダ）",
+          genre: "1618年創業の歴史的名店・アールヌーヴォー",
+          desc: "ベートーヴェンも愛した伝説の老舗。手軽なオープンサンドイッチとワインのバーから、格調高いダイニングルームまで",
+          tel: "+43 1 5338125",
+          url: "https://www.kameel.at/",
+          mapUrl: "https://maps.google.com/?q=Zum+Schwarzen+Kameel+Vienna",
+          coords: [48.2100, 16.3686],
+        },
+        {
+          name: "Gasthaus Steman",
+          genre: "地元で愛されるアットホームな老舗バイスル",
+          desc: "6区の住宅街に佇む温かい木の内装。家庭的で丁寧なターフェルシュピッツやシュニッツェルをリーズナブルに味わえる隠れ家",
+          tel: "+43 1 5877864",
+          url: "https://www.steman.at/",
+          mapUrl: "https://maps.google.com/?q=Gasthaus+Steman+Vienna",
+          coords: [48.1970, 16.3548],
+        },
+      ],
+    },
     memo: {
       bg: "linear-gradient(135deg,#f8f4e8,#f5efdc)",
       border: "#e8d8a0",
       titleColor: "#8a6a10",
       textColor: "#5a4808",
       icon: "👑",
-      title: "ウィーン 観光メモ",
+      title: "ウィーン2日目 観光＆予約・移動メモ",
       body: (
         <>
-          <b>シェーンブルン宮殿</b>：時間指定・要予約。宮殿前クリスマスマーケットは11/6開幕<br/>
-          <b>美術史美術館</b>：€22オンライン／€24現地。<b>月曜休館</b>のため土曜の今日に配置するのが最適<br/>
-          <b>ベルヴェデーレ宮殿</b>：クリムト「接吻」。バロック宮殿と世紀末絵画<br/>
-          <b>市庁舎広場クリスマスマーケット</b>：11月中旬〜。ウィーン最大規模<br/>
-          <b>カフェ文化</b>：カフェ・ツェントラル（王宮近く）、カフェ・ランドマン（市庁舎前）等<br/>
-          <b>日曜</b>：翌日は移動日。日曜午前に開いている店を確認しておくと◎
+          <b>シェーンブルン宮殿</b>：時間指定・要予約（グランドツアー推奨・日本語オーディオ付）。午前中（09:30前）が最も空いています。<br/>
+          <b>ベルヴェデーレ上宮</b>：クリムト『接吻』所蔵。<b>日時指定チケットの事前購入が必須</b>（時間枠を過ぎると入場制限あり）。<br/>
+          <b>美術史美術館カフェ</b>：大ドーム下の絶景カフェ。美術館チケットで入場可能。12:00〜13:30は混み合うため少し早めの入店がスムーズ。<br/>
+          <b>シュピッテルベルク・マーケット</b>：土曜11:00〜21:30。ホテル徒歩圏。石畳の路地に地元工芸品やオーガニック屋台が立ち並ぶ隠れ家マーケット。<br/>
+          <b>翌朝の移動（注意）</b>：Day 5はウィーン中央駅 07:10発（Railjet 72）。日曜早朝はトラム間隔が開くため、ホテルは06:30頃に出発推奨（トラム18番約20分またはタクシー約10分）。
         </>
       ),
     },
@@ -540,7 +642,11 @@ const COSTS = [
   { item: "プラハ 2泊（Youngmann House・2名）", cost: 28407, note: "予約済・支払済 Booking.com（¥28,407／換算目安¥27,579）・返金不可" },
   { item: "空港バス 100E（ブダペスト空港→Astoria、2名）", cost: 2100, note: "2,500HUF×2名（クレカタッチ決済 約¥2,100）" },
   { item: "ブダペスト市内交通 24時間券（2名）", cost: 2100, note: "2,500HUF×2名（地下鉄・トラム乗り放題 約¥2,100）" },
+  { item: "ウィーン市内交通 48時間券（2名）", cost: 4650, note: "€14.10×2名（WienMobilアプリまたは券売機 約¥4,650・乗り放題）" },
   { item: "国会議事堂 ガイドツアー（2名・任意）", cost: 0, note: "見学希望時 14,000HUF×2名（約¥11,600・要事前予約）／外観散策は無料" },
+  { item: "シェーンブルン宮殿 グランドツアー（2名・任意）", cost: 0, note: "大人約€32×2名（要事前予約・日本語オーディオ付）" },
+  { item: "ベルヴェデーレ上宮 入場券（2名・任意）", cost: 0, note: "大人約€19×2名（クリムト『接吻』・要日時指定予約）" },
+  { item: "国立図書館 プルンクザール（2名・任意）", cost: 0, note: "大人€10×2名（約¥3,300）" },
   { item: "ブダ城 ＆ 英雄広場 散策", cost: 0, note: "外観・敷地散策無料（シクロー利用時 往復約5,000HUF/人）" },
   { item: "宿泊税 ブダペスト（室料の4%×2泊）", cost: 1000, note: "現地ホテル払い 目安約¥1,000" },
   { item: "宿泊税 ウィーン", cost: 0, note: "宿泊料金に市税5%を含む（追加支払いなし）" },
@@ -654,6 +760,9 @@ export default function EuropeTrip() {
         .eu-memo-box { border-radius:6px; padding:1rem 1.2rem; margin-bottom:2rem; font-size:.82rem; line-height:1.7; }
         .eu-memo-title { font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:.88rem; margin-bottom:.5rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
         .eu-memo-link:focus-visible { outline:2px solid currentColor; outline-offset:1px; border-radius:3px; }
+        .dinner-map-link { font-family:'Zen Maru Gothic',sans-serif; font-size:.72rem; color:#5a8a6e; text-decoration:none; border:1px solid #d4e8dc; padding:.15rem .5rem; border-radius:3px; display:inline-flex; align-items:center; gap:.2rem; transition:all .2s; }
+        .dinner-map-link:hover { background:#eef6f0; }
+        .dinner-map-link:focus-visible { outline:2px solid #5a8a6e; outline-offset:1px; border-radius:3px; }
         .eu-cost-section { max-width:720px; margin:0 auto; padding:3rem 1.5rem; animation:euFadeIn .5s ease-out; }
         .eu-cost-title { font-size:1.6rem; font-weight:600; letter-spacing:.08em; margin-bottom:2rem; text-align:center; margin-top:0; }
         .eu-cost-table { background:white; border-radius:6px; overflow:hidden; box-shadow:0 1px 8px rgba(0,0,0,.06); width:100%; border-collapse:collapse; }
@@ -791,6 +900,7 @@ export default function EuropeTrip() {
               <DayMap
                 schedule={DAYS[activeDay].schedule}
                 color={DAYS[activeDay].color}
+                dinner={DAYS[activeDay].dinner}
               />
             )}
 
@@ -909,6 +1019,49 @@ export default function EuropeTrip() {
                 </div>
               );
             })}
+
+            {/* ディナー候補カード */}
+            {DAYS[activeDay].dinner && (
+              <div
+                className="eu-booking-card"
+                style={{ marginTop: "1.5rem" }}
+                role="button" tabIndex={0}
+                aria-expanded={expandedBooking === `dinner-${activeDay}`}
+                onClick={() => setExpandedBooking(expandedBooking === `dinner-${activeDay}` ? null : `dinner-${activeDay}`)}
+                onKeyDown={e => handleCardKeyDown(e, () => setExpandedBooking(expandedBooking === `dinner-${activeDay}` ? null : `dinner-${activeDay}`))}>
+                <div className="eu-booking-header" style={{ borderLeft: "3px solid #E8734A" }}>
+                  <span><span aria-hidden="true">🍽</span> {DAYS[activeDay].dinner.title}</span>
+                  <span className="eu-booking-toggle" aria-hidden="true"
+                    style={{ transform: expandedBooking === `dinner-${activeDay}` ? "rotate(180deg)" : "none" }}>▼</span>
+                </div>
+                {expandedBooking === `dinner-${activeDay}` && (
+                  <div style={{ padding: "0 1.2rem 1.2rem" }}>
+                    {DAYS[activeDay].dinner.options.map((opt, i) => (
+                      <div key={i} style={{ padding: ".8rem 0", borderBottom: i < DAYS[activeDay].dinner.options.length - 1 ? "1px solid #f0ece6" : "none" }}>
+                        <div style={{ display:"flex", alignItems:"center", gap:".5rem", marginBottom:".25rem", flexWrap:"wrap" }}>
+                          <span style={{ fontFamily:"'Zen Maru Gothic',sans-serif", fontWeight:700, fontSize:".92rem" }}>{opt.name}</span>
+                          <span style={{ fontSize:".7rem", background:"#f0ece6", padding:".15rem .5rem", borderRadius:"2px", color:"#6a6058", fontFamily:"'Zen Maru Gothic',sans-serif" }}>{opt.genre}</span>
+                          {opt.url && (
+                            <a href={opt.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
+                              className="dinner-map-link">
+                              <span aria-hidden="true">🌐</span> 公式サイト
+                            </a>
+                          )}
+                          {opt.mapUrl && (
+                            <a href={opt.mapUrl} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
+                              className="dinner-map-link">
+                              <span aria-hidden="true">📍</span> Map
+                            </a>
+                          )}
+                        </div>
+                        <div style={{ fontSize:".8rem", color:"#6a6058", lineHeight:1.5 }}>{opt.desc}</div>
+                        {opt.tel && <div style={{ fontSize:".75rem", color:"#756d65", marginTop:".2rem" }}>TEL: {opt.tel}</div>}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </main>
