@@ -121,6 +121,20 @@ const RATHAUS_MARKET_IMAGE = {
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Wien_-_Christkindlmarkt,_Rathausplatz.JPG",
 };
 
+const PETERSKIRCHE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wien_-_Peterskirche%2C_Innenansicht.JPG?width=1200",
+  alt: "ペーター教会の壮麗なバロック様式の祭壇とドーム天井",
+  credit: "C.Stadler/Bwag / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Wien_-_Peterskirche,_Innenansicht.JPG",
+};
+
+const KHM_CAFE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Cafe_Kunsthistorisches_Museum_Wien.jpg?width=1200",
+  alt: "美術史美術館の八角形大ドーム下に広がる豪奢なカフェ・レストラン",
+  credit: "Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Cafe_Kunsthistorisches_Museum_Wien.jpg",
+};
+
 const CHARLES_BRIDGE_IMAGE = {
   src: "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Bridge,_Prague_pic1.JPG?width=1200",
   alt: "ヴルタヴァ川にかかるカレル橋とプラハ城の遠景",
@@ -305,7 +319,7 @@ const DAYS = [
       { time: "12:45", label: "地下鉄U3で旧市街中心へ移動", desc: "徒歩4分のWestbahnhof（西駅）から地下鉄U3に乗車。乗換なし直通8分で「Stephansplatz」駅へ到着", icon: "🚇", coords: [48.2085, 16.3721] },
       { time: "13:00", label: "Lugeck（ルゲック）でウィーンランチ", desc: "【ランチ】フィグルミュラー系列のモダンタバーン。歴史的洋館（Regensburger Hof）で名物シュニッツェルやグラシュを気取らず上質に堪能（徒歩3分）", icon: "🍽", important: true, url: "https://www.lugeck.com/", mapUrl: "https://maps.google.com/?q=Lugeck+Vienna", coords: [48.2096, 16.3749] },
       { time: "14:00", label: "シュテファン大聖堂（Stephansdom）＆ 北塔展望台", desc: "【コース1】ウィーンの象徴。壮麗なゴシック建築と色鮮やかなモザイク屋根。エレベーターで上がれる「北塔（Pummerinの大鐘）」から旧市街の街並みを一望（徒歩すぐ）", icon: "⛪", important: true, url: "https://www.stephanskirche.at/", mapUrl: "https://maps.google.com/?q=Stephansdom+Vienna", coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
-      { time: "14:45", label: "グラーベン ＆ ペーター教会（Peterskirche）散策", desc: "【コース2】歩行者天国の優美な大通り「グラーベン」を散策。ペスト記念柱と、壮麗なバロック装飾が施されたペーター教会へ立ち寄り（入場無料・徒歩5分）", icon: "🏛", url: "https://www.peterskirche.at/", mapUrl: "https://maps.google.com/?q=Peterskirche+Vienna", coords: [48.2094, 16.3700] },
+      { time: "14:45", label: "グラーベン ＆ ペーター教会（Peterskirche）散策", desc: "【コース2】歩行者天国の優美な大通り「グラーベン」を散策。ペスト記念柱と、壮麗なバロック装飾が施されたペーター教会へ立ち寄り（入場無料・徒歩5分）", icon: "🏛", url: "https://www.peterskirche.at/", mapUrl: "https://maps.google.com/?q=Peterskirche+Vienna", coords: [48.2094, 16.3700], image: PETERSKIRCHE_IMAGE },
       { time: "15:30", label: "オーストリア国立図書館 プルンクザール（Prunksaal）", desc: "【コース3】ホーフブルク（王宮）ヨーゼフ広場にある「世界一美しいバロック宮廷図書館」。20万冊の革装丁古書と壮大な天井フレスコ画が織りなす空間（入場€10・徒歩5分）", icon: "📚", important: true, url: "https://www.onb.ac.at/en/museums/state-hall", mapUrl: "https://maps.google.com/?q=Prunksaal+der+%C3%96sterreichischen+Nationalbibliothek", coords: [48.2064, 16.3669], image: PRUNKSAAL_IMAGE },
       { time: "16:30", label: "ゲルストナー皇室御用達菓子店（Gerstner）カフェ休憩", desc: "【カフェ】1847年創業、国立歌劇場向かいの老舗。1階ショップから3階サロンへ上がると宮殿のような豪奢な空間。本場のザッハトルテやメランジェで贅沢なティータイム（徒歩7分）", icon: "☕", important: true, url: "https://www.gerstner-konditorei.at/", mapUrl: "https://maps.google.com/?q=Gerstner+K.u.K.+Hofzuckerb%C3%A4cker+Vienna", coords: [48.2033, 16.3698] },
       { time: "17:30", label: "市庁舎前広場 クリスマスマーケット（Christkindlmarkt）", desc: "【コース4】ウィーン最大規模の夢のマーケット。壮麗なネオゴシック様式の市庁舎が金色にライトアップされ、巨大ツリーと無数の屋台が輝く絶景。特製マグカップで温かいプンシュを味わう（トラム1番で移動約10分）", icon: "🎄", important: true, url: "https://www.christkindlmarkt.at/", mapUrl: "https://maps.google.com/?q=Christkindlmarkt+Rathausplatz+Vienna", coords: [48.2109, 16.3575], image: RATHAUS_MARKET_IMAGE },
@@ -409,7 +423,7 @@ const DAYS = [
       { time: "10:30", label: "宮殿庭園 ＆ グロリエッテ遠望", desc: "【コース2】幾何学模様の広大なバロック庭園を散策。丘の上に立つ優美な凱旋門「グロリエッテ」の景観を楽しむ（徒歩15分）", icon: "🌳", mapUrl: "https://maps.google.com/?q=Gloriette+Sch%C3%B6nbrunn", coords: [48.1782, 16.3087] },
       { time: "11:15", label: "シェーンブルン宮殿前 クリスマスマーケット", desc: "【コース3】宮殿の前庭に広がる優雅なマーケット（11/6開幕）。壮麗な宮殿を背景に、質の高い伝統工芸品や木製オーナメントが並ぶ（徒歩すぐ）", icon: "🎄", important: true, url: "https://www.weihnachtsmarkt.co.at/", mapUrl: "https://maps.google.com/?q=Kultur-+und+Weihnachtsmarkt+Schloss+Sch%C3%B6nbrunn", coords: [48.1870, 16.3140] },
       { time: "12:15", label: "地下鉄U4で市内中心へ移動", desc: "地下鉄U4「Schönbrunn」駅から「Karlsplatz」へ直通約9分。リンク通り方面へ移動", icon: "🚇", coords: [48.2000, 16.3690] },
-      { time: "12:45", label: "美術史美術館 カフェ・レストラン（KHM Café）でランチ", desc: "【ランチ＆カフェ】「世界一美しいミュージアムカフェ」。八角形の大ドーム直下、壮麗な大理石と金箔の空間で伝統料理やスイーツを堪能（美術館入場券が必要・徒歩7分）", icon: "🍽", important: true, url: "https://www.khm.at/en/visit/cafe-restaurant/", mapUrl: "https://maps.google.com/?q=Kunsthistorisches+Museum+Wien", coords: [48.2038, 16.3617] },
+      { time: "12:45", label: "美術史美術館 カフェ・レストラン（KHM Café）でランチ", desc: "【ランチ＆カフェ】「世界一美しいミュージアムカフェ」。八角形の大ドーム直下、壮麗な大理石と金箔の空間で伝統料理やスイーツを堪能（美術館入場券が必要・徒歩7分）", icon: "🍽", important: true, url: "https://www.khm.at/en/visit/cafe-restaurant/", mapUrl: "https://maps.google.com/?q=Kunsthistorisches+Museum+Wien", coords: [48.2038, 16.3617], image: KHM_CAFE_IMAGE },
       { time: "14:15", label: "ベルヴェデーレ上宮（Oberes Belvedere）", desc: "【コース4】バロックの傑作宮殿。クリムトの世界的名作『接吻（The Kiss）』や『ユディト』、エゴン・シーレの絵画を鑑賞。上宮南庭園からの眺めも格別（要日時指定予約・トラムD番または18番で移動）", icon: "🖼", important: true, url: "https://www.belvedere.at/en", mapUrl: "https://maps.google.com/?q=Upper+Belvedere+Vienna", coords: [48.1915, 16.3809], image: BELVEDERE_PALACE_IMAGE },
       { time: "15:45", label: "ベルヴェデーレ宮殿 クリスマス村", desc: "【コース5】上宮前のバロック池を取り囲むロマンチックなクリスマス村。池の水面に宮殿とイルミネーションが映り込む絶好の写真スポット（徒歩すぐ）", icon: "🎄", mapUrl: "https://maps.google.com/?q=Weihnachtsdorf+Schloss+Belvedere", coords: [48.1925, 16.3815] },
       { time: "17:00", label: "シュピッテルベルク クリスマスマーケット", desc: "【コース6】ホテル近くのノイバウ地区。石畳の小道に暖色のランプと屋台が並び、ウィーンっ子に最も親しまれる温かいマーケット。散策しながらオーガニックフードや温かいドリンクを楽しむ（トラム18番→西駅、またはU3 Volkstheater）", icon: "🧣", important: true, url: "https://spittelberg.at/", mapUrl: "https://maps.google.com/?q=Weihnachtsmarkt+am+Spittelberg", coords: [48.2033, 16.3536] },
