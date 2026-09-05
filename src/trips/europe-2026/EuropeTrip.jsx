@@ -142,6 +142,48 @@ const CHARLES_BRIDGE_IMAGE = {
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Charles_Bridge,_Prague_pic1.JPG",
 };
 
+const ST_VITUS_CATHEDRAL_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Saint_Vitus_Cathedral_in_Prague,_Czech_Republic.jpg?width=1200",
+  alt: "プラハ城内にそびえる聖ヴィート大聖堂のゴシック様式ファサード",
+  credit: "Eric Ward / Wikimedia Commons / CC BY-SA 2.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Saint_Vitus_Cathedral_in_Prague,_Czech_Republic.jpg",
+};
+
+const STRAHOV_LIBRARY_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Strahov_Theological_Hall,_Prague_-_7565.jpg?width=1200",
+  alt: "ストラホフ修道院図書館の壮麗なバロック様式「神学の間」",
+  credit: "Jorge Láscar / Wikimedia Commons / CC BY 2.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Strahov_Theological_Hall,_Prague_-_7565.jpg",
+};
+
+const ASTRONOMICAL_CLOCK_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/The_Prague_Astronomical_Clock_in_Old_Town_-_8559.jpg?width=1200",
+  alt: "旧市庁舎の壁面に佇むプラハの天文時計（プラハのオルロイ）",
+  credit: "Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:The_Prague_Astronomical_Clock_in_Old_Town_-_8559.jpg",
+};
+
+const GOLDEN_LANE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Prague_-_Zlata_ulicka.jpg?width=1200",
+  alt: "プラハ城内の色鮮やかで可愛らしい黄金の小路",
+  credit: "Wikimedia Commons / CC BY-SA",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Prague_-_Zlata_ulicka.jpg",
+};
+
+const TYN_CHURCH_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Church_of_Our_Lady_before_T%C3%BDn,_Prague.jpg?width=1200",
+  alt: "旧市街広場にそびえるティーン聖母教会のゴシック様式双塔",
+  credit: "LibertinaGrim / Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Church_of_Our_Lady_before_T%C3%BDn,_Prague.jpg",
+};
+
+const MUNICIPAL_HOUSE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Prague_Municipal_House_01.jpg?width=1200",
+  alt: "アールヌーヴォー建築の最高傑作 プラハ市民会館（Obecní dům）",
+  credit: "Uoaei1 / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Prague_Municipal_House_01.jpg",
+};
+
 // ─── データ定数 ───────────────────────────────────────────────────────────────
 
 const DAYS = [
@@ -483,17 +525,55 @@ const DAYS = [
   {
     day: 5,
     date: "11月22日（日）",
-    title: "ウィーン → プラハ（朝の鉄道移動・所要4時間13分）",
+    title: "ウィーン → プラハ ＆ 旧市街広場・天文時計・カレル橋トワイライト",
     color: "#3a7a5a",
     icon: "🚄",
     schedule: [
-      { time: "06:30頃", label: "ホテル チェックアウト・駅へ移動", desc: "ウィーン中央駅へ移動。駅構内のベーカリーで朝食・コーヒーを調達（車内食堂車も利用可能）", icon: "🥐", coords: [48.1848, 16.3765] },
-      { time: "07:10", label: "ウィーン中央駅（Wien Hbf）発", desc: "Railjet 72（直通・約4時間13分）。※ゆっくり出発の場合は09:10発（Railjet 256）も選択肢。日曜は混雑するため座席指定必須", icon: "🚆", important: true, coords: [48.1848, 16.3765] },
-      { time: "11:23", label: "プラハ本駅（hlavní nádraží）着", desc: "地下鉄C線またはトラム・徒歩でYoungmann Houseへ。明るいお昼前に到着でき安全・スムーズ", icon: "🚉", coords: [50.0833, 14.4356] },
-      { time: "12:00", label: "Youngmann Houseへ荷物預け ＆ チェコランチ", desc: "宿に荷物を預けて旧市街へ。伝統的なグヤーシュやチェコビールで乾杯", icon: "🍺", mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
-      { time: "13:30〜", label: "プラハ 旧市街散策", desc: "旧市街広場、天文時計、カレル橋を散策。日没（16:15頃）のカレル橋ライトアップへ", icon: "🏰", important: true, coords: [50.087, 14.4208], image: PRAGUE_OLD_TOWN_IMAGE },
-      { time: "15:00", label: "Youngmann House チェックイン", desc: "予約済みのダブルまたはツインルーム（2泊）へチェックイン", icon: "🏨", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
+      { time: "06:30頃", label: "ホテル チェックアウト・駅へ移動", desc: "ARCOTEL Wimbergerをチェックアウト。ウィーン中央駅へ移動し、駅構内のベーカリーで朝食やコーヒーを調達", icon: "🥐", coords: [48.1848, 16.3765] },
+      { time: "07:10", label: "ウィーン中央駅（Wien Hbf）発", desc: "Railjet 72（直通・約4時間13分）。食堂車や車内Wi-Fi完備。日曜は混雑するため座席指定必須", icon: "🚆", important: true, coords: [48.1848, 16.3765] },
+      { time: "11:23", label: "プラハ本駅（hlavní nádraží）着", desc: "百塔の街プラハに到着。地下鉄C線またはトラム・徒歩で宿（Youngmann House）へ移動（約15分）", icon: "🚉", coords: [50.0833, 14.4356] },
+      { time: "11:50", label: "Youngmann House 荷物預け", desc: "Jungmannovo náměstí 14。地下鉄Můstek駅すぐの好立地。チェックイン（15:00）前に荷物を預けて身軽に旧市街へ", icon: "🏨", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
+      { time: "12:15", label: "U Pinkasů（ウ・ピンカスー）でチェコランチ", desc: "【ランチ】宿のすぐ真向かい！1843年にピルゼンから届いたピルスナー・ウルケルをプラハで初めて提供した歴史的ビアホール。名物スヴィーチコヴァー（牛肉のクリーム煮・クネドリーキ添え）と極上のウルケル生で乾杯（徒歩1分）", icon: "🍺", important: true, url: "https://www.upinkasu.cz/", mapUrl: "https://maps.google.com/?q=U+Pinkas%C5%AF+Prague", coords: [50.0832, 14.4223] },
+      { time: "13:30", label: "旧市街広場（Staroměstské náměstí）＆ ティーン教会", desc: "【コース1】ゴシック・バロック・ロココ建築が立ち並ぶプラハの中心広場。おとぎ話の城のような2本の尖塔を持つ「ティーン聖母教会」の威容を鑑賞（徒歩7分）", icon: "🏰", important: true, mapUrl: "https://maps.google.com/?q=Old+Town+Square+Prague", coords: [50.0875, 14.4213], image: TYN_CHURCH_IMAGE },
+      { time: "14:00", label: "旧市庁舎 天文時計（Orloj）＆ 展望塔", desc: "【コース2】600年以上の歴史を刻む世界最古級の天文時計。毎正時のからくり仕掛け「使徒の行進」を見学後、エレベーターで高さ約70mの展望塔へ。旧市街広場と赤い屋根の海を見渡す360度の大パノラマ（徒歩すぐ）", icon: "🕰", important: true, url: "https://prague.eu/en/objevujte/old-town-hall-with-astronomical-clock-staromestska-radnice-s-orlojem/", mapUrl: "https://maps.google.com/?q=Old+Town+Hall+Prague", coords: [50.0870, 14.4207], image: ASTRONOMICAL_CLOCK_IMAGE },
+      { time: "15:15", label: "Youngmann House チェックイン", desc: "宿に戻りチェックイン。ダブルまたはツインルームで荷解き＆ひと息ついて夕暮れ観光の身支度（徒歩5分）", icon: "🏨", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
+      { time: "16:00", label: "旧市街橋塔 ＆ カレル橋トワイライト", desc: "【コース3】11月の日没は16:15頃！旧市街橋塔の上から、夕暮れに染まるヴルタヴァ川とライトアップされ始めたカレル橋・対岸のプラハ城を一望。その後、ガス灯が灯るカレル橋を渡り、聖ヤン・ネポムツキー像のレリーフに触れて幸運と再訪を祈願（徒歩10分）", icon: "🌉", important: true, url: "https://prague.eu/en/objevujte/old-town-bridge-tower-staromestska-mostecka-vez/", mapUrl: "https://maps.google.com/?q=Charles+Bridge+Prague", coords: [50.0865, 14.4114], image: CHARLES_BRIDGE_IMAGE },
+      { time: "17:15", label: "マラー・ストラーナ ＆ カンパ島散策", desc: "【コース4】カレル橋を渡った先の小地区。ヴルタヴァ川沿いの静かなカンパ島、水車小屋の景観、平和のシンボル「ジョン・レノンの壁」をそぞろ歩き（徒歩すぐ）", icon: "🎨", mapUrl: "https://maps.google.com/?q=Lennon+Wall+Prague", coords: [50.0862, 14.4069] },
+      { time: "18:30", label: "ディナー ＆ ヴルタヴァ川の夜景", desc: "【ディナー】カレル橋の夜景を目の前に望むリバーサイドレストラン「Mlýnec」または1902年創業の伝統サロン「Café Louvre」で優雅な夫婦ディナー", icon: "🍽", important: true, coords: [50.0858, 14.4137] },
+      { time: "21:00", label: "夜景散策 ＆ ホテル帰着", desc: "黄金色に輝くカレル橋や旧市街の夜景を眺めながら、Youngmann Houseへ徒歩で戻り就寝", icon: "🏨", coords: [50.0837, 14.4205] },
     ],
+    dinner: {
+      title: "プラハ初日 ディナー候補（夫婦で楽しむ名店）",
+      options: [
+        {
+          name: "Mlýnec（ムリーネツ）",
+          genre: "カレル橋を目の前に望む最高峰モダンチェコ料理",
+          desc: "カレル橋のたもと、ヴルタヴァ川に面した特等席。ミシュラン推奨。ライトアップされた橋を眺めながら、洗練されたモダンチェコ料理とワインを味わうロマンチックな夜に",
+          tel: "+420 277 000 777",
+          url: "https://www.mlynec.cz/",
+          mapUrl: "https://maps.google.com/?q=Mlynec+Restaurant+Prague",
+          coords: [50.0858, 14.4137],
+        },
+        {
+          name: "Café Louvre（カフェ・ルーヴル）",
+          genre: "1902年創業のアールヌーヴォー伝統カフェレストラン",
+          desc: "カフカやアインシュタインが愛した優美なピンクのサロン。ホテルから徒歩3分。伝統チェコ料理（グヤーシュや鴨のロースト）を気品ある空間でリーズナブルに楽しめます",
+          tel: "+420 224 930 949",
+          url: "https://www.cafelouvre.cz/en",
+          mapUrl: "https://maps.google.com/?q=Cafe+Louvre+Prague",
+          coords: [50.0821, 14.4184],
+        },
+        {
+          name: "Lokál Dlouhááá（ロカール）",
+          genre: "活気あふれる最高品質タンク生ビール＆チェコ家庭料理",
+          desc: "アンビアンテ系列の超人気店。徹底管理された新鮮なピルスナー・ウルケル（ハラディンカ）と、手作りのチェコ伝統家庭料理をカジュアルに堪能",
+          tel: "+420 734 283 874",
+          url: "https://lokal-dlouha.ambi.cz/en/",
+          mapUrl: "https://maps.google.com/?q=Lokal+Dlouha+Prague",
+          coords: [50.0903, 14.4258],
+        },
+      ],
+    },
     booking: {
       title: "鉄道チケット（ウィーン → プラハ）",
       details: [
@@ -513,14 +593,15 @@ const DAYS = [
       border: "#b8e0c8",
       titleColor: "#2a6a4a",
       textColor: "#1a4a30",
-      icon: "🚆",
-      title: "ウィーン → プラハ 鉄道予約メモ",
+      icon: "🇨🇿",
+      title: "プラハ初日 到着＆旧市街・カレル橋メモ",
       body: (
         <>
-          <b>おすすめ便</b>：07:10発（Railjet 72）→ 11:23着。4時間超の移動ですが、車窓や車内朝食を楽しんでいるとお昼前にプラハへ到着します。<br/>
-          <b>日曜便の注意（座席指定必須）</b>：日曜日は移動客・週末旅行者で非常に混雑します。自由席では立ち席や離れ離れになるリスクがあるため、必ず座席指定（約€3/人）を追加してください。<br/>
-          <b>ÖBB Sparschiene / ČD First Minute</b>：€14.90〜（早割・枚数限定・変更不可）。ÖBB公式アプリまたはチェコ鉄道（ČD）サイトで予約可能。<br/>
-          <b>発着駅</b>：ウィーン中央駅（Wien Hbf）→ プラハ本駅（Praha hlavní nádraží）。どちらも市内中心部へ好アクセスです。
+          <b>市内交通（PID 24時間券）</b>：車内または駅改札のオレンジ色端末にクレカタッチで購入（150 CZK/人・約¥1,000）。地下鉄・トラムが24時間乗り放題。<br/>
+          <b>U Pinkasů（ウ・ピンカスー）</b>：宿（Youngmann House）の目の前。1843年創業。名物「スヴィーチコヴァー」は必食。<br/>
+          <b>旧市庁舎 天文時計＆展望塔</b>：毎正時（9:00〜23:00）に使徒のからくり行進。展望塔はエレベーター完備（大人350 CZK）。広場と赤い屋根の街並みが一望できます。<br/>
+          <b>旧市街橋塔＆トワイライト</b>：11月の日没は16:15頃。日没30分前の15:45〜16:00頃に橋塔へ上がると、夕暮れからガス灯・ライトアップへの美しいグラデーションを楽しめます（大人250 CZK）。<br/>
+          <b>ディナー予約</b>：日曜日夜のMlýnecやCafé Louvreは事前予約（webまたは英語）を推奨。
         </>
       ),
     },
@@ -546,28 +627,69 @@ const DAYS = [
   {
     day: 6,
     date: "11月23日（月）",
-    title: "プラハ ─ 終日観光",
+    title: "プラハ ─ 絶景トラム22番・ストラホフ修道院・プラハ城・黄金の小路 ＆ 市民会館アールヌーヴォー",
     color: "#3a7a5a",
     icon: "🏰",
     schedule: [
-      { time: "終日", label: "プラハ 市内観光", desc: "翌日は午前中しか使えないので、見たいものはこの日に寄せること", icon: "🗺", important: true },
-      { time: "夜", label: "荷造り", desc: "翌朝の空港移動の経路と所要をここで確定させておく。トロリーバス59のルート・始発時刻を確認", icon: "🧳" },
+      { time: "08:45", label: "ホテル出発 → トラム22番で丘の上へ", desc: "徒歩4分の国民劇場（Národní divadlo）停留所から名物トラム22番に乗車。ヴルタヴァ川を渡りマラー・ストラーナの坂を登る「動く展望台」を楽しみ、ストラホフ修道院最寄りの「Pohořelec」駅へ（約20分）", icon: "🚋", coords: [50.0811, 14.4138] },
+      { time: "09:15", label: "ストラホフ修道院図書館（Strahovská knihovna）", desc: "【コース1】世界一美しいと称されるバロック様式の修道院図書館。壮大な天井フレスコ画が広がる「哲学の間」と「神学の間」を、混雑前の静かな朝一番にゆったり鑑賞（徒歩すぐ・入場150 CZK）", icon: "📚", important: true, url: "https://www.strahovskyklaster.cz/en/", mapUrl: "https://maps.google.com/?q=Strahov+Monastery+Library+Prague", coords: [50.0866, 14.3891], image: STRAHOV_LIBRARY_IMAGE },
+      { time: "10:15", label: "ロレッタ教会前 ＆ フラッチャニ広場 展望テラス", desc: "【コース2】バロック建築のロレッタ教会前を通りプラハ城正門前のフラッチャニ広場へ。展望テラスから眼下に広がるプラハ市街の赤い屋根の海を一望（徒歩10分）", icon: "🏛", mapUrl: "https://maps.google.com/?q=Hradcany+Square+Prague", coords: [50.0895, 14.3980] },
+      { time: "10:45", label: "プラハ城（Pražský hrad）メインサーキット", desc: "【コース3】千年の歴史を誇る世界最大級の城郭。聖ヴィート大聖堂（St. Vitus）の圧巻のゴシック建築とアルフォンス・ミュシャ（ムハ）制作の息をのむステンドグラス『聖キリルと聖メトディウス』、旧王宮の壮大なヴラディスラフ・ホール、聖イジー聖堂を見学（メインサーキットチケット 450 CZK）", icon: "🏰", important: true, url: "https://www.hrad.cz/en", mapUrl: "https://maps.google.com/?q=Prague+Castle", coords: [50.0909, 14.4005], image: ST_VITUS_CATHEDRAL_IMAGE },
+      { time: "12:15", label: "黄金の小路（Zlatá ulička）", desc: "【コース4】城壁沿いに並ぶパステルカラーの可愛らしい小さな家々。かつて錬金術師や城警備兵が暮らし、作家フランツ・カフカが一時期仕事場とした22番の青い家を見学（サーキットチケットに含まれる・徒歩すぐ）", icon: "🏘", important: true, mapUrl: "https://maps.google.com/?q=Golden+Lane+Prague", coords: [50.0919, 14.4040], image: GOLDEN_LANE_IMAGE },
+      { time: "13:00", label: "Kuchyň（クヒィニ）で絶景テラスランチ", desc: "【ランチ】プラハ城正門前（サラーバ宮殿テラス）。アンビアンテ系列。厨房の大鍋のフタを開けて好みの料理を直接選ぶユニークな伝統チェコ料理店。プラハの街並みを見下ろすパノラマテラスで極上のピルスナー生とチェコ料理を堪能（徒歩10分）", icon: "🍽", important: true, url: "https://kuchyn.ambi.cz/en/", mapUrl: "https://maps.google.com/?q=Kuchyn+Restaurant+Prague+Castle", coords: [50.0894, 14.3972] },
+      { time: "14:30", label: "旧登城道（Staré zámecké schody）を下り新市街へ", desc: "【散策】プラハ城東門からブドウ畑沿いの「旧登城道」階段を下り、マラー・ストラーナ側へ。地下鉄A線「Malostranská」またはトラムでヴルタヴァ川を渡り「Náměstí Republiky（共和国広場）」へ移動（約15分）", icon: "🚶", coords: [50.0918, 14.4098] },
+      { time: "15:30", label: "市民会館（Obecní dům）＆ 火薬塔（Prašná brána）", desc: "【コース5】プラハ・アールヌーヴォー建築の最高傑作。アルフォンス・ミュシャが壁画と天井画を手掛けた「市長の間」やスメタナホール、隣接する15世紀ゴシック様式の火薬塔を鑑賞（徒歩すぐ）", icon: "🏛", important: true, url: "https://www.obecnidum.cz/en/", mapUrl: "https://maps.google.com/?q=Municipal+House+Prague", coords: [50.0877, 14.4282], image: MUNICIPAL_HOUSE_IMAGE },
+      { time: "16:30", label: "Kavárna Obecní dům または Café Imperialでカフェ休憩", desc: "【カフェ】市民会館1階の華麗なアールヌーヴォーカフェ、または徒歩5分の「Café Imperial」へ。大理石のテーブルとシャンデリアの下、名物ケーキとヴィエナコーヒーで優雅なティータイム", icon: "☕", important: true, url: "https://www.cafeimperial.cz/en/", mapUrl: "https://maps.google.com/?q=Cafe+Imperial+Prague", coords: [50.0898, 14.4326] },
+      { time: "18:30", label: "Café Imperial で優雅なディナー", desc: "【ディナー】1914年創業、壁一面の陶器モザイク装飾が息をのむ美しさのアールデコ名店（ミシュラン選出）。有名シェフZdeněk Pohlreichによる名物「仔牛の頬肉の赤ワイン煮込み」や伝統スヴィーチコヴァーで特別な夫婦ディナー（要事前予約）", icon: "🍽", important: true, url: "https://www.cafeimperial.cz/en/", mapUrl: "https://maps.google.com/?q=Cafe+Imperial+Prague", coords: [50.0898, 14.4326] },
+      { time: "20:30", label: "夜のヴァーツラフ広場散策 ＆ ホテル帰着", desc: "共和国広場からヴァーツラフ広場を通り、ライトアップされた国立博物館を遠望しながらYoungmann Houseへ徒歩で帰着。翌朝の帰国フライトに向けて荷造り・就寝", icon: "🧳", coords: [50.0837, 14.4205] },
     ],
+    dinner: {
+      title: "プラハ2日目 ディナー候補（アールデコ名店＆伝統料理）",
+      options: [
+        {
+          name: "Café Imperial（カフェ・インペリアル）",
+          genre: "1914年創業・壁一面の陶器モザイクが壮麗なアールデコ名店",
+          desc: "ミシュランガイド選出。有名シェフ監修の「仔牛の頬肉の赤ワイン煮込み」や洗練されたチェコ料理。歴史的宮殿のような贅沢な空間で夫婦の忘れられない夜に",
+          tel: "+420 246 011 440",
+          url: "https://www.cafeimperial.cz/en/",
+          mapUrl: "https://maps.google.com/?q=Cafe+Imperial+Prague",
+          coords: [50.0898, 14.4326],
+        },
+        {
+          name: "Plzeňská restaurace v Obecním domě",
+          genre: "市民会館地下の壮麗なアールヌーヴォー伝統ビアホール",
+          desc: "美しい陶器タイルとステンドグラスに囲まれたアールヌーヴォー地下ホール。伝統的なローストポーク、鴨料理、焼きたてプレッツェルとピルスナー生",
+          tel: "+420 222 002 780",
+          url: "https://www.plzenskarestaurace.cz/en/",
+          mapUrl: "https://maps.google.com/?q=Plzenska+restaurace+v+Obecnim+dome",
+          coords: [50.0877, 14.4282],
+        },
+        {
+          name: "Čestr（チェストル）",
+          genre: "熟成チェコ牛ステーキとクラフトビールのモダン名店",
+          desc: "アンビアンテ系列のモダン肉料理店。国立博物館そば。チェコ原産の熟成牛を炭火で焼き上げる絶品ステーキを落ち着いたモダンな空間で堪能",
+          tel: "+420 734 684 000",
+          url: "https://cestr.ambi.cz/en/",
+          mapUrl: "https://maps.google.com/?q=Cestr+Restaurant+Prague",
+          coords: [50.0802, 14.4312],
+        },
+      ],
+    },
     memo: {
       bg: "linear-gradient(135deg,#f0f8f4,#eaf5f0)",
       border: "#b0dcc8",
       titleColor: "#1a6a40",
       textColor: "#0a3a20",
-      icon: "🏯",
-      title: "プラハ 観光メモ",
+      icon: "🏰",
+      title: "プラハ城・ストラホフ修道院・市民会館 観光メモ",
       body: (
         <>
-          <b>プラハ城・聖ヴィート大聖堂</b>：丘の上から赤い屋根の街を見下ろす。旧王宮・黄金小路も<br/>
-          <b>カレル橋</b>：朝早い時間または夜が人少なめ<br/>
-          <b>旧市街広場・天文時計</b>：クリスマスマーケットは11/28頃開幕予定（要確認）<br/>
-          <b>ストラホフ修道院図書館</b>：バロックの書架が圧巻。要入場料<br/>
-          <b>チェスキー・クルムロフ日帰り</b>：プラハからバス片道約2時間30分。ただし翌日は出発日なので今日が唯一のチャンス。行く場合は早朝発で帰りを16時台までに<br/>
-          <b>⚠ 翌日注意</b>：14:45発フライトのため、10:30にはホテルを出る必要あり
+          <b>トラム22番の活用</b>：プラハ城へ徒歩で登ると長い急坂になりますが、トラム22番で「Pohořelec」まで上がると、ストラホフ修道院からプラハ城へ下り勾配で楽に周遊できます。<br/>
+          <b>ストラホフ修道院図書館</b>：開館 9:00〜17:00（12:00〜13:00昼休み休館あり）。入場料 150 CZK。朝一番（9:15頃）が最も空いていて美しい光が差し込みます。<br/>
+          <b>プラハ城 メインサーキット</b>：大人 450 CZK（2日間有効）。聖ヴィート大聖堂、旧王宮、聖イジー聖堂、黄金の小路に入場可能。聖ヴィート大聖堂のミュシャ（ムハ）ステンドグラスは必見。<br/>
+          <b>Kuchyň（クヒィニ）</b>：プラハ城正門前サラーバ宮殿テラス。大鍋から直接料理を選ぶスタイルで、味もロケーションもプラハ屈指（web予約推奨）。<br/>
+          <b>市民会館（Obecní dům）</b>：1階カフェ（Kavárna）は予約なしで利用可能。内部ガイドツアー（英語）に参加するとミュシャ装飾の「市長の間」に入場できます。<br/>
+          <b>Café Imperial</b>：ディナーは大変人気のため、日本出発前に公式サイト（cafeimperial.cz）からテーブル予約を強く推奨します。
         </>
       ),
     },
@@ -575,17 +697,35 @@ const DAYS = [
   {
     day: 7,
     date: "11月24日（火）",
-    title: "プラハ午前 ─ 出発 ─ ドバイ乗継（機中泊）",
+    title: "朝のカレル橋静寂散歩 ＆ カフェ・ルーヴル朝食 ─ 空港出発 ─ ドバイ乗継",
     color: "#7a5a3a",
     icon: "🛫",
     schedule: [
-      { time: "朝", label: "Youngmann House チェックアウト", desc: "荷物は宿に預け、午前だけプラハを満喫", icon: "🧳", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague" },
-      { time: "10:30", label: "Youngmann House 発", desc: "荷物を受け取り、トロリーバス59＋地下鉄A線（Nádraží Veleslavín 乗換）で45〜60分。90分券1枚で通し・約50CZK/人", icon: "🚌", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague" },
-      { time: "11:45", label: "プラハ空港 着", desc: "出発3時間前。第1ターミナル", icon: "✈", coords: [50.1008, 14.26] },
+      { time: "07:30", label: "朝の静寂のカレル橋 散策", desc: "【朝散歩】昼間の喧騒とは打って変わり、澄んだ空気と朝霧に包まれる早朝のカレル橋。朝日を浴びるプラハ城とヴルタヴァ川を眺めながら、ご夫婦で静かに記念撮影（ホテルから徒歩10分）", icon: "🌅", important: true, coords: [50.0865, 14.4114] },
+      { time: "08:30", label: "Café Louvre（カフェ・ルーヴル）で優雅な朝食", desc: "【朝食】1902年創業の歴史的グランドカフェ（ホテル徒歩3分）。カフカやアインシュタインが過ごした気品あふれるサロンで、焼きたてオムレツやペストリー、ホットチョコレートの朝食をゆったり味わう", icon: "☕", important: true, url: "https://www.cafelouvre.cz/en", mapUrl: "https://maps.google.com/?q=Cafe+Louvre+Prague", coords: [50.0821, 14.4184] },
+      { time: "09:30", label: "Youngmann House チェックアウト ＆ 荷造り", desc: "宿に戻りチェックアウト。荷物をピックアップし、空港移動の身支度を完了", icon: "🧳", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
+      { time: "10:30", label: "Youngmann House 発 → プラハ空港へ移動", desc: "地下鉄A線「Můstek」から直通10分で「Nádraží Veleslavín」駅へ。トロリーバス59番に乗換えて約17分でプラハ空港第1ターミナルへ到着（総所要約45分・90分券またはクレカタッチで約50 CZK/人）", icon: "🚌", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
+      { time: "11:45", label: "プラハ・ヴァーツラフ・ハヴェル空港 着", desc: "出発3時間前。第1ターミナル（非シェンゲン域便）にてエミレーツ航空チェックイン、手荷物預け、免税手続き（Tax Refund）、保安検査、出国審査", icon: "✈", important: true, coords: [50.1008, 14.26] },
       { time: "14:45 PRG", label: "プラハ（PRG）出発", desc: "EK140・エミレーツ。第1ターミナル。Airbus A380-800／飛行5時間55分。JST 22:45", icon: "✈", important: true, coords: [50.1008, 14.26] },
-      { time: "23:40 DXB", label: "ドバイ（DXB）着", desc: "EK140到着。乗継 3時間15分の深夜乗継。JST 翌04:40頃", icon: "🇦🇪" },
+      { time: "23:40 DXB", label: "ドバイ（DXB）着", desc: "EK140到着。乗継 3時間15分の深夜乗継。ターミナル3内で乗り継ぎ。JST 翌04:40頃", icon: "🇦🇪" },
       { time: "02:55 DXB", label: "ドバイ（DXB）発", desc: "EK318・エミレーツ。Airbus A380-800／飛行9時間25分。日付は11月25日（水）", icon: "😴" },
     ],
+    memo: {
+      bg: "linear-gradient(135deg,#f8f0e8,#f5ebe0)",
+      border: "#e0c8a8",
+      titleColor: "#8a5a20",
+      textColor: "#5a3a10",
+      icon: "✈",
+      title: "プラハ最終日 空港アクセス＆フライトメモ",
+      body: (
+        <>
+          <b>朝のカレル橋（必見）</b>：日中は世界中からの観光客で混み合いますが、早朝7:30〜8:00は静寂に包まれ、写真撮影に最高の時間帯です。<br/>
+          <b>空港アクセス（地下鉄A線＋トロリーバス59番）</b>：宿最寄りのMůstek駅から地下鉄A線で約10分の「Nádraží Veleslavín」へ。地上に出てすぐのバス乗り場から最新の連結トロリーバス59番に乗車（約17分・約5〜10分間隔で運行）。第1ターミナル（Terminal 1）で降車。90分券（40〜50 CZK）1枚で通し乗車可能です。<br/>
+          <b>第1ターミナル（非シェンゲン便）</b>：日本・ドバイ行きは第1ターミナル発。出国審査と保安検査が出発ゲート直前にあるため、時間に余裕を持って行動を。<br/>
+          <b>ドバイ深夜乗継</b>：3時間15分。ターミナル3のカフェやラウンジで休憩し、成田行きEK318便へ搭乗。
+        </>
+      ),
+    },
     booking: {
       title: "エミレーツ航空券（復路）",
       details: [
@@ -600,21 +740,6 @@ const DAYS = [
         { label: "運賃", value: "エコノミー ／ Saver（確定）" },
       ],
       url: "https://www.emirates.com/jp/japanese/manage-booking/",
-    },
-    memo: {
-      bg: "linear-gradient(135deg,#f8f0e8,#f5ebe0)",
-      border: "#e0c8a8",
-      titleColor: "#8a5a20",
-      textColor: "#5a3a10",
-      icon: "✈",
-      title: "プラハ空港 → 市内アクセス（逆方向）",
-      body: (
-        <>
-          <b>トロリーバス59＋地下鉄A線（推奨）</b>：Nádraží Veleslavín 乗換。90分券1枚・約50CZK/人。所要45〜60分<br/>
-          <b>Airport Express（AEバス）</b>：プラハ本駅から乗換なし。60〜100CZK（金額は現地の券売機で確認）。所要35〜45分<br/>
-          <b>⚠ ドバイは深夜乗継</b>：乗継 3時間15分。深夜のため飲食・免税店は限られる場合あり
-        </>
-      ),
     },
   },
   {
