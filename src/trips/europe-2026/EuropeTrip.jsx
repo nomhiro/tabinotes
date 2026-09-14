@@ -1576,7 +1576,7 @@ const HistorySpot = ({ spot }) => {
       </div>
       {longHistory && (
         <details className="eu-history-detail">
-          <summary>本で読むような詳しい背景</summary>
+          <summary>詳細情報</summary>
           <div className="eu-history-detail-body">
             {longHistory.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
