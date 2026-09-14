@@ -184,6 +184,83 @@ const MUNICIPAL_HOUSE_IMAGE = {
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Prague_Municipal_House_01.jpg",
 };
 
+const HUNGARIAN_PAPRIKA_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Paprika%2C_Hungary.jpg?width=1000",
+  alt: "ハンガリーの赤いパプリカ",
+  credit: "Civertan / Wikimedia Commons / CC BY-SA 2.5",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Paprika%2C_Hungary.jpg",
+};
+
+const VIENNA_SCHNITZEL_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wiener-Schnitzel02.jpg?width=1000",
+  alt: "皿に盛られたウィーナー・シュニッツェル",
+  credit: "Kobako / Wikimedia Commons / CC BY-SA 2.5",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Wiener-Schnitzel02.jpg",
+};
+
+const SACHERTORTE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Sachertorte_in_Vienna.jpg?width=1000",
+  alt: "ウィーンのザッハトルテ",
+  credit: "Rizka / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Sachertorte_in_Vienna.jpg",
+};
+
+const SVICKOVA_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.JPG?width=1000",
+  alt: "クネドリーキとクランベリーを添えたスヴィーチコヴァー",
+  credit: "Matyáš Havel / Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.JPG",
+};
+
+const CZECH_BEER_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Beer_is_served_at_Czech_Beer_Festival.jpg?width=1000",
+  alt: "チェコのビール祭りで注がれるビール",
+  credit: "Jiří Suchomel / Wikimedia Commons / CC BY-SA 2.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Beer_is_served_at_Czech_Beer_Festival.jpg",
+};
+
+const HUNGARIAN_GOULASH_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/020230805_125640_goulash_with_spaetzle.jpg?width=1000",
+  alt: "グヤーシュとシュペッツレの料理",
+  credit: "Silar / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:020230805_125640_goulash_with_spaetzle.jpg",
+};
+
+const HUNGARIAN_KREMES_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Kremes.jpg?width=1000",
+  alt: "ハンガリーのクリーム菓子クレーメシュ",
+  credit: "Illustratedjc / Wikimedia Commons / CC BY-SA 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Kremes.jpg",
+};
+
+const HUNGARIAN_CAFE_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Caf%C3%A9_Frei.jpg?width=1000",
+  alt: "ハンガリーのカフェ店内",
+  credit: "Explicatory / Wikimedia Commons / CC0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Caf%C3%A9_Frei.jpg",
+};
+
+const VIENNA_TAFELSPITZ_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Heuriger_Zum_Renner_Tafelspitz_Apfelkren.jpg?width=1000",
+  alt: "りんごホースラディッシュを添えたターフェルシュピッツ",
+  credit: "Geolina163 / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Heuriger_Zum_Renner_Tafelspitz_Apfelkren.jpg",
+};
+
+const CZECH_GOULASH_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Gul%C3%A1%C5%A1%2C_bramborov%C3%BD_knedl%C3%ADk.jpg?width=1000",
+  alt: "チェコ風グラーシュとじゃがいもクネドリーキ",
+  credit: "Dezidor / Wikimedia Commons / CC BY 3.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Gul%C3%A1%C5%A1%2C_bramborov%C3%BD_knedl%C3%ADk.jpg",
+};
+
+const TRDELNIK_IMAGE = {
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Trdeln%C3%ADk_%28Svat%C3%A1_Anna%29_01.jpg?width=1000",
+  alt: "焼き上がったチェコのトルデルニーク",
+  credit: "Pohled 111 / Wikimedia Commons / CC BY-SA 4.0",
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Trdeln%C3%ADk_%28Svat%C3%A1_Anna%29_01.jpg",
+};
+
 const COUNTRY_HISTORY = {
   hungary: {
     name: "ハンガリー",
@@ -874,6 +951,237 @@ const SPOT_LONG_HISTORY = {
     "昼と夜の橋が観光の舞台になるのに対し、早朝の橋は、王の道が本来持っていた『川を渡って仕事や礼拝へ向かう道』という性格に近づきます。石の欄干、橋塔、聖人像は、観光客の列がなくても、都市の東西を結ぶ構造として残っています。",
     "前日に見た像や城の輪郭を朝の斜光で見直すと、彫像の表情、橋の勾配、川霧の向こうの丘が変わって見えます。歴史を知ることは、説明を増やすだけでなく、同じ場所を別の時間に見たときに比較できる視点を持つことでもあります。",
   ],
+};
+
+const CITY_FOOD_HISTORY = {
+  "ハンガリー": {
+    city: {
+      title: "ブダペストという町",
+      summary: "ブダペストは、ドナウ川西岸の丘の町ブダ、東岸の平地に広がるペスト、北の古都オーブダが1873年に統合されて生まれた都市です。",
+      detail: [
+        "ブダ側の丘には王宮と城塞が置かれ、川を見下ろす政治・軍事の中心になりました。一方、ペスト側は平らで道を広げやすく、商業、議会、駅、劇場が集まる近代都市へ成長します。オーブダにはローマ帝国の都市アクインクムの記憶が残り、三つの地区は異なる時代の都市像を持っています。",
+        "1873年の統合後、橋と大通りが両岸を一体化し、鎖橋、アンドラーシ通り、国会議事堂、地下鉄が近代国家の首都を形づくりました。観光では、ブダの高低差、ペストの広い道路、ドナウの水運を意識すると、同じ都市の中に異なる町が共存していることが見えてきます。",
+      ],
+      image: CHAIN_BRIDGE_IMAGE,
+      diagram: {
+        type: "relationship",
+        title: "ドナウ川が分け、橋が結んだ都市",
+        items: [
+          { marker: "丘", label: "ブダ", text: "王宮と城塞" },
+          { marker: "橋", label: "鎖橋", text: "両岸を恒久的に接続" },
+          { marker: "平地", label: "ペスト", text: "商業と議会" },
+          { marker: "1873", label: "ブダペスト", text: "三都市の統合" },
+        ],
+        caption: "ドナウ川を境界として眺め、橋を都市統合の装置として見直します。",
+      },
+      districts: [
+        { name: "ブダ", role: "王宮と丘の町", story: "城塞・王宮・教会が集まり、地形そのものが防御と権力を支えた地区。" },
+        { name: "ペスト", role: "商業と議会の平地", story: "国会議事堂、歌劇場、カフェ、駅が並び、19世紀の近代化を担った地区。" },
+        { name: "オーブダ", role: "ローマ都市の記憶", story: "古代アクインクムから続く、ブダペストのさらに古い層を示す地区。" },
+      ],
+      sources: [
+        { label: "Budapestinfo公式", href: "https://www.budapestinfo.hu/" },
+        { label: "UNESCO：ブダペスト", href: "https://whc.unesco.org/en/list/400/" },
+      ],
+    },
+    foodDiagram: {
+      type: "timeline",
+      title: "ハンガリーの食卓に重なる4つの層",
+      items: [
+        { marker: "農村", label: "牧童の鍋", text: "グヤーシュの出発点" },
+        { marker: "近世", label: "パプリカ", text: "新大陸・オスマン経由" },
+        { marker: "帝国", label: "菓子とカフェ", text: "都市の社交文化" },
+        { marker: "現在", label: "市場と屋台", text: "伝統の再編集" },
+      ],
+      caption: "料理は国境を越えて伝わり、都市で新しい意味を与えられます。",
+    },
+    foods: [
+      {
+        icon: "🍲",
+        name: "グヤーシュ（gulyás）",
+        summary: "もとは牧童の野外料理だった煮込み・スープが、都市のレストランで国民的な料理として定着しました。",
+        image: HUNGARIAN_GOULASH_IMAGE,
+        detail: "ハンガリー語のgulyásは牛飼いを意味し、肉と玉ねぎを大鍋で煮る素朴な料理が出発点です。パプリカが広く使われるようになったのは近世以降で、オスマン帝国との接触、農村の食材、19世紀の国民文化づくりが重なって現在の味になりました。日本で想像する濃いシチューだけでなく、汁の多い料理も本来の姿です。",
+        onTrip: "アンドラーシ通り周辺のランチで、パンやクネーデルと一緒に味わうと、歩くための食事という性格が分かります。",
+      },
+      {
+        icon: "🌶",
+        name: "パプリカとハンガリー料理",
+        summary: "パプリカは単なる辛味ではなく、赤い色と香りで家庭料理と国民的な食卓をつなぐ食材です。",
+        image: HUNGARIAN_PAPRIKA_IMAGE,
+        detail: "原産地はアメリカ大陸ですが、ヨーロッパへ伝わった後にバルカンやオスマン圏を経てハンガリーに根付きました。辛味を抑えた品種も育てられ、グヤーシュ、パプリカーシュ、ソーセージなどに広く使われます。19世紀の民族文化の形成とともに、パプリカは『ハンガリーらしさ』を示す色と香りになりました。",
+        onTrip: "市場や土産店で粉末の色と辛さを比べると、同じパプリカでも料理の役割が違うことを感じられます。",
+      },
+      {
+        icon: "🍰",
+        name: "クレーメシュとキュルテーシュ・カラーチ",
+        summary: "王宮の丘の菓子店や街の屋台には、宮廷菓子と庶民の祝祭菓子という二つの食文化があります。",
+        image: HUNGARIAN_KREMES_IMAGE,
+        detail: "ルスヴルムのクレーメシュのようなカスタード菓子は、ハプスブルク時代の菓子職人と都市のカフェ文化の中で洗練されました。一方、円筒形の生地を焼いて砂糖やシナモンをまとわせるキュルテーシュ・カラーチは、屋外の祭りや市場で親しまれてきた菓子です。店内の銀器と屋台の炭火は対照的ですが、どちらも人が集まる都市の甘味です。",
+        onTrip: "王宮地区ではルスヴルムのケーキ、マーケットでは焼きたての香りを探すと、階級と場の違いを食べ比べできます。",
+      },
+      {
+        icon: "☕",
+        name: "カフェとトカイワイン",
+        summary: "コーヒー店とワインは、王宮・商業都市・知識人の社交を支えたブダペストの飲み物文化です。",
+        image: HUNGARIAN_CAFE_IMAGE,
+        detail: "オスマン支配期以降のコーヒー文化と、ハプスブルク時代の都市カフェが混ざり、新聞を読み、議論し、芸術家が集まる店が発展しました。北東部のトカイ地方の甘口ワインは王侯にも献上された名産で、ハンガリーの食卓が農村・宮廷・国際交易をつないでいたことを示します。",
+        onTrip: "カフェでは飲み物だけでなく、席に長く滞在すること自体が文化だと意識して休憩します。",
+      },
+    ],
+  },
+  "オーストリア": {
+    city: {
+      title: "ウィーンという町",
+      summary: "ウィーンはローマ軍営ウィンドボナ、バーベンベルク家の都、ハプスブルク帝国の宮廷、共和国の首都という役割を重ねてきました。",
+      detail: [
+        "旧市街のインネレ・シュタットには、城壁に囲まれた中世都市と王宮の機能が凝縮されています。19世紀に城壁が撤去されてリング通りが整備されると、市庁舎、議会、大学、美術館、劇場が並び、宮廷だけでなく市民社会のための都市が生まれました。",
+        "シェーンブルンは皇室の夏宮、ベルヴェデーレは貴族の邸宅、シュピッテルベルクは職人と住民の町です。これらを同じ日に見ると、ウィーンが一つの均質な『宮殿都市』ではなく、身分・職業・行政の空間が積み重なった大都市であることが分かります。",
+      ],
+      image: ST_STEPHANS_VIENNA_IMAGE,
+      diagram: {
+        type: "timeline",
+        title: "ローマ軍営から市民都市へ",
+        items: [
+          { marker: "古代", label: "ウィンドボナ", text: "ドナウ国境の軍営" },
+          { marker: "中世", label: "旧市街", text: "教会と王宮の都" },
+          { marker: "19世紀", label: "リング通り", text: "城壁跡の公共建築" },
+          { marker: "現在", label: "共和国", text: "宮廷遺産を共有" },
+        ],
+        caption: "中心部の建物を、帝国の私的空間から市民の公共空間へ続く流れで見ます。",
+      },
+      districts: [
+        { name: "インネレ・シュタット", role: "中世都市と宮廷", story: "シュテファン大聖堂、王宮、図書館が集まる旧市街の核。" },
+        { name: "リング通り", role: "市民都市の大通り", story: "城壁跡に議会・市庁舎・美術館・劇場を並べた19世紀の都市計画。" },
+        { name: "シェーンブルン・ノイバウ", role: "離宮と生活の町", story: "皇室の夏宮と、職人・商人の生活地区が現在のウィーンを支える。" },
+      ],
+      sources: [
+        { label: "WienTourismus公式", href: "https://www.wien.info/ja" },
+        { label: "UNESCO：ウィーン歴史地区", href: "https://whc.unesco.org/en/list/1033/" },
+      ],
+    },
+    foodDiagram: {
+      type: "relationship",
+      title: "ウィーンの食文化を支えた場所",
+      items: [
+        { marker: "宮廷", label: "料理人", text: "肉料理と菓子" },
+        { marker: "カフェ", label: "知識人", text: "新聞と会話" },
+        { marker: "ガストハウス", label: "市民", text: "日常の食卓" },
+        { marker: "市場", label: "観光客", text: "伝統の体験" },
+      ],
+      caption: "料理の由来だけでなく、誰がどこで食べたかを考えるとウィーンの食文化が立体的になります。",
+    },
+    foods: [
+      {
+        icon: "🍽",
+        name: "ヴィーナー・シュニッツェル",
+        summary: "仔牛を薄く叩いて衣をつけて揚げる料理で、宮廷料理と市民のレストラン文化をつなぐウィーン料理の代表です。",
+        image: VIENNA_SCHNITZEL_IMAGE,
+        detail: "似たカツレツは中欧や北イタリアにもあり、起源を一人の人物や一つの国に決めることはできません。ウィーンでは19世紀に仔牛料理として形式が整い、パン粉の衣をふくらませて揚げる技法とともに名物化しました。薄さ、肉の種類、揚げ油、レモンの添え方までが料理の作法です。",
+        onTrip: "Meissl & Schadnでは、肉を叩く工程と衣が膨らむ様子を料理の歴史として観察できます。",
+      },
+      {
+        icon: "🥩",
+        name: "ターフェルシュピッツ",
+        summary: "牛肉をブイヨンで煮る宮廷料理で、肉だけでなくスープ、骨髄、ソースを順番に味わいます。",
+        image: VIENNA_TAFELSPITZ_IMAGE,
+        detail: "ターフェルシュピッツは、皇帝フランツ・ヨーゼフ1世が好んだ料理として知られます。煮込み料理は高価な肉を柔らかくし、スープまで無駄なく使う家庭料理の知恵でもありました。宮廷の食卓で洗練された後、ガストハウスへ広がり、現在は『皇帝の料理』と『市民の鍋料理』の両方の顔を持っています。",
+        onTrip: "Plachuttaなどで食べる場合は、最初のスープから肉、骨髄トースト、ソースまで順番を楽しみます。",
+      },
+      {
+        icon: "☕",
+        name: "ウィーンのコーヒーハウス",
+        summary: "カフェは飲み物を買ってすぐ出る場所ではなく、新聞、音楽、文学、政治を語る市民の第二の居間でした。",
+        image: KHM_CAFE_IMAGE,
+        detail: "1683年のコーヒー豆にまつわる起源譚は伝説を含みますが、18〜19世紀にコーヒーハウスが都市生活へ深く根付いたことは確かです。メランジェ、新聞、水、席に長く座る習慣は、帝都に集まった知識人や芸術家の交流を支えました。カフェの内装も、社交のための舞台装置です。",
+        onTrip: "Gerstnerやカフェで、注文した飲み物を急いで飲み切らず、空間と滞在時間を含めて体験します。",
+      },
+      {
+        icon: "🍫",
+        name: "ザッハトルテとアプフェルシュトゥルーデル",
+        summary: "チョコレート菓子とりんご菓子は、帝国の交易・菓子職人・カフェ文化が家庭と観光へ広がった例です。",
+        image: SACHERTORTE_IMAGE,
+        detail: "ザッハトルテは1832年、宮廷の宴席で若いフランツ・ザッハがつくったと伝えられ、後にホテル・ザッハーとデメルの販売権をめぐる争いで名を高めました。アプフェルシュトゥーデルは薄い生地で果物を包む菓子で、ハプスブルク領域の食文化交流を感じさせます。どちらも菓子そのものと、食べる場所の格式が一体です。",
+        onTrip: "ザッハトルテは甘さをコーヒーで受け、マーケットでは温かいプンシュや焼き菓子と季節の関係を見ます。",
+      },
+    ],
+  },
+  "チェコ": {
+    city: {
+      title: "プラハという町",
+      summary: "プラハは旧市街、新市街、マラー・ストラナ、フラッチャニ、プラハ城がヴルタヴァ川と橋で結ばれた、複数の町の集合体です。",
+      detail: [
+        "旧市街は12世紀以来の商人と職人の市場町、新市街は1348年にカレル4世が計画した広い都市、マラー・ストラナは城下の職人町と貴族の町、フラッチャニは城の西側の宮殿・巡礼地区でした。それぞれの地区が異なる制度と住民を持っていたため、同じプラハでも道幅、建物の高さ、広場の使い方が変わります。",
+        "カレル橋はそれらを結ぶ王の道であり、川を越える交通路、戴冠式の行列、聖人像の屋外ギャラリーを兼ねました。旧市街広場から橋を渡り、マラー・ストラナを上って城へ向かうルートは、単なる観光コースではなく、中世の権力と商業の構造を歩いて追体験する道です。",
+      ],
+      image: PRAGUE_OLD_TOWN_IMAGE,
+      diagram: {
+        type: "relationship",
+        title: "川と丘に沿って育ったプラハ",
+        items: [
+          { marker: "丘", label: "城とフラッチャニ", text: "王権と巡礼" },
+          { marker: "橋", label: "カレル橋", text: "王の道" },
+          { marker: "岸", label: "旧市街", text: "市場と商人" },
+          { marker: "南", label: "新市街", text: "計画都市と市民" },
+        ],
+        caption: "高台の城、川、商業の広場を一本の歩行ルートとして読みます。",
+      },
+      districts: [
+        { name: "旧市街（Staré Město）", role: "市場と商人の町", story: "旧市街広場、天文時計、ティーン教会が集まる都市の商業中心。" },
+        { name: "新市街（Nové Město）", role: "カレル4世の都市計画", story: "ヴァーツラフ広場を中心に、広い市場と近代の市民運動が重なる地区。" },
+        { name: "マラー・ストラナとフラッチャニ", role: "城下と宮殿の丘", story: "バロック宮殿、巡礼地、職人町がプラハ城へ続く斜面を形づくる。" },
+      ],
+      sources: [
+        { label: "Prague City Tourism公式", href: "https://prague.eu/en/" },
+        { label: "UNESCO：プラハ歴史地区", href: "https://whc.unesco.org/en/list/616/" },
+      ],
+    },
+    foodDiagram: {
+      type: "timeline",
+      title: "プラハの食卓ができるまで",
+      items: [
+        { marker: "修道院", label: "醸造と保存", text: "ビール・パン・発酵" },
+        { marker: "市場", label: "肉と穀物", text: "煮込みと団子" },
+        { marker: "ビアホール", label: "町の社交", text: "料理と樽生" },
+        { marker: "カフェ", label: "近代都市", text: "菓子と会話" },
+      ],
+      caption: "プラハの料理は、修道院・市場・宿屋・カフェという町の場所と一緒に発達しました。",
+    },
+    foods: [
+      {
+        icon: "🍺",
+        name: "チェコのビール文化",
+        summary: "ビールは飲み物であるだけでなく、食事、会話、町の社交を組み立てる日常の文化です。",
+        image: CZECH_BEER_IMAGE,
+        detail: "チェコでは修道院や町の醸造所が中世からビールをつくり、19世紀にはピルゼンで下面発酵の淡色ビールが広まりました。プラハのビアホールでは、銘柄、注ぎ方、泡の量、料理との組み合わせまでが習慣になっています。ビールをワインのような特別な飲み物としてではなく、スープや肉料理と一緒に日常的に味わう点が特徴です。",
+        onTrip: "U PinkasůやLokálでは、料理とビールを別々に考えず、パン・ソース・苦味の組み合わせを見ます。",
+      },
+      {
+        icon: "🥩",
+        name: "スヴィーチコヴァーとクネドリーキ",
+        summary: "牛肉を根菜のクリームソースで煮込み、蒸しパンのようなクネドリーキを添えるチェコの家庭料理です。",
+        image: SVICKOVA_IMAGE,
+        detail: "スヴィーチコヴァーは、肉を焼き付けてから根菜とともに煮込み、裏ごししたソースにクリームを加える料理です。甘酸っぱいクランベリーや生クリームが添えられ、塩味・酸味・甘味が一皿にまとまります。クネドリーキはソースを受け止めるための主食で、パンやじゃがいもの種類によって食感が変わります。",
+        onTrip: "U Pinkasůで料理が出たら、肉だけでなくソースをクネドリーキに含ませて、食卓の構造ごと味わいます。",
+      },
+      {
+        icon: "🍖",
+        name: "グラーシュ、鴨料理、豚肉料理",
+        summary: "煮込み、ロースト、ザワークラウトは、ボヘミアの寒い季節とビールに合う食事として発展しました。",
+        image: CZECH_GOULASH_IMAGE,
+        detail: "グラーシュはハンガリー語圏と中欧全体に広がった料理で、チェコでは牛肉や豚肉を煮込み、クネドリーキと合わせます。鴨のローストや豚肉料理にはキャベツ、パン、芥子などが添えられ、保存しやすい穀物・肉・発酵食品の組み合わせが見えます。宮廷料理よりも、宿屋と家庭の鍋から発展した味に近いのが魅力です。",
+        onTrip: "Café Imperialや市民会館のレストランでは、豪華な内装と、もとは日常食だった料理の対比を意識します。",
+      },
+      {
+        icon: "🥨",
+        name: "菓子、コラーチ、トルデルニーク",
+        summary: "チェコの菓子には、家庭で焼く発酵菓子と観光地の屋台菓子という二つの層があります。",
+        image: TRDELNIK_IMAGE,
+        detail: "コラーチは果物やチーズをのせた丸い発酵菓子で、祭礼や家庭の焼き菓子として中欧に広く見られます。トルデルニークは筒状の生地を焼いて砂糖やナッツをまぶす菓子で、現在のプラハ観光地で目立ちますが、チェコ全土の古い国民菓子と単純に言い切ることはできません。伝統と観光向けの新しい名物を区別して味わうのがポイントです。",
+        onTrip: "カフェ・ルーヴルや市場では、座って食べる菓子と歩きながら食べる菓子の場の違いも楽しみます。",
+      },
+    ],
+  },
 };
 
 // ─── データ定数 ───────────────────────────────────────────────────────────────
@@ -1588,6 +1896,66 @@ const HistorySpot = ({ spot }) => {
   );
 };
 
+const CityFoodPanel = ({ culture }) => {
+  if (!culture) return null;
+
+  return (
+    <section className="eu-history-life" aria-label="町と食文化">
+      <h3 className="eu-history-life-title">町と食文化</h3>
+      <div className="eu-history-life-grid">
+        <article className="eu-life-card eu-town-card">
+          <p className="eu-history-kicker">町の成り立ち</p>
+          <h4>{culture.city.title}</h4>
+          <p className="eu-life-summary">{culture.city.summary}</p>
+          {culture.city.image && <PlacePreview image={culture.city.image} variant="history" />}
+          <details className="eu-history-detail" open>
+            <summary>詳細情報</summary>
+            <div className="eu-history-detail-body">
+              {culture.city.detail.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          </details>
+          <h5 className="eu-life-subtitle">地区で見る町の構造</h5>
+          <ol className="eu-town-districts">
+            {culture.city.districts.map((district) => (
+              <li key={district.name}>
+                <strong>{district.name}</strong>
+                <span className="eu-town-district-role">{district.role}</span>
+                <p>{district.story}</p>
+              </li>
+            ))}
+          </ol>
+          <HistoryDiagram diagram={culture.city.diagram} />
+          <HistorySourceLinks sources={culture.city.sources} />
+        </article>
+
+        <article className="eu-life-card eu-food-card">
+          <p className="eu-history-kicker">食べ物の背景</p>
+          <h4>この旅で出会う味</h4>
+          <HistoryDiagram diagram={culture.foodDiagram} />
+          <div className="eu-food-list">
+            {culture.foods.map((food) => (
+              <article className="eu-food-item" key={food.name}>
+                <h5 className="eu-food-item-title">
+                  <span aria-hidden="true">{food.icon}</span> {food.name}
+                </h5>
+                {food.image && <PlacePreview image={food.image} variant="history" />}
+                <p className="eu-life-summary">{food.summary}</p>
+                <details className="eu-history-detail">
+                  <summary>詳細情報</summary>
+                  <div className="eu-history-detail-body">
+                    <p>{food.detail}</p>
+                    <p><strong>現地での楽しみ方：</strong>{food.onTrip}</p>
+                  </div>
+                </details>
+              </article>
+            ))}
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+};
+
 const HistoryPanel = ({ history }) => {
   if (!history) {
     return (
@@ -1627,6 +1995,7 @@ const HistoryPanel = ({ history }) => {
         <h3 className="eu-history-spots-title">今日訪れる場所の背景</h3>
         {history.spots.map((spot) => <HistorySpot key={spot.name} spot={spot} />)}
       </div>
+      <CityFoodPanel culture={CITY_FOOD_HISTORY[history.country.name]} />
     </section>
   );
 };
@@ -1689,6 +2058,24 @@ export default function EuropeTrip() {
         .eu-view-tab[aria-selected="true"] { color:#2C2421; background:white; border-color:#ded7ce; font-weight:700; margin-bottom:-1px; }
         .eu-view-tab:focus-visible { outline:2px solid #2C2421; outline-offset:1px; }
         .eu-history-panel { display:grid; gap:1.5rem; }
+        .eu-history-life { display:grid; gap:1rem; }
+        .eu-history-life-title { font-size:1.1rem; letter-spacing:.06em; margin:0; text-wrap:balance; }
+        .eu-history-life-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+        .eu-life-card { background:white; border:1px solid #e2dbd2; border-radius:6px; padding:1.1rem 1.2rem; box-shadow:0 1px 6px rgba(0,0,0,.04); }
+        .eu-life-card > .place-preview--history { margin:.8rem 0 0; }
+        .eu-food-item .place-preview--history { margin:.55rem 0; }
+        .eu-life-card h4 { font-size:1.05rem; line-height:1.45; letter-spacing:.04em; margin:0 0 .7rem; text-wrap:balance; }
+        .eu-life-summary { color:#6a6058; font-size:.8rem; line-height:1.75; text-wrap:pretty; }
+        .eu-life-subtitle { font-family:'Zen Maru Gothic',sans-serif; color:#5a5048; font-size:.76rem; margin:1rem 0 .6rem; }
+        .eu-town-districts { display:grid; gap:.6rem; list-style:none; padding:0; margin:0; }
+        .eu-town-districts li { border-left:2px solid #2a5a9a; padding:.55rem .7rem; background:#fbf8f3; }
+        .eu-town-districts strong { display:block; font-family:'Zen Maru Gothic',sans-serif; font-size:.78rem; color:#2C2421; }
+        .eu-town-district-role { display:block; color:#756d65; font-family:'Zen Maru Gothic',sans-serif; font-size:.68rem; margin-top:.15rem; }
+        .eu-town-districts p { color:#6a6058; font-size:.74rem; line-height:1.6; margin-top:.2rem; }
+        .eu-food-list { display:grid; gap:.8rem; }
+        .eu-food-item { padding-top:.8rem; border-top:1px solid #f0ece6; }
+        .eu-food-item:first-child { padding-top:0; border-top:none; }
+        .eu-food-item-title { font-family:'Zen Maru Gothic',sans-serif; font-size:.82rem; line-height:1.5; margin:0 0 .25rem; }
         .eu-history-country { background:white; border-left:3px solid #2a5a9a; border-radius:6px; padding:1.2rem 1.3rem; box-shadow:0 1px 8px rgba(0,0,0,.05); }
         .eu-history-kicker { font-family:'Zen Maru Gothic',sans-serif; color:#756d65; font-size:.72rem; letter-spacing:.12em; margin-bottom:.35rem; }
         .eu-history-country-title { font-size:1.25rem; line-height:1.4; letter-spacing:.06em; margin:0 0 .7rem; text-wrap:balance; }
@@ -1792,6 +2179,7 @@ export default function EuropeTrip() {
           .eu-history-card{padding:.95rem}
           .eu-history-card-content{grid-template-columns:1fr}
           .eu-history-card-content .place-preview--history{order:-1}
+          .eu-history-life-grid{grid-template-columns:1fr}
           .eu-history-diagram-track{grid-template-columns:1fr}
           .eu-history-diagram-step{min-height:0;padding:.55rem .6rem}
           .eu-history-diagram-arrow{right:auto;left:50%;top:auto;bottom:-.65rem;font-size:0;transform:translateX(-50%)}
