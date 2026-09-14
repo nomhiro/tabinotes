@@ -953,6 +953,174 @@ const SPOT_LONG_HISTORY = {
   ],
 };
 
+const SPOT_KEY_FACTS = {
+  "セーチェーニ鎖橋": [
+    "1849年開通。ブダとペストを結んだ最初の恒久的なドナウ橋。",
+    "セーチェーニ伯爵が構想を進め、英国人技師ウィリアム・ティアニー・クラークが設計。",
+    "第二次世界大戦末期に破壊され、戦後に再建された。現在の橋は近代化と復興の両方を記憶する。",
+  ],
+  "ヴァールケルト・バザール": [
+    "19世紀後半、王宮の丘へ向かうドナウ河畔の玄関として整備された。",
+    "ミクローシュ・イブルが庭園、回廊、店舗、階段を一つの景観として設計。",
+    "戦争と用途変更で荒廃した後、21世紀の修復で再び王宮と河畔をつなぐ場所になった。",
+  ],
+  "ブダ王宮": [
+    "1241年のモンゴル襲来後、ベーラ4世が高台の城塞都市を整備したことが出発点。",
+    "マーチャーシュ1世の時代にルネサンス文化の宮廷となり、イタリアの芸術家や人文主義者が集まった。",
+    "オスマン支配、ハプスブルク再建、第二次大戦後の復旧という複数の層が重なる。",
+  ],
+  "マーチャーシュ教会": [
+    "王の結婚や戴冠式と結びついた、王宮地区の宗教と政治の中心。",
+    "オスマン時代にはモスクとして使われ、奪還後にカトリック教会へ戻った。",
+    "19世紀のフリジェシュ・シュレクの修復で、現在の彩色とジョルナイ製屋根が整えられた。",
+  ],
+  "漁夫の砦": [
+    "1895〜1902年の建国千年祭期に造られた展望建築で、軍事要塞そのものではない。",
+    "七つの塔はマジャール人七部族を象徴し、マーチャーシュ教会と調和するよう設計された。",
+    "国会議事堂とドナウを一望することで、王宮の丘と近代国家の議会を同じ景色に収められる。",
+  ],
+  "ハンガリー国会議事堂": [
+    "1885年着工、1896年の建国千年祭に一部使用、1904年に完成。",
+    "イムレ・シュテインドルがネオゴシックの外観とバロック的な内部を組み合わせた。",
+    "高さ96mはマジャール人の定住年と千年祭を意識した数字で、王冠は国家の連続性を示す。",
+  ],
+  "旧郵便貯金局": [
+    "19世紀末の郵便・金融制度の拡大を象徴する公共建築。",
+    "レフネル・エデンが民俗文様とジョルナイ陶器を使い、ハンガリー独自のアール・ヌーヴォーを表現した。",
+    "蜂や植物の装飾は、自然・勤勉・豊かさを建物の外観に重ねている。",
+  ],
+  "聖イシュトヴァーン大聖堂": [
+    "1851年着工、ドーム崩壊と設計変更を経て1905年完成。",
+    "ヒルド、イブル、カウザーの三世代の建築家が完成まで関わった。",
+    "初代国王の右手の聖遺物を祀り、王権とカトリック信仰の記憶を現代へ伝える。",
+  ],
+  "アンドラーシ通り": [
+    "1870年代に旧市街と市民公園を結ぶ近代首都の軸として建設された。",
+    "1896年開業のM1線は大陸ヨーロッパ初期の地下鉄で、地上の大通りと一体の都市計画だった。",
+    "貴族邸宅、歌劇場、地下鉄が、王国の近代化を一つの断面に見せる。",
+  ],
+  "ハンガリー国立歌劇場": [
+    "1884年開場。ハンガリー語の音楽文化を育て、ウィーンに対抗する首都の象徴とされた。",
+    "ミクローシュ・イブルが馬蹄形の客席、大階段、金箔や天井画を設計。",
+    "王室の後援を受けながら、ハンガリーの作曲家と観客が共有する公共の劇場でもあった。",
+  ],
+  "リスト・フェレンツ記念館": [
+    "フランツ・リストが晩年に暮らし、ブダペスト音楽院で若い音楽家を教えた住居。",
+    "リストはワイマール、ローマ、ブダペストを行き来する国際的な音楽家だった。",
+    "ピアノ、譜面、家具、書斎から、作曲家を『名曲』だけでなく教育者と生活者として見られる。",
+  ],
+  "英雄広場": [
+    "1896年の建国千年祭に合わせ、マジャール人の定住からの歴史を記念碑に編集した。",
+    "中央のアールパード像と列柱の王・指導者像が、国家の物語を人物の一覧として示す。",
+    "像の選び方や配置は時代の政治を反映するため、称えられた人物だけでなく語られない人々にも目を向ける。",
+  ],
+  "市民公園・ヴァイダフニャディ城": [
+    "建国千年祭の仮設展示から発展し、1900年代初頭に恒久建築となった。",
+    "イグナーツ・アルパールがロマネスク、ゴシック、ルネサンス、バロックを一つの城に組み合わせた。",
+    "実在の一城ではなく、ハンガリーの建築史を歩いて学ぶ『建築の教科書』である。",
+  ],
+  "国立民族博物館": [
+    "19世紀から集められた衣服、道具、住居、祭礼など、名もない人々の生活を歴史として保存する。",
+    "2022年の新館はリゲット・ブダペスト再整備の一部で、屋上緑地と展示空間を結ぶ。",
+    "古建築を保存するだけでなく、現代の博物館が過去をどう見せるかを考える場所。",
+  ],
+  "シュテファン大聖堂": [
+    "12世紀の教会をもとに、ルドルフ4世が王朝の都にふさわしいゴシック大聖堂へ拡張した。",
+    "南塔、モザイク屋根、カタコンベが、ウィーンの宗教・市民生活・都市景観をつなぐ。",
+    "第二次大戦末期の火災後に市民も復旧を支え、使い続けることで記憶を継承している。",
+  ],
+  "グラーベンとペーター教会": [
+    "グラーベンはローマ時代の防御溝を起源とする通りで、後に市場と商業の道になった。",
+    "ペスト後の三位一体柱は、人口を失った都市の再生と信仰を記念する。",
+    "ペーター教会の楕円ドームは、商業通りからバロックの宗教空間へ視線を切り替える。",
+  ],
+  "国立図書館プルンクザール": [
+    "カール6世の宮廷図書館として1723〜1726年に建設された。",
+    "約20万冊の蔵書、中央ドーム、ダニエル・グランの天井画が知識を皇帝の権威として演出する。",
+    "かつて宮廷に限られた知識の空間が、現在は公共の博物館として開かれている。",
+  ],
+  "市庁舎とクリスマスマーケット": [
+    "1872〜1883年、城壁跡のリング通り沿いに市民自治の建物として建設された。",
+    "フリードリヒ・フォン・シュミットのネオゴシック建築は、皇宮とは異なる公共の威信を示す。",
+    "冬市は現代の行事だが、広場の大きさと建物の正面性は19世紀の市民都市計画を受け継ぐ。",
+  ],
+  "シェーンブルン宮殿・庭園・グロリエッテ": [
+    "狩猟館から発展し、マリア・テレジアの時代に皇室の夏宮と外交の舞台になった。",
+    "宮殿、庭園、丘のグロリエッテが一直線に配置され、遠くまで届く視線そのものが権力を表す。",
+    "モーツァルトの演奏伝承、動物園、劇場など、王朝の生活と祝祭を支える複合施設だった。",
+  ],
+  "美術史美術館": [
+    "1891年、ハプスブルク家が何世代も集めたコレクションを帝国の美術館として公開した。",
+    "ゼンパーとハーゼナウアーが自然史博物館と対になる建物を設計した。",
+    "作品だけでなく、何を収集し、誰に見せるかという帝国の知識政策まで建築に表れている。",
+  ],
+  "ベルヴェデーレ宮殿": [
+    "オイゲン公の夏宮として1714〜1723年に下宮・上宮・庭園が整えられた。",
+    "ヒルデブラントは丘の高低差を使い、軍人の邸宅を王宮に匹敵する迎賓空間へ変えた。",
+    "1955年の国家条約調印の舞台でもあり、バロックの権力と戦後オーストリアの主権回復が重なる。",
+  ],
+  "シュピッテルベルク": [
+    "城壁外の職人・居住地区として形成され、低い家と細い路地に生活のスケールを残す。",
+    "帝都の大通りとは異なり、職人、商人、家族の暮らしがウィーンを支えた場所。",
+    "保存と再生によってカフェや冬市が生まれ、古い町並みが現代の市民文化へつながった。",
+  ],
+  "旧市街広場とティーン聖母教会": [
+    "12世紀以来の市場で、商人、職人、宗教行列、政治集会が交差したプラハの公共空間。",
+    "ティーン教会は15世紀のフス派・ウトラキストの中心の一つで、宗教と都市政治の結節点だった。",
+    "広場のロマネスク、ゴシック、バロック、ロココは、町が一度に完成しなかった証拠。",
+  ],
+  "旧市庁舎の天文時計": [
+    "1410年のオルロイは、時刻、太陽と月、黄道、暦、宗教的祝祭を一つの機械で示した。",
+    "時計職人ミクラーシュ・カダーニュと天文学者ヤン・シンデルの関与は史料で確認される。",
+    "マスター・ハヌシュが盲目にされた話は伝説で、毎正時の人形は中世の死生観を表す。",
+  ],
+  "カレル橋": [
+    "洪水で失われたユディト橋に代わり、1357年に着工された王の道の中心。",
+    "カレル4世とペトル・パルレーシュの都市計画が、王宮・旧市街・帝国西部を結んだ。",
+    "現在の30体の聖人像は主に17〜18世紀のバロック作品で、橋の完成後に加えられた。",
+  ],
+  "マラー・ストラナ、カンパ島、ジョン・レノンの壁": [
+    "1257年に王が計画した町で、1541年の大火後に貴族宮殿とバロック教会が増えた。",
+    "カンパ島の水路や水車は、王宮都市を支えた職人・商業の風景を伝える。",
+    "レノンの壁は本人が訪れた場所ではなく、1980年代の若者が自由と平和の象徴として名前を借りた市民表現。",
+  ],
+  "ストラホフ修道院と図書館": [
+    "1143年創立のプレモントレ修道会の拠点で、祈り、写本、教育、農園、醸造を担った。",
+    "神学の間と哲学の間は17〜18世紀に整えられ、天井画と分類された書架が知識の体系を示す。",
+    "共産主義政権下の接収を経て返還され、知識と信仰の場所が政治体制で揺れることも伝える。",
+  ],
+  "フラッチャニ広場とロレッタ教会": [
+    "プラハ城西側の城下町で、宮殿、修道院、巡礼地が王宮への前庭を形づくった。",
+    "ロレッタは三十年戦争後の再カトリック化と巡礼文化の中で17世紀に整備された。",
+    "広場から旧市街を見下ろす景観は、城が町を支配する地形と宗教的な巡礼路を同時に示す。",
+  ],
+  "プラハ城と聖ヴィート大聖堂": [
+    "9世紀後半の要塞・教会から始まり、王、皇帝、大統領の拠点として増改築された『都市の中の都市』。",
+    "聖ヴィート大聖堂は1344年に着工し、マティアス・フォン・アラス、ペトル・パルレーシュらが工事を進めた。",
+    "中断を挟んで1929年に完成し、ゴシックの柱、王の墓、ミュシャの近代ステンドグラスが同居する。",
+  ],
+  "黄金の小路": [
+    "16世紀末、城壁沿いに城の衛兵や職人の小さな住居が建てられた。",
+    "錬金術師の街という話は後世の伝説で、実際には王宮を支えた人々の生活空間だった。",
+    "22番の家で仕事をしたフランツ・カフカの文学的記憶が、城壁の小さな家々に現代的な意味を加えた。",
+  ],
+  "市民会館と火薬塔": [
+    "火薬塔は1475年の王の道の門、市民会館は1905〜1912年のチェコ市民文化の記念碑。",
+    "アルフォンス・ミュシャらの装飾とスメタナ・ホールは、チェコ語・音楽・芸術を国家の核にした。",
+    "1918年の独立と関係する市民会館の隣に、王の戴冠行列が通った火薬塔が立つ。",
+  ],
+  "ヴァーツラフ広場": [
+    "1348年、カレル4世が造った新市街の馬市場が起源で、19世紀に聖ヴァーツラフの名を冠した。",
+    "1918年の独立、1968年のプラハの春、1989年のビロード革命を記憶する市民の広場。",
+    "国立博物館と騎馬像へ伸びる軸は、王の記憶と近代の政治運動を一つの景観に重ねる。",
+  ],
+  "朝のカレル橋": [
+    "昼の観光名所ではなく、王の道が本来持っていた生活・仕事・礼拝のための通路として見直せる時間帯。",
+    "朝霧と斜光は聖人像、橋塔、プラハ城の輪郭を変え、前日の夜景と異なる歴史の表情をつくる。",
+    "同じ場所を時刻を変えて見ることは、歴史を知識だけでなく比較の体験にする方法。",
+  ],
+};
+
 const CITY_FOOD_HISTORY = {
   "ハンガリー": {
     city: {
@@ -1179,6 +1347,420 @@ const CITY_FOOD_HISTORY = {
         image: TRDELNIK_IMAGE,
         detail: "コラーチは果物やチーズをのせた丸い発酵菓子で、祭礼や家庭の焼き菓子として中欧に広く見られます。トルデルニークは筒状の生地を焼いて砂糖やナッツをまぶす菓子で、現在のプラハ観光地で目立ちますが、チェコ全土の古い国民菓子と単純に言い切ることはできません。伝統と観光向けの新しい名物を区別して味わうのがポイントです。",
         onTrip: "カフェ・ルーヴルや市場では、座って食べる菓子と歩きながら食べる菓子の場の違いも楽しみます。",
+      },
+    ],
+  },
+};
+
+const CITY_STORY = {
+  "ハンガリー": {
+    history: [
+      {
+        era: "古代〜9世紀",
+        title: "ドナウ川の境界に町が生まれる",
+        summary: "ブダペストの始まりは、一つの首都ではなく、川と丘を利用する複数の集落でした。",
+        detail: [
+          "ローマ帝国はドナウ川を北方の国境線とし、現在のオーブダ付近にアクインクムという軍事・商業都市を築きました。川は人や物を運ぶ道である一方、帝国の外側を意識させる境界でもありました。ローマの道路、水道、浴場の記憶は、現在の都市の地下や博物館に残っています。",
+          "その後、さまざまな民族の移動を経て、マジャール人がカルパチア盆地に定住します。ブダ側の丘は守りやすく、ペスト側の平地は市場を開きやすいという地形の違いが、後の二つの町の性格を決めました。",
+        ],
+        image: CHAIN_BRIDGE_IMAGE,
+        links: [
+          { label: "ブダ王宮", href: "https://budacastlebudapest.com/" },
+          { label: "ブダペスト世界遺産", href: "https://whc.unesco.org/en/list/400/" },
+        ],
+        diagram: {
+          type: "relationship",
+          title: "地形がつくった都市の役割",
+          items: [
+            { marker: "丘", label: "ブダ", text: "防御と王宮" },
+            { marker: "川", label: "ドナウ", text: "交通と境界" },
+            { marker: "平地", label: "ペスト", text: "市場と商業" },
+          ],
+          caption: "同じ都市でも、地形が違えば暮らしと権力の置かれ方が変わります。",
+        },
+      },
+      {
+        era: "1000年前後〜15世紀",
+        title: "キリスト教王国と王宮文化",
+        summary: "聖イシュトヴァーン1世の王国づくりと、マーチャーシュ1世のルネサンス宮廷が、ハンガリーの歴史の二つの柱です。",
+        detail: [
+          "イシュトヴァーン1世は、部族連合を西ヨーロッパの王国に近い制度へまとめ、司教区、郡、法律、王冠を整えました。キリスト教化は信仰の変更だけでなく、文字による行政と国際的な外交関係を導入する国家建設でした。聖イシュトヴァーンの右手が現在も聖遺物として祀られるのは、王と国家の記憶が結びついているためです。",
+          "15世紀のマーチャーシュ1世は、王宮にイタリアの人文主義やルネサンス美術を取り入れました。王宮、教会、図書館は、軍事拠点だった丘を知識と芸術の中心へ変えます。ブダ城地区を歩くときは、城壁だけでなく、王がどのような文化を集めたかを想像します。",
+        ],
+        image: MATTHIAS_CHURCH_IMAGE,
+        links: [
+          { label: "マーチャーシュ教会", href: "https://matyas-templom.hu/" },
+          { label: "聖イシュトヴァーン大聖堂", href: "https://www.bazilika.biz/" },
+        ],
+        diagram: {
+          type: "timeline",
+          title: "王国を支えた二つの転換",
+          items: [
+            { marker: "1000年頃", label: "聖イシュトヴァーン", text: "キリスト教王国" },
+            { marker: "中世", label: "王宮と教会", text: "制度と信仰" },
+            { marker: "15世紀", label: "マーチャーシュ", text: "ルネサンス宮廷" },
+          ],
+          caption: "宗教による国家形成と、王宮による文化形成を分けて考えます。",
+        },
+      },
+      {
+        era: "1526〜18世紀",
+        title: "オスマン帝国とハプスブルク家の境界",
+        summary: "ブダペストの建物が何度も姿を変えた理由は、ハンガリーが帝国同士の境界に置かれていたからです。",
+        detail: [
+          "1526年のモハーチの戦いで中世ハンガリー王国は大きく揺らぎ、1541年にはブダがオスマン帝国の支配下に入りました。王宮はイスラム帝国の軍事拠点として使われ、浴場や市場など、オスマンの都市文化も加わります。現在の温泉文化や食材の一部を考えるとき、この時代を単なる『占領』で終わらせないことが大切です。",
+          "1686年のブダ奪還戦で城地区は大きく破壊され、その後ハプスブルク家の支配下で再建されます。現在のバロック的な王宮と、地下に残る中世・オスマンの層が同居するのは、都市が壊れては建て直されてきた結果です。",
+        ],
+        image: BUDA_CASTLE_IMAGE,
+        links: [
+          { label: "ブダ王宮", href: "https://budacastlebudapest.com/" },
+          { label: "ヴァールケルト・バザール", href: "https://varkertbazar.hu/" },
+          { label: "漁夫の砦", href: "https://www.fishermansbastion.com/" },
+        ],
+      },
+      {
+        era: "19世紀後半〜現在",
+        title: "三つの町がブダペストになる",
+        summary: "1873年の統合と近代化によって、王宮の町、商業都市、帝国の首都が一つの都市景観にまとめられました。",
+        detail: [
+          "1867年のアウスグライヒでハンガリーの自治が広がると、首都を近代化する大規模な都市計画が進みます。1873年にブダ、ペスト、オーブダが統合され、鎖橋や新しい橋、アンドラーシ通り、国会議事堂、歌劇場、地下鉄が相互に結びつきました。建物は観光名所であると同時に、新しい国家が自分の力を示すためのメッセージでした。",
+          "国会議事堂がドナウ河畔に置かれ、王宮と向き合う構図は、王朝の丘と議会国家の平地を一つの景色にしています。英雄広場や市民公園では、歴史を記念碑として編集する19世紀の考え方も見ることができます。",
+        ],
+        image: PARLIAMENT_IMAGE,
+        links: [
+          { label: "セーチェーニ鎖橋", href: "https://maps.google.com/?q=Sz%C3%A9chenyi+L%C3%A1nch%C3%ADd" },
+          { label: "ハンガリー国会議事堂", href: "https://www.parlament.hu/en/web/house-of-the-national-assembly/" },
+          { label: "ハンガリー国立歌劇場", href: "https://www.opera.hu/" },
+          { label: "英雄広場", href: "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest" },
+        ],
+        diagram: {
+          type: "relationship",
+          title: "近代首都を構成した施設",
+          items: [
+            { marker: "接続", label: "鎖橋", text: "両岸を結ぶ" },
+            { marker: "政治", label: "国会議事堂", text: "自治と議会" },
+            { marker: "文化", label: "歌劇場", text: "国民文化" },
+            { marker: "記憶", label: "英雄広場", text: "千年の物語" },
+          ],
+          caption: "観光地を別々に見るのではなく、国家が都市へ置いた役割としてつなげます。",
+        },
+      },
+    ],
+    food: [
+      {
+        era: "農村の食卓",
+        title: "牧童の鍋からグヤーシュへ",
+        summary: "グヤーシュは、牛飼いの野外料理が都市のレストランで国民料理になった例です。",
+        detail: [
+          "ハンガリー語のgulyásは牛飼いを意味します。肉、玉ねぎ、野菜を大鍋で煮る料理は、保存しやすい材料を使い、長時間の移動や仕事の合間に食べられるものでした。都市に入ると、汁の多いスープから濃い煮込みまで、店ごとの形に分かれていきます。",
+          "食べるときは『ハンガリー料理だから辛い』と決めつけず、パプリカの香り、肉の煮込み方、パンや付け合わせとの関係に注目します。農村の鍋が国家の食文化として語られるようになった背景には、19世紀の民族文化づくりもあります。",
+        ],
+        image: HUNGARIAN_GOULASH_IMAGE,
+        links: [
+          { label: "アンドラーシ通り周辺", href: "https://maps.google.com/?q=Andr%C3%A1ssy+%C3%BAt+Budapest" },
+        ],
+      },
+      {
+        era: "近世〜近代",
+        title: "パプリカが国民料理をつくる",
+        summary: "新大陸由来の植物が、オスマン圏との交流を経てハンガリー料理の象徴になりました。",
+        detail: [
+          "パプリカはもともとアメリカ大陸の植物で、ヨーロッパへ伝わった後、バルカンやオスマン圏を通ってハンガリーに定着しました。辛味の強い品種だけでなく、甘く赤い品種も育てられ、料理に色と香りを加えます。",
+          "グヤーシュ、パプリカーシュ、ソーセージなどで使われるパプリカは、単なる調味料ではなく、農業、交易、家庭料理、国民意識をつなぐ食材です。市場で粉の色を比べることも、歴史を味覚へ近づける方法です。",
+        ],
+        image: HUNGARIAN_PAPRIKA_IMAGE,
+        links: [
+          { label: "市民公園・ヴァイダフニャディ城", href: "https://ligetbudapest.hu/" },
+        ],
+      },
+      {
+        era: "帝国都市の菓子文化",
+        title: "クレーメシュと屋台菓子",
+        summary: "王宮の菓子店とマーケットの焼き菓子は、同じ都市にある異なる食の場を見せてくれます。",
+        detail: [
+          "ルスヴルムのクレーメシュのようなカスタード菓子は、ハプスブルク時代の菓子職人と都市のカフェで洗練されました。薄い生地、クリーム、砂糖を重ねる菓子は、材料の豊かさだけでなく、店内で座って味わう時間も商品にしています。",
+          "一方、円筒形の生地を焼くキュルテーシュ・カラーチは、屋外の祭りや市場で香りを広げます。銀器の店と炭火の屋台を比べると、宮廷文化と庶民の祝祭が別の形で甘味を育てたことが分かります。",
+        ],
+        image: HUNGARIAN_KREMES_IMAGE,
+        links: [
+          { label: "ルスヴルム・ツクラースダ", href: "http://www.ruszwurm.hu/" },
+          { label: "ブダ城地区", href: "https://budacastlebudapest.com/" },
+        ],
+      },
+      {
+        era: "社交と交易",
+        title: "カフェ、ワイン、長居する文化",
+        summary: "食事だけでなく、飲み物を片手に話し続ける時間も、都市の食文化です。",
+        detail: [
+          "オスマン支配期以降のコーヒー文化と、ハプスブルク時代の都市カフェが重なり、新聞を読む人、芸術家、政治を議論する人が店に集まりました。カフェは食堂というより、仕事場、情報交換の場、社交の部屋でした。",
+          "トカイ地方の甘口ワインは王侯にも献上され、ブダペストの食卓を農村の生産地や国際交易と結びます。カフェで席に長く座り、ワインや菓子の背景を話すこと自体が、町の歴史を体験する行為になります。",
+        ],
+        image: HUNGARIAN_CAFE_IMAGE,
+        links: [
+          { label: "ルスヴルム・ツクラースダ", href: "http://www.ruszwurm.hu/" },
+          { label: "ブダペスト観光公式", href: "https://www.budapestinfo.hu/" },
+        ],
+      },
+    ],
+  },
+  "オーストリア": {
+    history: [
+      {
+        era: "古代〜中世",
+        title: "ウィンドボナから中世都市へ",
+        summary: "ローマ帝国の国境軍営、バーベンベルク家の都、教会都市という層が、現在の旧市街の下に重なっています。",
+        detail: [
+          "ローマ軍営ウィンドボナはドナウ川の北方国境を守る拠点でした。軍人、商人、職人が集まり、道と河川交通が都市の基盤になります。帝国が去った後も、川と道の位置は変わらず、ウィーンは東西を結ぶ場所として再び重要になります。",
+          "中世にはバーベンベルク家が宮廷を置き、シュテファン大聖堂を中心に城壁都市が発展します。旧市街を歩くとき、ローマ軍営、中世の教会、後世の王宮が同じ地面に積み重なっていることを意識します。",
+        ],
+        image: ST_STEPHANS_VIENNA_IMAGE,
+        links: [
+          { label: "シュテファン大聖堂", href: "https://www.stephanskirche.at/" },
+          { label: "ウィーン歴史地区", href: "https://whc.unesco.org/en/list/1033/" },
+        ],
+      },
+      {
+        era: "13〜18世紀",
+        title: "ハプスブルク家と宮廷都市",
+        summary: "ウィーンは王朝の住居から、広大な帝国を運営する政治・文化の中心へ変わりました。",
+        detail: [
+          "ハプスブルク家は婚姻、相続、戦争を通じて領域を広げ、ウィーンに行政官、外交官、軍人、芸術家を集めました。オスマン帝国の包囲を経験した後、宮殿、教会、庭園はバロック様式で整えられ、王朝の秩序と勝利を目に見える形にします。",
+          "シェーンブルンは家族生活と外交、ベルヴェデーレは貴族の祝宴、国立図書館は知識の所有を示す空間でした。建物の豪華さは、単なる趣味ではなく、帝国を治める力を演出する道具でした。",
+        ],
+        image: SCHONBRUNN_IMAGE,
+        links: [
+          { label: "シェーンブルン宮殿", href: "https://www.schoenbrunn.at/en/" },
+          { label: "ベルヴェデーレ", href: "https://www.belvedere.at/en" },
+          { label: "国立図書館プルンクザール", href: "https://www.onb.ac.at/en/museums/state-hall" },
+        ],
+        diagram: {
+          type: "relationship",
+          title: "宮廷が支えた都市の機能",
+          items: [
+            { marker: "居住", label: "シェーンブルン", text: "家族と外交" },
+            { marker: "祝宴", label: "ベルヴェデーレ", text: "貴族の社交" },
+            { marker: "知識", label: "プルンクザール", text: "宮廷の蔵書" },
+          ],
+          caption: "宮殿を『豪華な建物』で終わらせず、帝国運営の機能として見ます。",
+        },
+      },
+      {
+        era: "19世紀",
+        title: "城壁を取り払い、市民都市をつくる",
+        summary: "リング通り沿いの公共建築は、皇帝の都が市民社会の首都へ変わったことを表します。",
+        detail: [
+          "1857年以降、城壁の撤去とリング通りの整備が進みました。議会、市庁舎、大学、美術館、劇場が並ぶ新しい都市軸は、王宮の内部だけでなく、市民が利用する制度と文化を可視化します。",
+          "市庁舎前のマーケットを歩くときは、屋台の光だけでなく、ネオゴシックの塔と広場の大きさを見ます。冬の行事が開かれる場所そのものが、19世紀に設計された公共空間なのです。",
+        ],
+        image: RATHAUS_MARKET_IMAGE,
+        links: [
+          { label: "ウィーン市庁舎", href: "https://www.wien.gv.at/english/cityhall.html" },
+          { label: "市庁舎前マーケット", href: "https://www.christkindlmarkt.at/en/" },
+          { label: "美術史美術館", href: "https://www.khm.at/en/" },
+        ],
+      },
+      {
+        era: "1918年〜現在",
+        title: "帝国の遺産を共和国が使い続ける",
+        summary: "帝国が崩壊した後も、宮殿・美術館・カフェは公共文化として新しい意味を持ちました。",
+        detail: [
+          "第一次世界大戦後、ハプスブルク帝国は解体され、ウィーンは共和国の首都になります。王朝の宮殿やコレクションをすべて捨てるのではなく、美術館、図書館、観光施設として市民に開くことで、過去を現在の文化資産へ置き換えました。",
+          "ベルヴェデーレで1955年の国家条約を思い出し、カフェや美術館で近代の芸術を見ると、ウィーンは『昔の帝都』ではなく、帝国の記憶を再利用している現代都市だと分かります。",
+        ],
+        image: BELVEDERE_PALACE_IMAGE,
+        links: [
+          { label: "ベルヴェデーレ", href: "https://www.belvedere.at/en" },
+          { label: "ウィーン観光公式", href: "https://www.wien.info/ja" },
+        ],
+      },
+    ],
+    food: [
+      {
+        era: "宮廷と市民の鍋",
+        title: "シュニッツェルとターフェルシュピッツ",
+        summary: "ウィーン料理は、宮廷の技法と市民のガストハウスが出会って成立しました。",
+        detail: [
+          "ヴィーナー・シュニッツェルは、薄く叩いた仔牛に衣をつけて揚げる料理です。似たカツレツは中欧や北イタリアにもあるため、起源を一国に決めることはできませんが、ウィーンで肉の種類や揚げ方が料理の作法として整えられました。",
+          "ターフェルシュピッツは牛肉をブイヨンで煮、スープ、肉、骨髄、ソースを順に味わいます。皇帝フランツ・ヨーゼフ1世の好物として宮廷の印象が強い一方、鍋を無駄なく使う家庭料理の知恵も残っています。",
+        ],
+        image: VIENNA_TAFELSPITZ_IMAGE,
+        links: [
+          { label: "Meissl & Schadn", href: "https://meisslundschadn.at/en/meissl-schadn-vienna/" },
+          { label: "Plachutta", href: "https://www.plachutta.at/en/" },
+        ],
+      },
+      {
+        era: "18〜19世紀",
+        title: "コーヒーハウスは都市の第二の居間",
+        summary: "コーヒーハウスは、飲み物を飲むだけでなく、新聞、音楽、文学、政治を語る公共空間でした。",
+        detail: [
+          "1683年のコーヒー豆にまつわる起源譚には伝説が含まれますが、18〜19世紀にカフェがウィーンの都市生活へ深く根付いたことは確かです。メランジェ、水、新聞、チェス、長時間の席が、知識人や芸術家の交流を支えました。",
+          "店の内装や給仕の作法も文化の一部です。カフェでは、注文を急いで飲み切るのではなく、席に滞在して人と情報が交差する時間まで含めて楽しみます。",
+        ],
+        image: KHM_CAFE_IMAGE,
+        links: [
+          { label: "Gerstner", href: "https://www.gerstner-konditorei.at/" },
+          { label: "オーストリアのカフェ文化", href: "https://www.austria.info/ja/inspiration/coffeehouse-culture/" },
+        ],
+      },
+      {
+        era: "19世紀の菓子職人",
+        title: "ザッハトルテとアプフェルシュトゥーデル",
+        summary: "帝国の交易と菓子職人の技術が、カフェで食べる『ウィーンらしい甘味』を育てました。",
+        detail: [
+          "ザッハトルテは1832年、宮廷の宴席で若いフランツ・ザッハがつくったと伝えられます。後にホテル・ザッハーとデメルの販売権をめぐる争いで名前が広まり、菓子の味だけでなく『どの店で食べるか』まで文化になりました。",
+          "アプフェルシュトゥーデルは薄い生地でりんごを包む菓子で、ハプスブルク領域の食文化交流を感じさせます。温かい菓子とコーヒー、銀器とサロンの組み合わせは、食べ物を社交の時間へ変えるウィーンの特徴です。",
+        ],
+        image: SACHERTORTE_IMAGE,
+        links: [
+          { label: "Gerstner", href: "https://www.gerstner-konditorei.at/" },
+          { label: "美術史美術館カフェ", href: "https://www.khm.at/en/visit/cafe-restaurant/" },
+        ],
+      },
+      {
+        era: "季節の都市文化",
+        title: "プンシュと冬のマーケット",
+        summary: "クリスマスマーケットの飲み物や焼き菓子は、寒い季節に人を広場へ集める都市の食文化です。",
+        detail: [
+          "プンシュは温めた酒や果汁、香辛料を合わせる冬の飲み物で、屋台ごとに味が異なります。歴史的な宮廷料理ではありませんが、広場、照明、音楽、陶器のマグカップと一緒に味わうことで、現代のウィーンらしい季節行事になります。",
+          "市庁舎前、シェーンブルン、ベルヴェデーレなど、異なる歴史背景を持つ場所が冬市の会場になります。料理の由来だけでなく、どの建物の前で誰と食べるのかまで含めて観察します。",
+        ],
+        image: RATHAUS_MARKET_IMAGE,
+        links: [
+          { label: "市庁舎前マーケット", href: "https://www.christkindlmarkt.at/en/" },
+          { label: "シェーンブルンのマーケット", href: "https://www.weihnachtsmarkt.co.at/" },
+        ],
+      },
+    ],
+  },
+  "チェコ": {
+    history: [
+      {
+        era: "9〜12世紀",
+        title: "城、川、商人の市場",
+        summary: "プラハは一つの城下町ではなく、川の両岸に生まれた市場町と城下町が結びついて成長しました。",
+        detail: [
+          "プラハ城は9世紀後半から政治と宗教の中心となり、川を挟んだ旧市街では商人と職人が市場を開きました。渡河点は物資と人が集まる場所で、旧市街広場は交易の情報が交わる公共空間になります。",
+          "マラー・ストラナは城のふもとの職人町として整えられ、フラッチャニには宮殿と巡礼地が並びました。現在の観光ルートは、王宮、橋、市場、城下をつなぐ中世の都市構造をそのまま歩く道でもあります。",
+        ],
+        image: PRAGUE_OLD_TOWN_IMAGE,
+        links: [
+          { label: "プラハ城", href: "https://www.hrad.cz/en" },
+          { label: "旧市街広場", href: "https://prague.eu/en/objevujte/old-town-square-staromestske-namesti/" },
+          { label: "マラー・ストラナ", href: "https://prague.eu/en/objevujte/mala-strana/" },
+        ],
+      },
+      {
+        era: "14世紀",
+        title: "カレル4世がつくった黄金期",
+        summary: "大学、新市街、橋、大聖堂が整備され、プラハは神聖ローマ帝国の首都として大きく飛躍しました。",
+        detail: [
+          "カレル4世は1348年に大学と新市街を創設し、プラハを皇帝の都にふさわしい都市へ計画しました。広い市場、教会、行政施設を配置することで、旧市街に集中していた人と機能を南へ広げます。",
+          "カレル橋と聖ヴィート大聖堂の建設は、政治と信仰を都市の景観に刻む事業でした。橋を渡り、城へ向かい、大聖堂の内部へ入る順番は、皇帝が示した『王の道』の考え方を体験する順路です。",
+        ],
+        image: CHARLES_BRIDGE_IMAGE,
+        links: [
+          { label: "カレル橋", href: "https://prague.eu/en/objevujte/charles-bridge-karluv-most/" },
+          { label: "聖ヴィート大聖堂・プラハ城", href: "https://www.hrad.cz/en" },
+        ],
+        diagram: {
+          type: "timeline",
+          title: "カレル4世の都市計画",
+          items: [
+            { marker: "1348", label: "大学", text: "知識の中心" },
+            { marker: "1348", label: "新市街", text: "人口と市場を拡大" },
+            { marker: "1357", label: "石橋", text: "両岸を接続" },
+            { marker: "14世紀", label: "大聖堂", text: "帝都の象徴" },
+          ],
+          caption: "プラハの名所は、同じ皇帝の都市計画の中で互いに関係しています。",
+        },
+      },
+      {
+        era: "15〜18世紀",
+        title: "フス派、ハプスブルク、バロック",
+        summary: "宗教改革と戦争の後、プラハはゴシック都市からバロック都市へ姿を変えました。",
+        detail: [
+          "ヤン・フスの説教と宗教改革は、教会の権威、聖書、都市の自治をめぐる大きな議論を生みました。旧市街広場のティーン教会やヤン・フス像は、その宗教的・市民的な記憶を示します。",
+          "1620年の白山の戦い以後、ボヘミアはハプスブルク君主国の支配下に入り、再カトリック化とバロック化が進みました。ロレッタ、ストラホフ、マラー・ストラナの宮殿は、戦争後に信仰と王朝の秩序を見せるための建物でもあります。",
+        ],
+        image: STRAHOV_LIBRARY_IMAGE,
+        links: [
+          { label: "ティーン聖母教会", href: "https://prague.eu/en/objevujte/church-of-our-lady-before-tyn/" },
+          { label: "ストラホフ修道院", href: "https://www.strahovskyklaster.cz/en/" },
+          { label: "ロレッタ", href: "https://www.loreta.cz/en/" },
+        ],
+      },
+      {
+        era: "19〜20世紀",
+        title: "市民文化と近代国家",
+        summary: "チェコ語・音楽・建築を通じた民族復興が、市民会館や広場の景観へ表れます。",
+        detail: [
+          "19世紀の民族復興では、チェコ語の文学、歴史研究、音楽、劇場が国民意識を育てました。市民会館はアール・ヌーヴォーの装飾をまといながら、チェコの芸術家と音楽家が国の文化を示す場となります。",
+          "1918年のチェコスロバキア成立、1968年のプラハの春、1989年のビロード革命では、ヴァーツラフ広場が市民の声を集めました。王の名前を持つ広場が、近代には民主化を求める市民の空間になったことが重要です。",
+        ],
+        image: MUNICIPAL_HOUSE_IMAGE,
+        links: [
+          { label: "プラハ市民会館", href: "https://www.obecnidum.cz/en/" },
+          { label: "ヴァーツラフ広場", href: "https://prague.eu/en/objevujte/wenceslas-square-vaclavske-namesti/" },
+        ],
+      },
+    ],
+    food: [
+      {
+        era: "修道院と町の醸造所",
+        title: "ビールは町のインフラだった",
+        summary: "チェコのビールは特別な酒というより、食事と会話を組み立てる日常の飲み物です。",
+        detail: [
+          "中世の修道院や町の醸造所では、水の衛生や保存の問題もあり、発酵飲料が重要な役割を持ちました。19世紀にピルゼンで淡色のピルスナーが普及すると、チェコのビールは工業技術と職人の管理を両立させながら広がります。",
+          "プラハのビアホールでは、泡の量、注ぎ方、温度、料理との相性までが文化になっています。ビールを飲むことは、町の人間関係と食事の時間へ参加することでもあります。",
+        ],
+        image: CZECH_BEER_IMAGE,
+        links: [
+          { label: "U Pinkasů", href: "https://www.upinkasu.cz/" },
+          { label: "Lokál Dlouhááá", href: "https://lokal-dlouha.ambi.cz/en/" },
+        ],
+      },
+      {
+        era: "市場と家庭料理",
+        title: "クネドリーキがソースを受け止める",
+        summary: "肉、根菜、発酵食品、パンを組み合わせる食卓は、寒い気候と中欧の市場文化から生まれました。",
+        detail: [
+          "スヴィーチコヴァーは、肉を根菜とともに煮込み、裏ごししたクリームソースで食べる料理です。クネドリーキは単なる付け合わせではなく、ソースを受け止め、皿の味を最後まで食べるための主食です。",
+          "塩味、酸味、甘味、生クリーム、クランベリーが一皿に並ぶため、料理の中に保存食と祝祭食の両方が見えます。高級店でも家庭料理でも、ソースと団子の組み合わせがチェコらしさを支えています。",
+        ],
+        image: SVICKOVA_IMAGE,
+        links: [
+          { label: "U Pinkasů", href: "https://www.upinkasu.cz/" },
+          { label: "カフェ・ルーヴル", href: "https://www.cafelouvre.cz/en" },
+        ],
+      },
+      {
+        era: "宿屋とビアホール",
+        title: "グラーシュとロースト料理",
+        summary: "煮込みとローストは、ボヘミアの冬、宿屋、ビールをつなぐ食の中心です。",
+        detail: [
+          "グラーシュはハンガリー語圏から中欧全体へ広がり、チェコでは牛肉や豚肉を煮込み、クネドリーキと合わせます。鴨や豚肉のローストにはキャベツやパンが添えられ、保存しやすい穀物・肉・発酵食品の組み合わせが見えます。",
+          "これらの料理は、宮廷の特別料理というより、旅人と町の人が宿屋で同じ鍋を囲むことで育ちました。豪華な内装のレストランで食べるときも、料理の出発点が日常の食卓だったことを忘れないようにします。",
+        ],
+        image: CZECH_GOULASH_IMAGE,
+        links: [
+          { label: "Café Imperial", href: "https://www.cafeimperial.cz/en/" },
+          { label: "市民会館のレストラン", href: "https://www.plzenskarestaurace.cz/en/" },
+        ],
+      },
+      {
+        era: "カフェと観光地の菓子",
+        title: "コラーチとトルデルニークを区別する",
+        summary: "家庭の発酵菓子と観光地の屋台菓子は、どちらも甘いですが、歴史のたどり方は異なります。",
+        detail: [
+          "コラーチは果物やチーズをのせた丸い発酵菓子で、家庭や祭礼の焼き菓子として中欧に広く見られます。カフェで菓子を食べる習慣は、19世紀の都市化と知識人の交流を支えました。",
+          "トルデルニークは筒状の生地を焼いて砂糖やナッツをまぶす菓子で、現在のプラハ観光地では目立つ名物です。ただし、チェコ全土の古い国民菓子と単純に言い切るのではなく、伝統菓子と観光市場が結びついた現代の食文化として見ると理解しやすくなります。",
+        ],
+        image: TRDELNIK_IMAGE,
+        links: [
+          { label: "カフェ・ルーヴル", href: "https://www.cafelouvre.cz/en" },
+          { label: "旧市街広場", href: "https://prague.eu/en/objevujte/old-town-square-staromestske-namesti/" },
+        ],
       },
     ],
   },
@@ -1856,15 +2438,18 @@ const HistorySourceLinks = ({ sources }) => {
   );
 };
 
-const HistorySpot = ({ spot }) => {
+const HistorySpot = ({ spot, hideHeading = false }) => {
   const longHistory = SPOT_LONG_HISTORY[spot.name];
+  const keyFacts = SPOT_KEY_FACTS[spot.name];
 
   return (
     <article className="eu-history-card">
-      <div className="eu-history-card-heading">
-        <p className="eu-history-era">{spot.era}</p>
-        <h4 className="eu-history-card-title">{spot.name}</h4>
-      </div>
+      {!hideHeading && (
+        <div className="eu-history-card-heading">
+          <p className="eu-history-era">{spot.era}</p>
+          <h4 className="eu-history-card-title">{spot.name}</h4>
+        </div>
+      )}
       <div className="eu-history-card-content">
         <div className="eu-history-card-copy">
           <div className="eu-history-fact">
@@ -1882,13 +2467,21 @@ const HistorySpot = ({ spot }) => {
         </div>
         {spot.image && <PlacePreview image={spot.image} variant="history" />}
       </div>
+      {keyFacts && (
+        <div className="eu-history-key-facts">
+          <h5>歴史を読むための3つの要点</h5>
+          <ul>
+            {keyFacts.map((fact) => <li key={fact}>{fact}</li>)}
+          </ul>
+        </div>
+      )}
       {longHistory && (
-        <details className="eu-history-detail">
-          <summary>詳細情報</summary>
+        <div className="eu-history-detail eu-history-detail-inline">
+          <div className="eu-history-reading-label">詳しい背景</div>
           <div className="eu-history-detail-body">
             {longHistory.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
-        </details>
+        </div>
       )}
       <HistoryDiagram diagram={spot.diagram} />
       <HistorySourceLinks sources={spot.sources} />
@@ -1908,12 +2501,12 @@ const CityFoodPanel = ({ culture }) => {
           <h4>{culture.city.title}</h4>
           <p className="eu-life-summary">{culture.city.summary}</p>
           {culture.city.image && <PlacePreview image={culture.city.image} variant="history" />}
-          <details className="eu-history-detail" open>
-            <summary>詳細情報</summary>
+          <div className="eu-history-detail eu-history-detail-inline">
+            <div className="eu-history-reading-label">町の背景</div>
             <div className="eu-history-detail-body">
               {culture.city.detail.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
-          </details>
+          </div>
           <h5 className="eu-life-subtitle">地区で見る町の構造</h5>
           <ol className="eu-town-districts">
             {culture.city.districts.map((district) => (
@@ -1940,13 +2533,13 @@ const CityFoodPanel = ({ culture }) => {
                 </h5>
                 {food.image && <PlacePreview image={food.image} variant="history" />}
                 <p className="eu-life-summary">{food.summary}</p>
-                <details className="eu-history-detail">
-                  <summary>詳細情報</summary>
+                <div className="eu-history-detail eu-history-detail-inline">
+                  <div className="eu-history-reading-label">食の背景</div>
                   <div className="eu-history-detail-body">
                     <p>{food.detail}</p>
                     <p><strong>現地での楽しみ方：</strong>{food.onTrip}</p>
                   </div>
-                </details>
+                </div>
               </article>
             ))}
           </div>
@@ -1955,6 +2548,67 @@ const CityFoodPanel = ({ culture }) => {
     </section>
   );
 };
+
+const StoryTimeline = ({ title, icon, entries, variant, placeDetails = [] }) => (
+  <details className={`eu-story-section eu-story-section-${variant}`} open>
+    <summary className="eu-story-section-summary">
+      <span aria-hidden="true">{icon}</span> {title}
+    </summary>
+    <div className="eu-story-section-body">
+      <ol className="eu-story-timeline">
+        {entries.map((entry, index) => (
+          <li className={`eu-story-item ${entry.kind === "food" ? "eu-story-item-food" : ""}`} key={`${variant}-${entry.title}`}>
+            <div className="eu-story-node" aria-hidden="true">{index + 1}</div>
+            <article className="eu-story-card">
+              <p className="eu-story-era">{entry.era}</p>
+              <p className={`eu-story-kind ${entry.kind === "food" ? "eu-story-kind-food" : "eu-story-kind-history"}`}>
+                {entry.kind === "food" ? "食文化" : "歴史・町"}
+              </p>
+              <h4 className="eu-story-title">{entry.title}</h4>
+              <p className="eu-story-summary">{entry.summary}</p>
+              {entry.links?.length > 0 && (
+                <div className="eu-story-links">
+                  <span className="eu-story-links-label">関連する場所：</span>
+                  {entry.links.map((link) => (
+                    <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
+                      <span aria-hidden="true">📍</span> {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+              {entry.image && <PlacePreview image={entry.image} variant="history-story" />}
+              {entry.detail?.length > 0 && (
+                <div className="eu-history-detail eu-history-detail-inline">
+                  <div className="eu-history-reading-label">背景を深く読む</div>
+                  <div className="eu-history-detail-body">
+                    {entry.detail.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  </div>
+                </div>
+              )}
+              <HistoryDiagram diagram={entry.diagram} />
+            </article>
+          </li>
+        ))}
+      </ol>
+      {placeDetails.length > 0 && (
+        <div className="eu-story-place-details">
+          <h4 className="eu-story-place-title">この流れに登場する訪問場所</h4>
+          <div className="eu-story-place-list">
+            {placeDetails.map((spot) => (
+              <details className="eu-story-place-detail" key={spot.name}>
+                <summary>
+                  <span aria-hidden="true">📍</span> {spot.name}
+                  <span className="eu-story-place-era">{spot.era}</span>
+                </summary>
+                <HistorySpot spot={spot} hideHeading />
+              </details>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </details>
+);
 
 const HistoryPanel = ({ history }) => {
   if (!history) {
@@ -1969,6 +2623,7 @@ const HistoryPanel = ({ history }) => {
   }
 
   const countryLongHistory = COUNTRY_LONG_HISTORY[history.country.name];
+  const cityStory = CITY_STORY[history.country.name];
 
   return (
     <section className="eu-history-panel" aria-label={`${history.country.name}の歴史・背景`}>
@@ -1980,22 +2635,66 @@ const HistoryPanel = ({ history }) => {
         <p className="eu-history-country-summary">{history.country.summary}</p>
         <p className="eu-history-country-focus">{history.country.focus}</p>
         {countryLongHistory && (
-          <details className="eu-history-detail eu-history-country-detail" open>
-            <summary>国の歴史を時代順に詳しく読む</summary>
+          <div className="eu-history-detail eu-history-detail-inline eu-history-country-detail">
+            <div className="eu-history-reading-label">国の歴史を時代順に読む</div>
             <div className="eu-history-detail-body">
               {countryLongHistory.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
-          </details>
+          </div>
         )}
         <HistoryDiagram diagram={history.country.diagram} />
         <HistorySourceLinks sources={history.country.sources} />
       </div>
 
-      <div className="eu-history-spots">
-        <h3 className="eu-history-spots-title">今日訪れる場所の背景</h3>
-        {history.spots.map((spot) => <HistorySpot key={spot.name} spot={spot} />)}
+      {cityStory && (
+        <div className="eu-story-panel">
+          <StoryTimeline
+            title="歴史と暮らしの流れ"
+            icon="📖"
+            entries={cityStory.history.map((entry) => ({ ...entry, kind: "history" }))}
+            variant="history"
+            placeDetails={history.spots}
+          />
+        </div>
+      )}
+    </section>
+  );
+};
+
+const FoodPanel = ({ history }) => {
+  if (!history) {
+    return (
+      <section className="eu-history-panel" aria-label="本日の食文化">
+        <div className="eu-history-empty">
+          <h3>本日の食文化ガイド</h3>
+          <p>今日は移動が中心の日です。到着後の食文化は、観光日のタブからご覧いただけます。</p>
+        </div>
+      </section>
+    );
+  }
+
+  const cityStory = CITY_STORY[history.country.name];
+  if (!cityStory) return null;
+
+  return (
+    <section className="eu-history-panel" aria-label={`${history.country.name}の食文化`}>
+      <div className="eu-history-country">
+        <p className="eu-history-kicker">今日の食文化</p>
+        <h3 className="eu-history-country-title">
+          <span aria-hidden="true">{history.country.flag}</span> {history.country.name}の食卓
+        </h3>
+        <p className="eu-history-country-summary">
+          料理を単独の名物としてではなく、町の成り立ち、交易、身分、宗教、季節の行事と結びついた暮らしとして読みます。
+        </p>
       </div>
-      <CityFoodPanel culture={CITY_FOOD_HISTORY[history.country.name]} />
+      <div className="eu-story-panel">
+        <StoryTimeline
+          title="食文化の流れ"
+          icon="🍽"
+          entries={cityStory.food.map((entry) => ({ ...entry, kind: "food" }))}
+          variant="food"
+        />
+      </div>
     </section>
   );
 };
@@ -2058,6 +2757,45 @@ export default function EuropeTrip() {
         .eu-view-tab[aria-selected="true"] { color:#2C2421; background:white; border-color:#ded7ce; font-weight:700; margin-bottom:-1px; }
         .eu-view-tab:focus-visible { outline:2px solid #2C2421; outline-offset:1px; }
         .eu-history-panel { display:grid; gap:1.5rem; }
+        .eu-story-panel { display:grid; gap:1rem; }
+        .eu-story-section { overflow:hidden; background:white; border:1px solid #ded7ce; border-radius:6px; box-shadow:0 1px 6px rgba(0,0,0,.04); }
+        .eu-story-section-summary { display:flex; align-items:center; gap:.45rem; padding:1rem 1.2rem; color:#2C2421; font-family:'Zen Maru Gothic',sans-serif; font-size:.95rem; font-weight:700; cursor:pointer; list-style-position:inside; }
+        .eu-story-section-summary:hover { background:#fbf8f3; }
+        .eu-story-section-summary:focus-visible { outline:2px solid #2C2421; outline-offset:-2px; }
+        .eu-story-section-body { padding:0 1.2rem 1.2rem; }
+        .eu-story-timeline { position:relative; list-style:none; padding:1rem 0 0 2.15rem; margin:0; }
+        .eu-story-timeline::before { content:''; position:absolute; left:.42rem; top:1rem; bottom:1rem; width:1px; background:#cfc7bd; }
+        .eu-story-item { position:relative; padding-bottom:1.2rem; }
+        .eu-story-item:last-child { padding-bottom:0; }
+        .eu-story-node { position:absolute; left:-2.15rem; top:.15rem; display:grid; place-items:center; width:1.55rem; height:1.55rem; border:2px solid #2a5a9a; border-radius:50%; background:#fbf8f3; color:#2a5a9a; font-family:'Zen Maru Gothic',sans-serif; font-size:.67rem; font-weight:700; z-index:1; }
+        .eu-story-item-food .eu-story-node { border-color:#b06a2a; color:#9a5520; }
+        .eu-story-card { border:1px solid #e2dbd2; border-radius:5px; padding:.9rem 1rem; background:#fffefa; }
+        .eu-story-era { color:#756d65; font-family:'Zen Maru Gothic',sans-serif; font-size:.72rem; letter-spacing:.08em; margin-bottom:.25rem; }
+        .eu-story-kind { display:inline-block; margin-bottom:.35rem; padding:.12rem .45rem; border-radius:3px; font-family:'Zen Maru Gothic',sans-serif; font-size:.66rem; font-weight:700; }
+        .eu-story-kind-history { color:#2a5a9a; background:#edf3f9; }
+        .eu-story-kind-food { color:#9a5520; background:#fbf1e7; }
+        .eu-story-title { color:#2C2421; font-size:1.05rem; line-height:1.45; letter-spacing:.03em; margin:0 0 .5rem; text-wrap:balance; }
+        .eu-story-summary { color:#4a4038; font-size:.83rem; line-height:1.8; text-wrap:pretty; }
+        .eu-story-links { display:flex; align-items:center; flex-wrap:wrap; gap:.35rem .55rem; margin-top:.75rem; font-family:'Zen Maru Gothic',sans-serif; font-size:.7rem; line-height:1.5; }
+        .eu-story-links-label { color:#756d65; }
+        .eu-story-links a { color:#2a5a9a; text-underline-offset:2px; }
+        .eu-story-links a:hover { color:#1d4374; }
+        .eu-story-links a:focus-visible { outline:2px solid currentColor; outline-offset:2px; border-radius:2px; }
+        .eu-story-card > .place-preview--history-story { margin:.8rem 0 0; }
+        .eu-story-place-details { margin-top:1.2rem; padding-top:1rem; border-top:1px solid #e2dbd2; }
+        .eu-story-place-title { color:#5a5048; font-family:'Zen Maru Gothic',sans-serif; font-size:.82rem; margin:0 0 .6rem; }
+        .eu-story-place-list { display:grid; gap:.45rem; }
+        .eu-story-place-detail { border:1px solid #e2dbd2; border-radius:4px; background:#fffefa; }
+        .eu-story-place-detail > summary { display:flex; align-items:center; flex-wrap:wrap; gap:.35rem; padding:.65rem .75rem; color:#2a5a9a; font-family:'Zen Maru Gothic',sans-serif; font-size:.78rem; font-weight:700; cursor:pointer; }
+        .eu-story-place-detail > summary:hover { background:#fbf8f3; }
+        .eu-story-place-detail > summary:focus-visible { outline:2px solid #2C2421; outline-offset:-2px; border-radius:4px; }
+        .eu-story-place-era { color:#756d65; font-size:.68rem; font-weight:400; }
+        .eu-story-place-detail > .eu-history-card { border:0; border-top:1px solid #f0ece6; border-radius:0; box-shadow:none; padding:.9rem; background:transparent; }
+        .eu-history-reference { border:1px solid #ded7ce; border-radius:6px; background:#fdfbf7; }
+        .eu-history-reference > summary { padding:.8rem 1rem; color:#5a5048; font-family:'Zen Maru Gothic',sans-serif; font-size:.8rem; font-weight:700; cursor:pointer; }
+        .eu-history-reference > summary:hover { color:#2a5a9a; }
+        .eu-history-reference > summary:focus-visible { outline:2px solid #2C2421; outline-offset:-2px; border-radius:6px; }
+        .eu-history-reference-body { display:grid; gap:1.5rem; padding:0 1rem 1rem; }
         .eu-history-life { display:grid; gap:1rem; }
         .eu-history-life-title { font-size:1.1rem; letter-spacing:.06em; margin:0; text-wrap:balance; }
         .eu-history-life-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
@@ -2094,10 +2832,16 @@ export default function EuropeTrip() {
         .eu-history-fact p { color:#6a6058; text-wrap:pretty; }
         .eu-history-fact-highlight { border-left:2px solid #5a8a6e; padding-left:.7rem; }
         .eu-history-card-content .place-preview--history { margin:0; }
+        .eu-history-key-facts { margin-top:1rem; padding:.8rem .9rem; border-left:3px solid #2a5a9a; background:#f3f6fa; }
+        .eu-history-key-facts h5 { color:#2a5a9a; font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; margin:0 0 .45rem; }
+        .eu-history-key-facts ul { display:grid; gap:.35rem; list-style:none; margin:0; padding:0; }
+        .eu-history-key-facts li { position:relative; padding-left:1rem; color:#4a4038; font-size:.78rem; line-height:1.65; text-wrap:pretty; }
+        .eu-history-key-facts li::before { content:""; position:absolute; left:.1rem; top:.65em; width:.35rem; height:.35rem; border-radius:50%; background:#2a5a9a; }
         .eu-history-detail { margin-top:1rem; border-top:1px solid #e2dbd2; }
         .eu-history-detail summary { padding:.75rem 0 .2rem; color:#2a5a9a; font-family:'Zen Maru Gothic',sans-serif; font-size:.78rem; font-weight:700; cursor:pointer; text-underline-offset:2px; }
         .eu-history-detail summary:hover { color:#1d4374; }
         .eu-history-detail summary:focus-visible { outline:2px solid #2C2421; outline-offset:2px; border-radius:2px; }
+        .eu-history-reading-label { padding:.75rem 0 .2rem; color:#2a5a9a; font-family:'Zen Maru Gothic',sans-serif; font-size:.78rem; font-weight:700; }
         .eu-history-detail-body { display:grid; gap:.7rem; padding:.6rem 0 .2rem; }
         .eu-history-detail-body p { color:#4a4038; font-size:.82rem; line-height:1.9; text-wrap:pretty; }
         .eu-history-country-detail { margin-top:1rem; }
@@ -2179,6 +2923,11 @@ export default function EuropeTrip() {
           .eu-history-card{padding:.95rem}
           .eu-history-card-content{grid-template-columns:1fr}
           .eu-history-card-content .place-preview--history{order:-1}
+          .eu-story-section-summary{padding:.8rem .9rem}
+          .eu-story-section-body{padding:0 .8rem .8rem}
+          .eu-story-timeline{padding-left:1.85rem}
+          .eu-story-node{left:-1.85rem}
+          .eu-story-card{padding:.8rem}
           .eu-history-life-grid{grid-template-columns:1fr}
           .eu-history-diagram-track{grid-template-columns:1fr}
           .eu-history-diagram-step{min-height:0;padding:.55rem .6rem}
@@ -2225,7 +2974,9 @@ export default function EuropeTrip() {
           style={{ position:"absolute", width:1, height:1, overflow:"hidden", clipPath:"inset(50%)", whiteSpace:"nowrap" }}>
           {showCost
             ? "旅費まとめを表示中"
-            : `${DAYS[activeDay].day === 0 ? "前日" : `Day${DAYS[activeDay].day}`} ${activePanel === "history" ? "歴史・背景" : "タイムライン"}を表示中`}
+            : `${DAYS[activeDay].day === 0 ? "前日" : `Day${DAYS[activeDay].day}`} ${
+              activePanel === "history" ? "歴史・背景" : activePanel === "food" ? "食文化" : "タイムライン"
+            }を表示中`}
         </div>
 
         {showCost ? (
@@ -2311,6 +3062,16 @@ export default function EuropeTrip() {
                 onClick={() => setActivePanel("history")}>
                 <span aria-hidden="true">📖</span> 歴史・背景
               </button>
+              <button
+                id={`eu-day-tab-food-${activeDay}`}
+                className="eu-view-tab"
+                type="button"
+                role="tab"
+                aria-selected={activePanel === "food"}
+                aria-controls={`eu-day-panel-${activeDay}`}
+                onClick={() => setActivePanel("food")}>
+                <span aria-hidden="true">🍽</span> 食文化
+              </button>
             </div>
 
             <div
@@ -2320,6 +3081,8 @@ export default function EuropeTrip() {
               aria-labelledby={`eu-day-tab-${activePanel}-${activeDay}`}>
               {activePanel === "history" ? (
                 <HistoryPanel history={historyForDay} />
+              ) : activePanel === "food" ? (
+                <FoodPanel history={historyForDay} />
               ) : (
                 <>
             {/* メモボックス */}
