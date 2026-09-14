@@ -184,6 +184,545 @@ const MUNICIPAL_HOUSE_IMAGE = {
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Prague_Municipal_House_01.jpg",
 };
 
+const COUNTRY_HISTORY = {
+  hungary: {
+    name: "ハンガリー",
+    flag: "🇭🇺",
+    summary: "カルパチア盆地に定住したマジャール人の王国を基礎に、オスマン帝国とハプスブルク家の時代を経て、ドナウ河畔の近代都市へ変化した国です。",
+    focus: "ブダペストでは、王国の記憶・19世紀の近代化・20世紀の再建が、ドナウ川の両岸に重なって見えます。",
+    diagram: {
+      type: "timeline",
+      title: "ハンガリーの景観をつくった5つの節目",
+      items: [
+        { marker: "9世紀末", label: "マジャール人の定住", text: "カルパチア盆地に定住し、現在の国の文化的基層となる。" },
+        { marker: "1000年前後", label: "聖イシュトヴァーン", text: "キリスト教王国としてヨーロッパの政治秩序に入る。" },
+        { marker: "15世紀", label: "マーチャーシュ王", text: "ブダ王宮がルネサンス文化の中心として栄える。" },
+        { marker: "1867年", label: "二重帝国", text: "オーストリア＝ハンガリーとして大規模な都市整備が進む。" },
+        { marker: "1989年", label: "民主化", text: "社会主義体制から現在の共和国へ移行する。" },
+      ],
+      caption: "ブダ城・国会議事堂・アンドラーシ通りを同じ日に見ると、王国から近代国家への変化をたどれます。",
+    },
+    sources: [
+      { label: "UNESCO：ブダペストの世界遺産", href: "https://whc.unesco.org/en/list/400/" },
+      { label: "ハンガリー政府観光局", href: "https://visithungary.com/" },
+    ],
+  },
+  austria: {
+    name: "オーストリア",
+    flag: "🇦🇹",
+    summary: "ドナウ流域の辺境領からバーベンベルク家、ハプスブルク家の中心地へ成長し、帝国の首都ウィーンに宮殿・教会・美術館が集まりました。",
+    focus: "ウィーンでは、皇帝家の権力、音楽と芸術の後援、市民都市への変化が、建物の大きさと装飾に表れています。",
+    diagram: {
+      type: "timeline",
+      title: "ウィーンが帝都になるまで",
+      items: [
+        { marker: "996年", label: "Ostarrichiの名", text: "現在のオーストリアにつながる地名が史料に現れる。" },
+        { marker: "1270年代", label: "ハプスブルク家", text: "ウィーンを含むオーストリアの支配を固める。" },
+        { marker: "18世紀", label: "宮廷文化の最盛期", text: "マリア・テレジアらが宮殿・庭園・音楽文化を発展させる。" },
+        { marker: "1867年", label: "二重帝国", text: "リング通り沿いに市民都市の大建築が整備される。" },
+        { marker: "1918年以降", label: "共和国の首都", text: "帝国の遺産を公共の美術館・図書館として引き継ぐ。" },
+      ],
+      caption: "宮殿だけでなく、図書館・美術館・市庁舎を続けて見ると、皇室の都市から市民の都市への変化が分かります。",
+    },
+    sources: [
+      { label: "UNESCO：ウィーン歴史地区", href: "https://whc.unesco.org/en/list/1033/" },
+      { label: "オーストリア政府観光局：歴史", href: "https://www.austria.info/ja/inspiration/austrias-history/" },
+    ],
+  },
+  czechia: {
+    name: "チェコ",
+    flag: "🇨🇿",
+    summary: "ボヘミア王国、神聖ローマ帝国、ハプスブルク帝国、チェコスロバキアを経て、1993年に現在のチェコ共和国となった中欧文化の交差点です。",
+    focus: "プラハでは、カレル4世の中世都市計画、宗教改革、近代の市民文化が、橋・城・広場・音楽ホールに連続して残ります。",
+    diagram: {
+      type: "timeline",
+      title: "プラハを読む3つの時代",
+      items: [
+        { marker: "9〜10世紀", label: "プラハ城の形成", text: "城と町がヴルタヴァ川沿いの政治中心になる。" },
+        { marker: "14世紀", label: "カレル4世", text: "大学・新市街・橋を整備し、帝都として飛躍する。" },
+        { marker: "15世紀", label: "宗教改革", text: "ヤン・フスの思想が広がり、旧市街の宗教史に刻まれる。" },
+        { marker: "1918年", label: "チェコスロバキア", text: "市民会館などに新国家の文化的自信が表れる。" },
+        { marker: "1989〜93年", label: "民主化と共和国", text: "ビロード革命を経て、現在のチェコ共和国へ。" },
+      ],
+      caption: "城から橋を渡って旧市街へ歩くルートそのものが、プラハの政治・宗教・市民文化の地図です。",
+    },
+    sources: [
+      { label: "UNESCO：プラハ歴史地区", href: "https://whc.unesco.org/en/list/616/" },
+      { label: "チェコ政府観光局", href: "https://www.visitczechia.com/ja-JP" },
+    ],
+  },
+};
+
+const DAY_HISTORY = {
+  0: null,
+  1: {
+    country: COUNTRY_HISTORY.hungary,
+    spots: [
+      {
+        name: "セーチェーニ鎖橋",
+        era: "1849年開通・近代化の象徴",
+        summary: "ブダとペストを初めて恒久的に結んだドナウ橋。橋ができる前は渡し船や冬の氷に頼っていたため、都市を一つにするインフラであると同時に、近代国家を目指す象徴でした。",
+        people: "セーチェーニ伯爵が建設を推進し、英国人技師ウィリアム・ティアニー・クラークが設計しました。",
+        see: "ライオン像、鎖を支える石塔、橋の中央から見るブダ城と国会議事堂。『橋が都市を一つにした』ことを意識して渡ります。",
+        image: CHAIN_BRIDGE_IMAGE,
+        diagram: {
+          type: "relationship",
+          title: "橋を中心に見るブダペスト",
+          items: [
+            { marker: "人物", label: "セーチェーニ", text: "近代化を構想" },
+            { marker: "技術", label: "クラーク", text: "吊り橋を設計" },
+            { marker: "建物", label: "鎖橋", text: "1849年に恒久橋" },
+            { marker: "都市", label: "ブダ＋ペスト", text: "両岸の一体化" },
+          ],
+          caption: "橋そのものだけでなく、人物の構想と都市の変化までつながって見える場所です。",
+        },
+        sources: [
+          { label: "UNESCO：ブダペスト", href: "https://whc.unesco.org/en/list/400/" },
+        ],
+      },
+      {
+        name: "ヴァールケルト・バザール",
+        era: "19世紀後半・ネオルネサンス",
+        summary: "王宮の丘のふもとに造られた庭園と回廊の複合建築。王宮へ向かう都市の玄関として設計され、戦後の荒廃を経て現代に修復されました。",
+        people: "ハンガリーの代表的建築家ミクローシュ・イブルの設計です。",
+        see: "庭園の軸線、ネオルネサンスのアーチ、ドナウ側のテラス。無料のエスカレーターで王宮の丘へ上る動線も建築の一部です。",
+        image: VARKERT_BAZAR_IMAGE,
+        sources: [
+          { label: "ヴァールケルト・バザール公式", href: "https://varkertbazar.hu/" },
+        ],
+      },
+      {
+        name: "ブダ王宮",
+        era: "13世紀の城塞から王宮へ",
+        summary: "モンゴル襲来後に築かれた高台の城塞が、マーチャーシュ王のルネサンス宮廷、オスマン時代、ハプスブルク時代、第二次大戦後の再建を重ねた場所です。",
+        people: "ベーラ4世が城塞都市を整備し、15世紀のマーチャーシュ1世が宮廷文化を大きく花開かせました。",
+        see: "王宮の巨大なスケールと、対岸の国会議事堂・鎖橋を同じ視界に入れる展望テラス。建物の修復の違いも観察できます。",
+        image: BUDA_CASTLE_IMAGE,
+        sources: [
+          { label: "UNESCO：ブダペスト", href: "https://whc.unesco.org/en/list/400/" },
+          { label: "ブダ城地区公式", href: "https://budacastlebudapest.com/" },
+        ],
+      },
+      {
+        name: "マーチャーシュ教会",
+        era: "中世創建・歴史的改修",
+        summary: "王の戴冠式が行われた王宮地区の教会。オスマン時代にはモスクとして使われ、19世紀の修復で現在の鮮やかな屋根とゴシック・リバイバルの姿になりました。",
+        people: "マーチャーシュ1世の時代に大きく拡張され、19世紀には建築家フリジェシュ・シュレクが修復を主導しました。",
+        see: "ジョルナイ製の菱形屋根、内部の彩色文様、王宮地区で宗教施設の用途が変わった痕跡。",
+        image: MATTHIAS_CHURCH_IMAGE,
+        sources: [
+          { label: "マーチャーシュ教会公式", href: "https://matyas-templom.hu/" },
+        ],
+      },
+      {
+        name: "漁夫の砦",
+        era: "1895〜1902年・記念建築",
+        summary: "中世の城壁を守った漁師組合の伝承にちなむ名称ですが、現在の白い回廊は建国千年祭の時代に造られた展望用のネオロマネスク建築です。",
+        people: "マーチャーシュ教会も修復したフリジェシュ・シュレクの設計です。七つの塔はマジャール人七部族を象徴します。",
+        see: "七つの尖塔、アーチ越しの国会議事堂、昼とライトアップ後の石の色の違い。砦というより『歴史を演出する展望台』として見ると分かりやすいです。",
+        image: FISHERMANS_BASTION_IMAGE,
+        sources: [
+          { label: "漁夫の砦公式", href: "https://www.fishermansbastion.com/" },
+        ],
+      },
+    ],
+  },
+  2: {
+    country: COUNTRY_HISTORY.hungary,
+    spots: [
+      {
+        name: "ハンガリー国会議事堂",
+        era: "1885〜1904年・ネオゴシック",
+        summary: "ハンガリー王国の議会政治と国家意識を示す、ドナウ河畔の巨大建築です。1896年の建国千年祭に合わせて一部が使われ始めました。",
+        people: "設計者イムレ・シュテインドルは、ゴシックの外観にバロックやルネサンスの内部装飾を組み合わせました。",
+        see: "高さ96mのドーム、尖塔の反復、対岸から見た左右対称の水面への反射。内部では聖イシュトヴァーンの王冠が国家の連続性を語ります。",
+        image: PARLIAMENT_IMAGE,
+        diagram: {
+          type: "observation",
+          title: "国会議事堂を外観から読む順番",
+          items: [
+            { marker: "1", label: "ドナウ河畔", text: "都市の正面として配置" },
+            { marker: "2", label: "尖塔の群れ", text: "ゴシックの垂直性" },
+            { marker: "3", label: "中央ドーム", text: "国家の中心を示す" },
+            { marker: "4", label: "王冠の記憶", text: "王国と議会の継承" },
+          ],
+          caption: "まず遠景で全体の対称性を見てから、近づいて装飾と人像を探します。",
+        },
+        sources: [
+          { label: "ハンガリー国会公式", href: "https://www.parlament.hu/en/web/house-of-the-national-assembly/" },
+          { label: "UNESCO：ブダペスト", href: "https://whc.unesco.org/en/list/400/" },
+        ],
+      },
+      {
+        name: "旧郵便貯金局",
+        era: "1900年・ハンガリーのアール・ヌーヴォー",
+        summary: "国家の近代化を、銀行・郵便という新しい公共サービスの建物で表現した傑作です。自然や民俗文様を建築に取り込むハンガリー独自の装飾が見られます。",
+        people: "建築家レフネル・エデンが設計し、ジョルナイ陶器を屋根や装飾に用いました。",
+        see: "屋根のカラフルな陶板、蜂や植物のモチーフ、左右対称から少し外れる有機的な装飾。",
+        image: POSTAL_SAVINGS_BANK_IMAGE,
+        sources: [
+          { label: "ハンガリー国立銀行（建物案内）", href: "https://www.mnb.hu/en" },
+        ],
+      },
+      {
+        name: "聖イシュトヴァーン大聖堂",
+        era: "1851〜1905年・ネオルネサンス",
+        summary: "ハンガリー初代国王イシュトヴァーン1世を記念するブダペスト最大級のカトリック教会。国家の守護聖人とされる王の右手の聖遺物を祀ります。",
+        people: "ヨージェフ・ヒルド、ミクローシュ・イブル、ヨージェフ・カウザーが世代をまたいで完成させました。",
+        see: "高さ96mのドーム、黄金色の天井、聖遺物礼拝堂。展望テラスから、王宮の丘とは違うペスト側の都市の広がりを見ます。",
+        image: ST_STEPHEN_BASILICA_IMAGE,
+        sources: [
+          { label: "聖イシュトヴァーン大聖堂公式", href: "https://www.bazilika.biz/" },
+        ],
+      },
+      {
+        name: "アンドラーシ通り",
+        era: "19世紀後半・都市計画",
+        summary: "王宮都市から近代的な首都へ変わる時代に整備された大通り。貴族邸宅、歌劇場、地下鉄が一つの都市軸に並びます。",
+        people: "首相アンドラーシ・ジュラの近代化政策にちなむ名前で、1896年には大陸ヨーロッパ初の地下鉄M1線も開通しました。",
+        see: "建物の高さとファサードを見上げ、道路の地下に世界遺産の古い地下鉄が走る二層構造を意識します。",
+        sources: [
+          { label: "UNESCO：ブダペスト", href: "https://whc.unesco.org/en/list/400/" },
+        ],
+      },
+      {
+        name: "ハンガリー国立歌劇場",
+        era: "1884年開場・ネオルネサンス",
+        summary: "国民的な音楽文化を育てるために建てられた、王国時代の豪華な歌劇場です。外観だけでなく、客席の馬蹄形と金箔装飾に宮廷文化が表れます。",
+        people: "ミクローシュ・イブルの設計。フランツ・ヨーゼフ皇帝とエリーザベト皇妃の後援も受けました。",
+        see: "正面の音楽家像、大階段、天井画、客席の視線が舞台へ集まる構成。",
+        image: OPERA_HOUSE_IMAGE,
+        sources: [
+          { label: "ハンガリー国立歌劇場公式", href: "https://www.opera.hu/" },
+        ],
+      },
+      {
+        name: "リスト・フェレンツ記念館",
+        era: "19世紀末・作曲家の住居",
+        summary: "フランツ・リストが晩年に暮らし、教えた旧音楽院の部屋。楽器・楽譜・家具から、超絶技巧の作曲家ではなく、教育者としての姿も想像できます。",
+        people: "フランツ・リストはハンガリー出身の作曲家・ピアニストで、ブダペストの音楽教育の象徴的存在です。",
+        see: "愛用したピアノ、直筆譜、書斎。建物の豪華さより、個人の生活空間に音楽史が残る点に注目します。",
+        sources: [
+          { label: "リスト・フェレンツ記念館公式", href: "https://lisztmuseum.hu/" },
+        ],
+      },
+      {
+        name: "英雄広場",
+        era: "1896年・建国千年記念",
+        summary: "マジャール人の定住から1000年を記念して造られた国家的な記念空間。中央の大天使ガブリエルと歴代の英雄像が、歴史を一枚の風景に編集しています。",
+        people: "中央には七部族を率いたアールパード、列柱には王や独立運動の指導者が並びます。",
+        see: "中央柱から左右へ広がる列柱、像の順序、背後の美術館との軸線。歴史が『選ばれた人物の一覧』として示される場所です。",
+        image: HEROES_SQUARE_IMAGE,
+        sources: [
+          { label: "UNESCO：ブダペスト", href: "https://whc.unesco.org/en/list/400/" },
+        ],
+      },
+      {
+        name: "市民公園・ヴァイダフニャディ城",
+        era: "1896〜1908年・歴史様式の展示",
+        summary: "建国千年祭の仮設展示から発展した公園と城。ロマネスク、ゴシック、ルネサンス、バロックの建築要素を一つの散策路に集めています。",
+        people: "設計者イグナーツ・アルパールは、ハンガリー各地の歴史建築を参照して『建築の歴史絵巻』を作りました。",
+        see: "一つの城に異なる時代の塔や門が混在すること。実在の一城ではなく、国家の記憶を組み立てた建物です。",
+        image: VAJDAHUNYAD_CASTLE_IMAGE,
+        sources: [
+          { label: "リゲット・ブダペスト公式", href: "https://ligetbudapest.hu/" },
+        ],
+      },
+      {
+        name: "国立民族博物館",
+        era: "2022年開館・現代建築",
+        summary: "歴史的建築ではありませんが、ハンガリーの民俗資料を現代の公共建築で見せる場所です。屋根の緑地と大きな曲線は、市民公園と展示をつなぎます。",
+        people: "リゲット・ブダペスト再整備計画の一部として、収蔵品を新しい展示空間に移しました。",
+        see: "屋上へ続く緩やかな線、公園側から見た建物の沈み込み、伝統資料と現代建築の対比。",
+        sources: [
+          { label: "国立民族博物館公式", href: "https://www.neprajz.hu/" },
+        ],
+      },
+    ],
+  },
+  3: {
+    country: COUNTRY_HISTORY.austria,
+    spots: [
+      {
+        name: "シュテファン大聖堂",
+        era: "12世紀創建・1359年以降のゴシック",
+        summary: "ウィーン旧市街の中心に立つ大聖堂。都市の守護聖人を祀る教会が、ハプスブルク家の都の象徴へ成長しました。",
+        people: "ハプスブルク家のルドルフ4世が大規模なゴシック化を進めました。",
+        see: "モザイク屋根、南塔と北塔の高さの違い、内部の身廊。外から見た屋根の幾何学模様は都市のシンボルです。",
+        image: ST_STEPHANS_VIENNA_IMAGE,
+        sources: [
+          { label: "シュテファン大聖堂公式", href: "https://www.stephanskirche.at/" },
+          { label: "UNESCO：ウィーン歴史地区", href: "https://whc.unesco.org/en/list/1033/" },
+        ],
+      },
+      {
+        name: "グラーベンとペーター教会",
+        era: "17〜18世紀・バロック都市",
+        summary: "グラーベンは古い城壁跡の通りを市民の大通りへ変えた場所。中央のペスト記念柱と、近くのペーター教会が、疫病後の信仰と都市再生を伝えます。",
+        people: "ペーター教会はルーカス・フォン・ヒルデブラントらのバロック建築家の仕事と結びつきます。",
+        see: "通りの中央に立つ三位一体柱、教会内部の楕円ドーム、商業通りと宗教建築が隣り合う構成。",
+        image: PETERSKIRCHE_IMAGE,
+        sources: [
+          { label: "ペーター教会公式", href: "https://www.peterskirche.at/" },
+        ],
+      },
+      {
+        name: "国立図書館プルンクザール",
+        era: "1723〜1726年・バロック宮廷図書館",
+        summary: "皇帝の私的な蔵書を見せるための宮廷図書館。長い楕円形のホールに古書、天井フレスコ、皇帝の権威を示す彫像がまとめられています。",
+        people: "カール6世の命で建てられ、ヨハン・ベルンハルト・フィッシャー・フォン・エルラッハ一族の設計とダニエル・グランの天井画が空間を作りました。",
+        see: "中央の楕円ドーム、天井画から壁面の書架へ視線を下ろすこと。『本を置く部屋』ではなく、知識を宮廷が所有する舞台です。",
+        image: PRUNKSAAL_IMAGE,
+        diagram: {
+          type: "observation",
+          title: "プルンクザールの視線の流れ",
+          items: [
+            { marker: "1", label: "天井画", text: "皇帝と知識の物語" },
+            { marker: "2", label: "彫像", text: "知の守護者を配置" },
+            { marker: "3", label: "書架", text: "約20万冊の蔵書" },
+            { marker: "4", label: "中央像", text: "宮廷の中心軸" },
+          ],
+          caption: "入口から奥へ歩きながら、天井・彫像・本棚が一つの演出になっていることを見ます。",
+        },
+        sources: [
+          { label: "オーストリア国立図書館公式", href: "https://www.onb.ac.at/en/museums/state-hall" },
+        ],
+      },
+      {
+        name: "市庁舎とクリスマスマーケット",
+        era: "1872〜1883年・ネオゴシック",
+        summary: "帝都の拡張にともなうリング通り沿いの市民建築。皇宮ではなく、市議会と市民のための巨大な公共建築です。広場の冬市はその前に人が集まる現代の都市文化です。",
+        people: "建築家フリードリヒ・フォン・シュミットが設計しました。",
+        see: "市庁舎塔、尖塔の反復、広場から見た建物の正面性。マーケットの光の向こうに、19世紀の市民自治の建物を重ねます。",
+        image: RATHAUS_MARKET_IMAGE,
+        sources: [
+          { label: "ウィーン市庁舎公式", href: "https://www.wien.gv.at/english/cityhall.html" },
+          { label: "ウィーン市庁舎前マーケット公式", href: "https://www.christkindlmarkt.at/en/" },
+        ],
+      },
+    ],
+  },
+  4: {
+    country: COUNTRY_HISTORY.austria,
+    spots: [
+      {
+        name: "シェーンブルン宮殿・庭園・グロリエッテ",
+        era: "17世紀の狩猟館から18世紀の夏宮へ",
+        summary: "ハプスブルク家の夏の離宮。マリア・テレジアの治世に大宮殿と庭園が整えられ、皇室の暮らし・外交・祝祭を見せる舞台になりました。",
+        people: "マリア・テレジア、建築家フィッシャー・フォン・エルラッハ、庭園設計者らが現在の景観を形作りました。",
+        see: "宮殿から庭園の軸線を通してグロリエッテを見ること。内部の部屋は私生活、庭園は権力を遠くまで見せる舞台として対比します。",
+        image: SCHONBRUNN_IMAGE,
+        diagram: {
+          type: "relationship",
+          title: "宮殿の内側と外側",
+          items: [
+            { marker: "人物", label: "マリア・テレジア", text: "皇室の居住と統治" },
+            { marker: "建築", label: "宮殿", text: "家族・外交の空間" },
+            { marker: "景観", label: "庭園軸", text: "視線を丘へ導く" },
+            { marker: "記念", label: "グロリエッテ", text: "権力を遠望させる" },
+          ],
+          caption: "部屋の豪華さだけでなく、窓から庭園と丘へ伸びる視線が宮殿の設計思想です。",
+        },
+        sources: [
+          { label: "シェーンブルン宮殿公式", href: "https://www.schoenbrunn.at/en/" },
+          { label: "UNESCO：シェーンブルン宮殿と庭園", href: "https://whc.unesco.org/en/list/786/" },
+        ],
+      },
+      {
+        name: "美術史美術館",
+        era: "1891年開館・帝国コレクション",
+        summary: "ハプスブルク家が何世代も集めた絵画・工芸・古代美術を、帝国の美術館として公開するために建てられました。",
+        people: "建築家ゴットフリート・ゼンパーとカール・ハーゼナウアーが、向かいの自然史博物館と対になる壮大な建物を設計しました。",
+        see: "大階段、八角形ドーム、壁画とコレクションの関係。ブリューゲルなどの絵画だけでなく、『帝国が世界を収集した建物』として鑑賞します。",
+        image: KHM_CAFE_IMAGE,
+        sources: [
+          { label: "美術史美術館公式", href: "https://www.khm.at/en/" },
+        ],
+      },
+      {
+        name: "ベルヴェデーレ宮殿",
+        era: "1714〜1723年・バロック宮殿",
+        summary: "オスマン軍との戦いで名を上げたオイゲン公の夏の宮殿。下宮・庭園・上宮を一直線に配置し、軍人の邸宅を王宮に匹敵する景観へ仕立てました。",
+        people: "オイゲン公、建築家ヨハン・ルーカス・フォン・ヒルデブラントが中心人物です。現在はクリムトの『接吻』でも知られます。",
+        see: "上宮から下宮へ下がる庭園の段差、池に映るファサード、豪華な室内と近代絵画の対比。",
+        image: BELVEDERE_PALACE_IMAGE,
+        sources: [
+          { label: "ベルヴェデーレ公式", href: "https://www.belvedere.at/en" },
+        ],
+      },
+      {
+        name: "シュピッテルベルク",
+        era: "旧郊外の町並み・現代の市民文化",
+        summary: "かつて城壁外の職人・居住地区だった一帯が、19世紀の小さな家並みを残しながら再生された地区です。宮殿とは違う、生活のスケールのウィーンを歩けます。",
+        people: "特定の一人ではなく、職人や商人の町として形成された地区の歴史が主役です。",
+        see: "石畳の細い路地、低いファサード、中庭、冬市の屋台。大通りの帝都建築と比べて、生活の密度を感じます。",
+        sources: [
+          { label: "シュピッテルベルク地区公式", href: "https://spittelberg.at/" },
+        ],
+      },
+    ],
+  },
+  5: {
+    country: COUNTRY_HISTORY.czechia,
+    spots: [
+      {
+        name: "旧市街広場とティーン聖母教会",
+        era: "12世紀の市場・14〜16世紀の教会",
+        summary: "商人の市場として発展した広場に、ゴシック、バロック、ロココの建築が重なります。ティーン教会は旧市街の宗教的・商業的な中心を示す双塔です。",
+        people: "ヤン・フスの宗教改革に共鳴したティーン教会は、プラハの宗教対立と市民の歴史を語ります。",
+        see: "双塔のシルエット、広場を囲む異なる時代の建物、教会の正面が建物の間に少し隠れる中世的な都市構成。",
+        image: TYN_CHURCH_IMAGE,
+        sources: [
+          { label: "プラハ市観光局：旧市街広場", href: "https://prague.eu/en/objevujte/old-town-square-staromestske-namesti/" },
+          { label: "UNESCO：プラハ歴史地区", href: "https://whc.unesco.org/en/list/616/" },
+        ],
+      },
+      {
+        name: "旧市庁舎の天文時計",
+        era: "1410年設置・中世の宇宙観",
+        summary: "旧市庁舎に追加された天文時計は、時刻だけでなく太陽・月・星の動き、暦、宗教的な時間を一つの機械にまとめています。",
+        people: "時計職人ミクラーシュ・カダーニュと天文学者ヤン・シンデルの名が伝わります。",
+        see: "天文盤、暦盤、毎正時に動く使徒像、塔から見下ろす広場。人形の仕掛けだけでなく、当時の世界観を読む装置です。",
+        image: ASTRONOMICAL_CLOCK_IMAGE,
+        diagram: {
+          type: "observation",
+          title: "オルロイの4つの読み方",
+          items: [
+            { marker: "1", label: "時刻", text: "現在の時間を示す" },
+            { marker: "2", label: "天文", text: "太陽・月の位置" },
+            { marker: "3", label: "暦", text: "季節と祝祭日" },
+            { marker: "4", label: "人形", text: "毎正時の寓意" },
+          ],
+          caption: "時計を『動く人形』だけで終わらせず、中世の宇宙模型として見ると面白さが増します。",
+        },
+        sources: [
+          { label: "プラハ市観光局：旧市庁舎", href: "https://prague.eu/en/objevujte/old-town-hall-with-astronomical-clock-staromestska-radnice-s-orlojem/" },
+        ],
+      },
+      {
+        name: "カレル橋",
+        era: "1357年着工・1402年頃完成",
+        summary: "洪水で失われたユディト橋に代わり、帝都プラハの両岸を結ぶ橋として築かれました。橋上の彫像は17〜18世紀に加えられたバロックの屋外ギャラリーです。",
+        people: "カレル4世が建設を命じ、ペトル・パルレーシュが設計に関わりました。聖ヤン・ネポムツキー像も重要な記憶の焦点です。",
+        see: "橋塔、30体の聖人像、川上から見たプラハ城。像を順番に見ると、橋が単なる通路ではなく信仰の道だったことが分かります。",
+        image: CHARLES_BRIDGE_IMAGE,
+        sources: [
+          { label: "プラハ市観光局：カレル橋", href: "https://prague.eu/en/objevujte/charles-bridge-karluv-most/" },
+          { label: "UNESCO：プラハ歴史地区", href: "https://whc.unesco.org/en/list/616/" },
+        ],
+      },
+      {
+        name: "マラー・ストラナ、カンパ島、ジョン・レノンの壁",
+        era: "中世の小地区と20世紀の記憶",
+        summary: "カレル橋の西側に広がるマラー・ストラナは、王宮と橋を支えた町。カンパ島の水車や運河の景観に、1980年代から平和と自由の象徴となったレノンの壁が加わります。",
+        people: "中世の職人・商人に加え、ジョン・レノンの言葉を借りた若者たちの表現が場所の記憶を更新しました。",
+        see: "バロックの家並み、水路と水車、壁の上書きされるメッセージ。古い町並みと現代の市民表現が同居しています。",
+        sources: [
+          { label: "プラハ市観光局：マラー・ストラナ", href: "https://prague.eu/en/objevujte/mala-strana/" },
+        ],
+      },
+    ],
+  },
+  6: {
+    country: COUNTRY_HISTORY.czechia,
+    spots: [
+      {
+        name: "ストラホフ修道院と図書館",
+        era: "1143年創立・17〜18世紀の図書館",
+        summary: "プレモントレ修道会の修道院。哲学の間と神学の間は、宗教施設が祈りだけでなく学問・写本・知識保存の場でもあったことを示します。",
+        people: "修道士たちが蔵書を守り、18世紀の改修で現在のバロック図書館空間が整えられました。",
+        see: "天井フレスコ、木製書架、地球儀と天球儀。写真を急いで撮るより、知識を分類するための空間として眺めます。",
+        image: STRAHOV_LIBRARY_IMAGE,
+        sources: [
+          { label: "ストラホフ修道院公式", href: "https://www.strahovskyklaster.cz/en/" },
+        ],
+      },
+      {
+        name: "フラッチャニ広場とロレッタ教会",
+        era: "17〜18世紀・巡礼と宮廷の丘",
+        summary: "プラハ城の西側に広がる高台。ロレッタは聖母マリア信仰の巡礼地として整えられ、広場は貴族の宮殿と教会が並ぶ城下町になりました。",
+        people: "チェコ・バロックの建築家クリストフ・ディーンツェンホーファーらの仕事と結びつきます。",
+        see: "広場から旧市街を見下ろす眺望、宮殿の門、ロレッタの時計塔。城の正門だけでなく、城下の宗教都市を見ます。",
+        sources: [
+          { label: "プラハ・ロレッタ公式", href: "https://www.loreta.cz/en/" },
+        ],
+      },
+      {
+        name: "プラハ城と聖ヴィート大聖堂",
+        era: "9世紀後半の城・1344年着工の大聖堂",
+        summary: "王・皇帝・大統領の拠点が千年以上にわたって更新された城郭。聖ヴィート大聖堂は中世に着工し、1929年にようやく完成しました。",
+        people: "カレル4世が大聖堂の建設を本格化し、マティアス・フォン・アラス、ペトル・パルレーシュらが設計を進めました。",
+        see: "大聖堂のゴシックの垂直線、王の墓、ミュシャのステンドグラス、城門から旧市街へ下る地形。",
+        image: ST_VITUS_CATHEDRAL_IMAGE,
+        diagram: {
+          type: "timeline",
+          title: "プラハ城に重なる時間",
+          items: [
+            { marker: "9世紀", label: "城の始まり", text: "丘の上の政治・宗教中心" },
+            { marker: "1344年", label: "大聖堂着工", text: "帝都にふさわしい教会へ" },
+            { marker: "16世紀", label: "王宮の拡張", text: "ハプスブルクの宮廷" },
+            { marker: "1929年", label: "大聖堂完成", text: "中世から近代へ継承" },
+          ],
+          caption: "一つの建物を一人の王の作品とせず、世代をまたいだ政治と信仰の積み重ねとして見ます。",
+        },
+        sources: [
+          { label: "プラハ城公式", href: "https://www.hrad.cz/en" },
+          { label: "UNESCO：プラハ歴史地区", href: "https://whc.unesco.org/en/list/616/" },
+        ],
+      },
+      {
+        name: "黄金の小路",
+        era: "16世紀末の城壁沿い住居",
+        summary: "城壁沿いの小さな家々は、城の職人や衛兵の住居として整えられました。錬金術師の伝説で有名ですが、現地では小さな生活空間と工房の歴史を見る場所です。",
+        people: "22番の家はフランツ・カフカが一時期仕事場にしたことで知られます。",
+        see: "家の小ささ、城壁との位置関係、職業ごとの展示。伝説だけでなく、城で働く人々の暮らしに目を向けます。",
+        image: GOLDEN_LANE_IMAGE,
+        sources: [
+          { label: "プラハ城公式", href: "https://www.hrad.cz/en/prague-castle-for-visitors" },
+        ],
+      },
+      {
+        name: "市民会館と火薬塔",
+        era: "15世紀の門と1905〜1912年の市民建築",
+        summary: "王都の入口だったゴシックの火薬塔の隣に、チェコ市民文化の象徴であるアール・ヌーヴォーの市民会館が建ちます。中世の王権と近代国家の文化が隣り合う場所です。",
+        people: "市民会館はアントニーン・バルシャーネクらが設計し、アルフォンス・ミュシャが市長の間を装飾しました。",
+        see: "市民会館の曲線とモザイク、スメタナ・ホール、火薬塔の尖塔。装飾の新しさと門の古さを一枚の画面で比べます。",
+        image: MUNICIPAL_HOUSE_IMAGE,
+        sources: [
+          { label: "プラハ市民会館公式", href: "https://www.obecnidum.cz/en/" },
+        ],
+      },
+      {
+        name: "ヴァーツラフ広場",
+        era: "1348年の新市街・近現代の広場",
+        summary: "カレル4世が造った新市街の馬市場を起源とし、現在はチェコの政治・市民運動の舞台です。1918年の独立、1968年の改革、1989年のビロード革命を想起させます。",
+        people: "ボヘミア公ヴァーツラフの騎馬像が広場の名前と記憶の中心です。",
+        see: "国立博物館へ伸びる長い軸、騎馬像、商業建築。王の名前を持つ場所が現代の市民広場になった変化を見ます。",
+        sources: [
+          { label: "プラハ市観光局：ヴァーツラフ広場", href: "https://prague.eu/en/objevujte/wenceslas-square-vaclavske-namesti/" },
+        ],
+      },
+    ],
+  },
+  7: {
+    country: COUNTRY_HISTORY.czechia,
+    spots: [
+      {
+        name: "朝のカレル橋",
+        era: "1357年着工・静けさの中で再訪",
+        summary: "前日に見た橋を、朝の光と人の少ない時間にもう一度見ます。夜の観光名所ではなく、王都の東西を毎日つなぐ生活の道として感じられる時間帯です。",
+        people: "カレル4世とペトル・パルレーシュの都市計画が、朝の散歩にも残っています。",
+        see: "朝霧、橋塔の輪郭、聖人像の逆光、橋の先に見えるプラハ城。前日との光・人・音の違いを比べます。",
+        image: CHARLES_BRIDGE_IMAGE,
+        sources: [
+          { label: "プラハ市観光局：カレル橋", href: "https://prague.eu/en/objevujte/charles-bridge-karluv-most/" },
+        ],
+      },
+    ],
+  },
+  8: null,
+};
+
 // ─── データ定数 ───────────────────────────────────────────────────────────────
 
 const DAYS = [
@@ -818,6 +1357,105 @@ const PhotoLink = ({ href }) => href ? (
   </a>
 ) : null;
 
+const HistoryDiagram = ({ diagram }) => {
+  if (!diagram) return null;
+
+  return (
+    <figure className={`eu-history-diagram eu-history-diagram-${diagram.type}`}>
+      <figcaption className="eu-history-diagram-title">{diagram.title}</figcaption>
+      <ol className="eu-history-diagram-track">
+        {diagram.items.map((item, index) => (
+          <li className="eu-history-diagram-step" key={`${item.marker}-${item.label}`}>
+            <span className="eu-history-diagram-marker" aria-hidden="true">{item.marker}</span>
+            <strong className="eu-history-diagram-label">{item.label}</strong>
+            <span className="eu-history-diagram-text">{item.text}</span>
+            {index < diagram.items.length - 1 && (
+              <span className="eu-history-diagram-arrow" aria-hidden="true">→</span>
+            )}
+          </li>
+        ))}
+      </ol>
+      {diagram.caption && <p className="eu-history-diagram-caption">{diagram.caption}</p>}
+    </figure>
+  );
+};
+
+const HistorySourceLinks = ({ sources }) => {
+  if (!sources?.length) return null;
+
+  return (
+    <div className="eu-history-sources">
+      <span className="eu-history-sources-label">参考：</span>
+      {sources.map((source) => (
+        <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">🌐</span> {source.label}
+        </a>
+      ))}
+    </div>
+  );
+};
+
+const HistorySpot = ({ spot }) => (
+  <article className="eu-history-card">
+    <div className="eu-history-card-heading">
+      <p className="eu-history-era">{spot.era}</p>
+      <h4 className="eu-history-card-title">{spot.name}</h4>
+    </div>
+    <div className="eu-history-card-content">
+      <div className="eu-history-card-copy">
+        <div className="eu-history-fact">
+          <strong>歴史・成り立ち</strong>
+          <p>{spot.summary}</p>
+        </div>
+        <div className="eu-history-fact">
+          <strong>関係する人物</strong>
+          <p>{spot.people}</p>
+        </div>
+        <div className="eu-history-fact eu-history-fact-highlight">
+          <strong>現地で見るポイント</strong>
+          <p>{spot.see}</p>
+        </div>
+      </div>
+      {spot.image && <PlacePreview image={spot.image} variant="history" />}
+    </div>
+    <HistoryDiagram diagram={spot.diagram} />
+    <HistorySourceLinks sources={spot.sources} />
+  </article>
+);
+
+const HistoryPanel = ({ history }) => {
+  if (!history) {
+    return (
+      <section className="eu-history-panel" aria-label="本日の歴史・背景">
+        <div className="eu-history-empty">
+          <h3>本日の歴史ガイド</h3>
+          <p>今日は移動が中心の日です。到着後に訪れる街の歴史は、次の観光日のタブからご覧いただけます。</p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="eu-history-panel" aria-label={`${history.country.name}の歴史・背景`}>
+      <div className="eu-history-country">
+        <p className="eu-history-kicker">今日の国</p>
+        <h3 className="eu-history-country-title">
+          <span aria-hidden="true">{history.country.flag}</span> {history.country.name}
+        </h3>
+        <p className="eu-history-country-summary">{history.country.summary}</p>
+        <p className="eu-history-country-focus">{history.country.focus}</p>
+        <HistoryDiagram diagram={history.country.diagram} />
+        <HistorySourceLinks sources={history.country.sources} />
+      </div>
+
+      <div className="eu-history-spots">
+        <h3 className="eu-history-spots-title">今日訪れる場所の背景</h3>
+        {history.spots.map((spot) => <HistorySpot key={spot.name} spot={spot} />)}
+      </div>
+    </section>
+  );
+};
+
 const handleCardKeyDown = (e, callback) => {
   if (e.key === "Enter" || e.key === " ") { e.preventDefault(); callback(); }
 };
@@ -831,9 +1469,11 @@ const formatShortDate = (date) => {
 
 export default function EuropeTrip() {
   const [activeDay, setActiveDay] = useState(0);
+  const [activePanel, setActivePanel] = useState("timeline");
   const [showCost, setShowCost] = useState(false);
   const [expandedBooking, setExpandedBooking] = useState(null);
   const totalFixed = COSTS.filter(c => c.cost > 0).reduce((s, c) => s + c.cost, 0);
+  const historyForDay = DAY_HISTORY[DAYS[activeDay].day];
 
   return (
     <div style={{ fontFamily:"'Noto Serif JP','Hiragino Mincho ProN',serif", background:"#F7F3ED", minHeight:"100vh", color:"#2C2421" }}>
@@ -868,6 +1508,49 @@ export default function EuropeTrip() {
         .eu-day-number { font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.15em; padding:.3rem .8rem; border-radius:2px; color:white; }
         .eu-day-date { font-family:'Zen Maru Gothic',sans-serif; font-size:.85rem; color:#756d65; letter-spacing:.1em; }
         .eu-day-title { font-size:clamp(1.3rem,3.5vw,1.7rem); font-weight:600; letter-spacing:.06em; margin-bottom:2rem; line-height:1.4; margin-top:0; }
+        .eu-view-tabs { display:flex; gap:.35rem; margin-bottom:2rem; border-bottom:1px solid #ded7ce; }
+        .eu-view-tab { font-family:'Zen Maru Gothic',sans-serif; border:1px solid transparent; border-bottom:none; border-radius:5px 5px 0 0; background:transparent; color:#6a6058; padding:.65rem .9rem; font-size:.8rem; cursor:pointer; transition:color .2s, background .2s; }
+        .eu-view-tab:hover { color:#2C2421; background:#f0ece6; }
+        .eu-view-tab[aria-selected="true"] { color:#2C2421; background:white; border-color:#ded7ce; font-weight:700; margin-bottom:-1px; }
+        .eu-view-tab:focus-visible { outline:2px solid #2C2421; outline-offset:1px; }
+        .eu-history-panel { display:grid; gap:1.5rem; }
+        .eu-history-country { background:white; border-left:3px solid #2a5a9a; border-radius:6px; padding:1.2rem 1.3rem; box-shadow:0 1px 8px rgba(0,0,0,.05); }
+        .eu-history-kicker { font-family:'Zen Maru Gothic',sans-serif; color:#756d65; font-size:.72rem; letter-spacing:.12em; margin-bottom:.35rem; }
+        .eu-history-country-title { font-size:1.25rem; line-height:1.4; letter-spacing:.06em; margin:0 0 .7rem; text-wrap:balance; }
+        .eu-history-country-summary, .eu-history-country-focus { font-size:.84rem; line-height:1.8; color:#4a4038; text-wrap:pretty; }
+        .eu-history-country-focus { margin-top:.5rem; color:#6a6058; }
+        .eu-history-spots { display:grid; gap:1rem; }
+        .eu-history-spots-title { font-size:1.1rem; letter-spacing:.06em; margin:0; text-wrap:balance; }
+        .eu-history-card { background:white; border:1px solid #e2dbd2; border-radius:6px; padding:1.1rem 1.2rem; box-shadow:0 1px 6px rgba(0,0,0,.04); }
+        .eu-history-card-heading { margin-bottom:.8rem; }
+        .eu-history-era { font-family:'Zen Maru Gothic',sans-serif; color:#756d65; font-size:.72rem; letter-spacing:.08em; margin-bottom:.25rem; }
+        .eu-history-card-title { font-size:1.05rem; line-height:1.45; letter-spacing:.04em; margin:0; text-wrap:balance; }
+        .eu-history-card-content { display:grid; grid-template-columns:minmax(0,1fr) minmax(170px,32%); gap:1rem; align-items:start; }
+        .eu-history-card-copy { display:grid; gap:.7rem; }
+        .eu-history-fact { font-size:.8rem; line-height:1.7; }
+        .eu-history-fact strong { display:block; font-family:'Zen Maru Gothic',sans-serif; font-size:.74rem; color:#5a5048; margin-bottom:.12rem; }
+        .eu-history-fact p { color:#6a6058; text-wrap:pretty; }
+        .eu-history-fact-highlight { border-left:2px solid #5a8a6e; padding-left:.7rem; }
+        .eu-history-card-content .place-preview--history { margin:0; }
+        .eu-history-sources { display:flex; align-items:center; flex-wrap:wrap; gap:.35rem .6rem; margin-top:1rem; font-family:'Zen Maru Gothic',sans-serif; font-size:.7rem; line-height:1.5; }
+        .eu-history-sources-label { color:#756d65; }
+        .eu-history-sources a { color:#5a5048; text-underline-offset:2px; }
+        .eu-history-sources a:hover { color:#2C2421; }
+        .eu-history-sources a:focus-visible { outline:2px solid currentColor; outline-offset:2px; border-radius:2px; }
+        .eu-history-diagram { margin:1rem 0 0; padding:.9rem; border:1px solid #e2dbd2; border-radius:5px; background:#fbf8f3; }
+        .eu-history-diagram-title { font-family:'Zen Maru Gothic',sans-serif; font-size:.78rem; font-weight:700; color:#5a5048; margin-bottom:.7rem; text-wrap:balance; }
+        .eu-history-diagram-track { display:grid; grid-template-columns:repeat(auto-fit,minmax(125px,1fr)); gap:.65rem; list-style:none; padding:0; margin:0; }
+        .eu-history-diagram-step { position:relative; display:flex; flex-direction:column; gap:.22rem; min-height:84px; padding:.65rem .6rem; border:1px solid #e2dbd2; border-radius:4px; background:white; }
+        .eu-history-diagram-marker { font-family:'Zen Maru Gothic',sans-serif; font-size:.68rem; font-weight:700; color:#2a5a9a; letter-spacing:.04em; }
+        .eu-history-diagram-label { font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; color:#2C2421; line-height:1.4; }
+        .eu-history-diagram-text { font-size:.7rem; color:#6a6058; line-height:1.5; }
+        .eu-history-diagram-arrow { position:absolute; right:-.55rem; top:50%; z-index:1; color:#756d65; font-family:'Zen Maru Gothic',sans-serif; font-size:.9rem; transform:translateY(-50%); }
+        .eu-history-diagram-relationship .eu-history-diagram-marker { color:#7a3b8f; }
+        .eu-history-diagram-observation .eu-history-diagram-marker { color:#5a8a6e; }
+        .eu-history-diagram-caption { margin-top:.7rem; color:#756d65; font-size:.72rem; line-height:1.6; }
+        .eu-history-empty { background:white; border:1px solid #e2dbd2; border-radius:6px; padding:1.3rem; }
+        .eu-history-empty h3 { font-size:1rem; margin-bottom:.45rem; }
+        .eu-history-empty p { color:#6a6058; font-size:.82rem; line-height:1.7; }
         .eu-timeline { position:relative; padding-left:2rem; list-style:none; }
         .eu-timeline::before { content:''; position:absolute; left:5px; top:8px; bottom:8px; width:1px; background:#d4cdc5; }
         .eu-tl-item { position:relative; padding-bottom:1.8rem; padding-left:1rem; }
@@ -918,7 +1601,20 @@ export default function EuropeTrip() {
         .eu-route-title { font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:.88rem; margin-bottom:.8rem; color:#2a5a9a; display:flex; align-items:center; gap:.4rem; }
         .eu-route-row { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; color:#4a4038; }
         .eu-route-sep { color:#d4cdc5; font-size:.7rem; }
-        @media (max-width:500px) { .eu-nav-btn{padding:.8rem .7rem;font-size:.72rem} .eu-nav-btn-date{font-size:.65rem} .eu-day-section{padding:2rem 1rem} .eu-booking-row-label{min-width:75px} }
+        @media (max-width:500px) {
+          .eu-nav-btn{padding:.8rem .7rem;font-size:.72rem}
+          .eu-nav-btn-date{font-size:.65rem}
+          .eu-day-section{padding:2rem 1rem}
+          .eu-booking-row-label{min-width:75px}
+          .eu-view-tab{flex:1;padding:.6rem .45rem;font-size:.74rem}
+          .eu-history-card{padding:.95rem}
+          .eu-history-card-content{grid-template-columns:1fr}
+          .eu-history-card-content .place-preview--history{order:-1}
+          .eu-history-diagram-track{grid-template-columns:1fr}
+          .eu-history-diagram-step{min-height:0;padding:.55rem .6rem}
+          .eu-history-diagram-arrow{right:auto;left:50%;top:auto;bottom:-.65rem;font-size:0;transform:translateX(-50%)}
+          .eu-history-diagram-arrow::after{content:"↓";font-size:.9rem}
+        }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } }
       `}</style>
 
@@ -939,7 +1635,7 @@ export default function EuropeTrip() {
           <button key={i}
             className={`eu-nav-btn ${!showCost && activeDay === i ? "active" : ""}`}
             aria-pressed={!showCost && activeDay === i}
-            onClick={() => { setActiveDay(i); setShowCost(false); setExpandedBooking(null); }}>
+            onClick={() => { setActiveDay(i); setShowCost(false); setExpandedBooking(null); setActivePanel("timeline"); }}>
             <span aria-hidden="true">{d.icon}</span>{" "}
             {d.day === 0 ? "前日" : `Day${d.day}`}
             <span className="eu-nav-btn-date">{formatShortDate(d.date)}</span>
@@ -948,7 +1644,7 @@ export default function EuropeTrip() {
         <button
           className={`eu-nav-btn cost-btn ${showCost ? "active" : ""}`}
           aria-pressed={showCost}
-          onClick={() => setShowCost(true)}>
+          onClick={() => { setShowCost(true); setActivePanel("timeline"); }}>
           <span aria-hidden="true">💰</span> 費用
         </button>
       </nav>
@@ -957,7 +1653,9 @@ export default function EuropeTrip() {
         <div
           aria-live="polite" aria-atomic="true"
           style={{ position:"absolute", width:1, height:1, overflow:"hidden", clipPath:"inset(50%)", whiteSpace:"nowrap" }}>
-          {showCost ? "旅費まとめを表示中" : `${DAYS[activeDay].day === 0 ? "前日" : `Day${DAYS[activeDay].day}`} ${DAYS[activeDay].title}を表示中`}
+          {showCost
+            ? "旅費まとめを表示中"
+            : `${DAYS[activeDay].day === 0 ? "前日" : `Day${DAYS[activeDay].day}`} ${activePanel === "history" ? "歴史・背景" : "タイムライン"}を表示中`}
         </div>
 
         {showCost ? (
@@ -1022,6 +1720,38 @@ export default function EuropeTrip() {
             </div>
             <h2 className="eu-day-title" style={{ color: DAYS[activeDay].color }}>{DAYS[activeDay].title}</h2>
 
+            <div className="eu-view-tabs" role="tablist" aria-label="日程の表示切替">
+              <button
+                id={`eu-day-tab-timeline-${activeDay}`}
+                className="eu-view-tab"
+                type="button"
+                role="tab"
+                aria-selected={activePanel === "timeline"}
+                aria-controls={`eu-day-panel-${activeDay}`}
+                onClick={() => setActivePanel("timeline")}>
+                <span aria-hidden="true">🗓</span> タイムライン
+              </button>
+              <button
+                id={`eu-day-tab-history-${activeDay}`}
+                className="eu-view-tab"
+                type="button"
+                role="tab"
+                aria-selected={activePanel === "history"}
+                aria-controls={`eu-day-panel-${activeDay}`}
+                onClick={() => setActivePanel("history")}>
+                <span aria-hidden="true">📖</span> 歴史・背景
+              </button>
+            </div>
+
+            <div
+              id={`eu-day-panel-${activeDay}`}
+              role="tabpanel"
+              tabIndex={0}
+              aria-labelledby={`eu-day-tab-${activePanel}-${activeDay}`}>
+              {activePanel === "history" ? (
+                <HistoryPanel history={historyForDay} />
+              ) : (
+                <>
             {/* メモボックス */}
             {DAYS[activeDay].memo && (
               <div className="eu-memo-box"
@@ -1201,6 +1931,9 @@ export default function EuropeTrip() {
                 )}
               </div>
             )}
+                </>
+              )}
+            </div>
           </div>
         )}
       </main>
