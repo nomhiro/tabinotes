@@ -27,7 +27,7 @@ npm run build
    ```
 
 3. Cloudflare Workers Freeプランで、アカウントIDを確認する。
-4. Cloudflare Workers & PagesでGitHubリポジトリを接続し、`main`へのpushでCloudflare Buildsが実行されるようにする。
+4. Cloudflare Workers & PagesでGitHubリポジトリを接続し、`main`へのpushでCloudflare Buildsが実行されるようにする。認証を迂回するURLを増やさないため、Preview buildsは無効化する。
 5. Cloudflare Workersで独自ドメインをWorkerに割り当てる。
 6. Cloudflare Accessで独自ドメインをSelf-hosted applicationとして登録し、許可したメールアドレスまたはGoogle IdPだけに制限する。
 7. 認証済みの独自ドメインで表示を確認した後、GitHub Pagesを停止する。
