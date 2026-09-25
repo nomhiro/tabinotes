@@ -2,8 +2,20 @@ import KyushuTrip from './kyushu-2026/KyushuTrip.jsx';
 import OsakaShigaTrip from './osaka-shiga-2026/OsakaShigaTrip.jsx';
 import HiroshimaTrip from './hiroshima-2026/HiroshimaTrip.jsx';
 import EuropeTrip from './europe-2026/EuropeTrip.jsx';
+import OsakaKyotoTrip from './osaka-kyoto-2026/OsakaKyotoTrip.jsx';
 
 export const TRIPS = [
+  {
+    id: 'osaka-kyoto-2026',
+    title: '大阪・京都の旅',
+    subtitle: '京都水族館 ・ 天王寺動物園',
+    dates: '2026. 9. 26 — 9. 27',
+    icon: '🐬',
+    color: '#2f6a8f',
+    colorEnd: '#6f9f6a',
+    members: '宏樹の姉 ・ りの ・ わたし',
+    component: OsakaKyotoTrip,
+  },
   {
     id: 'europe-2026',
     title: '中欧の旅',
