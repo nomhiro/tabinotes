@@ -3,8 +3,20 @@ import OsakaShigaTrip from './osaka-shiga-2026/OsakaShigaTrip.jsx';
 import HiroshimaTrip from './hiroshima-2026/HiroshimaTrip.jsx';
 import EuropeTrip from './europe-2026/EuropeTrip.jsx';
 import OsakaKyotoTrip from './osaka-kyoto-2026/OsakaKyotoTrip.jsx';
+import SenjojikiTrip from './senjojiki-2026/SenjojikiTrip.jsx';
 
 export const TRIPS = [
+  {
+    id: 'senjojiki-2026',
+    title: '千畳敷カール',
+    subtitle: '中央アルプス駒ヶ岳ロープウェイ',
+    dates: '2026. 10. 11 — 10. 12',
+    icon: '🏔️',
+    color: '#2b4a70',
+    colorEnd: '#8f4226',
+    members: '大人2名',
+    component: SenjojikiTrip,
+  },
   {
     id: 'osaka-kyoto-2026',
     title: '大阪・京都の旅',
