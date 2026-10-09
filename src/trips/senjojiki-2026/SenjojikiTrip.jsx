@@ -4,6 +4,9 @@ import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
 const OFFICIAL_URL = "https://chuo-alps.com/";
 const SUGANODAI_MAP_URL = "https://maps.google.com/?q=菅の台バスセンター";
+const ONSEN_URL = "https://www.seiryuen.jp/";
+const MEIJITEI_URL = "https://www.meijitei.com/komaganeten.html";
+const MEIJITEI_MAP_URL = "https://maps.app.goo.gl/K5Z9Up4QwQPuTpYc6";
 
 const DAYS = [
   {
@@ -41,8 +44,9 @@ const DAYS = [
       { time: "12:00", label: "昼食", desc: "山上の売店・レストランで。営業時間は要確認", icon: "🍙" },
       { time: "13:00〜13:30", label: "下りロープウェイに乗る", desc: "15〜16時の下山ピークを避ける。日帰りの最終は、ロープウェイが千畳敷17:00発", icon: "🚡", important: true },
       { time: "14:00〜15:00", label: "しらび平からバスで菅の台へ", desc: "バスの最終はしらび平17:20発", icon: "🚌" },
-      { time: "15:00〜16:00", label: "日帰り温泉・夕食", desc: "駒ヶ根名物のソースかつ丼などを、渋滞を避ける時間調整を兼ねて。営業時間は要確認", icon: "♨️" },
-      { time: "17:30〜18:00", label: "駒ヶ根を出発", desc: "連休最終日の夕方は中央道の名古屋方面が混みやすい。早めに出るか遅めに出る", icon: "🚗" },
+      { time: "15:00〜16:00頃", label: "食事：明治亭 駒ヶ根本店（ソースかつ丼）", desc: "駒ヶ根名物のソースかつ丼。渋滞を避ける時間調整を兼ねる。掲載情報では11:00〜20:30・休みは年末年始のみ（TEL 0265-83-1115）。祝日の営業時間と中休みの有無は公式サイトで確認", icon: "🍽", important: true, url: MEIJITEI_URL, mapUrl: MEIJITEI_MAP_URL },
+      { time: "16:30〜17:30頃", label: "日帰り温泉（信州まつかわ温泉 清流苑）", desc: "下伊那郡松川町。駒ヶ根から南へ車で移動（所要時間は要確認）。掲載情報では日帰り500円〜・10:00〜20:00台。営業時間・料金・定休日は公式サイトで確認", icon: "♨️", url: ONSEN_URL },
+      { time: "17:30〜18:00", label: "清流苑を出発", desc: "連休最終日の夕方は中央道の名古屋方面が混みやすい。早めに出るか遅めに出る", icon: "🚗" },
       { time: "20:00〜21:00", label: "春日井に帰着", desc: "渋滞次第", icon: "🏠" },
     ],
     booking: {
@@ -274,7 +278,7 @@ export default function SenjojikiTrip() {
                 <div>
                   <b>起床時</b>：ライブカメラ・運行情報・天気を確認。雨・強風・雲が厚いときは、出発を遅らせるか判断する<br/>
                   <b>混雑</b>：上り制限が出ている場合は、待ち時間を見て行動を決める<br/>
-                  <b>未確認</b>：始発5:15、ロープウェイの具体的な早朝便の時刻、山上施設の営業時間。前日までに公式の時刻表で確認する
+                  <b>未確認</b>：始発5:15、ロープウェイの具体的な早朝便の時刻、山上施設の営業時間、温泉と明治亭の営業時間（10/12は祝日）。前日までに公式の時刻表・各サイトで確認する
                 </div>
               </div>
             </>
