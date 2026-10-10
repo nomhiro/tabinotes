@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/ensure-dev-dependencies.js",
     "dev": "vite",
     "build": "vite build",
     "deploy": "wrangler deploy",
