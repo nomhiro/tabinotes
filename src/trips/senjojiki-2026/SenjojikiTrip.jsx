@@ -2,6 +2,7 @@ import { useState } from "react";
 import DayMap from "../../components/DayMap";
 import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
+import clothingGuide from "./clothing-guide.png";
 const OFFICIAL_URL = "https://chuo-alps.com/";
 const SUGANODAI_MAP_URL = "https://maps.google.com/?q=菅の台バスセンター";
 const ONSEN_URL = "https://www.seiryuen.jp/";
@@ -270,6 +271,12 @@ export default function SenjojikiTrip() {
 
           {activeDay === 1 && (
             <>
+              <figure style={{ margin:"0 0 2rem" }}>
+                <img src={clothingGuide} alt="10月12日の千畳敷カールの服装ガイド。男女のイラストで、速乾の長袖インナー、フリースで保温、防風・防水シェル、伸縮性のある長ズボン、ウール靴下と登山靴を示し、レイヤリングの基本（歩くときは脱いで調節、休憩時は軽量ダウンを追加）とザックに入れるもの（軽量ダウン、雨具上下、手袋、ニット帽、ネックゲイター）を紹介する。綿Tとデニムは避け、雪や凍結があれば無理に登らない" style={{ display:"block", width:"100%", height:"auto", borderRadius:"6px", border:"1px solid #e8e1d6" }} />
+                <figcaption style={{ fontSize:".75rem", color:"#756d65", marginTop:".5rem", lineHeight:1.6 }}>
+                  服装ガイド（イラスト）。画像内の気温（10月の参考値 平均6℃など）や「10/7に霜」の記述は画像に書かれた内容で、公式サイトでは確認していません。気温は10/12の予報ではないので、前日・当日に山の天気を確認してください。
+                </figcaption>
+              </figure>
               <div style={{ background:"linear-gradient(135deg,#fbf1ec,#fcf4ef)", border:"1px solid #e8c9bb", borderRadius:"6px", padding:"1rem 1.2rem", marginBottom:"2rem", fontSize:".82rem", lineHeight:1.7, color:"#5a3a2a" }}>
                 <h3 style={{ fontFamily:"'Zen Maru Gothic',sans-serif", fontWeight:700, fontSize:".88rem", marginBottom:".5rem", color:"#9a4a30", display:"flex", alignItems:"center", gap:".5rem", flexWrap:"wrap" }}>
                   <span aria-hidden="true">✅</span> 当日の判断メモ
