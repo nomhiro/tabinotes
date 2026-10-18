@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { TRIPS } from "./trips/registry.js";
 import TripList from "./trips/TripList.jsx";
+import TranslationPage from "./pages/TranslationPage.jsx";
 
 function getRoute() {
   const hash = window.location.hash.replace(/^#\/?/, "");
+  if (hash === "translate") {
+    return { page: "translate" };
+  }
   if (hash.startsWith("trip/")) {
     return { page: "trip", tripId: hash.slice(5) };
   }
@@ -32,6 +36,9 @@ export default function App() {
       window.location.hash = "#/";
       return null;
     }
+  } else if (route.page === "translate") {
+    content = <TranslationPage />;
+    pageTitle = "音声翻訳";
   } else {
     content = <TripList trips={TRIPS} />;
   }

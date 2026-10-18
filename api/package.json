@@ -1,0 +1,13 @@
+{
+  "name": "trip-speech-token-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "func start",
+    "test": "node --test test/*.test.cjs"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.11.0"
+  },
+  "main": "src/{index.js,functions/*.js}"
+}
