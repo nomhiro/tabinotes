@@ -1,3 +1,5 @@
+import SiteMenu from "../components/SiteMenu.jsx";
+
 export default function TripList({ trips }) {
   return (
     <div style={{ fontFamily: "'Noto Serif JP', 'Hiragino Mincho ProN', serif", background: "#F7F3ED", minHeight: "100vh", color: "#2C2421" }}>
@@ -28,6 +30,8 @@ export default function TripList({ trips }) {
         <div className="trip-list-label">Travel Booklet</div>
         <h1 className="trip-list-title">旅のしおり</h1>
       </header>
+
+      <SiteMenu currentPage="list" />
 
       <main className="trip-grid">
         {[...trips].sort((a, b) => {

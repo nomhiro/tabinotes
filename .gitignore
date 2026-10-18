@@ -2,3 +2,10 @@ node_modules
 dist
 .wrangler
 .DS_Store
+.impeccable/hook.cache.json
+**/local.settings.json
+.env.local
+.env.*.local
+api/infra/main.json
+api/infra/subscription.json
+.playwright-mcp/
