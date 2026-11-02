@@ -1875,22 +1875,23 @@ const DAYS = [
       { time: "15:15", label: "英雄広場（Hősök tere）", desc: "【コース7】地下鉄M1線（世界遺産）に乗車またはアンドラーシ通りを進み、ハンガリー建国1000年を記念して造られた大広場へ。大天使ガブリエル像と歴代英雄の列柱像が立ち並ぶ（徒歩3分）", icon: "🏛", important: true, mapUrl: "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest", coords: [47.5149, 19.0779], image: HEROES_SQUARE_IMAGE },
       { time: "15:45", label: "市民公園（Városliget）", desc: "【コース8】英雄広場の背後に広がる広大な歴史的公園。池やヴァイダフニャディ城の景観を楽しみながら散策（徒歩8分）", icon: "🌳", url: "https://ligetbudapest.hu/", mapUrl: "https://maps.google.com/?q=V%C3%A1rosliget+Budapest", coords: [47.5142, 19.0833], image: VAJDAHUNYAD_CASTLE_IMAGE },
       { time: "16:15", label: "国立民族博物館（Néprajzi Múzeum）", desc: "【コース9・GOAL】市民公園内に2022年オープンした世界最高峰の現代建築（リゲット・ブダペスト計画）。緩やかに湾曲した巨大な屋上緑地テラスから公園と市内を一望。伝統文化・民族資料の充実展示（GOAL）", icon: "🏛", important: true, url: "https://www.neprajz.hu/", mapUrl: "https://maps.google.com/?q=Museum+of+Ethnography+Budapest", coords: [47.5126, 19.0805] },
-      { time: "18:00", label: "ペシュト中心部へ移動 ＆ ディナー", desc: "世界遺産の地下鉄M1線（レトロな黄色い車両）で市内中心Vörösmarty tér方面へ戻りディナー。乗船場所のヴィガード広場（Vigadó tér）へ移動", icon: "🍽", coords: [47.4950, 19.0505] },
-      { time: "20:00", label: "ドナウ川 ナイト観光クルーズ（ウェルカムドリンク付）", desc: "Vigadó tér 5番桟橋（Mahart Cruises）から出航。漆黒のドナウ川から黄金色に輝く国会議事堂・ブダ城・くさり橋を船上から一望する約1時間のパノラマクルーズ（ドリンク1杯付）", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88", coords: [47.4950, 19.0505] },
+      { time: "18:00", label: "ペシュト中心部へ移動 ＆ ディナー", desc: "世界遺産の地下鉄M1線（レトロな黄色い車両）で市内中心Vörösmarty tér方面へ戻りディナー。19:40のクルーズ出発に間に合うよう、19:15頃には乗船場所（バウチャー記載）へ向かう", icon: "🍽", coords: [47.4950, 19.0505] },
+      { time: "19:40", label: "ドナウ川 ボートクルーズ（屋上座席保証・持ち込み可）", desc: "予約済（GetYourGuide・約50分）。屋上デッキの座席が保証され、飲食物の持ち込みも可能。ライトアップされた国会議事堂・ブダ城・くさり橋を船上から一望。予約番号・PINは下の予約カード参照。乗船場所はバウチャーで要確認", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88", coords: [47.4950, 19.0505] },
       { time: "21:30", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "Budapest Panorama Centralへ帰着。翌朝のウィーン行きRailjet（Keleti 08:40発）に向けて荷造り・就寝", icon: "🏨", coords: [47.4947, 19.0595] },
     ],
     booking: {
-      title: "ドナウ川 ナイト観光クルーズ（GetYourGuide）",
+      title: "ドナウ川 ボートクルーズ（GetYourGuide・予約済）",
       details: [
-        { label: "ツアー名", value: "ブダペスト：ウェルカムドリンク付き ナイト観光クルーズ" },
-        { label: "日時目安", value: "2026年11月19日（木）夜（20:00頃出航便推奨）" },
-        { label: "所要時間", value: "約50〜60分" },
-        { label: "集合場所", value: "Vigadó tér 5. ponton（ヴィガード広場 第5桟橋・Mahart Cruises）" },
-        { label: "含まれるもの", value: "クルーズ乗船券、ウェルカムドリンク1杯（スパークリングワイン/ワイン/ジュース等）" },
-        { label: "料金目安", value: "約 €18 / 人（2名で約 ¥6,000）" },
-        { label: "予約サイト", value: "GetYourGuide（商品コード: t69093）" },
+        { label: "ツアー名", value: "ブダペスト：屋上座席保証＆持ち込み可のボートクルーズ" },
+        { label: "日時", value: "2026年11月19日（木）19:40" },
+        { label: "所要時間", value: "50分" },
+        { label: "人数", value: "大人2名" },
+        { label: "予約番号", value: "GYGFWVYH6GMN" },
+        { label: "PIN番号", value: "r=D9/DtZ" },
+        { label: "予約状況", value: "予約済（チケットは利用日が近づくと有効化）" },
+        { label: "予約サイト", value: "GetYourGuide" },
       ],
-      url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88",
+      url: "https://www.getyourguide.com/booking/7JMQ65PTE0L0NICCWDUGS1BB8PILEJUY",
     },
     extraBookings: [
       {
@@ -1922,7 +1923,7 @@ const DAYS = [
           <b>聖イシュトヴァーン大聖堂</b>：教会入場料 2,300HUF、パノラマ展望テラス＋宝物館 4,300HUF。<br/>
           <b>リスト・フェレンツ記念館</b>：大人 2,000HUF。月〜金 10:00〜18:00、土 9:00〜17:00（日祝休館）。地下鉄M1線 Vörösmarty utca駅すぐ。<br/>
           <b>国立民族博物館（Néprajzi Múzeum）</b>：2022年オープンの現代建築。屋上庭園散策。常設展 1,700HUF〜（火〜日 10:00〜18:00/木〜20:00、月曜休館）。<br/>
-          <b>ドナウ川 ナイトクルーズ</b>：GetYourGuideにて約€18/人（約¥3,000/人・ウェルカムドリンク付）。出航15分前にはVigadó tér 5番桟橋へ。<br/>
+          <b>ドナウ川 ボートクルーズ</b>：19:40発・約50分・予約済（屋上座席保証・飲食物の持ち込み可）。予約番号 GYGFWVYH6GMN。集合場所はバウチャーで確認し、出航15分前までに到着。<br/>
           <b>市内交通 24時間乗車券</b>：2,500HUF（約¥1,050/人）。地下鉄M1〜M4・トラム・路線バスが24時間乗り放題。BudapestGOアプリまたは券売機で購入。
         </>
       ),
@@ -1945,10 +1946,12 @@ const DAYS = [
       { time: "14:00", label: "シュテファン大聖堂（Stephansdom）＆ 北塔展望台", desc: "【コース1】ウィーンの象徴。壮麗なゴシック建築と色鮮やかなモザイク屋根。エレベーターで上がれる「北塔（Pummerinの大鐘）」から旧市街の街並みを一望（徒歩すぐ）", icon: "⛪", important: true, url: "https://www.stephanskirche.at/", mapUrl: "https://maps.google.com/?q=Stephansdom+Vienna", coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
       { time: "14:45", label: "グラーベン ＆ ペーター教会（Peterskirche）散策", desc: "【コース2】歩行者天国の優美な大通り「グラーベン」を散策。ペスト記念柱と、壮麗なバロック装飾が施されたペーター教会へ立ち寄り（入場無料・徒歩5分）", icon: "🏛", url: "https://www.peterskirche.at/", mapUrl: "https://maps.google.com/?q=Peterskirche+Vienna", coords: [48.2094, 16.3700], image: PETERSKIRCHE_IMAGE },
       { time: "15:30", label: "オーストリア国立図書館 プルンクザール（Prunksaal）", desc: "【コース3】ホーフブルク（王宮）ヨーゼフ広場にある「世界一美しいバロック宮廷図書館」。20万冊の革装丁古書と壮大な天井フレスコ画が織りなす空間（入場€10・徒歩5分）", icon: "📚", important: true, url: "https://www.onb.ac.at/en/museums/state-hall", mapUrl: "https://maps.google.com/?q=Prunksaal+der+%C3%96sterreichischen+Nationalbibliothek", coords: [48.2064, 16.3669], image: PRUNKSAAL_IMAGE },
-      { time: "16:30", label: "ゲルストナー皇室御用達菓子店（Gerstner）カフェ休憩", desc: "【カフェ】1847年創業、国立歌劇場向かいの老舗。1階ショップから3階サロンへ上がると宮殿のような豪奢な空間。本場のザッハトルテやメランジェで贅沢なティータイム（徒歩7分）", icon: "☕", important: true, url: "https://www.gerstner-konditorei.at/", mapUrl: "https://maps.google.com/?q=Gerstner+K.u.K.+Hofzuckerb%C3%A4cker+Vienna", coords: [48.2033, 16.3698] },
-      { time: "17:30", label: "市庁舎前広場 クリスマスマーケット（Christkindlmarkt）", desc: "【コース4】ウィーン最大規模の夢のマーケット。壮麗なネオゴシック様式の市庁舎が金色にライトアップされ、巨大ツリーと無数の屋台が輝く絶景。特製マグカップで温かいプンシュを味わう（トラム1番で移動約10分）", icon: "🎄", important: true, url: "https://www.christkindlmarkt.at/", mapUrl: "https://maps.google.com/?q=Christkindlmarkt+Rathausplatz+Vienna", coords: [48.2109, 16.3575], image: RATHAUS_MARKET_IMAGE },
-      { time: "19:15", label: "Meissl & Schadn で正統派ディナー", desc: "【ディナー】リング通り沿いの上品なレストラン。オープンキッチンで揚げる本場仔牛のウィーナーシュニッツェルをゆったりと堪能（市庁舎からトラム1番で約10分・要事前予約）", icon: "🍽", important: true, url: "https://meisslundschadn.at/en/meissl-schadn-vienna/", mapUrl: "https://maps.google.com/?q=Meissl+%26+Schadn+Wien", coords: [48.2017, 16.3734] },
-      { time: "21:15", label: "夜景トラム ＆ ホテル帰着", desc: "ライトアップされたリング通りの建築美を眺めながらトラムまたは地下鉄でWestbahnhofへ戻り、ARCOTEL Wimbergerでゆっくり休む", icon: "🏨", coords: [48.2049, 16.3378] },
+      { time: "16:15", label: "ゲルストナー皇室御用達菓子店（Gerstner）カフェ休憩", desc: "【カフェ】1847年創業、国立歌劇場向かいの老舗。1階ショップから3階サロンへ上がると宮殿のような豪奢な空間。本場のザッハトルテやメランジェで贅沢なティータイム（徒歩7分）", icon: "☕", important: true, url: "https://www.gerstner-konditorei.at/", mapUrl: "https://maps.google.com/?q=Gerstner+K.u.K.+Hofzuckerb%C3%A4cker+Vienna", coords: [48.2033, 16.3698] },
+      { time: "17:00", label: "市庁舎前広場 クリスマスマーケット（Christkindlmarkt）", desc: "【コース4】ウィーン最大規模の夢のマーケット。壮麗なネオゴシック様式の市庁舎が金色にライトアップされ、巨大ツリーと無数の屋台が輝く絶景。特製マグカップで温かいプンシュを味わう（トラム1番で移動約10分）", icon: "🎄", important: true, url: "https://www.christkindlmarkt.at/", mapUrl: "https://maps.google.com/?q=Christkindlmarkt+Rathausplatz+Vienna", coords: [48.2109, 16.3575], image: RATHAUS_MARKET_IMAGE },
+      { time: "18:15", label: "Meissl & Schadn で正統派ディナー", desc: "【ディナー】リング通り沿いの上品なレストラン。オープンキッチンで揚げる本場仔牛のウィーナーシュニッツェルをゆったりと堪能（市庁舎からトラム1番で約10分・要事前予約・20:15のコンサートに間に合うよう19:40頃には店を出る）", icon: "🍽", important: true, url: "https://meisslundschadn.at/en/meissl-schadn-vienna/", mapUrl: "https://maps.google.com/?q=Meissl+%26+Schadn+Wien", coords: [48.2017, 16.3734] },
+      { time: "19:45", label: "カールス教会（Karlskirche）へ移動", desc: "Meissl & Schadn からリンク通り沿いに徒歩またはトラム・地下鉄で Karlsplatz へ（約10〜15分）。開場に余裕をもって到着", icon: "🚶", coords: [48.1983, 16.3719] },
+      { time: "20:15", label: "カールス教会 ヴィヴァルディ「四季」コンサート", desc: "予約済（GetYourGuide・約75分）。バロック建築の傑作カールス教会で聴くヴィヴァルディ「四季」。予約番号・PINは下の予約カード参照", icon: "🎻", important: true, url: "https://www.getyourguide.com/booking/B8LAB3UL1OIJDZU3HNQM3MOPDN71WMLA", mapUrl: "https://maps.google.com/?q=Karlskirche+Vienna", coords: [48.1983, 16.3719] },
+      { time: "21:45", label: "夜景トラム ＆ ホテル帰着", desc: "ライトアップされたリング通りの建築美を眺めながらトラムまたは地下鉄でWestbahnhofへ戻り、ARCOTEL Wimbergerでゆっくり休む", icon: "🏨", coords: [48.2049, 16.3378] },
     ],
     dinner: {
       title: "ウィーン初日 ディナー候補（金曜夜・予約推奨）",
@@ -2031,6 +2034,22 @@ const DAYS = [
           { label: "食事", value: "なし（禁煙ルーム）" },
           { label: "料金", value: "€198.61（支払済・約¥40,277／税・サービス料込み）" },
           { label: "予約状況", value: "Booking.com 予約済（予約番号 5340692962）" },
+        ],
+      },
+      {
+        key: "karlskirche-vivaldi-d3",
+        icon: "🎻",
+        title: "カールス教会 ヴィヴァルディ「四季」コンサート（GetYourGuide・予約済）",
+        url: "https://www.getyourguide.com/booking/B8LAB3UL1OIJDZU3HNQM3MOPDN71WMLA",
+        mapUrl: "https://maps.google.com/?q=Karlskirche+Vienna",
+        details: [
+          { label: "ツアー名", value: "ウィーン カールス教会：ヴィヴァルディ「四季」コンサート" },
+          { label: "日時", value: "2026年11月20日（金）20:15" },
+          { label: "所要時間", value: "75分" },
+          { label: "人数", value: "大人2名" },
+          { label: "予約番号", value: "GYG48YF59299" },
+          { label: "PIN番号", value: "EUJWHnsF" },
+          { label: "予約状況", value: "予約済（チケットは利用日が近づくと有効化）" },
         ],
       },
     ],
@@ -2356,7 +2375,8 @@ const DAYS = [
 const COSTS = [
   { item: "エミレーツ 往復航空券（大人2名・エコノミー）", cost: 457440, note: "予約済・予約番号 K78ZN2 ／ 運賃¥222,400・航空会社サーチャージ¥202,400・税金等¥32,640" },
   { item: "ブダペスト 2泊（Budapest Panorama Central）", cost: 26397, note: "予約済 換算目安 ¥26,397（スーペリア ダブルルーム スパバス付・2泊）" },
-  { item: "ドナウ川 ナイトクルーズ（ウェルカムドリンク付・2名）", cost: 6000, note: "GetYourGuide 約€18×2名（約¥6,000）" },
+  { item: "ドナウ川 ボートクルーズ（屋上座席保証・2名）", cost: 6000, note: "予約済・GYGFWVYH6GMN ／ 金額は旧候補ツアーの目安（約¥6,000）のまま。実額は予約確認メールで要確認" },
+  { item: "ウィーン カールス教会 ヴィヴァルディ「四季」コンサート（2名）", cost: 0, note: "予約済・GYG48YF59299 ／ 金額は予約確認メールで要確認（未反映）" },
   { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "手配要 早割€13〜/人（MÁV）または €19.90〜/人（ÖBB）" },
   { item: "鉄道 ウィーン→プラハ（2名）", cost: 0, note: "手配要 早割€14.90〜/人（ÖBB）または €15〜/人（RegioJet）" },
   { item: "ウィーン 2泊（ARCOTEL Wimberger Wien・2名）", cost: 40277, note: "予約済・支払済 €198.61（約¥40,277／税・サービス料込み）・予約番号 5340692962" },
