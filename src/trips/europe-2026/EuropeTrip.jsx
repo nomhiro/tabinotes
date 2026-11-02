@@ -1877,7 +1877,7 @@ const DAYS = [
       { time: "16:15", label: "国立民族博物館（Néprajzi Múzeum）", desc: "【コース9・GOAL】市民公園内に2022年オープンした世界最高峰の現代建築（リゲット・ブダペスト計画）。緩やかに湾曲した巨大な屋上緑地テラスから公園と市内を一望。伝統文化・民族資料の充実展示（GOAL）", icon: "🏛", important: true, url: "https://www.neprajz.hu/", mapUrl: "https://maps.google.com/?q=Museum+of+Ethnography+Budapest", coords: [47.5126, 19.0805] },
       { time: "18:00", label: "ペシュト中心部へ移動 ＆ ディナー", desc: "世界遺産の地下鉄M1線（レトロな黄色い車両）で市内中心Vörösmarty tér方面へ戻りディナー。19:40のクルーズ出発に間に合うよう、19:15頃には乗船場所（バウチャー記載）へ向かう", icon: "🍽", coords: [47.4950, 19.0505] },
       { time: "19:40", label: "ドナウ川 ボートクルーズ（屋上座席保証・持ち込み可）", desc: "予約済（GetYourGuide・約50分）。屋上デッキの座席が保証され、飲食物の持ち込みも可能。ライトアップされた国会議事堂・ブダ城・くさり橋を船上から一望。予約番号・PINは下の予約カード参照。乗船場所はバウチャーで要確認", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88", coords: [47.4950, 19.0505] },
-      { time: "21:30", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "Budapest Panorama Centralへ帰着。翌朝のウィーン行きRailjet（Keleti 08:40発）に向けて荷造り・就寝", icon: "🏨", coords: [47.4947, 19.0595] },
+      { time: "21:30", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "Budapest Panorama Centralへ帰着。翌朝のウィーン行きRJX 162（Keleti 06:30発）に向けて荷造り・就寝", icon: "🏨", coords: [47.4947, 19.0595] },
     ],
     booking: {
       title: "ドナウ川 ボートクルーズ（GetYourGuide・予約済）",
@@ -1936,12 +1936,12 @@ const DAYS = [
     color: "#4a7a9a",
     icon: "🚄",
     schedule: [
-      { time: "07:45頃", label: "ホテル チェックアウト・Keleti駅へ移動", desc: "Budapest Panorama Centralをチェックアウト。地下鉄M2「Astoria」から「Keleti pályaudvar」へ直通2駅（約4分）。出発30分前には駅に到着", icon: "🏨", coords: [47.4947, 19.0595] },
-      { time: "08:40", label: "ブダペスト東駅（Keleti）発", desc: "Railjet 62（直通・約2時間40分）。ÖBB/MÁV共同運行。車内Wi-Fi・電源あり。車窓の風景を眺めながら快適に移動", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
-      { time: "11:20", label: "ウィーン中央駅（Wien Hbf）着", desc: "音楽と芸術の都ウィーンに到着。駅構内で48時間市内交通券を購入（またはWienMobilアプリで有効化）", icon: "🚉", coords: [48.1848, 16.3765] },
-      { time: "11:50", label: "ウィーン中央駅 → ARCOTEL Wimberger Wien", desc: "Wien Hbfからトラム18番でWestbahnhof方面へ直通約18分。ホテルはNeubaugürtel 34-36、西駅・U6駅すぐの好立地", icon: "🚋", coords: [48.2049, 16.3378] },
-      { time: "12:15", label: "ホテル到着・荷物預け（アーリーチェックイン確認）", desc: "12:00〜13:00の到着をリクエスト済み。入室できれば身支度、できなければ荷物を預けて身軽になり旧市街へ", icon: "🏨", important: true, url: "https://www.arcotel.com/en/hotels/vienna/arcotel-wimberger/", mapUrl: "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien", coords: [48.2049, 16.3378] },
-      { time: "12:45", label: "地下鉄U3で旧市街中心へ移動", desc: "徒歩4分のWestbahnhof（西駅）から地下鉄U3に乗車。乗換なし直通8分で「Stephansplatz」駅へ到着", icon: "🚇", coords: [48.2085, 16.3721] },
+      { time: "05:30頃", label: "ホテル チェックアウト・Keleti駅へ移動", desc: "Budapest Panorama Centralをチェックアウト。早朝は地下鉄の本数が少ないため、タクシーまたは徒歩併用での移動を推奨。出発30分前（06:00頃）には駅に到着", icon: "🏨", coords: [47.4947, 19.0595] },
+      { time: "06:30", label: "ブダペスト東駅（Keleti）発", desc: "ÖBB RJX 162（直通・約2時間48分）。予約済・2名。住所：Budapest, Kerepesi út 2-4。車内Wi-Fi・電源あり。車窓の風景を眺めながら快適に移動", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
+      { time: "09:18", label: "ウィーン中央駅（Wien Hbf）着", desc: "音楽と芸術の都ウィーンに到着。駅構内で48時間市内交通券を購入（またはWienMobilアプリで有効化）", icon: "🚉", coords: [48.1848, 16.3765] },
+      { time: "09:50", label: "ウィーン中央駅 → ARCOTEL Wimberger Wien", desc: "Wien Hbfからトラム18番でWestbahnhof方面へ直通約18分。ホテルはNeubaugürtel 34-36、西駅・U6駅すぐの好立地", icon: "🚋", coords: [48.2049, 16.3378] },
+      { time: "10:15", label: "ホテル到着・荷物預け（アーリーチェックイン確認）", desc: "午前着のため、アーリーチェックインを確認。入室できれば身支度、できなければ荷物を預けて身軽になり旧市街へ", icon: "🏨", important: true, url: "https://www.arcotel.com/en/hotels/vienna/arcotel-wimberger/", mapUrl: "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien", coords: [48.2049, 16.3378] },
+      { time: "10:45", label: "地下鉄U3で旧市街中心へ移動", desc: "徒歩4分のWestbahnhof（西駅）から地下鉄U3に乗車。乗換なし直通8分で「Stephansplatz」駅へ到着", icon: "🚇", coords: [48.2085, 16.3721] },
       { time: "13:00", label: "Lugeck（ルゲック）でウィーンランチ", desc: "【ランチ】フィグルミュラー系列のモダンタバーン。歴史的洋館（Regensburger Hof）で名物シュニッツェルやグラシュを気取らず上質に堪能（徒歩3分）", icon: "🍽", important: true, url: "https://www.lugeck.com/", mapUrl: "https://maps.google.com/?q=Lugeck+Vienna", coords: [48.2096, 16.3749] },
       { time: "14:00", label: "シュテファン大聖堂（Stephansdom）＆ 北塔展望台", desc: "【コース1】ウィーンの象徴。壮麗なゴシック建築と色鮮やかなモザイク屋根。エレベーターで上がれる「北塔（Pummerinの大鐘）」から旧市街の街並みを一望（徒歩すぐ）", icon: "⛪", important: true, url: "https://www.stephanskirche.at/", mapUrl: "https://maps.google.com/?q=Stephansdom+Vienna", coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
       { time: "14:45", label: "グラーベン ＆ ペーター教会（Peterskirche）散策", desc: "【コース2】歩行者天国の優美な大通り「グラーベン」を散策。ペスト記念柱と、壮麗なバロック装飾が施されたペーター教会へ立ち寄り（入場無料・徒歩5分）", icon: "🏛", url: "https://www.peterskirche.at/", mapUrl: "https://maps.google.com/?q=Peterskirche+Vienna", coords: [48.2094, 16.3700], image: PETERSKIRCHE_IMAGE },
@@ -1988,13 +1988,13 @@ const DAYS = [
     booking: {
       title: "鉄道チケット（ブダペスト → ウィーン）",
       details: [
-        { label: "推奨列車", value: "Railjet 62（直通）" },
+        { label: "列車", value: "ÖBB RJX 162（直通・予約済）" },
+        { label: "乗客", value: "2名" },
         { label: "区間", value: "ブダペスト東駅（Keleti）→ ウィーン中央駅（Wien Hbf）" },
-        { label: "出発", value: "2026年11月20日（金）08:40発" },
-        { label: "到着", value: "2026年11月20日（金）11:20着" },
-        { label: "所要時間", value: "2時間40分" },
-        { label: "運賃目安", value: "早割 €19.90〜 ＋ 指定席 €3 / 人" },
-        { label: "予約先", value: "ÖBB（オーストリア連邦鉄道）または MÁV（ハンガリー国鉄）" },
+        { label: "出発", value: "2026年11月20日（金）06:30発" },
+        { label: "到着", value: "2026年11月20日（金）09:18着" },
+        { label: "所要時間", value: "2時間48分" },
+        { label: "予約先", value: "ÖBB（予約済）" },
       ],
       url: "https://www.oebb.at/en/",
     },
@@ -2071,7 +2071,7 @@ const DAYS = [
       { time: "15:45", label: "ベルヴェデーレ宮殿 クリスマス村", desc: "【コース5】上宮前のバロック池を取り囲むロマンチックなクリスマス村。池の水面に宮殿とイルミネーションが映り込む絶好の写真スポット（徒歩すぐ）", icon: "🎄", mapUrl: "https://maps.google.com/?q=Weihnachtsdorf+Schloss+Belvedere", coords: [48.1925, 16.3815] },
       { time: "17:00", label: "シュピッテルベルク クリスマスマーケット", desc: "【コース6】ホテル近くのノイバウ地区。石畳の小道に暖色のランプと屋台が並び、ウィーンっ子に最も親しまれる温かいマーケット。散策しながらオーガニックフードや温かいドリンクを楽しむ（トラム18番→西駅、またはU3 Volkstheater）", icon: "🧣", important: true, url: "https://spittelberg.at/", mapUrl: "https://maps.google.com/?q=Weihnachtsmarkt+am+Spittelberg", coords: [48.2033, 16.3536] },
       { time: "18:45", label: "Glacis Beisl（グラシス・バイスル）で夫婦ディナー", desc: "【ディナー】ミュージアム・クォーター裏手の洗練されたビストロ。地元で評判のグラシュや旬のウィーン料理、オーストリアワインを落ち着いた雰囲気で堪能（シュピッテルベルクから徒歩5分・ホテルへも徒歩10分）", icon: "🍽", important: true, url: "https://www.glacisbeisl.at/", mapUrl: "https://maps.google.com/?q=Glacis+Beisl+Vienna", coords: [48.2040, 16.3570] },
-      { time: "20:45", label: "ホテル帰着 ＆ 翌朝プラハ移動の荷造り・就寝", desc: "ホテル（ARCOTEL Wimberger）へ徒歩で帰着。翌朝はウィーン中央駅07:10発のRailjet 72（プラハ行き）のため早めに就寝", icon: "🏨", coords: [48.2049, 16.3378] },
+      { time: "20:45", label: "ホテル帰着 ＆ 翌朝プラハ移動の荷造り・就寝", desc: "ホテル（ARCOTEL Wimberger）へ徒歩で帰着。翌朝はウィーン中央駅06:39発のRegioJet RJ 1030（プラハ行き）のため早めに就寝", icon: "🏨", coords: [48.2049, 16.3378] },
     ],
     dinner: {
       title: "ウィーン2日目 ディナー候補（ホテル近く＆名店）",
@@ -2118,7 +2118,7 @@ const DAYS = [
           <b>ベルヴェデーレ上宮</b>：クリムト『接吻』所蔵。<b>日時指定チケットの事前購入が必須</b>（時間枠を過ぎると入場制限あり）。<br/>
           <b>美術史美術館カフェ</b>：大ドーム下の絶景カフェ。美術館チケットで入場可能。12:00〜13:30は混み合うため少し早めの入店がスムーズ。<br/>
           <b>シュピッテルベルク・マーケット</b>：土曜11:00〜21:30。ホテル徒歩圏。石畳の路地に地元工芸品やオーガニック屋台が立ち並ぶ隠れ家マーケット。<br/>
-          <b>翌朝の移動（注意）</b>：Day 5はウィーン中央駅 07:10発（Railjet 72）。日曜早朝はトラム間隔が開くため、ホテルは06:30頃に出発推奨（トラム18番約20分またはタクシー約10分）。
+          <b>翌朝の移動（注意）</b>：Day 5はウィーン中央駅 06:39発（RegioJet RJ 1030）。日曜早朝はトラム間隔が開くため、ホテルは05:45頃に出発推奨（トラム18番約20分またはタクシー約10分）。
         </>
       ),
     },
@@ -2130,10 +2130,10 @@ const DAYS = [
     color: "#3a7a5a",
     icon: "🚄",
     schedule: [
-      { time: "06:30頃", label: "ホテル チェックアウト・駅へ移動", desc: "ARCOTEL Wimbergerをチェックアウト。ウィーン中央駅へ移動し、駅構内のベーカリーで朝食やコーヒーを調達", icon: "🥐", coords: [48.1848, 16.3765] },
-      { time: "07:10", label: "ウィーン中央駅（Wien Hbf）発", desc: "Railjet 72（直通・約4時間13分）。食堂車や車内Wi-Fi完備。日曜は混雑するため座席指定必須", icon: "🚆", important: true, coords: [48.1848, 16.3765] },
-      { time: "11:23", label: "プラハ本駅（hlavní nádraží）着", desc: "百塔の街プラハに到着。地下鉄C線またはトラム・徒歩で宿（Youngmann House）へ移動（約15分）", icon: "🚉", coords: [50.0833, 14.4356] },
-      { time: "11:50", label: "Youngmann House 荷物預け", desc: "Jungmannovo náměstí 14。地下鉄Můstek駅すぐの好立地。チェックイン（15:00）前に荷物を預けて身軽に旧市街へ", icon: "🏨", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
+      { time: "05:45頃", label: "ホテル チェックアウト・駅へ移動", desc: "ARCOTEL Wimbergerをチェックアウト。ウィーン中央駅へ移動し、駅構内のベーカリーで朝食やコーヒーを調達", icon: "🥐", coords: [48.1848, 16.3765] },
+      { time: "06:39", label: "ウィーン中央駅（Wien Hbf）発", desc: "RegioJet RJ 1030 ウィーン→プラハ（直通・約4時間17分）。予約済・2名。住所：Am Hauptbahnhof 1。日曜早朝のため時間に余裕を持って乗車", icon: "🚆", important: true, coords: [48.1848, 16.3765] },
+      { time: "10:56", label: "プラハ本駅（hlavní nádraží）着", desc: "百塔の街プラハに到着（Wilsonova 300/8）。地下鉄C線またはトラム・徒歩で宿（Youngmann House）へ移動（約15分）", icon: "🚉", coords: [50.0833, 14.4356] },
+      { time: "11:30", label: "Youngmann House 荷物預け", desc: "Jungmannovo náměstí 14。地下鉄Můstek駅すぐの好立地。チェックイン（15:00）前に荷物を預けて身軽に旧市街へ", icon: "🏨", important: true, mapUrl: "https://maps.google.com/?q=Youngmann+House+Jungmannovo+n%C3%A1m%C4%9Bst%C3%AD+14+Prague", coords: [50.0837, 14.4205] },
       { time: "12:15", label: "U Pinkasů（ウ・ピンカスー）でチェコランチ", desc: "【ランチ】宿のすぐ真向かい！1843年にピルゼンから届いたピルスナー・ウルケルをプラハで初めて提供した歴史的ビアホール。名物スヴィーチコヴァー（牛肉のクリーム煮・クネドリーキ添え）と極上のウルケル生で乾杯（徒歩1分）", icon: "🍺", important: true, url: "https://www.upinkasu.cz/", mapUrl: "https://maps.google.com/?q=U+Pinkas%C5%AF+Prague", coords: [50.0832, 14.4223] },
       { time: "13:30", label: "旧市街広場（Staroměstské náměstí）＆ ティーン教会", desc: "【コース1】ゴシック・バロック・ロココ建築が立ち並ぶプラハの中心広場。おとぎ話の城のような2本の尖塔を持つ「ティーン聖母教会」の威容を鑑賞（徒歩7分）", icon: "🏰", important: true, mapUrl: "https://maps.google.com/?q=Old+Town+Square+Prague", coords: [50.0875, 14.4213], image: TYN_CHURCH_IMAGE },
       { time: "14:00", label: "旧市庁舎 天文時計（Orloj）＆ 展望塔", desc: "【コース2】600年以上の歴史を刻む世界最古級の天文時計。毎正時のからくり仕掛け「使徒の行進」を見学後、エレベーターで高さ約70mの展望塔へ。旧市街広場と赤い屋根の海を見渡す360度の大パノラマ（徒歩すぐ）", icon: "🕰", important: true, url: "https://prague.eu/en/objevujte/old-town-hall-with-astronomical-clock-staromestska-radnice-s-orlojem/", mapUrl: "https://maps.google.com/?q=Old+Town+Hall+Prague", coords: [50.0870, 14.4207], image: ASTRONOMICAL_CLOCK_IMAGE },
@@ -2178,16 +2178,15 @@ const DAYS = [
     booking: {
       title: "鉄道チケット（ウィーン → プラハ）",
       details: [
-        { label: "推奨列車", value: "Railjet 72（直通）" },
-        { label: "後発候補", value: "Railjet 256（09:10発 → 13:23着）" },
+        { label: "列車", value: "RegioJet RJ 1030（直通・予約済）" },
+        { label: "乗客", value: "2名" },
         { label: "区間", value: "ウィーン中央駅（Wien Hbf）→ プラハ本駅（Praha hl.n.）" },
-        { label: "出発", value: "2026年11月22日（日）07:10発" },
-        { label: "到着", value: "2026年11月22日（日）11:23着" },
-        { label: "所要時間", value: "4時間13分" },
-        { label: "運賃目安", value: "早割 €14.90〜 ＋ 指定席 €3 / 人" },
-        { label: "予約先", value: "ÖBB公式サイト（oebb.at）または ČDチェコ鉄道（cd.cz）" },
+        { label: "出発", value: "2026年11月22日（日）06:39発" },
+        { label: "到着", value: "2026年11月22日（日）10:56着" },
+        { label: "所要時間", value: "4時間17分" },
+        { label: "予約先", value: "RegioJet（予約済）" },
       ],
-      url: "https://www.oebb.at/en/",
+      url: "https://www.regiojet.com/",
     },
     memo: {
       bg: "linear-gradient(135deg,#eef8f0,#e8f5ec)",
