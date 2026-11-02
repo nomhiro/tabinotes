@@ -1,3 +1,4 @@
+import FukuokaTrip from './fukuoka-2026/FukuokaTrip.jsx';
 import KyushuTrip from './kyushu-2026/KyushuTrip.jsx';
 import OsakaShigaTrip from './osaka-shiga-2026/OsakaShigaTrip.jsx';
 import HiroshimaTrip from './hiroshima-2026/HiroshimaTrip.jsx';
@@ -6,6 +7,17 @@ import OsakaKyotoTrip from './osaka-kyoto-2026/OsakaKyotoTrip.jsx';
 import SenjojikiTrip from './senjojiki-2026/SenjojikiTrip.jsx';
 
 export const TRIPS = [
+  {
+    id: 'fukuoka-2026',
+    title: '福岡の旅',
+    subtitle: '海の中道 ・ 大濠公園 ・ 博多旧市街',
+    dates: '2026. 11. 3',
+    icon: '🌃',
+    color: '#2b3a6e',
+    colorEnd: '#c0713f',
+    members: '',
+    component: FukuokaTrip,
+  },
   {
     id: 'senjojiki-2026',
     title: '千畳敷カール',
