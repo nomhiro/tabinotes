@@ -54,7 +54,7 @@ export default function TripList({ trips }) {
               <div className="trip-card-title">{trip.title}</div>
               <div className="trip-card-sub">{trip.subtitle}</div>
               <div className="trip-card-date">{trip.dates}</div>
-              <div className="trip-card-members">{trip.members}</div>
+              {trip.members && <div className="trip-card-members">{trip.members}</div>}
             </div>
           </a>
         ))}
