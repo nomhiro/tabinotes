@@ -10,7 +10,7 @@ export const TRIPS = [
   {
     id: 'fukuoka-2026',
     title: '福岡の旅',
-    subtitle: '海の中道 ・ 博多 ・ 博多旧市街',
+    subtitle: '香椎宮 ・ 博多 ・ 博多旧市街',
     dates: '2026. 11. 3',
     icon: '🌃',
     color: '#2b3a6e',

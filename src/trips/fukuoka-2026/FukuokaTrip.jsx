@@ -7,7 +7,7 @@ const DAYS = [
   {
     day: 1,
     date: "11月3日（火・祝）",
-    title: "名古屋から福岡へ日帰り観光 → 海の中道・友人と濱田屋・櫛田神社・ライトアップ",
+    title: "名古屋から福岡へ日帰り観光 → 香椎宮・友人と濱田屋・櫛田神社・ライトアップ",
     color: "#3b4f8f",
     icon: "🌃",
     weather: { name: "福岡（天神）", lat: 33.5904, lon: 130.3996, tripDate: "2026-11-03" },
@@ -44,9 +44,9 @@ const DAYS = [
       { time: "06:11〜06:20", label: "新幹線ホームへ移動・乗車", desc: "乗換時間は9分のみ（標準7分）。JRの遅延や混雑で間に合わない恐れあり。新幹線乗換口へ直行", icon: "🏃", important: true, url: "https://mb.jorudan.co.jp/os/noritxt/nagoya/chuo_line_jr_tokai-tokaido-san-yo_shinkansen.html" },
       { time: "06:20 → 09:39", label: "名古屋 → 博多（のぞみ101号）", desc: "名古屋駅17番線発（当日変更に注意）。車内でひと休み", icon: "🚄", important: true, url: "https://timetable.jr-odekake.net/train-timetable/314391?date=20261103", mapUrl: "https://maps.google.com/?q=博多駅", coords: [33.5897, 130.4207] },
       { time: "09:39〜10:15", label: "西鉄イン天神で荷物を預ける", desc: "博多駅→地下鉄七隈線で天神南（乗車約4分）→徒歩約5分。1階の無料セルフクロークを利用。チェックインは15:00から", icon: "🧳", url: "https://inn-tenjin.nnr-h.com/", mapUrl: "https://maps.google.com/?q=西鉄イン天神", coords: [33.5800, 130.3995] },
-      { time: "10:15〜11:40", label: "海の中道海浜公園へ移動", desc: "ホテル→天神南駅→地下鉄で博多→JR鹿児島本線で香椎→JR香椎線で西戸崎→徒歩約10分で西口。例：博多10:40頃→香椎乗換→西戸崎11:29頃（11/3のJR時刻は要再確認）", icon: "🚆", url: "https://uminaka-park.jp/other/access/", mapUrl: "https://maps.google.com/?q=西戸崎駅", coords: [33.6525, 130.3365] },
-      { time: "11:40〜12:25", label: "海の中道海浜公園（短縮）", desc: "西口から花の丘を中心にVlog撮影。13:30の合流に間に合わせるため約45分で切り上げ。11月の開園は9:30〜17:00", icon: "🌼", important: true, url: "https://uminaka-park.jp/guide/open-hour/", mapUrl: "https://maps.google.com/?q=海の中道海浜公園", coords: [33.6600, 130.3560] },
-      { time: "12:25〜13:25", label: "博多駅へ戻る", desc: "西口から西戸崎駅まで徒歩約10分→JR香椎線で香椎→JR鹿児島本線で博多（約40分）。列車は事前に時刻確認。遅れそうなら公園を早めに切り上げる", icon: "🚆", important: true, url: "https://uminaka-park.jp/other/access/", mapUrl: "https://maps.google.com/?q=博多駅", coords: [33.5897, 130.4207] },
+      { time: "10:15〜11:00", label: "香椎宮へ移動", desc: "ホテル→天神南駅→地下鉄七隈線で博多→JR鹿児島本線で香椎→JR香椎線で香椎神宮（または香椎から徒歩）。列車は前日に時刻確認", icon: "🚆", mapUrl: "https://maps.google.com/?q=香椎神宮駅", coords: [33.6575, 130.4340] },
+      { time: "11:00〜12:15", label: "香椎宮", desc: "香椎神宮駅から徒歩約3〜4分。国の重要文化財で全国でここだけの「香椎造り」の本殿、クス並木の参道、御神木の綾杉、古宮、不老水など。参拝は6:00〜18:00（授与所は9:00〜17:00）", icon: "⛩", important: true, mapUrl: "https://maps.google.com/?q=香椎宮", coords: [33.6560, 130.4335] },
+      { time: "12:15〜13:15", label: "博多駅へ戻る", desc: "香椎神宮駅→JR香椎線で香椎→JR鹿児島本線で博多（約15〜20分）。合流の13:30まで余裕を持たせた行程", icon: "🚆", important: true, mapUrl: "https://maps.google.com/?q=博多駅", coords: [33.5897, 130.4207] },
       { time: "13:30", label: "博多駅で友人と合流", desc: "待ち合わせ場所は要確認", icon: "🤝", important: true, mapUrl: "https://maps.google.com/?q=博多駅", coords: [33.5897, 130.4207] },
       { time: "13:30〜", label: "博多水たき 濱田屋（博多駅）で食事", desc: "博多駅直結「くうてん」10階。営業時間・予約は要確認", icon: "🍲", important: true, url: "https://mizutaki-hamadaya.jp/", mapUrl: "https://maps.google.com/?q=博多水たき 濱田屋 博多駅 くうてん", coords: [33.5897, 130.4207] },
       { time: "〜16:00頃", label: "友人と行動（時間確保）", desc: "16:00頃まで友人と一緒に過ごす。行き先は未定", icon: "👫" },
@@ -164,7 +164,7 @@ export default function FukuokaTrip() {
         <div className="cover-content">
           <div className="cover-label">Travel Booklet</div>
           <h1 className="cover-title">福岡の旅</h1>
-          <div className="cover-sub">海の中道 ・ 博多 ・ 博多旧市街</div>
+          <div className="cover-sub">香椎宮 ・ 博多 ・ 博多旧市街</div>
           <div className="cover-date">2026. 11. 3 tue</div>
                   </div>
       </header>
@@ -230,8 +230,8 @@ export default function FukuokaTrip() {
               <b>乗り換え</b>：名古屋駅は9分のみ。遅延・ホーム移動で間に合わない恐れがあるため、きっぷは事前に準備して乗換口へ直行（接続は保証されません）<br/>
               <b>ホテル</b>：「西鉄イン天神」（福岡市中央区渡辺通4-7-1）。「西鉄イン福岡」とは別施設。チェックイン15:00〜、1階に無料セルフクローク<br/>
               <b>福岡のJR</b>：祝日11/3の博多10:40頃の列車は候補。正確な接続は当日確認<br/>
-              <b>公園</b>：11月の開園は9:30〜17:00。西戸崎駅から花の丘に便利な西口まで徒歩約10分<br/>
-              <b>合流</b>：13:30に博多駅で友人と合流し、濱田屋で食事。16:00頃まで友人と行動。海の中道の帰り（西戸崎→博多約40分）は余裕が少ないため、列車時刻を事前に確認
+              <b>香椎宮</b>：参拝は6:00〜18:00（授与所9:00〜17:00）、境内自由。JR香椎線「香椎神宮」駅から徒歩約3〜4分。問い合わせ 092-681-1001<br/>
+              <b>合流</b>：13:30に博多駅で友人と合流し、濱田屋で食事。16:00頃まで友人と行動。香椎宮からの帰りは約15〜20分で、時間には余裕あり
             </div>
           </div>
 
