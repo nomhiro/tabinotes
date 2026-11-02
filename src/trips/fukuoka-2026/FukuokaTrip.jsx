@@ -7,7 +7,7 @@ const DAYS = [
   {
     day: 1,
     date: "11月3日（火・祝）",
-    title: "名古屋から福岡へ日帰り観光 → 海の中道・大濠公園・櫛田神社・ライトアップ",
+    title: "名古屋から福岡へ日帰り観光 → 天神・大濠公園さんぽ・友人と濱田屋・櫛田神社・ライトアップ",
     color: "#3b4f8f",
     icon: "🌃",
     weather: { name: "福岡（天神）", lat: 33.5904, lon: 130.3996, tripDate: "2026-11-03" },
@@ -44,13 +44,17 @@ const DAYS = [
       { time: "06:11〜06:20", label: "新幹線ホームへ移動・乗車", desc: "乗換時間は9分のみ（標準7分）。JRの遅延や混雑で間に合わない恐れあり。新幹線乗換口へ直行", icon: "🏃", important: true, url: "https://mb.jorudan.co.jp/os/noritxt/nagoya/chuo_line_jr_tokai-tokaido-san-yo_shinkansen.html" },
       { time: "06:20 → 09:39", label: "名古屋 → 博多（のぞみ101号）", desc: "名古屋駅17番線発（当日変更に注意）。車内でひと休み", icon: "🚄", important: true, url: "https://timetable.jr-odekake.net/train-timetable/314391?date=20261103", mapUrl: "https://maps.google.com/?q=博多駅", coords: [33.5897, 130.4207] },
       { time: "09:39〜10:15", label: "西鉄イン天神で荷物を預ける", desc: "博多駅→地下鉄七隈線で天神南（乗車約4分）→徒歩約5分。1階の無料セルフクロークを利用。チェックインは15:00から", icon: "🧳", url: "https://inn-tenjin.nnr-h.com/", mapUrl: "https://maps.google.com/?q=西鉄イン天神", coords: [33.5800, 130.3995] },
-      { time: "10:15〜11:40", label: "海の中道海浜公園へ移動", desc: "ホテル→天神南駅→地下鉄で博多→JR鹿児島本線で香椎→JR香椎線で西戸崎→徒歩約10分で西口。例：博多10:40頃→香椎乗換→西戸崎11:29頃（11/3のJR時刻は要再確認）", icon: "🚆", url: "https://uminaka-park.jp/other/access/", mapUrl: "https://maps.google.com/?q=西戸崎駅", coords: [33.6525, 130.3365] },
-      { time: "11:40〜13:45", label: "海の中道海浜公園", desc: "西口から花の丘・季節の草花を中心にVlog撮影。軽い昼食もここで。11月の開園は9:30〜17:00", icon: "🌼", important: true, url: "https://uminaka-park.jp/guide/open-hour/", mapUrl: "https://maps.google.com/?q=海の中道海浜公園", coords: [33.6600, 130.3560] },
-      { time: "13:45〜14:15", label: "西戸崎渡船場へ徒歩移動・乗船準備", desc: "西口から徒歩約10分。出航10分前を目標に乗船場所へ", icon: "🚶", mapUrl: "https://maps.google.com/?q=西戸崎渡船場", coords: [33.6556, 130.3310] },
-      { time: "14:15 → 14:30", label: "西戸崎 → 博多ふ頭（船）", desc: "福岡市営渡船・日祝ダイヤ。乗り遅れた場合の次便は14:55発→15:10着。欠航時はJRへ", icon: "⛴", important: true, url: "https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/hyo.html", mapUrl: "https://maps.google.com/?q=博多ふ頭旅客ターミナル", coords: [33.6030, 130.4050] },
-      { time: "14:30〜15:15", label: "大濠公園へ移動", desc: "博多ふ頭→90番バスで天神→地下鉄空港線で大濠公園→徒歩。待ち時間込み約35〜50分を想定", icon: "🚌", url: "https://ohorikouen.jp/access/" },
-      { time: "15:15〜16:00", label: "大濠公園", desc: "池・橋・緑を背景に撮影", icon: "🌳", important: true, url: "https://ohorikouen.jp/", mapUrl: "https://maps.google.com/?q=大濠公園", coords: [33.5865, 130.3770] },
-      { time: "16:00〜16:30", label: "櫛田神社へ移動", desc: "地下鉄空港線・大濠公園→中洲川端、そこから徒歩約10分", icon: "🚇" },
+      { time: "10:15〜10:35", label: "天神へ移動", desc: "ホテルから天神へ（徒歩または地下鉄）。経路は前日に確認", icon: "🚶", mapUrl: "https://maps.google.com/?q=天神駅 福岡", coords: [33.5911, 130.3990] },
+      { time: "10:35〜11:05", label: "旧福岡県公会堂貴賓館", desc: "明治43年築の洋館。入館は大人200円。開館9:00〜18:00（最終入館17:50）、休館は月曜（月曜が祝日の場合は翌日）", icon: "🏛", important: true, mapUrl: "https://maps.google.com/?q=旧福岡県公会堂貴賓館", coords: [33.5910, 130.4040] },
+      { time: "11:05〜11:30", label: "福岡市赤煉瓦文化館", desc: "貴賓館から徒歩数分。入館無料。明治期の赤煉瓦建築", icon: "🧱", important: true, mapUrl: "https://maps.google.com/?q=福岡市赤煉瓦文化館", coords: [33.5905, 130.4015] },
+      { time: "11:30〜11:50", label: "大濠公園駅・舞鶴公園へ移動", desc: "天神から地下鉄空港線で大濠公園駅（約7分）。舞鶴公園（福岡城跡）へは駅から徒歩約8分", icon: "🚇", mapUrl: "https://maps.google.com/?q=大濠公園駅", coords: [33.5873, 130.3801] },
+      { time: "11:50〜12:30", label: "福岡城跡（舞鶴公園）", desc: "天守台の展望、重要文化財の多聞櫓など。公園は24時間開放・入園無料。施設の営業時間は要確認", icon: "🏯", important: true, mapUrl: "https://maps.google.com/?q=福岡城跡", coords: [33.5845, 130.3835] },
+      { time: "12:30〜13:00", label: "大濠公園", desc: "池の中央の浮見堂や遊歩道を散策。池の周りは約2kmの遊歩道", icon: "🌳", important: true, url: "https://ohorikouen.jp/", mapUrl: "https://maps.google.com/?q=大濠公園", coords: [33.5865, 130.3770] },
+      { time: "13:00〜13:20", label: "博多駅へ戻る", desc: "大濠公園駅から地下鉄空港線で博多（約12分）。13:30の合流まで余裕は約10分なので、押したら福岡城跡か赤煉瓦文化館を省略", icon: "🚆", important: true, mapUrl: "https://maps.google.com/?q=博多駅", coords: [33.5897, 130.4207] },
+      { time: "13:30", label: "博多駅で友人と合流", desc: "待ち合わせ場所は要確認", icon: "🤝", important: true, mapUrl: "https://maps.google.com/?q=博多駅", coords: [33.5897, 130.4207] },
+      { time: "13:30〜", label: "博多水たき 濱田屋（博多駅）で食事", desc: "博多駅直結「くうてん」10階。営業時間・予約は要確認", icon: "🍲", important: true, url: "https://mizutaki-hamadaya.jp/", mapUrl: "https://maps.google.com/?q=博多水たき 濱田屋 博多駅 くうてん", coords: [33.5897, 130.4207] },
+      { time: "〜16:00頃", label: "友人と行動（時間確保）", desc: "16:00頃まで友人と一緒に過ごす。行き先は未定", icon: "👫" },
+      { time: "16:00〜16:30", label: "櫛田神社へ移動", desc: "博多駅から地下鉄または徒歩で約15〜20分", icon: "🚇" },
       { time: "16:30〜17:15", label: "櫛田神社", desc: "参拝・飾り山笠。御朱印など社務所の受付は早めに", icon: "⛩", important: true, mapUrl: "https://maps.google.com/?q=櫛田神社", coords: [33.5927, 130.4116] },
       { time: "17:15〜17:30", label: "ライトアップ会場へ徒歩移動", desc: "東長寺方面へ約10〜15分", icon: "🚶" },
       { time: "17:30〜19:00", label: "博多旧市街ライトアップウォーク", desc: "11/3が最終日。東長寺など寺院を鑑賞。有料会場はチケットが必要", icon: "🏮", important: true, url: "https://www.hakata-light.jp/", mapUrl: "https://maps.google.com/?q=東長寺 福岡", coords: [33.5895, 130.4140] },
@@ -164,7 +168,7 @@ export default function FukuokaTrip() {
         <div className="cover-content">
           <div className="cover-label">Travel Booklet</div>
           <h1 className="cover-title">福岡の旅</h1>
-          <div className="cover-sub">海の中道 ・ 大濠公園 ・ 博多旧市街</div>
+          <div className="cover-sub">天神 ・ 大濠公園 ・ 博多旧市街</div>
           <div className="cover-date">2026. 11. 3 tue</div>
                   </div>
       </header>
@@ -230,8 +234,8 @@ export default function FukuokaTrip() {
               <b>乗り換え</b>：名古屋駅は9分のみ。遅延・ホーム移動で間に合わない恐れがあるため、きっぷは事前に準備して乗換口へ直行（接続は保証されません）<br/>
               <b>ホテル</b>：「西鉄イン天神」（福岡市中央区渡辺通4-7-1）。「西鉄イン福岡」とは別施設。チェックイン15:00〜、1階に無料セルフクローク<br/>
               <b>福岡のJR</b>：祝日11/3の博多10:40頃の列車は候補。正確な接続は当日確認<br/>
-              <b>公園</b>：11月の開園は9:30〜17:00。西戸崎駅から花の丘に便利な西口まで徒歩約10分<br/>
-              <b>船</b>：祝日ダイヤは西戸崎14:15発→博多14:30着、次便は14:55発→15:10着。海況により欠航の可能性あり（<a href="https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/ferry_city.html" target="_blank" rel="noopener noreferrer" className="memo-link" style={{ color:"#3b4f8f" }}>運航状況</a>）
+              <b>午前の散策</b>：貴賓館（200円・9:00〜18:00・月曜休）→ 赤煉瓦文化館（無料）→ 福岡城跡（無料）→ 大濠公園。4か所で詰め気味なので、押したら赤煉瓦文化館か福岡城跡を省略<br/>
+              <b>合流</b>：13:30に博多駅で友人と合流し、濱田屋で食事。16:00頃まで友人と行動。大濠公園からの帰りは約12分。合流の13:30まで余裕は約10分
             </div>
           </div>
 
