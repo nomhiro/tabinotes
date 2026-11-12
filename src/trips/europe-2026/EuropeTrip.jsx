@@ -1713,8 +1713,8 @@ const DAYS = [
       { time: "16:30", label: "雑貨店・おみやげ巡り ① Bomo Art（Pest店）", desc: "大聖堂から徒歩約10分、Váci通りのすぐ脇のRégi Posta utca 14。ベル・エポック風の雰囲気で知られるおしゃれな文具・雑貨店。ここから Váci通り周辺の雑貨店を巡る時間をたっぷり確保（〜18:15頃まで）", icon: "🛍", mapUrl: "https://maps.google.com/?q=Bomo+Art+R%C3%A9gi+Posta+utca+14+Budapest", coords: [47.4953, 19.0527] },
       { time: "17:00頃", label: "② Folkart Kézművesház（フォークアート）", desc: "Bomo Artのすぐ隣（Régi Posta utca 12）。ハンガリーの民芸・手工芸品のお店。刺繍やクラフトなどのこだわり雑貨を探す", icon: "🧵", mapUrl: "https://maps.google.com/?q=Folkart+K%C3%A9zm%C5%B1vesh%C3%A1z+R%C3%A9gi+Posta+utca+12+Budapest", coords: [47.4953, 19.0524] },
       { time: "17:30頃", label: "③ Magma（マグマ）", desc: "Petőfi Sándor utca 11。ハンガリー人デザイナー・作家の作品だけを集めたデザインショップ（ガラス・磁器・テキスタイル・おもちゃなど）。ここから夕食のCafé Körへ徒歩約10分", icon: "🎨", mapUrl: "https://maps.google.com/?q=Magma+Pet%C5%91fi+S%C3%A1ndor+utca+11+Budapest", coords: [47.4960, 19.0538] },
-      { time: "18:30", label: "Café Kör（カフェ・ケル）でディナー", desc: "予約（18:30）。聖イシュトヴァーン大聖堂の裏手、Sas utca 17にある地元でも評判の名店。温かみのあるクラシックな店内で、伝統的なハンガリー料理をゆっくり堪能する初日のディナー", icon: "🍽", important: true, url: "https://www.cafekor.net/", mapUrl: "https://maps.google.com/?q=Caf%C3%A9+K%C3%B6r+Sas+utca+17+Budapest", coords: [47.5018, 19.0528] },
-      { time: "20:00頃", label: "City SPAR（Károly krt.）で買い出し", desc: "ディナーの帰り道に立ち寄る。ホテルから徒歩圏、Astoria駅周辺のスーパー（Károly krt. 22–24）。ばらまき用のお菓子や現地の食品をまとめて調達し、そのままホテルへ持ち帰る。閉店時刻は店舗で要確認", icon: "🛒", url: "https://www.spar.hu/", mapUrl: "https://maps.google.com/?q=City+SPAR+K%C3%A1roly+k%C3%B6r%C3%BAt+22+Budapest", coords: [47.4961, 19.0570] },
+      { time: "18:30", label: "Café Kör（カフェ・ケル）でディナー", desc: "予約済（18:30）。聖イシュトヴァーン大聖堂の裏手、Sas utca 17にある地元でも評判の名店。温かみのあるクラシックな店内で、伝統的なハンガリー料理をゆっくり堪能する初日のディナー", icon: "🍽", important: true, url: "https://www.cafekor.net/", mapUrl: "https://maps.google.com/?q=Caf%C3%A9+K%C3%B6r+Sas+utca+17+Budapest", coords: [47.5018, 19.0528] },
+      { time: "20:00頃", label: "City SPAR（Károly krt.）で買い出し", desc: "ディナーの帰り道に立ち寄る。ホテルから徒歩圏、Astoria駅周辺のスーパー（Károly krt. 22–24）。ばらまき用のお菓子や現地の食品をまとめて調達し、そのままホテルへ持ち帰る。営業は21:00まで", icon: "🛒", url: "https://www.spar.hu/", mapUrl: "https://maps.google.com/?q=City+SPAR+K%C3%A1roly+k%C3%B6r%C3%BAt+22+Budapest", coords: [47.4961, 19.0570] },
       { time: "20:30頃", label: "ホテル帰着 ＆ 就寝", desc: "SPARからホテルまで徒歩数分。移動で長い一日なので早めに就寝。翌朝は国会議事堂の当日券のため07:30頃に出発", icon: "🏨", coords: [47.4947, 19.0595] },
     ],
     booking: {
@@ -1750,6 +1750,21 @@ const DAYS = [
           { label: "予約状況", value: "予約確定" },
         ],
       },
+      {
+        key: "cafe-kor-d1",
+        icon: "🍽",
+        title: "Café Kör ディナー予約（18:30）",
+        url: "https://www.cafekor.net/",
+        mapUrl: "https://maps.google.com/?q=Caf%C3%A9+K%C3%B6r+Sas+utca+17+Budapest",
+        details: [
+          { label: "店名", value: "Café Kör（カフェ・ケル）" },
+          { label: "日時", value: "2026年11月18日（水）18:30" },
+          { label: "住所", value: "Sas utca 17, Budapest（聖イシュトヴァーン大聖堂の近く）" },
+          { label: "電話（掲載情報）", value: "+36 1 311 0053" },
+          { label: "アクセス", value: "雑貨店巡りの最後のMagma（Petőfi Sándor u. 11）から徒歩約10分" },
+          { label: "予約状況", value: "予約確定" },
+        ],
+      },
     ],
     memo: {
       bg: "linear-gradient(135deg,#f0eef8,#ede8f5)",
@@ -1764,8 +1779,8 @@ const DAYS = [
           <b>到着直後のスケジュール</b>：13:05着の直後に入国審査（EESの生体登録）があり、14:00のバス乗車はやや余裕がありません。遅れたら大聖堂のテラス（最終入場は16:00前後が目安）を優先し、雑貨店は短縮します。<br/>
           <b>聖イシュトヴァーン大聖堂</b>：教会入場料 2,300HUF、パノラマ展望テラス＋宝物館 4,300HUF。冬季のドーム・テラスは10:00〜16:30との案内が多く、日没（16:00〜16:15頃）前に上がるのがおすすめ。<br/>
           <b>雑貨店（営業時間は要確認）</b>：Bomo Art（Régi Posta u. 14・文具雑貨）、Folkart Kézművesház（Régi Posta u. 12・民芸）、Magma（Petőfi Sándor u. 11・ハンガリーのデザイン）は徒歩数分圏内。小さな店は閉店が早いことがあるので、出発前に各店の営業時間を確認しておくと安心です。<br/>
-          <b>Café Kör</b>：Sas utca 17、18:30の予約。大聖堂の裏手なので、Magmaから徒歩約10分。<br/>
-          <b>City SPAR</b>：Károly krt. 22–24（Astoria駅周辺）。ホテルから徒歩圏のため、ばらまき用のお菓子・食品は初日の夜にまとめて購入し、そのままホテルへ。
+          <b>Café Kör</b>：Sas utca 17、18:30予約済み（予約カード参照）。大聖堂の裏手なので、Magmaから徒歩約10分。<br/>
+          <b>City SPAR</b>：Károly krt. 22–24（Astoria駅周辺）のスーパー。21:00まで営業。ホテルから徒歩圏のため、ばらまき用のお菓子・食品は初日の夜にまとめて購入し、そのままホテルへ。
         </>
       ),
     },
@@ -1778,19 +1793,20 @@ const DAYS = [
     icon: "🏰",
     schedule: [
       { time: "07:30", label: "ホテル出発 → Kossuth Lajos térへ", desc: "地下鉄M2「Astoria」駅から直通2駅で「Kossuth Lajos tér」駅へ移動（約5分・乗換なし）", icon: "🚇", coords: [47.4947, 19.0595] },
-      { time: "07:45", label: "ハンガリー国会議事堂（Országház）─ 当日券を確保", desc: "ドナウ河畔に佇む壮麗なネオゴシック建築。ビジターセンターは8:00オープン（11〜3月は16:00まで）なので、開館に合わせて並び当日券を確保する（非EU大人14,000HUF）。当日券は枚数限定で、議会開催日は見学できないこともあるため、確実に入りたい場合は公式サイトで事前予約も可。内部ガイドツアー（約45〜50分）は購入時に指定される時刻に参加", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457], image: PARLIAMENT_IMAGE },
+      { time: "07:45", label: "ハンガリー国会議事堂（Országház）─ 当日券を確保", desc: "ドナウ河畔に佇む壮麗なネオゴシック建築。ビジターセンターは8:00オープン（11〜3月は16:00まで）なので、開館に合わせて並び当日券を確保する（非EU大人14,000HUF）。事前予約枠は現時点で空きがないため、当日券のみで狙う。当日券は枚数限定で、議会開催日は見学できないこともあるので、開館前から並ぶ。内部ガイドツアー（約45〜50分）は購入時に指定される時刻に参加", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457], image: PARLIAMENT_IMAGE },
       { time: "08:00頃", label: "周辺散策・朝食", desc: "ツアーの指定時刻まで、国会議事堂前のKossuth Lajos tér周辺の広場を散策したり、カフェで朝食をとって過ごす（店は当日決める）。英語ツアーは10:00〜15:30頃に複数回あるとの情報があり、実際の時刻はチケット購入時に確定", icon: "🥐" },
-      { time: "ツアー後〜", label: "ランチ・休憩（店は未定）", desc: "国会議事堂の見学後、ブダ城へ向かう前に昼食と休憩。ツアーの時刻次第で空き時間が変わるため、場所は当日決める", icon: "🍽" },
+      { time: "ツアー後〜", label: "ランチ・休憩（お店は未定）", desc: "国会議事堂の見学後、ブダ城へ向かう前に昼食と休憩。お店はまだ決めておらず、ツアーの時刻や当日の状況で選ぶ。国会議事堂から徒歩約5分のところに旧郵便貯金局（Hold u. 4・「ハンガリーのガウディ」ことレフネル・エデン設計のアール・ヌーヴォー建築）があるので、時間と体力に余裕があれば外観だけ見に立ち寄るのもよい", icon: "🍽" },
       { time: "13:30頃", label: "ブダ城（Budavári Palota）", desc: "ドナウ川を渡って王宮の丘へ（バス16番、ケーブルカー、またはヴァールケルト・バザールの無料エスカレーターで上がれる）。国立ギャラリーや歴史博物館を擁する壮大な城郭で、敷地周辺を時間をかけて歩き、展望テラスから対岸のペスト地区の景色を楽しむ", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.google.com/?q=Buda+Castle+Budapest", coords: [47.4962, 19.0396], image: BUDA_CASTLE_IMAGE },
       { time: "15:00頃", label: "マーチャーシュ教会（Mátyás-templom）", desc: "ブダ城から徒歩で移動（約10分）。歴代ハンガリー国王の戴冠式が行われた歴史ある教会で、色鮮やかなジョルナイ製の屋根瓦と内部の彩色装飾が見どころ。内部見学は月〜土 9:00〜17:00（11〜3月・行事で変更あり）", icon: "⛪", important: true, url: "https://matyas-templom.hu/", mapUrl: "https://maps.google.com/?q=Matthias+Church+Budapest", coords: [47.5019, 19.0342], image: MATTHIAS_CHURCH_IMAGE },
       { time: "15:40頃", label: "漁夫の砦（Halászbástya）", desc: "マーチャーシュ教会のすぐ隣。7つの尖塔と白亜の回廊が連なる展望砦で、アーチ窓越しにドナウ川と国会議事堂を一望する。ブダ地区の必見スポットをここで制覇。日没は16:00〜16:15頃で、夕景の時間帯", icon: "🏰", important: true, url: "https://www.fishermansbastion.com/", mapUrl: "https://maps.google.com/?q=Fisherman%27s+Bastion+Budapest", coords: [47.5022, 19.0347], image: FISHERMANS_BASTION_IMAGE },
       { time: "16:00頃", label: "ブダ側を出発 → ペスト側の中央市場へ", desc: "三位一体広場前からバス16番でDeák Ferenc térへ（約10分）、トラム47/49番に乗り換えてFővám térへ（合計約30分）", icon: "🚌" },
       { time: "16:30", label: "ブダペスト中央市場（Nagyvásárcsarnok）", desc: "ペスト側のFővám tér、巨大な屋内市場。1階は食料品、2階は民芸品が並ぶ。パプリカパウダー、ハチミツ、革製品など定番みやげのまとめ買いに最適。閉館は木曜18:00だが、17:30にホテルへ戻る予定のため17:15頃までが目安（買い足したい場合は休憩を短縮して再訪）", icon: "🧺", important: true, mapUrl: "https://maps.google.com/?q=Great+Market+Hall+Budapest", coords: [47.4872, 19.0584] },
       { time: "17:30頃", label: "ホテルで休憩", desc: "市場からトラム47/49番でAstoria方面へ（約10分）。買った荷物を一度部屋に置き、夜のクルーズに向けて少しリフレッシュ", icon: "🏨", coords: [47.4947, 19.0595] },
+      { time: "18:15頃", label: "夕食 or 軽食（お店は未定）", desc: "どこかのお店か軽食で夕食をとる（お店はまだ未定）。クルーズ船内は飲食物の持ち込み可なので、軽食をテイクアウトして船上で食べる選択肢もある", icon: "🍽" },
       { time: "19:15頃", label: "ホテル出発 ─ 乗船場所へ", desc: "出航の15分前までに乗船場所へ。場所は予約バウチャーで要確認", icon: "🚶" },
       { time: "19:40", label: "ドナウ川 ボートクルーズ（屋上座席保証・持ち込み可）", desc: "予約済（GetYourGuide・約50分）。屋上デッキの座席が保証され、飲食物の持ち込みも可能。ライトアップされた国会議事堂・ブダ城・くさり橋を船上から一望。予約番号・PINは下の予約カード参照。乗船場所はバウチャーで要確認", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88", coords: [47.4950, 19.0505] },
-      { time: "21:00頃", label: "ニューヨーク・カフェ（New York Café）", desc: "クルーズ下船後に向かう。豪華絢爛な内装で「世界一美しいカフェ」とも称される特別な空間。日中の混雑を避けた夜の時間帯に訪れ、ブダペスト最後の夜を締めくくる。公式サイトの案内では木曜は7:00〜翌1:00営業、テーブル予約ページあり。生演奏の有無・時間帯は公式で要確認", icon: "☕", important: true, url: "https://newyorkcafe.hu/en/", mapUrl: "https://maps.google.com/?q=New+York+Caf%C3%A9+Budapest", coords: [47.4981, 19.0707] },
-      { time: "22:30頃", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "Budapest Panorama Centralへ帰着。翌朝のウィーン行きRJX 162（Keleti 06:30発・05:30頃チェックアウト）に向けて荷造り・就寝", icon: "🏨", coords: [47.4947, 19.0595] },
+      { time: "21:00頃〜", label: "ニューヨーク・カフェ（余裕があれば）", desc: "クルーズ下船後、時間と体力に余裕があればカフェ利用を検討する任意の予定（価格は高め）。豪華絢爛な内装で「世界一美しいカフェ」とも称される。公式サイトの案内では木曜は7:00〜翌1:00営業、テーブル予約ページあり。生演奏の有無・時間帯は公式で要確認。寄らない場合はそのままホテルへ", icon: "☕", url: "https://newyorkcafe.hu/en/", mapUrl: "https://maps.google.com/?q=New+York+Caf%C3%A9+Budapest", coords: [47.4981, 19.0707] },
+      { time: "21:30頃〜", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "Budapest Panorama Centralへ帰着（ニューヨーク・カフェに寄った場合は22:30頃）。翌朝のウィーン行きRJX 162（Keleti 06:30発・05:30頃チェックアウト）に向けて荷造り・就寝", icon: "🏨", coords: [47.4947, 19.0595] },
     ],
     booking: {
       title: "ドナウ川 ボートクルーズ（GetYourGuide・予約済）",
@@ -1831,13 +1847,14 @@ const DAYS = [
       title: "ブダペスト2日目 観光＆料金メモ",
       body: (
         <>
-          <b>国会議事堂（Országház）</b>：外観見学は無料。内部ガイドツアーは非EU大人14,000HUF（約¥5,800/人）。ビジターセンターは8:00開館（11〜3月は〜16:00）。当日券は枚数限定で、議会開催日は見学できないことがあります。確実に入りたい場合は公式サイト（parlament.hu）から事前予約を。ツアーが遅い時刻（12:00以降）になった場合は、ブダ城の到着を後ろ倒しにします。<br/>
+          <b>国会議事堂（Országház）</b>：外観見学は無料。内部ガイドツアーは非EU大人14,000HUF（約¥5,800/人）。ビジターセンターは8:00開館（11〜3月は〜16:00）。事前予約枠は現時点で空きがないため、当日券のみで入場を狙います。当日券は枚数限定で、議会開催日は見学できないことがあります。ツアーが遅い時刻（12:00以降）になった場合は、ブダ城の到着を後ろ倒しにします。<br/>
+          <b>旧郵便貯金局（Postatakarékpénztár）</b>：国会議事堂から徒歩約5分（Hold u. 4）。レフネル・エデン設計のアール・ヌーヴォー建築で、ジョルナイ陶器の屋根飾りや蜂・植物のレリーフが見どころ。昼食前後に余裕があれば外観のみ立ち寄り（任意）。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://maps.google.com/?q=Postatakar%C3%A9kp%C3%A9nzt%C3%A1r+Hold+utca+4+Budapest" target="_blank" rel="noopener noreferrer" aria-label="旧郵便貯金局をGoogle Mapで開く"><span aria-hidden="true">📍</span> Map</a><br/>
           <b>ブダ城・王宮の丘</b>：敷地と展望テラスの散策は無料（国立ギャラリー・歴史博物館は任意）。<br/>
           <b>マーチャーシュ教会</b>：内部見学は月〜土 9:00〜17:00（日曜は13:00〜17:00。11〜3月・礼拝や行事で変更あり）。入場料は情報が分かれるため公式サイトで要確認。<br/>
           <b>漁夫の砦（Halászbástya）</b>：夜間は上層展望テラスも無料開放。アーチ窓から国会議事堂を望む絶景写真スポット。<br/>
           <b>ブダペスト中央市場</b>：木曜 6:00〜18:00。1階は食料品、2階は民芸品。パプリカパウダー・ハチミツ・革製品などがおみやげの定番。<br/>
-          <b>ドナウ川 ボートクルーズ</b>：19:40発・約50分・予約済（屋上座席保証・飲食物の持ち込み可）。予約番号 GYGFWVYH6GMN。集合場所はバウチャーで確認し、出航15分前までに到着。夕食の予定は未定のため、必要なら持ち込みの軽食を事前に調達。<br/>
-          <b>ニューヨーク・カフェ</b>：Erzsébet krt. 9–11。木曜は7:00〜翌1:00（公式サイトの案内）。公式サイトにテーブル予約ページあり。<br/>
+          <b>ドナウ川 ボートクルーズ</b>：19:40発・約50分・予約済（屋上座席保証・飲食物の持ち込み可）。予約番号 GYGFWVYH6GMN。集合場所はバウチャーで確認し、出航15分前までに到着。夕食か軽食は18:15頃にとる想定（お店は未定）。船内は飲食物の持ち込み可なので、軽食のテイクアウトも可。<br/>
+          <b>ニューヨーク・カフェ（任意）</b>：Erzsébet krt. 9–11。価格は高めのため、時間と体力に余裕があれば利用。木曜は7:00〜翌1:00（公式サイトの案内）。公式サイトにテーブル予約ページあり。<br/>
           <b>市内交通 24時間乗車券</b>：2,500HUF（約¥1,050/人）。地下鉄M1〜M4・トラム・路線バスが24時間乗り放題。BudapestGOアプリまたは券売機で購入。
         </>
       ),
@@ -2297,7 +2314,7 @@ const COSTS = [
   { item: "空港バス 100E（ブダペスト空港→Astoria、2名）", cost: 2100, note: "2,500HUF×2名（クレカタッチ決済 約¥2,100）" },
   { item: "ブダペスト市内交通 24時間券（2名）", cost: 2100, note: "2,500HUF×2名（地下鉄・トラム乗り放題 約¥2,100）" },
   { item: "ウィーン市内交通 48時間券（2名）", cost: 4650, note: "€14.10×2名（WienMobilアプリまたは券売機 約¥4,650・乗り放題）" },
-  { item: "国会議事堂 ガイドツアー（2名・任意）", cost: 0, note: "11/19朝8:00にビジターセンターで当日券を購入予定 14,000HUF×2名（約¥11,600）／当日券は枚数限定・確実に入るなら事前予約／外観散策は無料" },
+  { item: "国会議事堂 ガイドツアー（2名・任意）", cost: 0, note: "11/19朝8:00にビジターセンターで当日券を購入予定 14,000HUF×2名（約¥11,600）／事前予約枠は空きなし・当日券のみ（枚数限定）／外観散策は無料" },
   { item: "シェーンブルン宮殿 グランドツアー（2名・任意）", cost: 0, note: "大人約€32×2名（要事前予約・日本語オーディオ付）" },
   { item: "ベルヴェデーレ上宮 入場券（2名・任意）", cost: 0, note: "大人約€19×2名（クリムト『接吻』・要日時指定予約）" },
   { item: "国立図書館 プルンクザール（2名・任意）", cost: 0, note: "大人€10×2名（約¥3,300）" },
