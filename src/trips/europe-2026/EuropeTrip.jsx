@@ -1710,9 +1710,9 @@ const DAYS = [
       { time: "14:35頃", label: "Astoria M 降車 ─ ホテルへ移動", desc: "Astoria Mバス停からホテル（Károly krt. 10）へ徒歩約1分。大通り沿いでアクセス抜群", icon: "🚶", coords: [47.4947, 19.0595] },
       { time: "14:40頃", label: "Budapest Panorama Central 到着 ─ 荷物を預けて出発", desc: "チェックイン（14:00〜）して荷物を置き、身支度を整えたらすぐペスト地区の散策へ。スーペリア ダブルルーム スパバス付（2泊）。入国審査（EES）で遅れた場合は荷物を預けるだけにして出発", icon: "🏨", important: true, url: "https://budapestpanoramacentral.com/", mapUrl: "https://maps.google.com/?q=Budapest+Panorama+Central", coords: [47.4947, 19.0595] },
       { time: "15:00頃", label: "聖イシュトヴァーン大聖堂（Szent István-bazilika）", desc: "ホテルから徒歩約12分。初代国王を祀るブダペスト最大のカトリック教会。高さ96mの大ドームと黄金の天井装飾をじっくり鑑賞したあと、展望パノラマテラスからブダペストの街を360度見渡してスケール感を味わう。冬季のドーム・テラスは10:00〜16:30との案内が多い（資料により差あり）ため、16:00頃までには上がりたい", icon: "⛪", important: true, url: "https://www.bazilika.biz/", mapUrl: "https://maps.google.com/?q=St.+Stephen%27s+Basilica+Budapest", coords: [47.5009, 19.0540], image: ST_STEPHEN_BASILICA_IMAGE },
-      { time: "16:30", label: "雑貨店・おみやげ巡り ① Bomo Art（Pest店）", desc: "大聖堂から徒歩約10分、Váci通りのすぐ脇のRégi Posta utca 14。ベル・エポック風の雰囲気で知られるおしゃれな文具・雑貨店。ここから Váci通り周辺の雑貨店を巡る時間をたっぷり確保（〜18:15頃まで）", icon: "🛍", mapUrl: "https://maps.google.com/?q=Bomo+Art+R%C3%A9gi+Posta+utca+14+Budapest", coords: [47.4953, 19.0527] },
-      { time: "17:00頃", label: "② Folkart Kézművesház（フォークアート）", desc: "Bomo Artのすぐ隣（Régi Posta utca 12）。ハンガリーの民芸・手工芸品のお店。刺繍やクラフトなどのこだわり雑貨を探す", icon: "🧵", mapUrl: "https://maps.google.com/?q=Folkart+K%C3%A9zm%C5%B1vesh%C3%A1z+R%C3%A9gi+Posta+utca+12+Budapest", coords: [47.4953, 19.0524] },
-      { time: "17:30頃", label: "③ Magma（マグマ）", desc: "Petőfi Sándor utca 11。ハンガリー人デザイナー・作家の作品だけを集めたデザインショップ（ガラス・磁器・テキスタイル・おもちゃなど）。ここから夕食のCafé Körへ徒歩約10分", icon: "🎨", mapUrl: "https://maps.google.com/?q=Magma+Pet%C5%91fi+S%C3%A1ndor+utca+11+Budapest", coords: [47.4960, 19.0538] },
+      { time: "16:30", label: "雑貨店・おみやげ巡り ① Bomo Art（Pest店）", desc: "大聖堂から徒歩約10分、Váci通りのすぐ脇のRégi Posta utca 14。ベル・エポック風の雰囲気で知られるおしゃれな文具・雑貨店。ここから Váci通り周辺の雑貨店を巡る時間をたっぷり確保（〜18:15頃まで）。営業は月〜金 10:00〜18:30（公式サイトの案内）", icon: "🛍", url: "https://bomoart.com/en/contact", mapUrl: "https://maps.google.com/?q=Bomo+Art+R%C3%A9gi+Posta+utca+14+Budapest", coords: [47.4953, 19.0527] },
+      { time: "17:00頃", label: "② Folkart Kézművesház（フォークアート）", desc: "Bomo Artのすぐ隣（Régi Posta utca 12）。ハンガリーの民芸・手工芸品のお店。刺繍やクラフトなどのこだわり雑貨を探す。営業は月〜金 10:00〜18:00（掲載情報）のため、18:00の閉店前に入る", icon: "🧵", mapUrl: "https://maps.google.com/?q=Folkart+K%C3%A9zm%C5%B1vesh%C3%A1z+R%C3%A9gi+Posta+utca+12+Budapest", coords: [47.4953, 19.0524] },
+      { time: "17:30頃", label: "③ Magma（マグマ）", desc: "Petőfi Sándor utca 11。ハンガリー人デザイナー・作家の作品だけを集めたデザインショップ（ガラス・磁器・テキスタイル・おもちゃなど）。営業は月〜金 10:00〜19:00。ここから夕食のCafé Körへ徒歩約10分", icon: "🎨", mapUrl: "https://maps.google.com/?q=Magma+Pet%C5%91fi+S%C3%A1ndor+utca+11+Budapest", coords: [47.4960, 19.0538] },
       { time: "18:30", label: "Café Kör（カフェ・ケル）でディナー", desc: "予約済（18:30）。聖イシュトヴァーン大聖堂の裏手、Sas utca 17にある地元でも評判の名店。温かみのあるクラシックな店内で、伝統的なハンガリー料理をゆっくり堪能する初日のディナー", icon: "🍽", important: true, url: "https://www.cafekor.net/", mapUrl: "https://maps.google.com/?q=Caf%C3%A9+K%C3%B6r+Sas+utca+17+Budapest", coords: [47.5018, 19.0528] },
       { time: "20:00頃", label: "City SPAR（Károly krt.）で買い出し", desc: "ディナーの帰り道に立ち寄る。ホテルから徒歩圏、Astoria駅周辺のスーパー（Károly krt. 22–24）。ばらまき用のお菓子や現地の食品をまとめて調達し、そのままホテルへ持ち帰る。営業は21:00まで", icon: "🛒", url: "https://www.spar.hu/", mapUrl: "https://maps.google.com/?q=City+SPAR+K%C3%A1roly+k%C3%B6r%C3%BAt+22+Budapest", coords: [47.4961, 19.0570] },
       { time: "20:30頃", label: "ホテル帰着 ＆ 就寝", desc: "SPARからホテルまで徒歩数分。移動で長い一日なので早めに就寝。翌朝は国会議事堂の当日券のため07:30頃に出発", icon: "🏨", coords: [47.4947, 19.0595] },
@@ -1778,8 +1778,8 @@ const DAYS = [
           <b>100E エアポートエクスプレス</b>：空港 ⇄ 市内を約35〜40分で結ぶ直通バス（専用券 2,500HUF/人・約¥1,050）。車内決済端末にクレカタッチ決済で乗車可能。<br/>
           <b>到着直後のスケジュール</b>：13:05着の直後に入国審査（EESの生体登録）があり、14:00のバス乗車はやや余裕がありません。遅れたら大聖堂のテラス（最終入場は16:00前後が目安）を優先し、雑貨店は短縮します。<br/>
           <b>聖イシュトヴァーン大聖堂</b>：教会入場料 2,300HUF、パノラマ展望テラス＋宝物館 4,300HUF。冬季のドーム・テラスは10:00〜16:30との案内が多く、日没（16:00〜16:15頃）前に上がるのがおすすめ。<br/>
-          <b>雑貨店（営業時間は要確認）</b>：Bomo Art（Régi Posta u. 14・文具雑貨）、Folkart Kézművesház（Régi Posta u. 12・民芸）、Magma（Petőfi Sándor u. 11・ハンガリーのデザイン）は徒歩数分圏内。小さな店は閉店が早いことがあるので、出発前に各店の営業時間を確認しておくと安心です。<br/>
-          <b>Café Kör</b>：Sas utca 17、18:30予約済み（予約カード参照）。大聖堂の裏手なので、Magmaから徒歩約10分。<br/>
+          <b>雑貨店の営業時間</b>：Bomo Art（Régi Posta u. 14・文具雑貨）は月〜金 10:00〜18:30・土 10:00〜18:00・日曜休（公式サイト）。Folkart Kézművesház（Régi Posta u. 12・民芸）は月〜金 10:00〜18:00（掲載情報・TEL +36 1 318 5143）。Magma（Petőfi Sándor u. 11・ハンガリーのデザイン）は月〜金 10:00〜19:00・土 10:00〜15:00（TEL +36 1 235 0277）。3軒は徒歩数分圏内で、水曜の16:30〜18:00はいずれも営業時間内です。Folkartだけ18:00閉店なので、予定の17:00〜17:30に入るのが安心。<br/>
+          <b>Café Kör</b>：Sas utca 17、18:30予約済み（予約カード参照）。月〜土 12:00〜22:00・日曜休（掲載情報）。大聖堂の裏手なので、Magmaから徒歩約10分。<br/>
           <b>City SPAR</b>：Károly krt. 22–24（Astoria駅周辺）のスーパー。21:00まで営業。ホテルから徒歩圏のため、ばらまき用のお菓子・食品は初日の夜にまとめて購入し、そのままホテルへ。
         </>
       ),
@@ -1794,15 +1794,15 @@ const DAYS = [
     schedule: [
       { time: "07:30", label: "ホテル出発 → Kossuth Lajos térへ", desc: "地下鉄M2「Astoria」駅から直通2駅で「Kossuth Lajos tér」駅へ移動（約5分・乗換なし）", icon: "🚇", coords: [47.4947, 19.0595] },
       { time: "07:45", label: "ハンガリー国会議事堂（Országház）─ 当日券を確保", desc: "ドナウ河畔に佇む壮麗なネオゴシック建築。ビジターセンターは8:00オープン（11〜3月は16:00まで）なので、開館に合わせて並び当日券を確保する（非EU大人14,000HUF）。事前予約枠は現時点で空きがないため、当日券のみで狙う。当日券は枚数限定で、議会開催日は見学できないこともあるので、開館前から並ぶ。内部ガイドツアー（約45〜50分）は購入時に指定される時刻に参加", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457], image: PARLIAMENT_IMAGE },
-      { time: "08:00頃", label: "周辺散策・朝食", desc: "ツアーの指定時刻まで、国会議事堂前のKossuth Lajos tér周辺の広場を散策したり、カフェで朝食をとって過ごす（店は当日決める）。英語ツアーは10:00〜15:30頃に複数回あるとの情報があり、実際の時刻はチケット購入時に確定", icon: "🥐" },
-      { time: "ツアー後〜", label: "ランチ・休憩（お店は未定）", desc: "国会議事堂の見学後、ブダ城へ向かう前に昼食と休憩。お店はまだ決めておらず、ツアーの時刻や当日の状況で選ぶ。国会議事堂から徒歩約5分のところに旧郵便貯金局（Hold u. 4・「ハンガリーのガウディ」ことレフネル・エデン設計のアール・ヌーヴォー建築）があるので、時間と体力に余裕があれば外観だけ見に立ち寄るのもよい", icon: "🍽" },
+      { time: "08:00頃", label: "周辺散策・朝食", desc: "ツアーの指定時刻まで、国会議事堂前のKossuth Lajos tér周辺の広場を散策したり、カフェで朝食をとって過ごす（店は当日決める。国会議事堂そばのPICK Bistro & Delが毎日8:00開店との情報あり）。英語ツアーは10:00〜15:30頃に複数回あるとの情報があり、実際の時刻はチケット購入時に確定", icon: "🥐" },
+      { time: "ツアー後〜", label: "ランチ・休憩（お店は未定）", desc: "国会議事堂の見学後、ブダ城へ向かう前に昼食と休憩。お店はまだ決めておらず、ツアーの時刻や当日の状況で選ぶ（候補は下の「ランチ・夕食/軽食の候補」カード参照）。国会議事堂から徒歩約5分のところに旧郵便貯金局（Hold u. 4・「ハンガリーのガウディ」ことレフネル・エデン設計のアール・ヌーヴォー建築）があるので、時間と体力に余裕があれば外観だけ見に立ち寄るのもよい", icon: "🍽" },
       { time: "13:30頃", label: "ブダ城（Budavári Palota）", desc: "ドナウ川を渡って王宮の丘へ（バス16番、ケーブルカー、またはヴァールケルト・バザールの無料エスカレーターで上がれる）。国立ギャラリーや歴史博物館を擁する壮大な城郭で、敷地周辺を時間をかけて歩き、展望テラスから対岸のペスト地区の景色を楽しむ", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.google.com/?q=Buda+Castle+Budapest", coords: [47.4962, 19.0396], image: BUDA_CASTLE_IMAGE },
       { time: "15:00頃", label: "マーチャーシュ教会（Mátyás-templom）", desc: "ブダ城から徒歩で移動（約10分）。歴代ハンガリー国王の戴冠式が行われた歴史ある教会で、色鮮やかなジョルナイ製の屋根瓦と内部の彩色装飾が見どころ。内部見学は月〜土 9:00〜17:00（11〜3月・行事で変更あり）", icon: "⛪", important: true, url: "https://matyas-templom.hu/", mapUrl: "https://maps.google.com/?q=Matthias+Church+Budapest", coords: [47.5019, 19.0342], image: MATTHIAS_CHURCH_IMAGE },
       { time: "15:40頃", label: "漁夫の砦（Halászbástya）", desc: "マーチャーシュ教会のすぐ隣。7つの尖塔と白亜の回廊が連なる展望砦で、アーチ窓越しにドナウ川と国会議事堂を一望する。ブダ地区の必見スポットをここで制覇。日没は16:00〜16:15頃で、夕景の時間帯", icon: "🏰", important: true, url: "https://www.fishermansbastion.com/", mapUrl: "https://maps.google.com/?q=Fisherman%27s+Bastion+Budapest", coords: [47.5022, 19.0347], image: FISHERMANS_BASTION_IMAGE },
       { time: "16:00頃", label: "ブダ側を出発 → ペスト側の中央市場へ", desc: "三位一体広場前からバス16番でDeák Ferenc térへ（約10分）、トラム47/49番に乗り換えてFővám térへ（合計約30分）", icon: "🚌" },
       { time: "16:30", label: "ブダペスト中央市場（Nagyvásárcsarnok）", desc: "ペスト側のFővám tér、巨大な屋内市場。1階は食料品、2階は民芸品が並ぶ。パプリカパウダー、ハチミツ、革製品など定番みやげのまとめ買いに最適。閉館は木曜18:00だが、17:30にホテルへ戻る予定のため17:15頃までが目安（買い足したい場合は休憩を短縮して再訪）", icon: "🧺", important: true, mapUrl: "https://maps.google.com/?q=Great+Market+Hall+Budapest", coords: [47.4872, 19.0584] },
       { time: "17:30頃", label: "ホテルで休憩", desc: "市場からトラム47/49番でAstoria方面へ（約10分）。買った荷物を一度部屋に置き、夜のクルーズに向けて少しリフレッシュ", icon: "🏨", coords: [47.4947, 19.0595] },
-      { time: "18:15頃", label: "夕食 or 軽食（お店は未定）", desc: "どこかのお店か軽食で夕食をとる（お店はまだ未定）。クルーズ船内は飲食物の持ち込み可なので、軽食をテイクアウトして船上で食べる選択肢もある", icon: "🍽" },
+      { time: "18:15頃", label: "夕食 or 軽食（お店は未定）", desc: "どこかのお店か軽食で夕食をとる（お店はまだ未定。候補は下の「ランチ・夕食/軽食の候補」カード参照）。クルーズ船内は飲食物の持ち込み可なので、軽食をテイクアウトして船上で食べる選択肢もある", icon: "🍽" },
       { time: "19:15頃", label: "ホテル出発 ─ 乗船場所へ", desc: "出航の15分前までに乗船場所へ。場所は予約バウチャーで要確認", icon: "🚶" },
       { time: "19:40", label: "ドナウ川 ボートクルーズ（屋上座席保証・持ち込み可）", desc: "予約済（GetYourGuide・約50分）。屋上デッキの座席が保証され、飲食物の持ち込みも可能。ライトアップされた国会議事堂・ブダ城・くさり橋を船上から一望。予約番号・PINは下の予約カード参照。乗船場所はバウチャーで要確認", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/?ranking_uuid=fe4b4ba7-6cca-4332-84b1-3f2915ccea8c&q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%EF%BC%86%E3%83%9C%E3%83%BC%E3%83%88%E3%83%84%E3%82%A2%E3%83%BC%2C+%E3%83%96%E3%83%80%E3%83%9A%E3%82%B9%E3%83%88", coords: [47.4950, 19.0505] },
       { time: "21:00頃〜", label: "ニューヨーク・カフェ（余裕があれば）", desc: "クルーズ下船後、時間と体力に余裕があればカフェ利用を検討する任意の予定（価格は高め）。豪華絢爛な内装で「世界一美しいカフェ」とも称される。公式サイトの案内では木曜は7:00〜翌1:00営業、テーブル予約ページあり。生演奏の有無・時間帯は公式で要確認。寄らない場合はそのままホテルへ", icon: "☕", url: "https://newyorkcafe.hu/en/", mapUrl: "https://maps.google.com/?q=New+York+Caf%C3%A9+Budapest", coords: [47.4981, 19.0707] },
@@ -1838,6 +1838,55 @@ const DAYS = [
         ],
       },
     ],
+    dinner: {
+      title: "ランチ・夕食/軽食の候補（お店は未定・営業時間は要確認）",
+      options: [
+        {
+          name: "PICK Bistro & Deli",
+          genre: "ランチ・朝食／ハンガリー料理ビストロ",
+          desc: "国会議事堂のすぐ隣（Kossuth Lajos tér 9）。ハンガリーの定番料理をビストロ形式で。毎日8:00〜23:00営業との情報（2022年の記事・地図データ）なので、朝食やツアー後のランチにも使える",
+          mapUrl: "https://maps.google.com/?q=PICK+Bistro+%26+Deli+Kossuth+Lajos+t%C3%A9r+9+Budapest",
+          coords: [47.5068, 19.0468],
+        },
+        {
+          name: "Hungarikum Bisztró",
+          genre: "ランチ／伝統ハンガリー料理",
+          desc: "国会議事堂から徒歩数分（Steindl Imre utca 13）。グヤーシュ、チキン・パプリカーシュ、ロールキャベツなどの定番料理。席が少なく予約推奨（ネット予約のみとの情報）。営業は12:00〜14:30と18:00〜22:00との情報があるが資料により異なる",
+          tel: "+36 30 661 6244",
+          url: "http://hungarikumbisztro.hu/",
+          mapUrl: "https://maps.google.com/?q=Hungarikum+Bisztr%C3%B3+Steindl+Imre+utca+13+Budapest",
+          coords: [47.5053, 19.0463],
+        },
+        {
+          name: "Retro Lángos（Vécsey utca店）",
+          genre: "ランチ・軽食／ラングォシュ",
+          desc: "ハンガリーの揚げパン「ラングォシュ」の専門店。Vécsey utca 3の店舗は毎日11:00〜22:00営業との情報（Bajcsy-Zsilinszky店は2026年8月末から改装休業との情報）。手頃な価格で、ツアー後の軽いランチに",
+          mapUrl: "https://maps.google.com/?q=Retro+L%C3%A1ngos+V%C3%A9csey+utca+3+Budapest",
+          coords: [47.5043, 19.0512],
+        },
+        {
+          name: "中央市場 2階の軽食売り場",
+          genre: "夕食・軽食／ラングォシュなどの屋台",
+          desc: "16:30に訪れる中央市場の2階にラングォシュなどの屋台が並ぶ。市場は木曜18:00閉館のため、買い物の合間（17:15頃まで）に軽食をとり、夕食を軽く済ませる手もある。店ごとの営業時間は要確認",
+          mapUrl: "https://maps.google.com/?q=Great+Market+Hall+Budapest",
+        },
+        {
+          name: "Frici Papa Kifőzdéje",
+          genre: "夕食／ハンガリー大衆食堂",
+          desc: "Király utca 55。ハンガリーの家庭料理を気軽に食べられる大衆食堂（キフォゼデ）。月〜土 11:00〜23:00・日曜休との情報。ホテルから徒歩圏",
+          tel: "+36 1 351 0197",
+          mapUrl: "https://maps.google.com/?q=Frici+Papa+Kif%C5%91zd%C3%A9je+Kir%C3%A1ly+utca+55+Budapest",
+          coords: [47.5006, 19.0620],
+        },
+        {
+          name: "Karaván Street Food",
+          genre: "夕食・軽食／ストリートフード",
+          desc: "Kazinczy utca 18。屋台が集まるストリートフード広場で、毎日11:30〜24:00営業との情報（1件の資料のみ）。屋外席が中心で現金のみとの情報もあるため、11月は防寒と現金に注意",
+          mapUrl: "https://maps.google.com/?q=Street+Food+Karavan+Kazinczy+utca+18+Budapest",
+          coords: [47.4996, 19.0640],
+        },
+      ],
+    },
     memo: {
       bg: "linear-gradient(135deg,#f8f0ec,#f5ece8)",
       border: "#e8c8b8",
