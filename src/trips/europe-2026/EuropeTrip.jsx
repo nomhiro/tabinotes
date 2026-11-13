@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DayMap from "../../components/DayMap";
 import PlacePreview from "../../components/PlacePreview";
+import WeatherWidget from "../../components/WeatherWidget";
 
 const PRAGUE_OLD_TOWN_IMAGE = {
   src: "https://commons.wikimedia.org/wiki/Special:FilePath/Prague_Old_Town.JPG?width=1200",
@@ -1687,6 +1688,7 @@ const DAYS = [
   {
     day: 0,
     date: "11月17日（火）",
+    weather: { name: "羽田（東京）", lat: 35.5494, lon: 139.7798, tripDate: "2026-11-17", timezone: "Asia/Tokyo" },
     title: "前日移動 ─ 羽田第3ターミナルへ",
     color: "#5a6a8a",
     icon: "✈",
@@ -1698,6 +1700,7 @@ const DAYS = [
   {
     day: 1,
     date: "11月18日（水）",
+    weather: { name: "ブダペスト", lat: 47.4979, lon: 19.0402, tripDate: "2026-11-18", timezone: "Europe/Budapest" },
     title: "羽田発 ─ ドバイ乗継 ─ ブダペスト着 ＆ 大聖堂・雑貨巡り・ディナー",
     color: "#7a5c9a",
     icon: "🛫",
@@ -1788,6 +1791,7 @@ const DAYS = [
   {
     day: 2,
     date: "11月19日（木）",
+    weather: { name: "ブダペスト", lat: 47.4979, lon: 19.0402, tripDate: "2026-11-19", timezone: "Europe/Budapest" },
     title: "ブダペスト ─ 国会議事堂・王宮の丘・中央市場 ＆ ナイトクルーズ",
     color: "#7a5c9a",
     icon: "🏰",
@@ -1912,6 +1916,7 @@ const DAYS = [
   {
     day: 3,
     date: "11月20日（金）",
+    weather: { name: "ウィーン", lat: 48.2082, lon: 16.3738, tripDate: "2026-11-20", timezone: "Europe/Vienna" },
     title: "ブダペスト → ウィーン ＆ 旧市街散策・バロック宮廷図書館・市庁舎クリスマスマーケット",
     color: "#4a7a9a",
     icon: "🚄",
@@ -2037,6 +2042,7 @@ const DAYS = [
   {
     day: 4,
     date: "11月21日（土）",
+    weather: { name: "ウィーン", lat: 48.2082, lon: 16.3738, tripDate: "2026-11-21", timezone: "Europe/Vienna" },
     title: "ウィーン ─ シェーンブルン宮殿・ベルヴェデーレ上宮 ＆ 芸術とマーケット巡り",
     color: "#4a7a9a",
     icon: "👑",
@@ -2106,6 +2112,7 @@ const DAYS = [
   {
     day: 5,
     date: "11月22日（日）",
+    weather: { name: "プラハ", lat: 50.0755, lon: 14.4378, tripDate: "2026-11-22", timezone: "Europe/Prague" },
     title: "ウィーン → プラハ ＆ 旧市街広場・天文時計・カレル橋トワイライト",
     color: "#3a7a5a",
     icon: "🚄",
@@ -2207,6 +2214,7 @@ const DAYS = [
   {
     day: 6,
     date: "11月23日（月）",
+    weather: { name: "プラハ", lat: 50.0755, lon: 14.4378, tripDate: "2026-11-23", timezone: "Europe/Prague" },
     title: "プラハ ─ 絶景トラム22番・ストラホフ修道院・プラハ城・黄金の小路 ＆ 市民会館アールヌーヴォー",
     color: "#3a7a5a",
     icon: "🏰",
@@ -2277,6 +2285,7 @@ const DAYS = [
   {
     day: 7,
     date: "11月24日（火）",
+    weather: { name: "プラハ", lat: 50.0755, lon: 14.4378, tripDate: "2026-11-24", timezone: "Europe/Prague" },
     title: "朝のカレル橋静寂散歩 ＆ カフェ・ルーヴル朝食 ─ 空港出発 ─ ドバイ乗継",
     color: "#7a5a3a",
     icon: "🛫",
@@ -2325,6 +2334,7 @@ const DAYS = [
   {
     day: 8,
     date: "11月25日（水）",
+    weather: { name: "成田（千葉）", lat: 35.772, lon: 140.3929, tripDate: "2026-11-25", timezone: "Asia/Tokyo" },
     title: "成田着 ─ 帰国",
     color: "#5a6a8a",
     icon: "🏠",
@@ -3030,6 +3040,18 @@ export default function EuropeTrip() {
                   <span style={{ color:"#9a4a2a", fontWeight:600 }}>⚠ 出発：羽田（HND）第3ターミナル ／ 帰着：成田（NRT）第2ターミナル（空港が違います）</span>
                 </div>
               </div>
+            )}
+
+            {DAYS[activeDay].weather && (
+              <WeatherWidget
+                key={`weather-${activeDay}`}
+                lat={DAYS[activeDay].weather.lat}
+                lon={DAYS[activeDay].weather.lon}
+                locationName={DAYS[activeDay].weather.name}
+                tripDate={DAYS[activeDay].weather.tripDate}
+                timezone={DAYS[activeDay].weather.timezone}
+                color={DAYS[activeDay].color}
+              />
             )}
 
             <div className="eu-day-header">

@@ -39,29 +39,32 @@ function fmtTime(d) {
   return d.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" });
 }
 
-function todayInJST() {
+// 指定タイムゾーンでの「今日」を YYYY-MM-DD で返す（予報の日付も同じタイムゾーンで取得するため）
+function todayIn(timeZone) {
   const now = new Date();
-  const jst = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" }));
-  const y = jst.getFullYear();
-  const m = String(jst.getMonth() + 1).padStart(2, "0");
-  const d = String(jst.getDate()).padStart(2, "0");
+  const local = new Date(now.toLocaleString("en-US", { timeZone }));
+  const y = local.getFullYear();
+  const m = String(local.getMonth() + 1).padStart(2, "0");
+  const d = String(local.getDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
 }
 
+// YYYY-MM-DD 同士の日数差。UTC 基準なので端末のタイムゾーンに左右されない
 function diffDays(fromIso, toIso) {
-  const a = new Date(`${fromIso}T00:00:00+09:00`);
-  const b = new Date(`${toIso}T00:00:00+09:00`);
+  const a = new Date(`${fromIso}T00:00:00Z`);
+  const b = new Date(`${toIso}T00:00:00Z`);
   return Math.round((b - a) / (24 * 60 * 60 * 1000));
 }
 
+// 端末のタイムゾーン（旅行先で現地時刻になっていても）に依存せず M/D（曜）にする
 function fmtTripDate(iso) {
   if (!iso) return "";
-  const d = new Date(`${iso}T00:00:00+09:00`);
-  const wd = ["日", "月", "火", "水", "木", "金", "土"][d.getDay()];
-  return `${d.getMonth() + 1}/${d.getDate()}（${wd}）`;
+  const d = new Date(`${iso}T00:00:00Z`);
+  const wd = ["日", "月", "火", "水", "木", "金", "土"][d.getUTCDay()];
+  return `${d.getUTCMonth() + 1}/${d.getUTCDate()}（${wd}）`;
 }
 
-export default function WeatherWidget({ lat, lon, locationName, tripDate, color = "#2C2421" }) {
+export default function WeatherWidget({ lat, lon, locationName, tripDate, color = "#2C2421", timezone = "Asia/Tokyo" }) {
   const [state, setState] = useState({ status: "loading", data: null, error: null, updatedAt: null });
 
   useEffect(() => {
@@ -75,7 +78,7 @@ export default function WeatherWidget({ lat, lon, locationName, tripDate, color 
     async function load() {
       setState((s) => ({ ...s, status: s.data ? "refreshing" : "loading", error: null }));
       try {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,apparent_temperature&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=${FORECAST_RANGE_DAYS}`;
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,apparent_temperature&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=${encodeURIComponent(timezone)}&forecast_days=${FORECAST_RANGE_DAYS}`;
         const res = await fetch(url, { signal: controller.signal });
         if (!res.ok) throw new Error(`取得失敗 (HTTP ${res.status})`);
         const json = await res.json();
@@ -94,11 +97,11 @@ export default function WeatherWidget({ lat, lon, locationName, tripDate, color 
       controller.abort();
       clearInterval(id);
     };
-  }, [lat, lon]);
+  }, [lat, lon, timezone]);
 
   const forecast = useMemo(() => {
     if (!tripDate) return null;
-    const today = todayInJST();
+    const today = todayIn(timezone);
     const delta = diffDays(today, tripDate);
     if (delta < 0) return { kind: "past", delta };
     if (delta >= FORECAST_RANGE_DAYS) return { kind: "outOfRange", delta };
@@ -114,7 +117,7 @@ export default function WeatherWidget({ lat, lon, locationName, tripDate, color 
       tmin: daily.temperature_2m_min?.[idx],
       pop: daily.precipitation_probability_max?.[idx],
     };
-  }, [state.data, tripDate]);
+  }, [state.data, tripDate, timezone]);
 
   if (lat == null || lon == null) return null;
 
