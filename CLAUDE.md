@@ -14,6 +14,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - `npm run dev` - ローカル開発サーバ
 - `npm run build` - 本番ビルド (dist/)
 - `npm run preview` - ビルド結果のプレビュー
+- `npm run phrases:audio` - 会話フレーズの音声ファイルを Azure 音声で生成（無いものだけ。`-- --force` で全て作り直し）
 
 ## ファイル構成
 - `src/App.jsx` - ハッシュルーター（一覧 or 旅行しおりを切替）
@@ -21,6 +22,9 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - `src/trips/registry.js` - 旅行メタデータ配列（TRIPS）
 - `src/trips/kyushu-2026/KyushuTrip.jsx` - 九州旅行しおり（データ・スタイル・UI含む）
 - `src/components/DayMap.jsx` - 日別マップコンポーネント（Leaflet、ピン＋ルート線）
+- `src/components/PhraseBook.jsx` - 会話フレーズ帳（日本語と現地語を横並び比較、音声再生、かくす／大きく表示）
+- `src/trips/europe-2026/phrases.js` - 中欧の旅の会話フレーズデータ（音声生成スクリプトと共有するため .js に分離）
+- `scripts/generate-phrase-audio.mjs` - フレーズ音声を `public/phrases/{言語}/{id}.mp3`（ゆっくり版 `{id}-slow.mp3`）に生成
 - `src/main.jsx` - エントリポイント
 - `vite.config.js` - base を GitHub リポジトリ名に合わせて設定
 - `.github/workflows/deploy.yml` - GitHub Pages 自動デプロイ
@@ -32,6 +36,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - 未確定の観光スポット・飲食店は勝手に追加しない
 - 予約スクリーンショットは Google Photos 共有リンクで管理。schedule に `photo` フィールド（URL文字列）を追加するとタイムライン上に📷アイコンが表示される
 - ナビバーの日程タブは `Day{n}` だけでなく日付・曜日も併記する（例:「Day1 5/5(火)」）。`DAYS[].date`（"5月6日（水）"形式）から `formatShortDate()` ヘルパーで短縮日付を生成し、`.nav-btn-date` として表示する。全旅行コンポーネントで統一すること
+- 会話フレーズを追加・変更したら `npm run phrases:audio` で音声を作り直す。音声ファイルが無い場合は端末の読み上げで代わりに再生される
 - ナビバーは `justify-content:safe center` と `overflow-x:auto` を使い、各 `.nav-btn` に `flex:0 0 auto` を指定する。内容が画面に収まるときは中央揃え、超えるときは安全に左端から横スクロールできる状態にすること
 
 ## アクセシビリティ規約

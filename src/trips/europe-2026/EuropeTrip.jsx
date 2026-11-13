@@ -2,6 +2,8 @@ import { useState } from "react";
 import DayMap from "../../components/DayMap";
 import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
+import PhraseBook from "../../components/PhraseBook";
+import { PHRASE_LANGS, PHRASE_CATEGORIES, PHRASES } from "./phrases.js";
 
 const PRAGUE_OLD_TOWN_IMAGE = {
   src: "https://commons.wikimedia.org/wiki/Special:FilePath/Prague_Old_Town.JPG?width=1200",
@@ -2730,7 +2732,11 @@ const formatShortDate = (date) => {
 export default function EuropeTrip() {
   const [activeDay, setActiveDay] = useState(0);
   const [activePanel, setActivePanel] = useState("timeline");
-  const [showCost, setShowCost] = useState(false);
+  const [view, setView] = useState("day"); // "day" | "cost" | "phrases"
+  const showCost = view === "cost";
+  const showPhrases = view === "phrases";
+  const dayLang = PHRASE_LANGS.find(l => l.days.includes(DAYS[activeDay].day)) ?? null;
+  const openPhrases = () => { setView("phrases"); window.scrollTo({ top: 0 }); };
   const [expandedBooking, setExpandedBooking] = useState(null);
   const totalFixed = COSTS.filter(c => c.cost > 0).reduce((s, c) => s + c.cost, 0);
   const historyForDay = DAY_HISTORY[DAYS[activeDay].day];
@@ -2763,10 +2769,15 @@ export default function EuropeTrip() {
         .eu-nav-btn.active .eu-nav-btn-date { color:currentColor; }
         .eu-nav-btn.cost-btn { color:#8B6914; }
         .eu-nav-btn.cost-btn.active { color:#8B6914; border-bottom-color:#8B6914; }
+        .eu-nav-btn.phrase-btn { color:#6b3a7d; }
+        .eu-nav-btn.phrase-btn.active { color:#6b3a7d; border-bottom-color:#6b3a7d; }
         .eu-day-section { max-width:720px; margin:0 auto; padding:3rem 1.5rem; animation:euFadeIn .5s ease-out; }
-        .eu-day-header { display:flex; align-items:center; gap:1rem; margin-bottom:.5rem; }
+        .eu-day-header { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1rem; margin-bottom:.5rem; }
         .eu-day-number { font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.15em; padding:.3rem .8rem; border-radius:2px; color:white; }
         .eu-day-date { font-family:'Zen Maru Gothic',sans-serif; font-size:.85rem; color:#756d65; letter-spacing:.1em; }
+        .eu-day-phrase-link { margin-left:auto; font-family:'Zen Maru Gothic',sans-serif; font-size:.78rem; color:#6b3a7d; background:white; border:1px solid #d9cce0; border-radius:999px; padding:.4rem .8rem; min-height:2.5rem; cursor:pointer; white-space:nowrap; }
+        .eu-day-phrase-link:hover { background:#f6f0f8; }
+        .eu-day-phrase-link:focus-visible { outline:2px solid #6b3a7d; outline-offset:2px; }
         .eu-day-title { font-size:clamp(1.3rem,3.5vw,1.7rem); font-weight:600; letter-spacing:.06em; margin-bottom:2rem; line-height:1.4; margin-top:0; }
         .eu-view-tabs { display:flex; gap:.35rem; margin-bottom:2rem; border-bottom:1px solid #ded7ce; }
         .eu-view-tab { font-family:'Zen Maru Gothic',sans-serif; border:1px solid transparent; border-bottom:none; border-radius:5px 5px 0 0; background:transparent; color:#6a6058; padding:.65rem .9rem; font-size:.8rem; cursor:pointer; transition:color .2s, background .2s; }
@@ -2969,9 +2980,9 @@ export default function EuropeTrip() {
       <nav className="eu-nav-bar" aria-label="日程ナビゲーション">
         {DAYS.map((d, i) => (
           <button key={i}
-            className={`eu-nav-btn ${!showCost && activeDay === i ? "active" : ""}`}
-            aria-pressed={!showCost && activeDay === i}
-            onClick={() => { setActiveDay(i); setShowCost(false); setExpandedBooking(null); setActivePanel("timeline"); }}>
+            className={`eu-nav-btn ${view === "day" && activeDay === i ? "active" : ""}`}
+            aria-pressed={view === "day" && activeDay === i}
+            onClick={() => { setActiveDay(i); setView("day"); setExpandedBooking(null); setActivePanel("timeline"); }}>
             <span aria-hidden="true">{d.icon}</span>{" "}
             {d.day === 0 ? "前日" : `Day${d.day}`}
             <span className="eu-nav-btn-date">{formatShortDate(d.date)}</span>
@@ -2980,8 +2991,14 @@ export default function EuropeTrip() {
         <button
           className={`eu-nav-btn cost-btn ${showCost ? "active" : ""}`}
           aria-pressed={showCost}
-          onClick={() => { setShowCost(true); setActivePanel("timeline"); }}>
+          onClick={() => { setView("cost"); setActivePanel("timeline"); }}>
           <span aria-hidden="true">💰</span> 費用
+        </button>
+        <button
+          className={`eu-nav-btn phrase-btn ${showPhrases ? "active" : ""}`}
+          aria-pressed={showPhrases}
+          onClick={() => setView("phrases")}>
+          <span aria-hidden="true">💬</span> 会話
         </button>
       </nav>
 
@@ -2989,14 +3006,25 @@ export default function EuropeTrip() {
         <div
           aria-live="polite" aria-atomic="true"
           style={{ position:"absolute", width:1, height:1, overflow:"hidden", clipPath:"inset(50%)", whiteSpace:"nowrap" }}>
-          {showCost
+          {showPhrases
+            ? "会話フレーズを表示中"
+            : showCost
             ? "旅費まとめを表示中"
             : `${DAYS[activeDay].day === 0 ? "前日" : `Day${DAYS[activeDay].day}`} ${
               activePanel === "history" ? "歴史・背景" : activePanel === "food" ? "食文化" : "タイムライン"
             }を表示中`}
         </div>
 
-        {showCost ? (
+        {showPhrases ? (
+          <PhraseBook
+            key="phrases"
+            langs={PHRASE_LANGS}
+            categories={PHRASE_CATEGORIES}
+            phrases={PHRASES}
+            audioBase={`${import.meta.env.BASE_URL}phrases/`}
+            currentLang={dayLang?.code ?? null}
+          />
+        ) : showCost ? (
           <div className="eu-cost-section" key="cost">
             <h2 className="eu-cost-title">旅費まとめ</h2>
             <table className="eu-cost-table" aria-label="旅費一覧">
@@ -3067,6 +3095,11 @@ export default function EuropeTrip() {
                 {DAYS[activeDay].day === 0 ? "前日" : `DAY ${DAYS[activeDay].day}`}
               </span>
               <span className="eu-day-date">{DAYS[activeDay].date}</span>
+              {dayLang && (
+                <button type="button" className="eu-day-phrase-link" onClick={openPhrases}>
+                  <span aria-hidden="true">🗣</span> 今日の言葉：{dayLang.label} <span aria-hidden="true">→</span>
+                </button>
+              )}
             </div>
             <h2 className="eu-day-title" style={{ color: DAYS[activeDay].color }}>{DAYS[activeDay].title}</h2>
 

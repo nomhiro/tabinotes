@@ -8,7 +8,8 @@
     "build": "vite build",
     "deploy": "wrangler deploy",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "phrases:audio": "node scripts/generate-phrase-audio.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
