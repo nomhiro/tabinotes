@@ -8,47 +8,11 @@ const LOCAL_LANGUAGES = [
 
 const TOKEN_ENDPOINT = import.meta.env.VITE_SPEECH_TOKEN_URL;
 const MAX_TRANSLATIONS = 100;
-const MIN_VOLUME = 100;
-const MAX_VOLUME = 300;
-const DEFAULT_VOLUME = 150;
-const VOLUME_STORAGE_KEY = "speech-translator-volume";
-const TARGET_PEAK = 0.9;
-const MAX_NORMALIZE_GAIN = 4;
 // マイクを解放した直後は出力経路が切り替わり切るまで冒頭が欠けやすいので、最初の1文だけ少し待ってから鳴らす
 const RELEASE_LEAD_SECONDS = 0.25;
-// 音量を最大 300% にしたときのピーク（0.9 × 3 = 2.7）まで、ソフトクリップの入力範囲に収める
-const CLIP_HEADROOM = 3;
-const SOFT_CLIP_KNEE = 0.8;
 const AudioContextClass = typeof window !== "undefined"
   ? (window.AudioContext || window.webkitAudioContext)
   : undefined;
-
-// 時間で変化しない（メモリレスな）ソフトクリップ。0.8 までは素通しで、それを超えるピークだけを
-// なだらかに 1.0 以内へ収める。コンプレッサーのように発話中に音量が上下することはない。
-// 入力は音量ゲイン後の信号を CLIP_HEADROOM で割ったものなので、カーブ側で掛け戻している。
-function createSoftClipCurve() {
-  const size = 8192;
-  const curve = new Float32Array(size);
-  for (let i = 0; i < size; i++) {
-    const level = ((i / (size - 1)) * 2 - 1) * CLIP_HEADROOM;
-    const magnitude = Math.abs(level);
-    curve[i] = magnitude <= SOFT_CLIP_KNEE
-      ? level
-      : Math.sign(level) * (SOFT_CLIP_KNEE + (1 - SOFT_CLIP_KNEE) * Math.tanh((magnitude - SOFT_CLIP_KNEE) / (1 - SOFT_CLIP_KNEE)));
-  }
-  return curve;
-}
-
-const volumeToGain = volume => volume / 100 / CLIP_HEADROOM;
-
-function loadVolume() {
-  try {
-    const saved = Number(window.localStorage.getItem(VOLUME_STORAGE_KEY));
-    return saved >= MIN_VOLUME && saved <= MAX_VOLUME ? saved : DEFAULT_VOLUME;
-  } catch {
-    return DEFAULT_VOLUME;
-  }
-}
 
 async function getSpeechToken(signal) {
   if (!TOKEN_ENDPOINT) {
@@ -143,7 +107,7 @@ function synthesizeSpeech(session, text, locale) {
     const config = sdk.SpeechConfig.fromAuthorizationToken(token.authorizationToken, token.region);
     config.speechSynthesisLanguage = locale;
     config.speechSynthesisOutputFormat = sdk.SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm;
-    // audioConfig に null を渡すと自動再生せず audioData だけを返す（再生は音量調整のため自前で行う）
+    // audioConfig に null を渡すと自動再生せず audioData だけを返す（先読みとマイクの解放タイミングを制御するため再生は自前で行う）
     const synthesizer = new sdk.SpeechSynthesizer(config, null);
     let settled = false;
     const settle = callback => value => {
@@ -170,32 +134,22 @@ function synthesizeSpeech(session, text, locale) {
 async function prepareSpeech(session, text, locale) {
   try {
     const audioData = await synthesizeSpeech(session, text, locale);
-    const buffer = await session.audioContext.decodeAudioData(audioData);
-    let peak = 0;
-    for (let channel = 0; channel < buffer.numberOfChannels; channel++) {
-      const samples = buffer.getChannelData(channel);
-      for (let i = 0; i < samples.length; i++) peak = Math.max(peak, Math.abs(samples[i]));
-    }
-    // 発話ごとにピークをそろえる固定ゲイン。コンプレッサーと違い、発話の途中で音量が動くことはない
-    return { buffer, normalize: peak > 0 ? Math.min(TARGET_PEAK / peak, MAX_NORMALIZE_GAIN) : 1 };
+    return await session.audioContext.decodeAudioData(audioData);
   } catch {
     return null;
   }
 }
 
-async function playPrepared(session, { buffer, normalize }, lead) {
+// 音量の加工はせず、合成された音声をそのまま出力へ流す（音量は端末側で調整する）
+async function playPrepared(session, buffer, lead) {
   const context = session.audioContext;
   await context.resume();
   if (session.disposed) return;
   await new Promise(resolve => {
     const source = context.createBufferSource();
     source.buffer = buffer;
-    const normalizer = context.createGain();
-    normalizer.gain.value = normalize;
-    source.connect(normalizer);
-    normalizer.connect(session.gainNode);
+    source.connect(context.destination);
     source.onended = () => {
-      normalizer.disconnect();
       if (session.playingSource === source) session.playingSource = null;
       resolve();
     };
@@ -214,10 +168,8 @@ export default function LiveSpeechTranslator() {
   const [interimText, setInterimText] = useState("");
   const [translations, setTranslations] = useState([]);
   const [autoSpeak, setAutoSpeak] = useState(true);
-  const [volume, setVolume] = useState(loadVolume);
   const sessionRef = useRef(null);
   const autoSpeakRef = useRef(true);
-  const volumeRef = useRef(volume);
   const selectedLanguage = LOCAL_LANGUAGES.find(language => language.code === localLanguage);
   const localLabel = selectedLanguage.label.split("（")[0];
   const sourceLanguage = fromJapanese ? "ja-JP" : selectedLanguage.code;
@@ -268,18 +220,6 @@ export default function LiveSpeechTranslator() {
     }
   };
 
-  const handleVolumeChange = value => {
-    volumeRef.current = value;
-    setVolume(value);
-    const gain = sessionRef.current?.gainNode?.gain;
-    if (gain) gain.value = volumeToGain(value);
-    try {
-      window.localStorage.setItem(VOLUME_STORAGE_KEY, String(value));
-    } catch {
-      // 保存できなくても動作には影響しない
-    }
-  };
-
   const handleStart = async () => {
     if (sessionRef.current) return;
     const session = {
@@ -292,12 +232,10 @@ export default function LiveSpeechTranslator() {
       speaking: false,
       playingSource: null,
       audioContext: null,
-      gainNode: null,
     };
     sessionRef.current = session;
 
-    // iOS Safari などはユーザー操作中に作って有効化した AudioContext でないと後から鳴らせない。
-    // 音量を上げられるようゲインを通し、音割れは時間で変化しないソフトクリップで抑えて出力する。
+    // iOS Safari などはユーザー操作中に作って有効化した AudioContext でないと後から鳴らせない
     if (AudioContextClass) {
       try {
         let context;
@@ -308,15 +246,7 @@ export default function LiveSpeechTranslator() {
           context = new AudioContextClass();
         }
         Promise.resolve(context.resume?.()).catch(() => {});
-        const gainNode = context.createGain();
-        gainNode.gain.value = volumeToGain(volumeRef.current);
-        const softClip = context.createWaveShaper();
-        softClip.curve = createSoftClipCurve();
-        softClip.oversample = "2x";
-        gainNode.connect(softClip);
-        softClip.connect(context.destination);
         session.audioContext = context;
-        session.gainNode = gainNode;
       } catch {
         // 読み上げなしで翻訳だけ続ける
       }
@@ -505,13 +435,9 @@ export default function LiveSpeechTranslator() {
         .eu-translation-button-secondary { border-color:#756d65; background:white; color:#5a5048; }
         .eu-translation-button-secondary:hover:not(:disabled) { background:#f0ece6; color:#2C2421; }
         .eu-translation-select:focus-visible, .eu-translation-button:focus-visible { outline:2px solid #2C2421; outline-offset:2px; }
-        .eu-translation-options { display:flex; align-items:center; flex-wrap:wrap; gap:0 1.25rem; margin-top:.25rem; }
-        .eu-translation-toggle, .eu-translation-volume { display:flex; align-items:center; gap:.5rem; min-height:2.75rem; color:#5a5048; font-family:'Zen Maru Gothic',sans-serif; font-size:.8rem; font-weight:700; }
-        .eu-translation-toggle { width:fit-content; cursor:pointer; }
+        .eu-translation-toggle { display:flex; align-items:center; gap:.5rem; width:fit-content; min-height:2.75rem; margin-top:.25rem; color:#5a5048; font-family:'Zen Maru Gothic',sans-serif; font-size:.8rem; font-weight:700; cursor:pointer; }
         .eu-translation-toggle input { flex:0 0 auto; width:1.25rem; height:1.25rem; margin:0; accent-color:#2a5a9a; cursor:pointer; }
-        .eu-translation-volume input { width:min(11rem,40vw); min-height:2.75rem; margin:0; accent-color:#2a5a9a; cursor:pointer; }
-        .eu-translation-volume output { min-width:2.75rem; font-variant-numeric:tabular-nums; }
-        .eu-translation-toggle input:focus-visible, .eu-translation-volume input:focus-visible { outline:2px solid #2C2421; outline-offset:2px; }
+        .eu-translation-toggle input:focus-visible { outline:2px solid #2C2421; outline-offset:2px; }
         .eu-translation-status { margin:.5rem 0; color:#756d65; font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; line-height:1.6; text-wrap:pretty; }
         .eu-translation-error { margin:.75rem 0 0; padding:.7rem .8rem; border:1px solid #e2c8bc; border-radius:4px; background:#fff3ed; color:#6e2e1a; font-size:.8rem; line-height:1.65; }
         .eu-translation-workspace { display:flex; flex-direction:column; flex:1; min-height:12rem; margin-top:.25rem; border:1px solid #ded7ce; border-radius:5px; background:white; }
@@ -546,7 +472,7 @@ export default function LiveSpeechTranslator() {
             <p>
               翻訳が確定すると、翻訳先の言語でAzureの音声により自動的に読み上げます。
               マイクを開いたままだとスマートフォンの再生音が小さくなるため、読み上げ中はマイクを一時停止し、終わると自動で再開します。
-              音が小さいときは「読み上げ音量」を上げてください。
+              音が小さいときは端末の音量を上げてください。
             </p>
           </div>
         </details>
@@ -602,28 +528,13 @@ export default function LiveSpeechTranslator() {
         </button>
       </div>
       {AudioContextClass && (
-        <div className="eu-translation-options">
-          <label className="eu-translation-toggle">
-            <input
-              type="checkbox"
-              checked={autoSpeak}
-              onChange={event => handleAutoSpeakChange(event.target.checked)} />
-            <span>翻訳結果を{targetShortLabel}で自動的に読み上げる</span>
-          </label>
-          <label className="eu-translation-volume" htmlFor="eu-translation-volume">
-            <span>読み上げ音量</span>
-            <input
-              id="eu-translation-volume"
-              type="range"
-              min={MIN_VOLUME}
-              max={MAX_VOLUME}
-              step="25"
-              value={volume}
-              aria-valuetext={`${volume}%`}
-              onChange={event => handleVolumeChange(Number(event.target.value))} />
-            <output htmlFor="eu-translation-volume" aria-hidden="true">{volume}%</output>
-          </label>
-        </div>
+        <label className="eu-translation-toggle">
+          <input
+            type="checkbox"
+            checked={autoSpeak}
+            onChange={event => handleAutoSpeakChange(event.target.checked)} />
+          <span>翻訳結果を{targetShortLabel}で自動的に読み上げる</span>
+        </label>
       )}
       <p className="eu-translation-status" role="status" aria-live="polite">{status}</p>
       {error && <p className="eu-translation-error" role="alert">{error}</p>}
