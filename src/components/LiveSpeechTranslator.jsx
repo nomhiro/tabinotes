@@ -1,43 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 
 const LOCAL_LANGUAGES = [
-  { code: "de-DE", target: "de", label: "ドイツ語（オーストリア）" },
-  { code: "hu-HU", target: "hu", label: "ハンガリー語" },
-  { code: "cs-CZ", target: "cs", label: "チェコ語" },
+  { code: "de-DE", target: "de", ttsLocale: "de-AT", label: "ドイツ語（オーストリア）" },
+  { code: "hu-HU", target: "hu", ttsLocale: "hu-HU", label: "ハンガリー語" },
+  { code: "cs-CZ", target: "cs", ttsLocale: "cs-CZ", label: "チェコ語" },
 ];
 
 const TOKEN_ENDPOINT = import.meta.env.VITE_SPEECH_TOKEN_URL;
 const MAX_TRANSLATIONS = 100;
-const CAN_SPEAK = typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-// 再生中の Utterance を保持する（参照を失うと Chrome で onend が発火しないことがあるため）
-const activeUtterances = new Set();
+const MIN_VOLUME = 100;
+const MAX_VOLUME = 300;
+const DEFAULT_VOLUME = 150;
+const VOLUME_STORAGE_KEY = "speech-translator-volume";
+const AudioContextClass = typeof window !== "undefined"
+  ? (window.AudioContext || window.webkitAudioContext)
+  : undefined;
 
-function normalizeLang(lang) {
-  return lang.replace("_", "-").toLowerCase();
-}
-
-// 完全一致（de-DE）→ 言語一致（de-*）の順で、その言語を読める音声を探す
-function findVoice(voices, lang) {
-  const wanted = normalizeLang(lang);
-  const primary = wanted.split("-")[0];
-  return voices.find(voice => normalizeLang(voice.lang) === wanted)
-    || voices.find(voice => normalizeLang(voice.lang).split("-")[0] === primary)
-    || null;
-}
-
-// 読み上げ音声をマイクが拾って再翻訳しないよう、読み上げ中はマイクをミュートする
-function setMicMuted(session, muted) {
-  session.stream?.getTracks().forEach(track => { track.enabled = !muted; });
-}
-
-function stopSpeaking(session) {
-  if (!CAN_SPEAK) return;
-  window.speechSynthesis.cancel();
-  activeUtterances.clear();
-  if (session) {
-    window.clearTimeout(session.speechTimer);
-    session.speaking = 0;
-    setMicMuted(session, false);
+function loadVolume() {
+  try {
+    const saved = Number(window.localStorage.getItem(VOLUME_STORAGE_KEY));
+    return saved >= MIN_VOLUME && saved <= MAX_VOLUME ? saved : DEFAULT_VOLUME;
+  } catch {
+    return DEFAULT_VOLUME;
   }
 }
 
@@ -65,16 +49,57 @@ function startRecognition(recognizer) {
   });
 }
 
+function releaseCapture(capture) {
+  capture.recognizer.close();
+  capture.audioConfig.close();
+  capture.stream.getTracks().forEach(track => track.stop());
+}
+
+// マイクを開いたままだと、スマートフォンでは再生音が通話用の経路（受話口・通話音量）に回って
+// 最大音量でも非常に小さくなる。そのため読み上げ中はマイクを完全に解放し、終わったら取り直す。
+async function closeCapture(session) {
+  const capture = session.capture;
+  if (!capture || capture.closing) return;
+  capture.closing = true;
+  // 停止処理中に確定する最後の認識結果は受け取りたいので、session.capture はまだ外さない
+  await new Promise(resolve => {
+    try {
+      capture.recognizer.stopContinuousRecognitionAsync(resolve, resolve);
+    } catch {
+      resolve();
+    }
+  });
+  if (session.capture !== capture) return;
+  session.capture = null;
+  releaseCapture(capture);
+}
+
+function setAudioSessionType(type) {
+  try {
+    if (navigator.audioSession) navigator.audioSession.type = type;
+  } catch {
+    // 未対応のブラウザーでは何もしない
+  }
+}
+
 function disposeSession(session) {
   if (!session || session.disposed) return;
   session.disposed = true;
-  stopSpeaking(session);
+  session.speechQueue.length = 0;
+  try {
+    session.playingSource?.stop();
+  } catch {
+    // 再生前に停止済み
+  }
   session.controller.abort();
   window.clearTimeout(session.tokenTimeout);
   window.clearInterval(session.refreshTimer);
-  session.stream?.getTracks().forEach(track => track.stop());
-  session.recognizer?.close();
-  session.audioConfig?.close();
+  if (session.capture) {
+    releaseCapture(session.capture);
+    session.capture = null;
+  }
+  Promise.resolve(session.audioContext?.close()).catch(() => {});
+  setAudioSessionType("auto");
 }
 
 async function requestToken(session) {
@@ -84,6 +109,54 @@ async function requestToken(session) {
   } finally {
     window.clearTimeout(session.tokenTimeout);
   }
+}
+
+// Azure のニューラル音声で翻訳文を合成し、WAV の音声データを返す
+function synthesizeSpeech(session, text, locale) {
+  const { sdk, token } = session;
+  return new Promise((resolve, reject) => {
+    const config = sdk.SpeechConfig.fromAuthorizationToken(token.authorizationToken, token.region);
+    config.speechSynthesisLanguage = locale;
+    config.speechSynthesisOutputFormat = sdk.SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm;
+    // audioConfig に null を渡すと自動再生せず audioData だけを返す（再生は音量調整のため自前で行う）
+    const synthesizer = new sdk.SpeechSynthesizer(config, null);
+    let settled = false;
+    const settle = callback => value => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timer);
+      synthesizer.close();
+      callback(value);
+    };
+    const timer = window.setTimeout(settle(reject), 15_000, new Error("音声合成がタイムアウトしました。"));
+    synthesizer.speakTextAsync(
+      text,
+      settle(result => {
+        if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) resolve(result.audioData);
+        else reject(new Error(result.errorDetails || "音声合成に失敗しました。"));
+      }),
+      settle(error => reject(new Error(String(error)))),
+    );
+  });
+}
+
+async function playAudio(session, audioData) {
+  const context = session.audioContext;
+  await context.resume();
+  const buffer = await context.decodeAudioData(audioData);
+  if (session.disposed) return;
+  await new Promise(resolve => {
+    const source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(session.gainNode);
+    source.onended = () => {
+      if (session.playingSource === source) session.playingSource = null;
+      resolve();
+    };
+    session.playingSource = source;
+    // マイク解放直後は出力経路が切り替わり切るまで冒頭が欠けやすいので、少し待ってから鳴らす
+    source.start(context.currentTime + 0.25);
+  });
 }
 
 export default function LiveSpeechTranslator() {
@@ -96,13 +169,15 @@ export default function LiveSpeechTranslator() {
   const [interimText, setInterimText] = useState("");
   const [translations, setTranslations] = useState([]);
   const [autoSpeak, setAutoSpeak] = useState(true);
+  const [volume, setVolume] = useState(loadVolume);
   const sessionRef = useRef(null);
   const autoSpeakRef = useRef(true);
+  const volumeRef = useRef(volume);
   const selectedLanguage = LOCAL_LANGUAGES.find(language => language.code === localLanguage);
   const localLabel = selectedLanguage.label.split("（")[0];
   const sourceLanguage = fromJapanese ? "ja-JP" : selectedLanguage.code;
   const targetLanguage = fromJapanese ? selectedLanguage.target : "ja";
-  const targetSpeechLanguage = fromJapanese ? selectedLanguage.code : "ja-JP";
+  const targetSpeechLocale = fromJapanese ? selectedLanguage.ttsLocale : "ja-JP";
   const sourceLabel = fromJapanese ? "日本語" : selectedLanguage.label;
   const targetLabel = fromJapanese ? selectedLanguage.label : "日本語";
   const targetShortLabel = fromJapanese ? localLabel : "日本語";
@@ -134,94 +209,96 @@ export default function LiveSpeechTranslator() {
     setStatus("方向を切り替えました。開始を押してください。");
   };
 
-  // 翻訳結果を翻訳先の言語で読み上げる。読み上げ中はマイクを止め、終わったら再開する。
-  const speakTranslation = (session, text) => {
-    const synth = window.speechSynthesis;
-    const voices = synth.getVoices();
-    const voice = findVoice(voices, targetSpeechLanguage);
-    // 音声一覧が取れていて該当言語がない場合は、別言語の声で誤読するよりスキップする
-    if (voices.length > 0 && !voice) {
-      setStatus(`この端末には${targetShortLabel}の読み上げ音声がないため、読み上げをスキップしました。`);
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = voice?.lang || targetSpeechLanguage;
-    if (voice) utterance.voice = voice;
-
-    const finish = () => {
-      if (!activeUtterances.delete(utterance) || session.disposed) return;
-      session.speaking -= 1;
-      if (session.speaking <= 0) {
-        stopSpeaking(session);
-        setStatus(listeningStatus);
-      }
-    };
-    utterance.onend = finish;
-    utterance.onerror = finish;
-
-    session.speaking = (session.speaking || 0) + 1;
-    setMicMuted(session, true);
-    setStatus(`${targetShortLabel}で読み上げ中です（マイクは一時停止中）。`);
-    // onend が届かなかった場合にマイクが無音のまま残らないための保険
-    session.speechUntil = Math.max(Date.now(), session.speechUntil || 0) + 3000 + text.length * 250;
-    window.clearTimeout(session.speechTimer);
-    session.speechTimer = window.setTimeout(() => {
-      if (session.disposed) return;
-      stopSpeaking(session);
-      setStatus(listeningStatus);
-    }, session.speechUntil - Date.now());
-
-    activeUtterances.add(utterance);
-    synth.speak(utterance);
-  };
-
   const handleAutoSpeakChange = checked => {
     autoSpeakRef.current = checked;
     setAutoSpeak(checked);
-    if (!checked) {
-      stopSpeaking(sessionRef.current);
-      if (isListening) setStatus(listeningStatus);
+    const session = sessionRef.current;
+    if (!checked && session) {
+      session.speechQueue.length = 0;
+      try {
+        session.playingSource?.stop();
+      } catch {
+        // 再生前に停止済み
+      }
+    }
+  };
+
+  const handleVolumeChange = value => {
+    volumeRef.current = value;
+    setVolume(value);
+    const gain = sessionRef.current?.gainNode?.gain;
+    if (gain) gain.value = value / 100;
+    try {
+      window.localStorage.setItem(VOLUME_STORAGE_KEY, String(value));
+    } catch {
+      // 保存できなくても動作には影響しない
     }
   };
 
   const handleStart = async () => {
     if (sessionRef.current) return;
-    // iOS Safari などはユーザー操作中に一度発話しないと以降の読み上げが無音になるため、無音の発話で解除しておく
-    if (CAN_SPEAK && autoSpeakRef.current) {
-      const unlock = new SpeechSynthesisUtterance("");
-      unlock.volume = 0;
-      window.speechSynthesis.speak(unlock);
-    }
-    const session = { controller: new AbortController(), disposed: false, speaking: 0, speechUntil: 0 };
+    const session = {
+      controller: new AbortController(),
+      disposed: false,
+      sdk: null,
+      token: null,
+      capture: null,
+      speechQueue: [],
+      speaking: false,
+      playingSource: null,
+      audioContext: null,
+      gainNode: null,
+    };
     sessionRef.current = session;
+
+    // iOS Safari などはユーザー操作中に作って有効化した AudioContext でないと後から鳴らせない。
+    // 音量を上げられるようゲインを通し、音割れを抑えるリミッターを挟んで出力する。
+    if (AudioContextClass) {
+      try {
+        const context = new AudioContextClass();
+        Promise.resolve(context.resume?.()).catch(() => {});
+        const gainNode = context.createGain();
+        gainNode.gain.value = volumeRef.current / 100;
+        const limiter = context.createDynamicsCompressor();
+        limiter.threshold.value = -10;
+        limiter.knee.value = 6;
+        limiter.ratio.value = 12;
+        limiter.attack.value = 0.003;
+        limiter.release.value = 0.15;
+        gainNode.connect(limiter);
+        limiter.connect(context.destination);
+        session.audioContext = context;
+        session.gainNode = gainNode;
+      } catch {
+        // 読み上げなしで翻訳だけ続ける
+      }
+    }
+
     setIsConnecting(true);
     setError("");
     setInterimText("");
     setStatus("翻訳サービスに接続しています…");
 
-    try {
-      const SpeechSDK = await import("microsoft-cognitiveservices-speech-sdk");
-      if (session.disposed) return;
-      const { authorizationToken, region } = await requestToken(session);
-      if (session.disposed) return;
-      if (!navigator.mediaDevices?.getUserMedia) {
-        throw new Error("このブラウザーでマイクを利用できません。HTTPSで開き、対応ブラウザーをお使いください。");
-      }
-      session.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const openCapture = async () => {
+      const SpeechSDK = session.sdk;
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       if (session.disposed) {
-        session.stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach(track => track.stop());
         return;
       }
-      const config = SpeechSDK.SpeechTranslationConfig.fromAuthorizationToken(authorizationToken, region);
+      const config = SpeechSDK.SpeechTranslationConfig.fromAuthorizationToken(
+        session.token.authorizationToken, session.token.region);
       config.speechRecognitionLanguage = sourceLanguage;
       config.addTargetLanguage(targetLanguage);
-      session.audioConfig = SpeechSDK.AudioConfig.fromStreamInput(session.stream);
-      const recognizer = new SpeechSDK.TranslationRecognizer(config, session.audioConfig);
-      session.recognizer = recognizer;
+      const audioConfig = SpeechSDK.AudioConfig.fromStreamInput(stream);
+      const recognizer = new SpeechSDK.TranslationRecognizer(config, audioConfig);
+      const capture = { stream, audioConfig, recognizer, closing: false };
+      session.capture = capture;
+      // 読み上げのために解放したマイク（古い認識器）からのイベントは無視する
+      const isCurrent = () => !session.disposed && session.capture === capture;
 
       recognizer.recognizing = (_, event) => {
-        if (session.disposed) return;
+        if (!isCurrent() || capture.closing) return;
         const result = event.result;
         if (result.reason === SpeechSDK.ResultReason.TranslatingSpeech) {
           setInterimText(result.translations.get(targetLanguage) || "");
@@ -229,7 +306,7 @@ export default function LiveSpeechTranslator() {
       };
 
       recognizer.recognized = (_, event) => {
-        if (session.disposed) return;
+        if (!isCurrent()) return;
         const result = event.result;
         if (result.reason === SpeechSDK.ResultReason.TranslatedSpeech) {
           const translatedText = result.translations.get(targetLanguage) || "";
@@ -241,20 +318,91 @@ export default function LiveSpeechTranslator() {
                 language: sourceLanguage, targetLanguage, sourceLabel, targetLabel,
               },
             ]);
-            if (CAN_SPEAK && autoSpeakRef.current) speakTranslation(session, translatedText);
+            if (session.audioContext && autoSpeakRef.current) {
+              session.speechQueue.push({ text: translatedText, locale: targetSpeechLocale });
+              drainSpeech();
+            }
           }
           setInterimText("");
         }
       };
 
       recognizer.canceled = (_, event) => {
+        if (!isCurrent() || capture.closing) return;
         endSession(session, event.reason === SpeechSDK.CancellationReason.Error
           ? "音声認識が中断されました。マイクの許可と接続状態を確認して、もう一度開始してください。"
           : "");
       };
-      recognizer.sessionStopped = () => endSession(session);
+      recognizer.sessionStopped = () => {
+        if (!isCurrent() || capture.closing) return;
+        endSession(session);
+      };
 
       await startRecognition(recognizer);
+    };
+
+    // 溜まっている翻訳文を順に合成して読み上げる。最初の再生前にマイクを解放し、
+    // 溜まった分を読み終えたらマイクを取り直して聞き取りを再開する。
+    const speakQueued = async () => {
+      let released = false;
+      while (!session.disposed && autoSpeakRef.current && session.speechQueue.length) {
+        const item = session.speechQueue.shift();
+        let audio;
+        try {
+          // 合成中はマイクを開いたままにして、話し始めの取りこぼしを防ぐ
+          audio = await synthesizeSpeech(session, item.text, item.locale);
+        } catch {
+          setStatus("読み上げ音声を取得できませんでした。翻訳は画面に表示されています。");
+          continue;
+        }
+        if (session.disposed || !autoSpeakRef.current) break;
+        if (!released) {
+          released = true;
+          await closeCapture(session);
+          if (session.disposed) return;
+          setStatus(`${targetShortLabel}で読み上げ中です（マイクは一時停止中）。`);
+          setAudioSessionType("playback");
+        }
+        try {
+          await playAudio(session, audio);
+        } catch {
+          setStatus("読み上げ音声を再生できませんでした。翻訳は画面に表示されています。");
+        }
+      }
+      if (!released || session.disposed) return;
+      setAudioSessionType("auto");
+      try {
+        await openCapture();
+      } catch {
+        endSession(session, "マイクを再開できませんでした。マイクの許可を確認して、もう一度開始してください。");
+        return;
+      }
+      if (!session.disposed) setStatus(listeningStatus);
+    };
+
+    const drainSpeech = async () => {
+      if (session.speaking) return;
+      session.speaking = true;
+      try {
+        while (!session.disposed && autoSpeakRef.current && session.speechQueue.length) {
+          await speakQueued();
+        }
+      } catch {
+        endSession(session, "読み上げ中に問題が発生したため停止しました。もう一度開始してください。");
+      } finally {
+        session.speaking = false;
+      }
+    };
+
+    try {
+      session.sdk = await import("microsoft-cognitiveservices-speech-sdk");
+      if (session.disposed) return;
+      session.token = await requestToken(session);
+      if (session.disposed) return;
+      if (!navigator.mediaDevices?.getUserMedia) {
+        throw new Error("このブラウザーでマイクを利用できません。HTTPSで開き、対応ブラウザーをお使いください。");
+      }
+      await openCapture();
       if (session.disposed) return;
       setIsConnecting(false);
       setIsListening(true);
@@ -263,14 +411,15 @@ export default function LiveSpeechTranslator() {
         try {
           const refreshedToken = await requestToken(session);
           if (!session.disposed) {
-            recognizer.authorizationToken = refreshedToken.authorizationToken;
+            session.token = refreshedToken;
+            if (session.capture) session.capture.recognizer.authorizationToken = refreshedToken.authorizationToken;
           }
         } catch {
           endSession(session, "接続を更新できなかったため翻訳を停止しました。もう一度開始してください。");
         }
       }, 8 * 60 * 1000);
     } catch (startError) {
-      endSession(session, startError instanceof Error && /[\u3040-\u30ff]/.test(startError.message)
+      endSession(session, startError instanceof Error && /[぀-ヿ]/.test(startError.message)
         ? startError.message
         : "翻訳を開始できませんでした。マイクの許可と接続状態を確認してください。");
     }
@@ -305,9 +454,13 @@ export default function LiveSpeechTranslator() {
         .eu-translation-button-secondary { border-color:#756d65; background:white; color:#5a5048; }
         .eu-translation-button-secondary:hover:not(:disabled) { background:#f0ece6; color:#2C2421; }
         .eu-translation-select:focus-visible, .eu-translation-button:focus-visible { outline:2px solid #2C2421; outline-offset:2px; }
-        .eu-translation-toggle { display:flex; align-items:center; gap:.5rem; width:fit-content; min-height:2.75rem; margin-top:.25rem; color:#5a5048; font-family:'Zen Maru Gothic',sans-serif; font-size:.8rem; font-weight:700; cursor:pointer; }
+        .eu-translation-options { display:flex; align-items:center; flex-wrap:wrap; gap:0 1.25rem; margin-top:.25rem; }
+        .eu-translation-toggle, .eu-translation-volume { display:flex; align-items:center; gap:.5rem; min-height:2.75rem; color:#5a5048; font-family:'Zen Maru Gothic',sans-serif; font-size:.8rem; font-weight:700; }
+        .eu-translation-toggle { width:fit-content; cursor:pointer; }
         .eu-translation-toggle input { flex:0 0 auto; width:1.25rem; height:1.25rem; margin:0; accent-color:#2a5a9a; cursor:pointer; }
-        .eu-translation-toggle input:focus-visible { outline:2px solid #2C2421; outline-offset:2px; }
+        .eu-translation-volume input { width:min(11rem,40vw); min-height:2.75rem; margin:0; accent-color:#2a5a9a; cursor:pointer; }
+        .eu-translation-volume output { min-width:2.75rem; font-variant-numeric:tabular-nums; }
+        .eu-translation-toggle input:focus-visible, .eu-translation-volume input:focus-visible { outline:2px solid #2C2421; outline-offset:2px; }
         .eu-translation-status { margin:.5rem 0; color:#756d65; font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; line-height:1.6; text-wrap:pretty; }
         .eu-translation-error { margin:.75rem 0 0; padding:.7rem .8rem; border:1px solid #e2c8bc; border-radius:4px; background:#fff3ed; color:#6e2e1a; font-size:.8rem; line-height:1.65; }
         .eu-translation-workspace { display:flex; flex-direction:column; flex:1; min-height:12rem; margin-top:.25rem; border:1px solid #ded7ce; border-radius:5px; background:white; }
@@ -340,8 +493,9 @@ export default function LiveSpeechTranslator() {
               言語や方向を変えると聞き取りを停止します。切替後に「翻訳を開始」を押してください。確定済みの翻訳は残ります。
             </p>
             <p>
-              翻訳が確定すると、翻訳先の言語でスマートフォンやブラウザーの音声で自動的に読み上げます。
-              読み上げの音を再翻訳しないよう、読み上げ中はマイクを一時停止します。端末に該当言語の音声がない場合は読み上げません。
+              翻訳が確定すると、翻訳先の言語でAzureの音声により自動的に読み上げます。
+              マイクを開いたままだとスマートフォンの再生音が小さくなるため、読み上げ中はマイクを一時停止し、終わると自動で再開します。
+              音が小さいときは「読み上げ音量」を上げてください。
             </p>
           </div>
         </details>
@@ -396,14 +550,29 @@ export default function LiveSpeechTranslator() {
           表示を消去
         </button>
       </div>
-      {CAN_SPEAK && (
-        <label className="eu-translation-toggle">
-          <input
-            type="checkbox"
-            checked={autoSpeak}
-            onChange={event => handleAutoSpeakChange(event.target.checked)} />
-          <span>翻訳結果を{targetShortLabel}で自動的に読み上げる</span>
-        </label>
+      {AudioContextClass && (
+        <div className="eu-translation-options">
+          <label className="eu-translation-toggle">
+            <input
+              type="checkbox"
+              checked={autoSpeak}
+              onChange={event => handleAutoSpeakChange(event.target.checked)} />
+            <span>翻訳結果を{targetShortLabel}で自動的に読み上げる</span>
+          </label>
+          <label className="eu-translation-volume" htmlFor="eu-translation-volume">
+            <span>読み上げ音量</span>
+            <input
+              id="eu-translation-volume"
+              type="range"
+              min={MIN_VOLUME}
+              max={MAX_VOLUME}
+              step="25"
+              value={volume}
+              aria-valuetext={`${volume}%`}
+              onChange={event => handleVolumeChange(Number(event.target.value))} />
+            <output htmlFor="eu-translation-volume" aria-hidden="true">{volume}%</output>
+          </label>
+        </div>
       )}
       <p className="eu-translation-status" role="status" aria-live="polite">{status}</p>
       {error && <p className="eu-translation-error" role="alert">{error}</p>}
