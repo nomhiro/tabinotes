@@ -8,6 +8,38 @@ const LOCAL_LANGUAGES = [
 
 const TOKEN_ENDPOINT = import.meta.env.VITE_SPEECH_TOKEN_URL;
 const MAX_TRANSLATIONS = 100;
+const CAN_SPEAK = typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+// 再生中の Utterance を保持する（参照を失うと Chrome で onend が発火しないことがあるため）
+const activeUtterances = new Set();
+
+function normalizeLang(lang) {
+  return lang.replace("_", "-").toLowerCase();
+}
+
+// 完全一致（de-DE）→ 言語一致（de-*）の順で、その言語を読める音声を探す
+function findVoice(voices, lang) {
+  const wanted = normalizeLang(lang);
+  const primary = wanted.split("-")[0];
+  return voices.find(voice => normalizeLang(voice.lang) === wanted)
+    || voices.find(voice => normalizeLang(voice.lang).split("-")[0] === primary)
+    || null;
+}
+
+// 読み上げ音声をマイクが拾って再翻訳しないよう、読み上げ中はマイクをミュートする
+function setMicMuted(session, muted) {
+  session.stream?.getTracks().forEach(track => { track.enabled = !muted; });
+}
+
+function stopSpeaking(session) {
+  if (!CAN_SPEAK) return;
+  window.speechSynthesis.cancel();
+  activeUtterances.clear();
+  if (session) {
+    window.clearTimeout(session.speechTimer);
+    session.speaking = 0;
+    setMicMuted(session, false);
+  }
+}
 
 async function getSpeechToken(signal) {
   if (!TOKEN_ENDPOINT) {
@@ -36,6 +68,7 @@ function startRecognition(recognizer) {
 function disposeSession(session) {
   if (!session || session.disposed) return;
   session.disposed = true;
+  stopSpeaking(session);
   session.controller.abort();
   window.clearTimeout(session.tokenTimeout);
   window.clearInterval(session.refreshTimer);
@@ -62,13 +95,18 @@ export default function LiveSpeechTranslator() {
   const [error, setError] = useState("");
   const [interimText, setInterimText] = useState("");
   const [translations, setTranslations] = useState([]);
+  const [autoSpeak, setAutoSpeak] = useState(true);
   const sessionRef = useRef(null);
+  const autoSpeakRef = useRef(true);
   const selectedLanguage = LOCAL_LANGUAGES.find(language => language.code === localLanguage);
   const localLabel = selectedLanguage.label.split("（")[0];
   const sourceLanguage = fromJapanese ? "ja-JP" : selectedLanguage.code;
   const targetLanguage = fromJapanese ? selectedLanguage.target : "ja";
+  const targetSpeechLanguage = fromJapanese ? selectedLanguage.code : "ja-JP";
   const sourceLabel = fromJapanese ? "日本語" : selectedLanguage.label;
   const targetLabel = fromJapanese ? selectedLanguage.label : "日本語";
+  const targetShortLabel = fromJapanese ? localLabel : "日本語";
+  const listeningStatus = `${sourceLabel}を聞き取り中です。${targetLabel}で表示します。`;
 
   useEffect(() => {
     return () => {
@@ -96,9 +134,66 @@ export default function LiveSpeechTranslator() {
     setStatus("方向を切り替えました。開始を押してください。");
   };
 
+  // 翻訳結果を翻訳先の言語で読み上げる。読み上げ中はマイクを止め、終わったら再開する。
+  const speakTranslation = (session, text) => {
+    const synth = window.speechSynthesis;
+    const voices = synth.getVoices();
+    const voice = findVoice(voices, targetSpeechLanguage);
+    // 音声一覧が取れていて該当言語がない場合は、別言語の声で誤読するよりスキップする
+    if (voices.length > 0 && !voice) {
+      setStatus(`この端末には${targetShortLabel}の読み上げ音声がないため、読み上げをスキップしました。`);
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = voice?.lang || targetSpeechLanguage;
+    if (voice) utterance.voice = voice;
+
+    const finish = () => {
+      if (!activeUtterances.delete(utterance) || session.disposed) return;
+      session.speaking -= 1;
+      if (session.speaking <= 0) {
+        stopSpeaking(session);
+        setStatus(listeningStatus);
+      }
+    };
+    utterance.onend = finish;
+    utterance.onerror = finish;
+
+    session.speaking = (session.speaking || 0) + 1;
+    setMicMuted(session, true);
+    setStatus(`${targetShortLabel}で読み上げ中です（マイクは一時停止中）。`);
+    // onend が届かなかった場合にマイクが無音のまま残らないための保険
+    session.speechUntil = Math.max(Date.now(), session.speechUntil || 0) + 3000 + text.length * 250;
+    window.clearTimeout(session.speechTimer);
+    session.speechTimer = window.setTimeout(() => {
+      if (session.disposed) return;
+      stopSpeaking(session);
+      setStatus(listeningStatus);
+    }, session.speechUntil - Date.now());
+
+    activeUtterances.add(utterance);
+    synth.speak(utterance);
+  };
+
+  const handleAutoSpeakChange = checked => {
+    autoSpeakRef.current = checked;
+    setAutoSpeak(checked);
+    if (!checked) {
+      stopSpeaking(sessionRef.current);
+      if (isListening) setStatus(listeningStatus);
+    }
+  };
+
   const handleStart = async () => {
     if (sessionRef.current) return;
-    const session = { controller: new AbortController(), disposed: false };
+    // iOS Safari などはユーザー操作中に一度発話しないと以降の読み上げが無音になるため、無音の発話で解除しておく
+    if (CAN_SPEAK && autoSpeakRef.current) {
+      const unlock = new SpeechSynthesisUtterance("");
+      unlock.volume = 0;
+      window.speechSynthesis.speak(unlock);
+    }
+    const session = { controller: new AbortController(), disposed: false, speaking: 0, speechUntil: 0 };
     sessionRef.current = session;
     setIsConnecting(true);
     setError("");
@@ -146,6 +241,7 @@ export default function LiveSpeechTranslator() {
                 language: sourceLanguage, targetLanguage, sourceLabel, targetLabel,
               },
             ]);
+            if (CAN_SPEAK && autoSpeakRef.current) speakTranslation(session, translatedText);
           }
           setInterimText("");
         }
@@ -162,7 +258,7 @@ export default function LiveSpeechTranslator() {
       if (session.disposed) return;
       setIsConnecting(false);
       setIsListening(true);
-      setStatus(`${sourceLabel}を聞き取り中です。${targetLabel}で表示します。`);
+      setStatus(listeningStatus);
       session.refreshTimer = window.setInterval(async () => {
         try {
           const refreshedToken = await requestToken(session);
@@ -209,6 +305,9 @@ export default function LiveSpeechTranslator() {
         .eu-translation-button-secondary { border-color:#756d65; background:white; color:#5a5048; }
         .eu-translation-button-secondary:hover:not(:disabled) { background:#f0ece6; color:#2C2421; }
         .eu-translation-select:focus-visible, .eu-translation-button:focus-visible { outline:2px solid #2C2421; outline-offset:2px; }
+        .eu-translation-toggle { display:flex; align-items:center; gap:.5rem; width:fit-content; min-height:2.75rem; margin-top:.25rem; color:#5a5048; font-family:'Zen Maru Gothic',sans-serif; font-size:.8rem; font-weight:700; cursor:pointer; }
+        .eu-translation-toggle input { flex:0 0 auto; width:1.25rem; height:1.25rem; margin:0; accent-color:#2a5a9a; cursor:pointer; }
+        .eu-translation-toggle input:focus-visible { outline:2px solid #2C2421; outline-offset:2px; }
         .eu-translation-status { margin:.5rem 0; color:#756d65; font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; line-height:1.6; text-wrap:pretty; }
         .eu-translation-error { margin:.75rem 0 0; padding:.7rem .8rem; border:1px solid #e2c8bc; border-radius:4px; background:#fff3ed; color:#6e2e1a; font-size:.8rem; line-height:1.65; }
         .eu-translation-workspace { display:flex; flex-direction:column; flex:1; min-height:12rem; margin-top:.25rem; border:1px solid #ded7ce; border-radius:5px; background:white; }
@@ -239,6 +338,10 @@ export default function LiveSpeechTranslator() {
             </p>
             <p id="eu-translation-direction-help">
               言語や方向を変えると聞き取りを停止します。切替後に「翻訳を開始」を押してください。確定済みの翻訳は残ります。
+            </p>
+            <p>
+              翻訳が確定すると、翻訳先の言語でスマートフォンやブラウザーの音声で自動的に読み上げます。
+              読み上げの音を再翻訳しないよう、読み上げ中はマイクを一時停止します。端末に該当言語の音声がない場合は読み上げません。
             </p>
           </div>
         </details>
@@ -293,6 +396,15 @@ export default function LiveSpeechTranslator() {
           表示を消去
         </button>
       </div>
+      {CAN_SPEAK && (
+        <label className="eu-translation-toggle">
+          <input
+            type="checkbox"
+            checked={autoSpeak}
+            onChange={event => handleAutoSpeakChange(event.target.checked)} />
+          <span>翻訳結果を{targetShortLabel}で自動的に読み上げる</span>
+        </label>
+      )}
       <p className="eu-translation-status" role="status" aria-live="polite">{status}</p>
       {error && <p className="eu-translation-error" role="alert">{error}</p>}
       <div className="eu-translation-workspace">
