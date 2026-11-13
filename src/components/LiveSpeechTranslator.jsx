@@ -12,9 +12,34 @@ const MIN_VOLUME = 100;
 const MAX_VOLUME = 300;
 const DEFAULT_VOLUME = 150;
 const VOLUME_STORAGE_KEY = "speech-translator-volume";
+const TARGET_PEAK = 0.9;
+const MAX_NORMALIZE_GAIN = 4;
+// マイクを解放した直後は出力経路が切り替わり切るまで冒頭が欠けやすいので、最初の1文だけ少し待ってから鳴らす
+const RELEASE_LEAD_SECONDS = 0.25;
+// 音量を最大 300% にしたときのピーク（0.9 × 3 = 2.7）まで、ソフトクリップの入力範囲に収める
+const CLIP_HEADROOM = 3;
+const SOFT_CLIP_KNEE = 0.8;
 const AudioContextClass = typeof window !== "undefined"
   ? (window.AudioContext || window.webkitAudioContext)
   : undefined;
+
+// 時間で変化しない（メモリレスな）ソフトクリップ。0.8 までは素通しで、それを超えるピークだけを
+// なだらかに 1.0 以内へ収める。コンプレッサーのように発話中に音量が上下することはない。
+// 入力は音量ゲイン後の信号を CLIP_HEADROOM で割ったものなので、カーブ側で掛け戻している。
+function createSoftClipCurve() {
+  const size = 8192;
+  const curve = new Float32Array(size);
+  for (let i = 0; i < size; i++) {
+    const level = ((i / (size - 1)) * 2 - 1) * CLIP_HEADROOM;
+    const magnitude = Math.abs(level);
+    curve[i] = magnitude <= SOFT_CLIP_KNEE
+      ? level
+      : Math.sign(level) * (SOFT_CLIP_KNEE + (1 - SOFT_CLIP_KNEE) * Math.tanh((magnitude - SOFT_CLIP_KNEE) / (1 - SOFT_CLIP_KNEE)));
+  }
+  return curve;
+}
+
+const volumeToGain = volume => volume / 100 / CLIP_HEADROOM;
 
 function loadVolume() {
   try {
@@ -140,22 +165,42 @@ function synthesizeSpeech(session, text, locale) {
   });
 }
 
-async function playAudio(session, audioData) {
+// 合成と WAV のデコードを先に済ませておく（失敗時は null）。翻訳が確定した時点で先読みしておくことで、
+// 文と文の間に合成の待ち時間が入って音が途切れるのを防ぐ。
+async function prepareSpeech(session, text, locale) {
+  try {
+    const audioData = await synthesizeSpeech(session, text, locale);
+    const buffer = await session.audioContext.decodeAudioData(audioData);
+    let peak = 0;
+    for (let channel = 0; channel < buffer.numberOfChannels; channel++) {
+      const samples = buffer.getChannelData(channel);
+      for (let i = 0; i < samples.length; i++) peak = Math.max(peak, Math.abs(samples[i]));
+    }
+    // 発話ごとにピークをそろえる固定ゲイン。コンプレッサーと違い、発話の途中で音量が動くことはない
+    return { buffer, normalize: peak > 0 ? Math.min(TARGET_PEAK / peak, MAX_NORMALIZE_GAIN) : 1 };
+  } catch {
+    return null;
+  }
+}
+
+async function playPrepared(session, { buffer, normalize }, lead) {
   const context = session.audioContext;
   await context.resume();
-  const buffer = await context.decodeAudioData(audioData);
   if (session.disposed) return;
   await new Promise(resolve => {
     const source = context.createBufferSource();
     source.buffer = buffer;
-    source.connect(session.gainNode);
+    const normalizer = context.createGain();
+    normalizer.gain.value = normalize;
+    source.connect(normalizer);
+    normalizer.connect(session.gainNode);
     source.onended = () => {
+      normalizer.disconnect();
       if (session.playingSource === source) session.playingSource = null;
       resolve();
     };
     session.playingSource = source;
-    // マイク解放直後は出力経路が切り替わり切るまで冒頭が欠けやすいので、少し待ってから鳴らす
-    source.start(context.currentTime + 0.25);
+    source.start(context.currentTime + lead);
   });
 }
 
@@ -227,7 +272,7 @@ export default function LiveSpeechTranslator() {
     volumeRef.current = value;
     setVolume(value);
     const gain = sessionRef.current?.gainNode?.gain;
-    if (gain) gain.value = value / 100;
+    if (gain) gain.value = volumeToGain(value);
     try {
       window.localStorage.setItem(VOLUME_STORAGE_KEY, String(value));
     } catch {
@@ -252,21 +297,24 @@ export default function LiveSpeechTranslator() {
     sessionRef.current = session;
 
     // iOS Safari などはユーザー操作中に作って有効化した AudioContext でないと後から鳴らせない。
-    // 音量を上げられるようゲインを通し、音割れを抑えるリミッターを挟んで出力する。
+    // 音量を上げられるようゲインを通し、音割れは時間で変化しないソフトクリップで抑えて出力する。
     if (AudioContextClass) {
       try {
-        const context = new AudioContextClass();
+        let context;
+        try {
+          // 読み上げは遅延より途切れにくさを優先する（携帯では小さいバッファだと音が途切れやすい）
+          context = new AudioContextClass({ latencyHint: "playback" });
+        } catch {
+          context = new AudioContextClass();
+        }
         Promise.resolve(context.resume?.()).catch(() => {});
         const gainNode = context.createGain();
-        gainNode.gain.value = volumeRef.current / 100;
-        const limiter = context.createDynamicsCompressor();
-        limiter.threshold.value = -10;
-        limiter.knee.value = 6;
-        limiter.ratio.value = 12;
-        limiter.attack.value = 0.003;
-        limiter.release.value = 0.15;
-        gainNode.connect(limiter);
-        limiter.connect(context.destination);
+        gainNode.gain.value = volumeToGain(volumeRef.current);
+        const softClip = context.createWaveShaper();
+        softClip.curve = createSoftClipCurve();
+        softClip.oversample = "2x";
+        gainNode.connect(softClip);
+        softClip.connect(context.destination);
         session.audioContext = context;
         session.gainNode = gainNode;
       } catch {
@@ -319,7 +367,9 @@ export default function LiveSpeechTranslator() {
               },
             ]);
             if (session.audioContext && autoSpeakRef.current) {
-              session.speechQueue.push({ text: translatedText, locale: targetSpeechLocale });
+              session.speechQueue.push({
+                prepared: prepareSpeech(session, translatedText, targetSpeechLocale),
+              });
               drainSpeech();
             }
           }
@@ -341,17 +391,17 @@ export default function LiveSpeechTranslator() {
       await startRecognition(recognizer);
     };
 
-    // 溜まっている翻訳文を順に合成して読み上げる。最初の再生前にマイクを解放し、
+    // 溜まっている翻訳文を順に読み上げる。最初の再生前にマイクを解放し、
     // 溜まった分を読み終えたらマイクを取り直して聞き取りを再開する。
+    // 合成は翻訳が確定した時点で先読みしてあるので、2文目以降は待たずにつなげて再生できる。
     const speakQueued = async () => {
       let released = false;
+      let lead = RELEASE_LEAD_SECONDS;
       while (!session.disposed && autoSpeakRef.current && session.speechQueue.length) {
         const item = session.speechQueue.shift();
-        let audio;
-        try {
-          // 合成中はマイクを開いたままにして、話し始めの取りこぼしを防ぐ
-          audio = await synthesizeSpeech(session, item.text, item.locale);
-        } catch {
+        // 合成中はマイクを開いたままにして、話し始めの取りこぼしを防ぐ
+        const prepared = await item.prepared;
+        if (!prepared) {
           setStatus("読み上げ音声を取得できませんでした。翻訳は画面に表示されています。");
           continue;
         }
@@ -364,7 +414,8 @@ export default function LiveSpeechTranslator() {
           setAudioSessionType("playback");
         }
         try {
-          await playAudio(session, audio);
+          await playPrepared(session, prepared, lead);
+          lead = 0;
         } catch {
           setStatus("読み上げ音声を再生できませんでした。翻訳は画面に表示されています。");
         }
