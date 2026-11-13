@@ -8,6 +8,10 @@ const LOCAL_LANGUAGES = [
 
 const TOKEN_ENDPOINT = import.meta.env.VITE_SPEECH_TOKEN_URL;
 const MAX_TRANSLATIONS = 100;
+const MAX_LOG_LINES = 400;
+// ビルド時に vite.config.js で埋め込むバージョン（コミットとビルド日時）。実機で動いている版の確認用
+/* global __BUILD_ID__ */
+const BUILD_ID = typeof __BUILD_ID__ !== "undefined" ? __BUILD_ID__ : "dev";
 // マイクを解放した直後は、端末の音声経路（通話用 → 通常の再生）の切り替えが終わるまで冒頭が欠けやすいので、
 // 最初の1文だけ少し待ってから鳴らす
 const RELEASE_LEAD_MS = 500;
@@ -80,6 +84,9 @@ async function closeCapture(session) {
   const capture = session.capture;
   if (!capture || capture.closing) return;
   capture.closing = true;
+  const startedAt = performance.now();
+  // 相手（話し手）がまだ話している途中でマイクを止めていないかを確認できるようにする
+  session.log?.("マイク: 解放開始", capture.hearing ? "※話している途中で停止" : "");
   // 停止処理中に確定する最後の認識結果は受け取りたいので、session.capture はまだ外さない
   await new Promise(resolve => {
     try {
@@ -91,6 +98,7 @@ async function closeCapture(session) {
   if (session.capture !== capture) return;
   session.capture = null;
   releaseCapture(capture);
+  session.log?.("マイク: 解放完了", `${Math.round(performance.now() - startedAt)}ms`);
 }
 
 // 読み上げ待ちの文を捨てる（先読み済みの音声の URL も解放する）
@@ -163,10 +171,16 @@ function synthesizeSpeech(session, text, locale) {
 // 合成を先に済ませて再生用の URL を作っておく（失敗時は null）。翻訳が確定した時点で先読みしておくことで、
 // 文と文の間に合成の待ち時間が入って音が途切れるのを防ぐ。
 async function prepareSpeech(session, text, locale) {
+  const startedAt = performance.now();
+  session.log?.("合成: 開始", `${locale} ${text.length}文字`);
   try {
     const audioData = await synthesizeSpeech(session, text, locale);
+    // 24kHz・16bit・モノラルの WAV なので、ヘッダー 44 バイトを除いた 48000 バイトが 1 秒
+    const seconds = Math.max(0, audioData.byteLength - 44) / 48_000;
+    session.log?.("合成: 完了", `${Math.round(performance.now() - startedAt)}ms 音声${seconds.toFixed(1)}秒`);
     return URL.createObjectURL(new Blob([audioData], { type: "audio/wav" }));
-  } catch {
+  } catch (error) {
+    session.log?.("合成: 失敗", error instanceof Error ? error.message : String(error));
     return null;
   }
 }
@@ -179,7 +193,23 @@ function playClip(session, url, delayMs) {
   return new Promise(resolve => {
     let delayTimer;
     let guardTimer;
+    let playingAt = 0;
+    // 診断ログ用: 実際に音が出始めた時刻と、再生中のデータ待ち（音飛び）を記録する
+    const diagnostics = new AbortController();
+    const listen = (type, handler) => audio.addEventListener(type, handler, { signal: diagnostics.signal });
+    listen("playing", () => {
+      if (!playingAt) playingAt = performance.now();
+      session.log?.("再生: 音が出始めた");
+    });
+    // 再生開始直前のデータ待ちは正常なので、音が出始めた後のものだけを「途切れ」として記録する
+    listen("waiting", () => {
+      if (playingAt) session.log?.("再生: 途切れ（データ待ち）", `${audio.currentTime.toFixed(2)}秒地点`);
+    });
+    listen("stalled", () => {
+      if (playingAt) session.log?.("再生: 読み込み停滞", `${audio.currentTime.toFixed(2)}秒地点`);
+    });
     const finish = played => {
+      diagnostics.abort();
       window.clearTimeout(delayTimer);
       window.clearTimeout(guardTimer);
       audio.onended = null;
@@ -190,22 +220,40 @@ function playClip(session, url, delayMs) {
       resolve(played);
     };
     const stop = () => {
+      session.log?.("再生: 中断");
       audio.pause();
       finish(true);
     };
     session.stopPlayback = stop;
-    audio.onended = () => finish(true);
-    audio.onerror = () => finish(false);
+    audio.onended = () => {
+      const wall = playingAt ? (performance.now() - playingAt) / 1000 : NaN;
+      session.log?.("再生: 終了", `実時間${wall.toFixed(1)}秒 / 音声${audio.duration.toFixed(1)}秒`);
+      finish(true);
+    };
+    audio.onerror = () => {
+      session.log?.("再生: エラー", `code=${audio.error?.code ?? "?"}`);
+      finish(false);
+    };
     // ended が届かなくても先へ進めるように、長さ + 2 秒で打ち切る（長さが分かるまでは 10 秒）
     audio.onloadedmetadata = () => {
       if (!Number.isFinite(audio.duration)) return;
       window.clearTimeout(guardTimer);
-      guardTimer = window.setTimeout(() => finish(true), (audio.duration + 2) * 1000);
+      guardTimer = window.setTimeout(() => {
+        session.log?.("再生: 終了通知なしで打ち切り");
+        finish(true);
+      }, (audio.duration + 2) * 1000);
     };
     delayTimer = window.setTimeout(() => {
-      guardTimer = window.setTimeout(() => finish(false), 10_000);
+      guardTimer = window.setTimeout(() => {
+        session.log?.("再生: 読み込めず打ち切り");
+        finish(false);
+      }, 10_000);
+      session.log?.("再生: 開始要求", `待ち${delayMs}ms`);
       audio.src = url;
-      audio.play().catch(() => finish(false));
+      audio.play().catch(error => {
+        session.log?.("再生: 開始できず", error?.name ?? "");
+        finish(false);
+      });
     }, delayMs);
   });
 }
@@ -220,8 +268,11 @@ export default function LiveSpeechTranslator() {
   const [interimText, setInterimText] = useState("");
   const [translations, setTranslations] = useState([]);
   const [autoSpeak, setAutoSpeak] = useState(true);
+  const [logLines, setLogLines] = useState([]);
+  const [copyMessage, setCopyMessage] = useState("");
   const sessionRef = useRef(null);
   const autoSpeakRef = useRef(true);
+  const logRef = useRef({ startedAt: 0, lines: [] });
   const selectedLanguage = LOCAL_LANGUAGES.find(language => language.code === localLanguage);
   const localLabel = selectedLanguage.label.split("（")[0];
   const sourceLanguage = fromJapanese ? "ja-JP" : selectedLanguage.code;
@@ -239,8 +290,34 @@ export default function LiveSpeechTranslator() {
     };
   }, []);
 
+  // 診断ログ: 「翻訳を開始」からの経過秒つきで、認識・合成・マイク・再生の動きを記録する
+  const log = (event, detail = "") => {
+    const store = logRef.current;
+    const elapsed = store.startedAt ? (performance.now() - store.startedAt) / 1000 : 0;
+    const line = `${elapsed.toFixed(2).padStart(7)}s ${event}${detail ? `  ${detail}` : ""}`;
+    store.lines = [...store.lines.slice(-(MAX_LOG_LINES - 1)), line];
+    setLogLines(store.lines);
+  };
+
+  const handleCopyLog = async () => {
+    const text = [`バージョン: ${BUILD_ID}`, ...logRef.current.lines].join("\n");
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyMessage("コピーしました");
+    } catch {
+      setCopyMessage("コピーできませんでした。ログを長押しして選択してください");
+    }
+  };
+
+  const handleClearLog = () => {
+    logRef.current.lines = [];
+    setLogLines([]);
+    setCopyMessage("");
+  };
+
   const endSession = (session, message = "") => {
     if (sessionRef.current !== session) return;
+    session?.log?.("停止", message);
     sessionRef.current = null;
     disposeSession(session);
     setIsConnecting(false);
@@ -281,8 +358,12 @@ export default function LiveSpeechTranslator() {
       player: null,
       unlockUrl: null,
       stopPlayback: null,
+      log,
     };
     sessionRef.current = session;
+    logRef.current.startedAt = performance.now();
+    log("==== 開始", `版 ${BUILD_ID} / ${sourceLanguage} → ${targetLanguage} / 読み上げ${autoSpeakRef.current ? "あり" : "なし"}`);
+    log("端末", navigator.userAgent);
 
     // iOS Safari は、ユーザー操作中に一度再生した <audio> 要素でないと後から自動で鳴らせないため、
     // ボタンが押されたこの時点で無音を再生して、読み上げ用の要素を使える状態にしておく
@@ -306,11 +387,18 @@ export default function LiveSpeechTranslator() {
 
     const openCapture = async () => {
       const SpeechSDK = session.sdk;
+      const micStartedAt = performance.now();
+      session.log("マイク: 取得開始");
       const stream = await navigator.mediaDevices.getUserMedia(MIC_CONSTRAINTS);
       if (session.disposed) {
         stream.getTracks().forEach(track => track.stop());
         return;
       }
+      // 端末が実際に適用した設定（エコー除去などが本当に切れているか）も記録する
+      const settings = stream.getAudioTracks?.()[0]?.getSettings?.() ?? {};
+      session.log("マイク: 取得完了", `${Math.round(performance.now() - micStartedAt)}ms ` +
+        `エコー除去=${settings.echoCancellation ?? "?"} ノイズ抑制=${settings.noiseSuppression ?? "?"} ` +
+        `自動ゲイン=${settings.autoGainControl ?? "?"}`);
       const config = SpeechSDK.SpeechTranslationConfig.fromAuthorizationToken(
         session.token.authorizationToken, session.token.region);
       config.speechRecognitionLanguage = sourceLanguage;
@@ -326,6 +414,10 @@ export default function LiveSpeechTranslator() {
         if (!isCurrent() || capture.closing) return;
         const result = event.result;
         if (result.reason === SpeechSDK.ResultReason.TranslatingSpeech) {
+          if (!capture.hearing) {
+            capture.hearing = true;
+            session.log("認識: 発話を検出");
+          }
           setInterimText(result.translations.get(targetLanguage) || "");
         }
       };
@@ -335,6 +427,8 @@ export default function LiveSpeechTranslator() {
         const result = event.result;
         if (result.reason === SpeechSDK.ResultReason.TranslatedSpeech) {
           const translatedText = result.translations.get(targetLanguage) || "";
+          capture.hearing = false;
+          session.log("認識: 確定", `「${translatedText.slice(0, 40)}${translatedText.length > 40 ? "…" : ""}」`);
           if (translatedText) {
             setTranslations(items => [
               ...items.slice(-(MAX_TRANSLATIONS - 1)),
@@ -366,6 +460,7 @@ export default function LiveSpeechTranslator() {
       };
 
       await startRecognition(recognizer);
+      session.log("認識: 聞き取り開始");
     };
 
     // 溜まっている翻訳文を順に読み上げる。最初の再生前にマイクを解放し、
@@ -498,6 +593,13 @@ export default function LiveSpeechTranslator() {
         .eu-translation-output { margin:0; color:#2C2421; font-size:clamp(1.15rem,2vw,1.5rem); line-height:1.75; text-wrap:pretty; }
         .eu-translation-interim { background:#f0ece6; }
         .eu-translation-empty { display:grid; place-content:center; flex:1; margin:0; padding:1rem; color:#756d65; font-size:.85rem; line-height:1.75; text-align:center; text-wrap:pretty; }
+        .eu-translation-debug { margin-top:.75rem; color:#5a5048; font-family:'Zen Maru Gothic',sans-serif; font-size:.75rem; }
+        .eu-translation-debug summary { width:fit-content; min-height:2.75rem; padding:.65rem .25rem; cursor:pointer; }
+        .eu-translation-debug summary:focus-visible { outline:2px solid #2C2421; outline-offset:2px; border-radius:4px; }
+        .eu-translation-debug-note { margin:0 0 .5rem; color:#6a6058; line-height:1.7; text-wrap:pretty; }
+        .eu-translation-debug-actions { display:flex; align-items:center; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+        .eu-translation-debug-copied { color:#756d65; }
+        .eu-translation-debug-log { max-height:45vh; margin:0; padding:.7rem .8rem; overflow:auto; border:1px solid #ded7ce; border-radius:4px; background:white; color:#2C2421; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.7rem; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
         @media (max-width:1000px) { .eu-translation-controls { grid-template-columns:repeat(2,minmax(0,1fr)); } }
         @media (max-width:640px) { .eu-translation-language, .eu-translation-direction { grid-column:1 / -1; } .eu-translation-select { flex:1; min-width:0; } }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } }
@@ -605,6 +707,31 @@ export default function LiveSpeechTranslator() {
         <p className="eu-translation-empty">「翻訳を開始」を押して話してください。<br />ここに翻訳が表示されます。</p>
       )}
       </div>
+      <details className="eu-translation-debug">
+        <summary>診断ログ（不具合の調査用）</summary>
+        <p className="eu-translation-debug-note">
+          「翻訳を開始」から、聞き取り・合成・マイク・再生の動きを時刻つきで記録します。
+          不具合が起きたら「ログをコピー」で送ってください（翻訳文も含まれます）。バージョン: {BUILD_ID}
+        </p>
+        <div className="eu-translation-debug-actions">
+          <button
+            className="eu-translation-button eu-translation-button-secondary"
+            type="button"
+            disabled={logLines.length === 0}
+            onClick={handleCopyLog}>
+            ログをコピー
+          </button>
+          <button
+            className="eu-translation-button eu-translation-button-secondary"
+            type="button"
+            disabled={logLines.length === 0}
+            onClick={handleClearLog}>
+            ログを消去
+          </button>
+          {copyMessage && <span className="eu-translation-debug-copied" role="status">{copyMessage}</span>}
+        </div>
+        <pre className="eu-translation-debug-log">{logLines.length ? logLines.join("\n") : "まだ記録はありません。"}</pre>
+      </details>
     </section>
   );
 }
