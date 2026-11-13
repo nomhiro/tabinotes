@@ -8,11 +8,41 @@ const LOCAL_LANGUAGES = [
 
 const TOKEN_ENDPOINT = import.meta.env.VITE_SPEECH_TOKEN_URL;
 const MAX_TRANSLATIONS = 100;
-// マイクを解放した直後は出力経路が切り替わり切るまで冒頭が欠けやすいので、最初の1文だけ少し待ってから鳴らす
-const RELEASE_LEAD_SECONDS = 0.25;
-const AudioContextClass = typeof window !== "undefined"
-  ? (window.AudioContext || window.webkitAudioContext)
-  : undefined;
+// マイクを解放した直後は、端末の音声経路（通話用 → 通常の再生）の切り替えが終わるまで冒頭が欠けやすいので、
+// 最初の1文だけ少し待ってから鳴らす
+const RELEASE_LEAD_MS = 500;
+const CAN_PLAY_AUDIO = typeof window !== "undefined" && typeof window.Audio === "function";
+// マイクの音声処理（エコーキャンセル・ノイズ抑制・自動ゲイン）は使わない。
+// - iOS: 有効にすると端末全体が通話用の音声処理経路に入り、読み上げ音声にもブツブツ音や途切れが出る
+// - Android の Chrome: エコーキャンセルを有効にすると通話モードになり、音量ボタンが通話音量に切り替わる
+// 読み上げ中はマイクを止めているのでスピーカー音の回り込み（エコー）は起きず、エコーキャンセルは不要。
+const MIC_CONSTRAINTS = { audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } };
+
+// iOS Safari は、ユーザー操作中に一度再生した <audio> 要素でないと後から自動で鳴らせない。
+// その「最初の1回」に使う無音の WAV（0.1 秒）を作る。
+function createSilentWavUrl() {
+  const sampleRate = 8000;
+  const samples = 800;
+  const buffer = new ArrayBuffer(44 + samples * 2);
+  const view = new DataView(buffer);
+  const writeText = (offset, text) => {
+    for (let i = 0; i < text.length; i++) view.setUint8(offset + i, text.charCodeAt(i));
+  };
+  writeText(0, "RIFF");
+  view.setUint32(4, 36 + samples * 2, true);
+  writeText(8, "WAVE");
+  writeText(12, "fmt ");
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true);
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  writeText(36, "data");
+  view.setUint32(40, samples * 2, true);
+  return URL.createObjectURL(new Blob([buffer], { type: "audio/wav" }));
+}
 
 async function getSpeechToken(signal) {
   if (!TOKEN_ENDPOINT) {
@@ -63,23 +93,20 @@ async function closeCapture(session) {
   releaseCapture(capture);
 }
 
-function setAudioSessionType(type) {
-  try {
-    if (navigator.audioSession) navigator.audioSession.type = type;
-  } catch {
-    // 未対応のブラウザーでは何もしない
-  }
+// 読み上げ待ちの文を捨てる（先読み済みの音声の URL も解放する）
+function discardQueuedSpeech(session) {
+  session.speechQueue.splice(0).forEach(item => {
+    item.prepared.then(url => {
+      if (url) URL.revokeObjectURL(url);
+    });
+  });
 }
 
 function disposeSession(session) {
   if (!session || session.disposed) return;
   session.disposed = true;
-  session.speechQueue.length = 0;
-  try {
-    session.playingSource?.stop();
-  } catch {
-    // 再生前に停止済み
-  }
+  discardQueuedSpeech(session);
+  session.stopPlayback?.();
   session.controller.abort();
   window.clearTimeout(session.tokenTimeout);
   window.clearInterval(session.refreshTimer);
@@ -87,8 +114,12 @@ function disposeSession(session) {
     releaseCapture(session.capture);
     session.capture = null;
   }
-  Promise.resolve(session.audioContext?.close()).catch(() => {});
-  setAudioSessionType("auto");
+  if (session.player) {
+    session.player.pause();
+    session.player.removeAttribute("src");
+    session.player.load();
+  }
+  if (session.unlockUrl) URL.revokeObjectURL(session.unlockUrl);
 }
 
 async function requestToken(session) {
@@ -129,32 +160,53 @@ function synthesizeSpeech(session, text, locale) {
   });
 }
 
-// 合成と WAV のデコードを先に済ませておく（失敗時は null）。翻訳が確定した時点で先読みしておくことで、
+// 合成を先に済ませて再生用の URL を作っておく（失敗時は null）。翻訳が確定した時点で先読みしておくことで、
 // 文と文の間に合成の待ち時間が入って音が途切れるのを防ぐ。
 async function prepareSpeech(session, text, locale) {
   try {
     const audioData = await synthesizeSpeech(session, text, locale);
-    return await session.audioContext.decodeAudioData(audioData);
+    return URL.createObjectURL(new Blob([audioData], { type: "audio/wav" }));
   } catch {
     return null;
   }
 }
 
-// 音量の加工はせず、合成された音声をそのまま出力へ流す（音量は端末側で調整する）
-async function playPrepared(session, buffer, lead) {
-  const context = session.audioContext;
-  await context.resume();
-  if (session.disposed) return;
-  await new Promise(resolve => {
-    const source = context.createBufferSource();
-    source.buffer = buffer;
-    source.connect(context.destination);
-    source.onended = () => {
-      if (session.playingSource === source) session.playingSource = null;
-      resolve();
+// <audio> 要素で1文を再生する。Web Audio（AudioContext）は、iOS Safari ではマイクを使った後に
+// 再生が途切れる・遅れる不具合が報告されているため使わない。音量の加工もしない。
+// 再生し終わる・失敗する・止められる、のいずれかで解決する（false = 再生できなかった）。
+function playClip(session, url, delayMs) {
+  const audio = session.player;
+  return new Promise(resolve => {
+    let delayTimer;
+    let guardTimer;
+    const finish = played => {
+      window.clearTimeout(delayTimer);
+      window.clearTimeout(guardTimer);
+      audio.onended = null;
+      audio.onerror = null;
+      audio.onloadedmetadata = null;
+      if (session.stopPlayback === stop) session.stopPlayback = null;
+      URL.revokeObjectURL(url);
+      resolve(played);
     };
-    session.playingSource = source;
-    source.start(context.currentTime + lead);
+    const stop = () => {
+      audio.pause();
+      finish(true);
+    };
+    session.stopPlayback = stop;
+    audio.onended = () => finish(true);
+    audio.onerror = () => finish(false);
+    // ended が届かなくても先へ進めるように、長さ + 2 秒で打ち切る（長さが分かるまでは 10 秒）
+    audio.onloadedmetadata = () => {
+      if (!Number.isFinite(audio.duration)) return;
+      window.clearTimeout(guardTimer);
+      guardTimer = window.setTimeout(() => finish(true), (audio.duration + 2) * 1000);
+    };
+    delayTimer = window.setTimeout(() => {
+      guardTimer = window.setTimeout(() => finish(false), 10_000);
+      audio.src = url;
+      audio.play().catch(() => finish(false));
+    }, delayMs);
   });
 }
 
@@ -211,12 +263,8 @@ export default function LiveSpeechTranslator() {
     setAutoSpeak(checked);
     const session = sessionRef.current;
     if (!checked && session) {
-      session.speechQueue.length = 0;
-      try {
-        session.playingSource?.stop();
-      } catch {
-        // 再生前に停止済み
-      }
+      discardQueuedSpeech(session);
+      session.stopPlayback?.();
     }
   };
 
@@ -230,23 +278,22 @@ export default function LiveSpeechTranslator() {
       capture: null,
       speechQueue: [],
       speaking: false,
-      playingSource: null,
-      audioContext: null,
+      player: null,
+      unlockUrl: null,
+      stopPlayback: null,
     };
     sessionRef.current = session;
 
-    // iOS Safari などはユーザー操作中に作って有効化した AudioContext でないと後から鳴らせない
-    if (AudioContextClass) {
+    // iOS Safari は、ユーザー操作中に一度再生した <audio> 要素でないと後から自動で鳴らせないため、
+    // ボタンが押されたこの時点で無音を再生して、読み上げ用の要素を使える状態にしておく
+    if (CAN_PLAY_AUDIO) {
       try {
-        let context;
-        try {
-          // 読み上げは遅延より途切れにくさを優先する（携帯では小さいバッファだと音が途切れやすい）
-          context = new AudioContextClass({ latencyHint: "playback" });
-        } catch {
-          context = new AudioContextClass();
-        }
-        Promise.resolve(context.resume?.()).catch(() => {});
-        session.audioContext = context;
+        const player = new Audio();
+        player.preload = "auto";
+        session.unlockUrl = createSilentWavUrl();
+        player.src = session.unlockUrl;
+        player.play().catch(() => {});
+        session.player = player;
       } catch {
         // 読み上げなしで翻訳だけ続ける
       }
@@ -259,7 +306,7 @@ export default function LiveSpeechTranslator() {
 
     const openCapture = async () => {
       const SpeechSDK = session.sdk;
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia(MIC_CONSTRAINTS);
       if (session.disposed) {
         stream.getTracks().forEach(track => track.stop());
         return;
@@ -296,7 +343,7 @@ export default function LiveSpeechTranslator() {
                 language: sourceLanguage, targetLanguage, sourceLabel, targetLabel,
               },
             ]);
-            if (session.audioContext && autoSpeakRef.current) {
+            if (session.player && autoSpeakRef.current) {
               session.speechQueue.push({
                 prepared: prepareSpeech(session, translatedText, targetSpeechLocale),
               });
@@ -326,32 +373,33 @@ export default function LiveSpeechTranslator() {
     // 合成は翻訳が確定した時点で先読みしてあるので、2文目以降は待たずにつなげて再生できる。
     const speakQueued = async () => {
       let released = false;
-      let lead = RELEASE_LEAD_SECONDS;
+      let delayMs = RELEASE_LEAD_MS;
       while (!session.disposed && autoSpeakRef.current && session.speechQueue.length) {
         const item = session.speechQueue.shift();
         // 合成中はマイクを開いたままにして、話し始めの取りこぼしを防ぐ
-        const prepared = await item.prepared;
-        if (!prepared) {
+        const url = await item.prepared;
+        if (!url) {
           setStatus("読み上げ音声を取得できませんでした。翻訳は画面に表示されています。");
           continue;
         }
-        if (session.disposed || !autoSpeakRef.current) break;
+        if (session.disposed || !autoSpeakRef.current) {
+          URL.revokeObjectURL(url);
+          break;
+        }
         if (!released) {
           released = true;
           await closeCapture(session);
-          if (session.disposed) return;
+          if (session.disposed) {
+            URL.revokeObjectURL(url);
+            return;
+          }
           setStatus(`${targetShortLabel}で読み上げ中です（マイクは一時停止中）。`);
-          setAudioSessionType("playback");
         }
-        try {
-          await playPrepared(session, prepared, lead);
-          lead = 0;
-        } catch {
-          setStatus("読み上げ音声を再生できませんでした。翻訳は画面に表示されています。");
-        }
+        const played = await playClip(session, url, delayMs);
+        delayMs = 0;
+        if (!played) setStatus("読み上げ音声を再生できませんでした。翻訳は画面に表示されています。");
       }
       if (!released || session.disposed) return;
-      setAudioSessionType("auto");
       try {
         await openCapture();
       } catch {
@@ -527,7 +575,7 @@ export default function LiveSpeechTranslator() {
           表示を消去
         </button>
       </div>
-      {AudioContextClass && (
+      {CAN_PLAY_AUDIO && (
         <label className="eu-translation-toggle">
           <input
             type="checkbox"
