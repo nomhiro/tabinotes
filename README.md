@@ -9,6 +9,8 @@ npm ci
 npm run dev
 ```
 
+`npm run dev`はローカルのViteが見つからない場合、`predev`で`package-lock.json`に従って依存関係を復元します。GitHub Copilot AppのRun: devボタンもこのnpmスクリプトを実行するため、新しいworktreeでも初回起動時に必要な開発依存関係がインストールされます。Runボタン自体の起動設定はApp側の機能であり、このリポジトリからは変更できません。
+
 ## ビルド確認
 
 ```bash
