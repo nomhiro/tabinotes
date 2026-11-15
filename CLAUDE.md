@@ -21,7 +21,8 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - `src/trips/TripList.jsx` - 旅行一覧ページ
 - `src/trips/registry.js` - 旅行メタデータ配列（TRIPS）
 - `src/trips/kyushu-2026/KyushuTrip.jsx` - 九州旅行しおり（データ・スタイル・UI含む）
-- `src/components/DayMap.jsx` - 日別マップコンポーネント（Leaflet、ピン＋ルート線）
+- `src/components/DayMap.jsx` - 日別マップコンポーネント（Leaflet、ピン＋ルート線）。`focusIndex` を渡すと、その工程のピンへ自動で寄る
+- `src/components/useScheduleFocus.js` - スクロール中に固定マップの下端に来た工程を返すフック（中欧の旅の追従マップで使用）
 - `src/components/PhraseBook.jsx` - 会話フレーズ帳（日本語と現地語を横並び比較、音声再生、かくす／大きく表示）
 - `src/trips/europe-2026/phrases.js` - 中欧の旅の会話フレーズデータ（音声生成スクリプトと共有するため .js に分離）
 - `scripts/generate-phrase-audio.mjs` - フレーズ音声を `public/phrases/{言語}/{id}.mp3`（ゆっくり版 `{id}-slow.mp3`）に生成

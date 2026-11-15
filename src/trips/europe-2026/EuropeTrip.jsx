@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DayMap from "../../components/DayMap";
+import useScheduleFocus from "../../components/useScheduleFocus";
 import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
 import PhraseBook from "../../components/PhraseBook";
@@ -122,13 +123,6 @@ const RATHAUS_MARKET_IMAGE = {
   alt: "市庁舎前広場のクリスマスマーケット（ウィーン・クリスマス・ドリーム）",
   credit: "C.Stadler/Bwag / Wikimedia Commons / CC BY-SA 4.0",
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Wien_-_Christkindlmarkt,_Rathausplatz.JPG",
-};
-
-const PETERSKIRCHE_IMAGE = {
-  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Wien_-_Peterskirche%2C_Innenansicht.JPG?width=1200",
-  alt: "ペーター教会の壮麗なバロック様式の祭壇とドーム天井",
-  credit: "C.Stadler/Bwag / Wikimedia Commons / CC BY-SA 4.0",
-  sourceUrl: "https://commons.wikimedia.org/wiki/File:Wien_-_Peterskirche,_Innenansicht.JPG",
 };
 
 const KHM_CAFE_IMAGE = {
@@ -439,26 +433,65 @@ const DAY_HISTORY = {
     country: COUNTRY_HISTORY.austria,
     spots: [
       {
+        name: "美術史美術館",
+        era: "1891年開館・帝国コレクション",
+        summary: "ハプスブルク家が何世代も集めた絵画・工芸・古代美術を、帝国の美術館として公開するために建てられました。",
+        people: "建築家ゴットフリート・ゼンパーとカール・ハーゼナウアーが、向かいの自然史博物館と対になる壮大な建物を設計しました。",
+        see: "大階段、八角形ドーム、壁画とコレクションの関係。ブリューゲルなどの絵画だけでなく、『帝国が世界を収集した建物』として鑑賞します。",
+        image: KHM_CAFE_IMAGE,
+        sources: [
+          { label: "美術史美術館公式", href: "https://www.khm.at/en/" },
+        ],
+      },
+      {
+        name: "シシィ博物館・皇帝居室",
+        era: "19世紀・フランツ・ヨーゼフとエリザベート",
+        summary: "ホーフブルク王宮で皇妃エリザベートの人物像と皇帝夫妻の暮らしに触れる場所。博物館の展示と、実際の生活空間として保存された居室を続けて見学します。",
+        people: "『シシィ』の愛称で知られるエリザベートと、夫の皇帝フランツ・ヨーゼフが中心人物です。",
+        see: "皇妃にまつわる展示品と夫妻の居室を見比べ、華やかなイメージと宮廷生活の違いに注目。翌日のシェーンブルン宮殿とは別の、都の王宮の空間を味わいます。",
+        sources: [
+          { label: "シシィ博物館公式", href: "https://www.sisimuseum-hofburg.at/en/tickets/tickets-prices" },
+          { label: "Sisi Pass公式・展示案内", href: "https://www.imperialtickets.com/en/schoenbrunn-palace/sisi-pass/247" },
+        ],
+      },
+      {
         name: "シュテファン大聖堂",
         era: "12世紀創建・1359年以降のゴシック",
         summary: "ウィーン旧市街の中心に立つ大聖堂。都市の守護聖人を祀る教会が、ハプスブルク家の都の象徴へ成長しました。",
         people: "ハプスブルク家のルドルフ4世が大規模なゴシック化を進めました。",
-        see: "モザイク屋根、南塔と北塔の高さの違い、内部の身廊。外から見た屋根の幾何学模様は都市のシンボルです。",
+        see: "今回は内部の身廊、ゴシックの説教壇、バロックの主祭壇を中心に見学。異なる時代の装飾が同じ空間に重なることを観察します。",
         image: ST_STEPHANS_VIENNA_IMAGE,
         sources: [
           { label: "シュテファン大聖堂公式", href: "https://www.stephanskirche.at/" },
           { label: "UNESCO：ウィーン歴史地区", href: "https://whc.unesco.org/en/list/1033/" },
         ],
       },
+    ],
+  },
+  4: {
+    country: COUNTRY_HISTORY.austria,
+    spots: [
       {
-        name: "グラーベンとペーター教会",
-        era: "17〜18世紀・バロック都市",
-        summary: "グラーベンは古い城壁跡の通りを市民の大通りへ変えた場所。中央のペスト記念柱と、近くのペーター教会が、疫病後の信仰と都市再生を伝えます。",
-        people: "ペーター教会はルーカス・フォン・ヒルデブラントらのバロック建築家の仕事と結びつきます。",
-        see: "通りの中央に立つ三位一体柱、教会内部の楕円ドーム、商業通りと宗教建築が隣り合う構成。",
-        image: PETERSKIRCHE_IMAGE,
+        name: "シェーンブルン宮殿・庭園・グロリエッテ",
+        era: "17世紀の狩猟館から18世紀の夏宮へ",
+        summary: "ハプスブルク家の夏の離宮。マリア・テレジアの治世に大宮殿と庭園が整えられ、皇室の暮らし・外交・祝祭を見せる舞台になりました。",
+        people: "マリア・テレジア、建築家フィッシャー・フォン・エルラッハ、庭園設計者らが現在の景観を形作りました。",
+        see: "今回は宮殿内部の居室や大広間を中心に見学。庭園の軸線とグロリエッテは建築の背景として知っておき、丘まで歩く予定は含めません。",
+        image: SCHONBRUNN_IMAGE,
+        diagram: {
+          type: "relationship",
+          title: "宮殿の内側と外側",
+          items: [
+            { marker: "人物", label: "マリア・テレジア", text: "皇室の居住と統治" },
+            { marker: "建築", label: "宮殿", text: "家族・外交の空間" },
+            { marker: "景観", label: "庭園軸", text: "視線を丘へ導く" },
+            { marker: "記念", label: "グロリエッテ", text: "権力を遠望させる" },
+          ],
+          caption: "部屋の豪華さだけでなく、窓から庭園と丘へ伸びる視線が宮殿の設計思想です。",
+        },
         sources: [
-          { label: "ペーター教会公式", href: "https://www.peterskirche.at/" },
+          { label: "シェーンブルン宮殿公式", href: "https://www.schoenbrunn.at/en/" },
+          { label: "UNESCO：シェーンブルン宮殿と庭園", href: "https://whc.unesco.org/en/list/786/" },
         ],
       },
       {
@@ -493,66 +526,6 @@ const DAY_HISTORY = {
         sources: [
           { label: "ウィーン市庁舎公式", href: "https://www.wien.gv.at/english/cityhall.html" },
           { label: "ウィーン市庁舎前マーケット公式", href: "https://www.christkindlmarkt.at/en/" },
-        ],
-      },
-    ],
-  },
-  4: {
-    country: COUNTRY_HISTORY.austria,
-    spots: [
-      {
-        name: "シェーンブルン宮殿・庭園・グロリエッテ",
-        era: "17世紀の狩猟館から18世紀の夏宮へ",
-        summary: "ハプスブルク家の夏の離宮。マリア・テレジアの治世に大宮殿と庭園が整えられ、皇室の暮らし・外交・祝祭を見せる舞台になりました。",
-        people: "マリア・テレジア、建築家フィッシャー・フォン・エルラッハ、庭園設計者らが現在の景観を形作りました。",
-        see: "宮殿から庭園の軸線を通してグロリエッテを見ること。内部の部屋は私生活、庭園は権力を遠くまで見せる舞台として対比します。",
-        image: SCHONBRUNN_IMAGE,
-        diagram: {
-          type: "relationship",
-          title: "宮殿の内側と外側",
-          items: [
-            { marker: "人物", label: "マリア・テレジア", text: "皇室の居住と統治" },
-            { marker: "建築", label: "宮殿", text: "家族・外交の空間" },
-            { marker: "景観", label: "庭園軸", text: "視線を丘へ導く" },
-            { marker: "記念", label: "グロリエッテ", text: "権力を遠望させる" },
-          ],
-          caption: "部屋の豪華さだけでなく、窓から庭園と丘へ伸びる視線が宮殿の設計思想です。",
-        },
-        sources: [
-          { label: "シェーンブルン宮殿公式", href: "https://www.schoenbrunn.at/en/" },
-          { label: "UNESCO：シェーンブルン宮殿と庭園", href: "https://whc.unesco.org/en/list/786/" },
-        ],
-      },
-      {
-        name: "美術史美術館",
-        era: "1891年開館・帝国コレクション",
-        summary: "ハプスブルク家が何世代も集めた絵画・工芸・古代美術を、帝国の美術館として公開するために建てられました。",
-        people: "建築家ゴットフリート・ゼンパーとカール・ハーゼナウアーが、向かいの自然史博物館と対になる壮大な建物を設計しました。",
-        see: "大階段、八角形ドーム、壁画とコレクションの関係。ブリューゲルなどの絵画だけでなく、『帝国が世界を収集した建物』として鑑賞します。",
-        image: KHM_CAFE_IMAGE,
-        sources: [
-          { label: "美術史美術館公式", href: "https://www.khm.at/en/" },
-        ],
-      },
-      {
-        name: "ベルヴェデーレ宮殿",
-        era: "1714〜1723年・バロック宮殿",
-        summary: "オスマン軍との戦いで名を上げたオイゲン公の夏の宮殿。下宮・庭園・上宮を一直線に配置し、軍人の邸宅を王宮に匹敵する景観へ仕立てました。",
-        people: "オイゲン公、建築家ヨハン・ルーカス・フォン・ヒルデブラントが中心人物です。現在はクリムトの『接吻』でも知られます。",
-        see: "上宮から下宮へ下がる庭園の段差、池に映るファサード、豪華な室内と近代絵画の対比。",
-        image: BELVEDERE_PALACE_IMAGE,
-        sources: [
-          { label: "ベルヴェデーレ公式", href: "https://www.belvedere.at/en" },
-        ],
-      },
-      {
-        name: "シュピッテルベルク",
-        era: "旧郊外の町並み・現代の市民文化",
-        summary: "かつて城壁外の職人・居住地区だった一帯が、19世紀の小さな家並みを残しながら再生された地区です。宮殿とは違う、生活のスケールのウィーンを歩けます。",
-        people: "特定の一人ではなく、職人や商人の町として形成された地区の歴史が主役です。",
-        see: "石畳の細い路地、低いファサード、中庭、冬市の屋台。大通りの帝都建築と比べて、生活の密度を感じます。",
-        sources: [
-          { label: "シュピッテルベルク地区公式", href: "https://spittelberg.at/" },
         ],
       },
     ],
@@ -1122,7 +1095,7 @@ const CITY_FOOD_HISTORY = {
       summary: "ウィーンはローマ軍営ウィンドボナ、バーベンベルク家の都、ハプスブルク帝国の宮廷、共和国の首都という役割を重ねてきました。",
       detail: [
         "旧市街のインネレ・シュタットには、城壁に囲まれた中世都市と王宮の機能が凝縮されています。19世紀に城壁が撤去されてリング通りが整備されると、市庁舎、議会、大学、美術館、劇場が並び、宮廷だけでなく市民社会のための都市が生まれました。",
-        "シェーンブルンは皇室の夏宮、ベルヴェデーレは貴族の邸宅、シュピッテルベルクは職人と住民の町です。これらを同じ日に見ると、ウィーンが一つの均質な『宮殿都市』ではなく、身分・職業・行政の空間が積み重なった大都市であることが分かります。",
+        "シェーンブルンは皇室の夏宮、ベルヴェデーレは貴族の邸宅、シュピッテルベルクは職人と住民の町です。これらの背景を比べると、ウィーンが一つの均質な『宮殿都市』ではなく、身分・職業・行政の空間が積み重なった大都市であることが分かります。",
       ],
       image: ST_STEPHANS_VIENNA_IMAGE,
       diagram: {
@@ -1164,7 +1137,7 @@ const CITY_FOOD_HISTORY = {
         summary: "仔牛を薄く叩いて衣をつけて揚げる料理で、宮廷料理と市民のレストラン文化をつなぐウィーン料理の代表です。",
         image: VIENNA_SCHNITZEL_IMAGE,
         detail: "似たカツレツは中欧や北イタリアにもあり、起源を一人の人物や一つの国に決めることはできません。ウィーンでは19世紀に仔牛料理として形式が整い、パン粉の衣をふくらませて揚げる技法とともに名物化しました。薄さ、肉の種類、揚げ油、レモンの添え方までが料理の作法です。",
-        onTrip: "Meissl & Schadnでは、肉を叩く工程と衣が膨らむ様子を料理の歴史として観察できます。",
+        onTrip: "金曜のReinthaler's Beislで、注文時に肉の種類を確認し、薄い肉と軽い衣の食感を楽しみます。",
       },
       {
         icon: "🥩",
@@ -1172,7 +1145,7 @@ const CITY_FOOD_HISTORY = {
         summary: "牛肉をブイヨンで煮る宮廷料理で、肉だけでなくスープ、骨髄、ソースを順番に味わいます。",
         image: VIENNA_TAFELSPITZ_IMAGE,
         detail: "ターフェルシュピッツは、皇帝フランツ・ヨーゼフ1世が好んだ料理として知られます。煮込み料理は高価な肉を柔らかくし、スープまで無駄なく使う家庭料理の知恵でもありました。宮廷の食卓で洗練された後、ガストハウスへ広がり、現在は『皇帝の料理』と『市民の鍋料理』の両方の顔を持っています。",
-        onTrip: "Plachuttaなどで食べる場合は、最初のスープから肉、骨髄トースト、ソースまで順番を楽しみます。",
+        onTrip: "当日選ぶ店で注文する場合は、最初のスープから肉、ソースへと味の変化を楽しみます。今回の固定メニューにはしていません。",
       },
       {
         icon: "☕",
@@ -1180,7 +1153,7 @@ const CITY_FOOD_HISTORY = {
         summary: "カフェは飲み物を買ってすぐ出る場所ではなく、新聞、音楽、文学、政治を語る市民の第二の居間でした。",
         image: KHM_CAFE_IMAGE,
         detail: "1683年のコーヒー豆にまつわる起源譚は伝説を含みますが、18〜19世紀にコーヒーハウスが都市生活へ深く根付いたことは確かです。メランジェ、新聞、水、席に長く座る習慣は、帝都に集まった知識人や芸術家の交流を支えました。カフェの内装も、社交のための舞台装置です。",
-        onTrip: "Gerstnerやカフェで、注文した飲み物を急いで飲み切らず、空間と滞在時間を含めて体験します。",
+        onTrip: "金曜の美術史美術館カフェや当日選ぶカフェで、飲み物だけでなく空間も味わいます。次の予定に合わせて休憩時間を調整します。",
       },
       {
         icon: "🍫",
@@ -1503,8 +1476,7 @@ const CITY_STORY = {
         ],
         image: VIENNA_TAFELSPITZ_IMAGE,
         links: [
-          { label: "Meissl & Schadn", href: "https://meisslundschadn.at/en/meissl-schadn-vienna/" },
-          { label: "Plachutta", href: "https://www.plachutta.at/en/" },
+          { label: "Reinthaler's Beisl", href: "https://en.reinthalersbeisl.com/kontakt" },
         ],
       },
       {
@@ -1517,7 +1489,7 @@ const CITY_STORY = {
         ],
         image: KHM_CAFE_IMAGE,
         links: [
-          { label: "Gerstner", href: "https://www.gerstner-konditorei.at/" },
+          { label: "美術史美術館カフェ", href: "https://www.khm.at/en/visit/cafe-restaurant/" },
           { label: "オーストリアのカフェ文化", href: "https://www.austria.info/ja/inspiration/coffeehouse-culture/" },
         ],
       },
@@ -1531,7 +1503,6 @@ const CITY_STORY = {
         ],
         image: SACHERTORTE_IMAGE,
         links: [
-          { label: "Gerstner", href: "https://www.gerstner-konditorei.at/" },
           { label: "美術史美術館カフェ", href: "https://www.khm.at/en/visit/cafe-restaurant/" },
         ],
       },
@@ -1927,56 +1898,39 @@ const DAYS = [
     day: 3,
     date: "11月20日（金）",
     weather: { name: "ウィーン", lat: 48.2082, lon: 16.3738, tripDate: "2026-11-20", timezone: "Europe/Vienna" },
-    title: "ブダペスト → ウィーン ＆ 旧市街散策・バロック宮廷図書館・市庁舎クリスマスマーケット",
+    title: "ブダペスト → ウィーン ─ 美術史美術館・シシィ博物館・大聖堂 ＆ スワロフスキー・コンサート",
     color: "#4a7a9a",
     icon: "🚄",
     schedule: [
       { time: "05:30頃", label: "ホテル チェックアウト・Keleti駅へ移動", desc: "Budapest Panorama Centralをチェックアウト。早朝は地下鉄の本数が少ないため、タクシーまたは徒歩併用での移動を推奨。出発30分前（06:00頃）には駅に到着", icon: "🏨", coords: [47.4947, 19.0595] },
-      { time: "06:30", label: "ブダペスト東駅（Keleti）発", desc: "ÖBB RJX 162（直通・約2時間48分）。予約済・2名。住所：Budapest, Kerepesi út 2-4。車内Wi-Fi・電源あり。車窓の風景を眺めながら快適に移動", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
-      { time: "09:18", label: "ウィーン中央駅（Wien Hbf）着", desc: "音楽と芸術の都ウィーンに到着。駅構内で48時間市内交通券を購入（またはWienMobilアプリで有効化）", icon: "🚉", coords: [48.1848, 16.3765] },
-      { time: "09:50", label: "ウィーン中央駅 → ARCOTEL Wimberger Wien", desc: "Wien Hbfからトラム18番でWestbahnhof方面へ直通約18分。ホテルはNeubaugürtel 34-36、西駅・U6駅すぐの好立地", icon: "🚋", coords: [48.2049, 16.3378] },
-      { time: "10:15", label: "ホテル到着・荷物預け（アーリーチェックイン確認）", desc: "午前着のため、アーリーチェックインを確認。入室できれば身支度、できなければ荷物を預けて身軽になり旧市街へ", icon: "🏨", important: true, url: "https://www.arcotel.com/en/hotels/vienna/arcotel-wimberger/", mapUrl: "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien", coords: [48.2049, 16.3378] },
-      { time: "10:45", label: "地下鉄U3で旧市街中心へ移動", desc: "徒歩4分のWestbahnhof（西駅）から地下鉄U3に乗車。乗換なし直通8分で「Stephansplatz」駅へ到着", icon: "🚇", coords: [48.2085, 16.3721] },
-      { time: "13:00", label: "Lugeck（ルゲック）でウィーンランチ", desc: "【ランチ】フィグルミュラー系列のモダンタバーン。歴史的洋館（Regensburger Hof）で名物シュニッツェルやグラシュを気取らず上質に堪能（徒歩3分）", icon: "🍽", important: true, url: "https://www.lugeck.com/", mapUrl: "https://maps.google.com/?q=Lugeck+Vienna", coords: [48.2096, 16.3749] },
-      { time: "14:00", label: "シュテファン大聖堂（Stephansdom）＆ 北塔展望台", desc: "【コース1】ウィーンの象徴。壮麗なゴシック建築と色鮮やかなモザイク屋根。エレベーターで上がれる「北塔（Pummerinの大鐘）」から旧市街の街並みを一望（徒歩すぐ）", icon: "⛪", important: true, url: "https://www.stephanskirche.at/", mapUrl: "https://maps.google.com/?q=Stephansdom+Vienna", coords: [48.2085, 16.3721], image: ST_STEPHANS_VIENNA_IMAGE },
-      { time: "14:45", label: "グラーベン ＆ ペーター教会（Peterskirche）散策", desc: "【コース2】歩行者天国の優美な大通り「グラーベン」を散策。ペスト記念柱と、壮麗なバロック装飾が施されたペーター教会へ立ち寄り（入場無料・徒歩5分）", icon: "🏛", url: "https://www.peterskirche.at/", mapUrl: "https://maps.google.com/?q=Peterskirche+Vienna", coords: [48.2094, 16.3700], image: PETERSKIRCHE_IMAGE },
-      { time: "15:30", label: "オーストリア国立図書館 プルンクザール（Prunksaal）", desc: "【コース3】ホーフブルク（王宮）ヨーゼフ広場にある「世界一美しいバロック宮廷図書館」。20万冊の革装丁古書と壮大な天井フレスコ画が織りなす空間（入場€10・徒歩5分）", icon: "📚", important: true, url: "https://www.onb.ac.at/en/museums/state-hall", mapUrl: "https://maps.google.com/?q=Prunksaal+der+%C3%96sterreichischen+Nationalbibliothek", coords: [48.2064, 16.3669], image: PRUNKSAAL_IMAGE },
-      { time: "16:15", label: "ゲルストナー皇室御用達菓子店（Gerstner）カフェ休憩", desc: "【カフェ】1847年創業、国立歌劇場向かいの老舗。1階ショップから3階サロンへ上がると宮殿のような豪奢な空間。本場のザッハトルテやメランジェで贅沢なティータイム（徒歩7分）", icon: "☕", important: true, url: "https://www.gerstner-konditorei.at/", mapUrl: "https://maps.google.com/?q=Gerstner+K.u.K.+Hofzuckerb%C3%A4cker+Vienna", coords: [48.2033, 16.3698] },
-      { time: "17:00", label: "市庁舎前広場 クリスマスマーケット（Christkindlmarkt）", desc: "【コース4】ウィーン最大規模の夢のマーケット。壮麗なネオゴシック様式の市庁舎が金色にライトアップされ、巨大ツリーと無数の屋台が輝く絶景。特製マグカップで温かいプンシュを味わう（トラム1番で移動約10分）", icon: "🎄", important: true, url: "https://www.christkindlmarkt.at/", mapUrl: "https://maps.google.com/?q=Christkindlmarkt+Rathausplatz+Vienna", coords: [48.2109, 16.3575], image: RATHAUS_MARKET_IMAGE },
-      { time: "18:15", label: "Meissl & Schadn で正統派ディナー", desc: "【ディナー】リング通り沿いの上品なレストラン。オープンキッチンで揚げる本場仔牛のウィーナーシュニッツェルをゆったりと堪能（市庁舎からトラム1番で約10分・要事前予約・20:15のコンサートに間に合うよう19:40頃には店を出る）", icon: "🍽", important: true, url: "https://meisslundschadn.at/en/meissl-schadn-vienna/", mapUrl: "https://maps.google.com/?q=Meissl+%26+Schadn+Wien", coords: [48.2017, 16.3734] },
-      { time: "19:45", label: "カールス教会（Karlskirche）へ移動", desc: "Meissl & Schadn からリンク通り沿いに徒歩またはトラム・地下鉄で Karlsplatz へ（約10〜15分）。開場に余裕をもって到着", icon: "🚶", coords: [48.1983, 16.3719] },
+      { time: "06:30", label: "ブダペスト東駅（Keleti）発", desc: "ÖBB RJX 162（直通・2時間50分）。予約済・2名。住所：Budapest, Kerepesi út 2-4。ÖBBの変更通知により到着は09:20へ変更。駅の案内・運行情報も確認", icon: "🚆", important: true, coords: [47.5001, 19.0839] },
+      { time: "09:20", label: "ウィーン中央駅（Wien Hbf）着", desc: "最新のÖBB通知に基づく到着予定時刻。市内交通券は初回乗車前に用意。24時間券を連続2枚／人で使う案は下のメモ参照", icon: "🚉", important: true, url: "https://www.oebb.at/en/", coords: [48.1848, 16.3765] },
+      { time: "09:30頃", label: "トラム18番でホテルへ", desc: "中央駅からBurggasse-Stadthalle行きに乗り、終点で下車。乗車約24分を目安に、駅構内の移動・待ち時間・ホテルまでの徒歩も見込む。到着が遅れた場合は美術館までの余裕を再確認", icon: "🚋", url: "https://wimberger.arcotel.com/en/location/" },
+      { time: "10:00頃", label: "ARCOTEL Wimberger Wienに荷物預け", desc: "Neubaugürtel 34-36。チェックインは15:00からのため、まず荷物を預けて出発。美術史美術館・シシィ博物館には大きな荷物を持ち込めない。早期入室を前提にしない", icon: "🏨", important: true, url: "https://wimberger.arcotel.com/en/location/", mapUrl: "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien", coords: [48.2049, 16.3378] },
+      { time: "10:15頃", label: "地下鉄U3で美術史美術館へ", desc: "ホテルから徒歩約5分のWestbahnhofへ。U3・Simmering方面でVolkstheater下車、Maria-Theresien-Platzの美術館入口へ歩く。徒歩・待ち時間込み約25〜35分を見込み、11:00前に到着", icon: "🚇", url: "https://www.khm.at/en/visit" },
+      { time: "11:00", label: "美術史美術館（入館予約済み）＆館内カフェ", desc: "11:00入館枠を大人2名分予約済み（€22×2）。入館後すぐ大ドーム下のカフェの列へ。通常カフェは席予約不可・入館予約とは別。食事・休憩の後に大階段や絵画を鑑賞し、13:30頃には退出して王宮へ（徒歩約15〜20分）", icon: "🖼", important: true, url: "https://www.khm.at/en/visit", mapUrl: "https://maps.google.com/?q=Kunsthistorisches+Museum+Wien", coords: [48.2038, 16.3617], image: KHM_CAFE_IMAGE },
+      { time: "14:00頃", label: "シシィ博物館・皇帝居室（ホーフブルク王宮）", desc: "購入済みSisi Passを利用。入口はMichaelerkuppel。皇妃エリザベートの展示とフランツ・ヨーゼフ夫妻の居室を見学（約60〜75分目安）。パス利用は時間予約不要。15:15頃には出発し、大聖堂へ徒歩約10〜15分", icon: "👑", important: true, url: "https://www.sisimuseum-hofburg.at/en/tickets/tickets-prices", mapUrl: "https://maps.google.com/?q=Sisi+Museum+Michaelerkuppel+Wien", coords: [48.2076979, 16.365938] },
+      { time: "15:30頃", label: "シュテファン大聖堂（内部見学）", desc: "金曜午後の内部観光は13:00〜16:30。無料の祈祷エリアとは別の内部見学券（大人€8）で、身廊・説教壇・主祭壇を見学。約30〜40分目安。礼拝等による制限あり。塔・地下墓所は今回の予定に含めない", icon: "⛪", important: true, url: "https://stephansdom-wien.at/besichtigung", mapUrl: "https://maps.google.com/?q=Stephansdom+Vienna", coords: [48.2084114, 16.3734707], image: ST_STEPHANS_VIENNA_IMAGE },
+      { time: "16:10頃", label: "大聖堂前クリスマスマーケット", desc: "内部見学の後、そのままStephansplatzの屋台へ。11/20は11:00〜21:00営業。工芸品や温かい飲み物を見ながら短めに散策", icon: "🎄", url: "https://www.weihnachtsmarkt.at/markt-stp/", mapUrl: "https://maps.google.com/?q=Stephansplatz+Christmas+Market+Wien", coords: [48.2082316, 16.3712411] },
+      { time: "16:30頃", label: "Manner シュテファン広場店", desc: "Stephansplatz 7、Rotenturmstraße角（大聖堂から徒歩約2分）。毎日10:00〜21:00。定番ウエハースやピンク色のグッズを見て、ケルントナー通りへ", icon: "🛍", url: "https://www.wien.info/en/see-do/shopping/old-city/manner-351530", mapUrl: "https://maps.google.com/?q=Manner+Stephansplatz+7+Wien", coords: [48.2091417, 16.3730432] },
+      { time: "16:50頃", label: "Swarovski ケルントナー通り8番地店", desc: "Kärntner Straße 8（Mannerから徒歩約5分）。金曜10:00〜18:30。こちらを先に見て、同じ通りを南へ進み24番地の旗艦店へ", icon: "💎", url: "https://www.swarovski.com/en-US/store/0001820255/swarovski-store-wien-kaerntnerstrasse-wien", mapUrl: "https://maps.google.com/?q=Swarovski+K%C3%A4rntner+Stra%C3%9Fe+8+Wien", coords: [48.2072535, 16.3714923] },
+      { time: "17:05頃", label: "Swarovski Kristallwelten Store Wien（旗艦店）", desc: "Kärntner Straße 24（8番地店から徒歩約3分）。金曜09:00〜20:00。クリスタルの展示とショップを散策。夕食に向け17:15頃を退出目安にし、見足りなければ夕食後の予備時間に再訪", icon: "💎", url: "https://www.kristallwelten.swarovski.com/en/stores/wien", mapUrl: "https://maps.google.com/?q=Swarovski+Kristallwelten+Store+Wien+K%C3%A4rntner+Stra%C3%9Fe+24", coords: [48.2054434, 16.3709487] },
+      { time: "17:30頃", label: "Reinthaler's Beislでディナー", desc: "Dorotheergasse 2–4、旗艦店から旧市街側へ徒歩約8〜10分。シュニッツェルを楽しむ。予約なしなので早めに入店し、満席時は待ち時間と20:15のコンサートを優先して当日判断", icon: "🍽", important: true, url: "https://en.reinthalersbeisl.com/kontakt", mapUrl: "https://maps.google.com/?q=Reinthaler%27s+Beisl+Dorotheergasse+Wien", coords: [48.2079768, 16.3699139] },
+      { time: "19:00頃", label: "SPAR Gourmet＆予備時間", desc: "Kärntner Ring 2（夕食の店からケルントナー通り経由で徒歩約15分）。金曜07:30〜20:00。水やお菓子を購入。旗艦店へ再訪する場合はこの途中で立ち寄り、教会への移動時間を残す", icon: "🛒", url: "https://www.spar.at/standorte/spar-gourmet-wien-1010-kaerntner-ring-2", mapUrl: "https://maps.google.com/?q=SPAR+Gourmet+K%C3%A4rntner+Ring+2+Wien", coords: [48.2019433, 16.3698786] },
+      { time: "19:45頃", label: "カールス教会 到着・入場準備", desc: "SPARからKarlsplatzを通り教会へ徒歩約10〜15分。19:45頃の到着を目標に、チケットの入場案内を確認。これは開場時刻ではなく余裕を持たせた到着目安", icon: "🚶", mapUrl: "https://maps.google.com/?q=Karlskirche+Vienna" },
       { time: "20:15", label: "カールス教会 ヴィヴァルディ「四季」コンサート", desc: "予約済（GetYourGuide・約75分）。バロック建築の傑作カールス教会で聴くヴィヴァルディ「四季」。予約番号・PINは下の予約カード参照", icon: "🎻", important: true, url: "https://www.getyourguide.com/booking/B8LAB3UL1OIJDZU3HNQM3MOPDN71WMLA", mapUrl: "https://maps.google.com/?q=Karlskirche+Vienna", coords: [48.1983, 16.3719] },
-      { time: "21:45", label: "夜景トラム ＆ ホテル帰着", desc: "ライトアップされたリング通りの建築美を眺めながらトラムまたは地下鉄でWestbahnhofへ戻り、ARCOTEL Wimbergerでゆっくり休む", icon: "🏨", coords: [48.2049, 16.3378] },
+      { time: "終演後", label: "ホテル帰着・翌朝の入場に備える", desc: "KarlsplatzからU4・Hütteldorf方面→LängenfeldgasseでU6・Floridsdorf方面に乗換、Burggasse-Stadthalleへ。徒歩・待ち時間込み約30〜40分目安。翌朝はシェーンブルン08:30〜08:45入場のため早めに休む", icon: "🏨", coords: [48.2049, 16.3378] },
     ],
     dinner: {
-      title: "ウィーン初日 ディナー候補（金曜夜・予約推奨）",
+      title: "金曜ディナー：Reinthaler's Beisl（予約なし）",
       options: [
         {
-          name: "Meissl & Schadn Wien",
-          genre: "正統派仔牛シュニッツェル・オープンキッチン",
-          desc: "リング通り沿いの格式ある名店。職人が目の前で叩いて揚げる本場仔牛のシュニッツェル。落ち着いた夫婦ディナーに最適",
-          tel: "+43 1 90211",
-          url: "https://meisslundschadn.at/en/meissl-schadn-vienna/",
-          mapUrl: "https://maps.google.com/?q=Meissl+%26+Schadn+Wien",
-          coords: [48.2017, 16.3734],
-        },
-        {
-          name: "Plachutta Wollzeile",
-          genre: "皇帝が愛した名物宮廷料理ターフェルシュピッツ",
-          desc: "ブイヨンで柔らかく煮込んだ最高級牛肉。熱々スープから骨髄トースト、ホースラディッシュソースまで味わう至高の体験",
-          tel: "+43 1 5121577",
-          url: "https://www.plachutta.at/en/",
-          mapUrl: "https://maps.google.com/?q=Plachutta+Wollzeile+Vienna",
-          coords: [48.2089, 16.3780],
-        },
-        {
-          name: "Lugeck（フィグルミュラー系列）",
-          genre: "現代風ウィーン料理＆オーストリアワイン",
-          desc: "歴史あるRegensburger Hof内のスタイリッシュなタバーン。名物シュニッツェルやグラシュを気取らず上質な雰囲気で",
-          tel: "+43 1 5125060",
-          url: "https://www.lugeck.com/",
-          mapUrl: "https://maps.google.com/?q=Lugeck+Vienna",
-          coords: [48.2096, 16.3749],
+          name: "Reinthaler's Beisl",
+          genre: "ウィーン料理・シュニッツェル",
+          desc: "Dorotheergasse 2–4。毎日11:00〜23:00、厨房22:30まで。今回は17:30頃に予約なしで入店予定。予約する場合は電話のみ（メール予約不可）。コンサート前のため長い待ち時間には注意",
+          tel: "+43 1 5131249",
+          url: "https://en.reinthalersbeisl.com/kontakt",
+          mapUrl: "https://maps.google.com/?q=Reinthaler%27s+Beisl+Dorotheergasse+Wien",
         },
       ],
     },
@@ -1987,8 +1941,8 @@ const DAYS = [
         { label: "乗客", value: "2名" },
         { label: "区間", value: "ブダペスト東駅（Keleti）→ ウィーン中央駅（Wien Hbf）" },
         { label: "出発", value: "2026年11月20日（金）06:30発" },
-        { label: "到着", value: "2026年11月20日（金）09:18着" },
-        { label: "所要時間", value: "2時間48分" },
+        { label: "到着", value: "2026年11月20日（金）09:20着（ÖBBの最新変更通知を反映）" },
+        { label: "所要時間", value: "2時間50分" },
         { label: "予約先", value: "ÖBB（予約済）" },
       ],
       url: "https://www.oebb.at/en/",
@@ -1999,19 +1953,33 @@ const DAYS = [
       titleColor: "#2a5a8a",
       textColor: "#1a3a5a",
       icon: "🚆",
-      title: "ウィーン初日 到着＆市内観光メモ",
+      title: "金曜の予約・時間制限・市内交通",
       body: (
         <>
-          <b>48時間市内交通券</b>：大人 €14.10 /人（WienMobilアプリまたは駅券売機で購入）。地下鉄・トラム・バスが48時間乗り放題。<br/>
-          <b>ホテルアクセス</b>：ウィーン西駅（Westbahnhof）から徒歩4分、U6 Burggasse-Stadthalleから徒歩1分。西駅から旧市街中心（Stephansplatz）へは地下鉄U3で直通わずか8分。<br/>
-          <b>国立図書館プルンクザール</b>：王宮ヨーゼフ広場。開館 10:00〜18:00。入場料大人€10。世界屈指のバロック宮廷図書館。<br/>
-          <b>ゲルストナー（Gerstner）</b>：オペラ座前（10:00〜21:00）。3階の宮殿サロンが格別。名物ザッハトルテとメランジェ。<br/>
-          <b>市庁舎前クリスマスマーケット</b>：10:00〜22:00（入場無料）。16:30の日没以降、市庁舎の黄金ライトアップとイルミネーションが最高潮を迎えます。<br/>
-          <b>ディナー予約</b>：金曜夜は混み合うため、Meissl & Schadn や Plachutta は日本出発前のweb予約を推奨。
+          <b>美術史美術館は予約済み</b>：11/20 11:00入館枠・大人2名€44支払済み。金曜10:00〜18:00。2名分のチケットをスマートフォンに保存または印刷して持参。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.khm.at/en/visit" target="_blank" rel="noopener noreferrer">公式来館案内</a><br/>
+          <b>館内カフェ</b>：10:00〜17:30（料理11:00〜16:30）。通常カフェは席予約不可、入館券が必要。入館後まず並び、待ち時間次第で鑑賞時間を調整。13:30頃の退出を目安に。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.genussimmuseum.at/" target="_blank" rel="noopener noreferrer">カフェ公式</a><br/>
+          <b>Sisi Passは購入済み</b>：シシィ博物館は時間予約不要で今日利用可能。宮殿の指定日時は明日11/21 08:30〜08:45。博物館は11/19再公開のため混雑に注意し、最新開館情報を確認。大きな荷物はホテルに預ける。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.imperialtickets.com/en/schoenbrunn-palace/sisi-pass/247" target="_blank" rel="noopener noreferrer">パス利用条件</a><br/>
+          <b>大聖堂内部は16:30まで</b>：午後の観光13:00〜16:30、内部券大人€8。礼拝等の制限あり。マーケットや買い物より内部見学を先に。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://stephansdom-wien.at/tickets" target="_blank" rel="noopener noreferrer">内部券の公式料金</a><br/>
+          <b>スワロフスキーは2店舗</b>：8番地店は金曜18:30まで、24番地の旗艦店は20:00まで。夕食後の予備時間で再訪できるのは旗艦店。<br/>
+          <b>市内交通券は未購入</b>：48・72時間券は2026/1/1に廃止。24時間券を連続2枚／人で使う案なら、デジタル€9.70×4枚＝2名€38.80（紙券は€10.20×4枚＝€40.80）。初回乗車から切れ目なく設定し、日曜早朝の駅移動も有効期間を確認。デジタル券は記名式・写真付き公的身分証が必要、紙券は初回乗車前に刻印。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.wienerlinien.at/24-stunden-wien" target="_blank" rel="noopener noreferrer">交通券公式</a><br/>
+          <b>移動・営業時間</b>：移動時間は徒歩・待ち時間で変わる目安。列車の遅延時は無理に詰め込まず、入館枠と20:15コンサートを優先。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.wienmobil.at/" target="_blank" rel="noopener noreferrer">WienMobilで当日経路を確認</a> ／ 営業情報は2026/11/15確認、臨時変更に注意。
         </>
       ),
     },
     extraBookings: [
+      {
+        key: "khm-vienna-d3",
+        icon: "🖼",
+        title: "美術史美術館（11:00入館・予約済み）",
+        url: "https://www.khm.at/en/visit",
+        mapUrl: "https://maps.google.com/?q=Kunsthistorisches+Museum+Wien",
+        details: [
+          { label: "入館日時", value: "2026年11月20日（金）11:00（チケット記載）" },
+          { label: "人数・料金", value: "大人2名・€22×2＝€44（クレジットカード支払済み）" },
+          { label: "チケット", value: "2名分。スマートフォン（ウォレット／KHMアプリ）に保存、またはPDFを印刷して持参" },
+          { label: "カフェ", value: "入館後すぐ列へ。通常カフェは席予約不可・飲食代別。入館枠は席を保証しない" },
+        ],
+      },
       {
         key: "arcotel-wimberger-vienna",
         icon: "🏨",
@@ -2053,68 +2021,68 @@ const DAYS = [
     day: 4,
     date: "11月21日（土）",
     weather: { name: "ウィーン", lat: 48.2082, lon: 16.3738, tripDate: "2026-11-21", timezone: "Europe/Vienna" },
-    title: "ウィーン ─ シェーンブルン宮殿・ベルヴェデーレ上宮 ＆ 芸術とマーケット巡り",
+    title: "ウィーン ─ シェーンブルン宮殿・国立図書館 ＆ 雑貨・文具・市庁舎前マーケット",
     color: "#4a7a9a",
     icon: "👑",
     schedule: [
-      { time: "08:45", label: "ホテル出発 → 西駅からシェーンブルンへ", desc: "Westbahnhofからトラム52/60番またはU6→U4で約15〜20分。朝の澄んだ空気の中、夏の離宮へ向かう", icon: "🚋", coords: [48.2049, 16.3378] },
-      { time: "09:15", label: "シェーンブルン宮殿（Schloss Schönbrunn）", desc: "【コース1】ハプスブルク家の夏の離宮（世界遺産）。マリア・テレジアが愛した壮麗な大広間やモーツァルトが演奏した鏡の間を巡るグランドツアー（要事前予約・日本語オーディオ付・約50分）", icon: "👑", important: true, url: "https://www.schoenbrunn.at/en/", mapUrl: "https://maps.google.com/?q=Sch%C3%B6nbrunn+Palace+Vienna", coords: [48.1858, 16.3128], image: SCHONBRUNN_IMAGE },
-      { time: "10:30", label: "宮殿庭園 ＆ グロリエッテ遠望", desc: "【コース2】幾何学模様の広大なバロック庭園を散策。丘の上に立つ優美な凱旋門「グロリエッテ」の景観を楽しむ（徒歩15分）", icon: "🌳", mapUrl: "https://maps.google.com/?q=Gloriette+Sch%C3%B6nbrunn", coords: [48.1782, 16.3087] },
-      { time: "11:15", label: "シェーンブルン宮殿前 クリスマスマーケット", desc: "【コース3】宮殿の前庭に広がる優雅なマーケット（11/6開幕）。壮麗な宮殿を背景に、質の高い伝統工芸品や木製オーナメントが並ぶ（徒歩すぐ）", icon: "🎄", important: true, url: "https://www.weihnachtsmarkt.co.at/", mapUrl: "https://maps.google.com/?q=Kultur-+und+Weihnachtsmarkt+Schloss+Sch%C3%B6nbrunn", coords: [48.1870, 16.3140] },
-      { time: "12:15", label: "地下鉄U4で市内中心へ移動", desc: "地下鉄U4「Schönbrunn」駅から「Karlsplatz」へ直通約9分。リンク通り方面へ移動", icon: "🚇", coords: [48.2000, 16.3690] },
-      { time: "12:45", label: "美術史美術館 カフェ・レストラン（KHM Café）でランチ", desc: "【ランチ＆カフェ】「世界一美しいミュージアムカフェ」。八角形の大ドーム直下、壮麗な大理石と金箔の空間で伝統料理やスイーツを堪能（美術館入場券が必要・徒歩7分）", icon: "🍽", important: true, url: "https://www.khm.at/en/visit/cafe-restaurant/", mapUrl: "https://maps.google.com/?q=Kunsthistorisches+Museum+Wien", coords: [48.2038, 16.3617], image: KHM_CAFE_IMAGE },
-      { time: "14:15", label: "ベルヴェデーレ上宮（Oberes Belvedere）", desc: "【コース4】バロックの傑作宮殿。クリムトの世界的名作『接吻（The Kiss）』や『ユディト』、エゴン・シーレの絵画を鑑賞。上宮南庭園からの眺めも格別（要日時指定予約・トラムD番または18番で移動）", icon: "🖼", important: true, url: "https://www.belvedere.at/en", mapUrl: "https://maps.google.com/?q=Upper+Belvedere+Vienna", coords: [48.1915, 16.3809], image: BELVEDERE_PALACE_IMAGE },
-      { time: "15:45", label: "ベルヴェデーレ宮殿 クリスマス村", desc: "【コース5】上宮前のバロック池を取り囲むロマンチックなクリスマス村。池の水面に宮殿とイルミネーションが映り込む絶好の写真スポット（徒歩すぐ）", icon: "🎄", mapUrl: "https://maps.google.com/?q=Weihnachtsdorf+Schloss+Belvedere", coords: [48.1925, 16.3815] },
-      { time: "17:00", label: "シュピッテルベルク クリスマスマーケット", desc: "【コース6】ホテル近くのノイバウ地区。石畳の小道に暖色のランプと屋台が並び、ウィーンっ子に最も親しまれる温かいマーケット。散策しながらオーガニックフードや温かいドリンクを楽しむ（トラム18番→西駅、またはU3 Volkstheater）", icon: "🧣", important: true, url: "https://spittelberg.at/", mapUrl: "https://maps.google.com/?q=Weihnachtsmarkt+am+Spittelberg", coords: [48.2033, 16.3536] },
-      { time: "18:45", label: "Glacis Beisl（グラシス・バイスル）で夫婦ディナー", desc: "【ディナー】ミュージアム・クォーター裏手の洗練されたビストロ。地元で評判のグラシュや旬のウィーン料理、オーストリアワインを落ち着いた雰囲気で堪能（シュピッテルベルクから徒歩5分・ホテルへも徒歩10分）", icon: "🍽", important: true, url: "https://www.glacisbeisl.at/", mapUrl: "https://maps.google.com/?q=Glacis+Beisl+Vienna", coords: [48.2040, 16.3570] },
-      { time: "20:45", label: "ホテル帰着 ＆ 翌朝プラハ移動の荷造り・就寝", desc: "ホテル（ARCOTEL Wimberger）へ徒歩で帰着。翌朝はウィーン中央駅06:39発のRegioJet RJ 1030（プラハ行き）のため早めに就寝", icon: "🏨", coords: [48.2049, 16.3378] },
+      { time: "07:30頃", label: "ホテル出発 → シェーンブルン宮殿へ", desc: "Burggasse-StadthalleからU6・Siebenhirten方面→LängenfeldgasseでU4・Hütteldorf方面に乗換、Schönbrunn下車。駅から宮殿入口への徒歩も含め約35〜45分を見込み、08:10頃到着を目標にする。当日WienMobilで運行確認", icon: "🚇", url: "https://www.wienmobil.at/", coords: [48.2049, 16.3378] },
+      { time: "08:30〜08:45", label: "シェーンブルン宮殿（購入済み入場枠）", desc: "Sisi Pass・大人2名。入場枠厳守。皇帝夫妻の私室、マリア・テレジア時代の室内、大広間を巡る宮殿ツアー。音声案内付き、見学は約60〜75分目安。終了後は10:30のマーケットまで休憩など自由に過ごす", icon: "👑", important: true, url: "https://www.schoenbrunn.at/en/", mapUrl: "https://maps.google.com/?q=Sch%C3%B6nbrunn+Palace+Vienna", coords: [48.1858, 16.3128], image: SCHONBRUNN_IMAGE },
+      { time: "10:30頃", label: "シェーンブルン宮殿前クリスマスマーケット", desc: "宮殿前庭の屋台で工芸品や木製オーナメントを散策。2026/11/6〜2027/1/6開催、今日は10:00〜21:00。飲食するかは当日決める", icon: "🎄", important: true, url: "https://www.schoenbrunn.at/en/events/all-events/event/christmas-market-schoenbrunn-palace", mapUrl: "https://maps.google.com/?q=Weihnachtsmarkt+Schloss+Sch%C3%B6nbrunn", coords: [48.1870, 16.3140] },
+      { time: "12:00頃", label: "市内中心へ移動・昼食と休憩", desc: "Schönbrunn駅からU4・Heiligenstadt方面でKarlsplatzへ、ヨーゼフ広場方面へ徒歩。歩行・待ち時間込み約35〜45分目安。カフェやソーセージなど、食べる場所・内容は当日決める。14:00頃の図書館訪問まで余裕を確保", icon: "🍽", url: "https://www.wienmobil.at/" },
+      { time: "14:00頃", label: "オーストリア国立図書館 プルンクザール", desc: "Josefsplatz 1。入場券・音声ガイドは2名分購入済み（合計€29）。約20万冊の古書、天井フレスコ画とバロックの空間を鑑賞。約45〜50分の見学後、Leschanzへ徒歩約10分。14:00は訪問目安で、時刻指定予約ではない", icon: "📚", important: true, url: "https://www.onb.ac.at/en/museums/state-hall", mapUrl: "https://maps.google.com/?q=Prunksaal+der+%C3%96sterreichischen+Nationalbibliothek", coords: [48.2064, 16.3669], image: PRUNKSAAL_IMAGE },
+      { time: "15:00頃", label: "Leschanz Wiener Schokolade König", desc: "Freisingergasse 1。月〜土10:00〜18:00。ウィーンの手作りチョコレートを選ぶ。次の雑貨店までは徒歩約10〜15分", icon: "🍫", url: "https://www.leschanz.at/", mapUrl: "https://maps.google.com/?q=Leschanz+Freisingergasse+1+Wien", coords: [48.2093271, 16.3707359] },
+      { time: "15:35頃", label: "DIE VERMISCHTE WARENHANDLUNG", desc: "Weihburggasse 16の中庭。紙雑貨やクリスマス飾りなどを探す。公式11/7告知のクリスマス期間営業時間は月〜土10:00〜18:00。次のHerzileinヴォルツァイレ店へ徒歩約5〜10分", icon: "🎁", url: "https://dievermischtewarenhandlung.tumblr.com/post/832628810510925824", mapUrl: "https://maps.google.com/?q=Die+Vermischte+Warenhandlung+Weihburggasse+16+Wien", coords: [48.2060793, 16.3744234] },
+      { time: "16:10頃", label: "Papeterie Herzilein ヴォルツァイレ店", desc: "Wollzeile 18。月〜土10:00〜18:00。カードやノートなどの文具を探す。次のアム・ホーフ店までは徒歩約10〜15分", icon: "✏️", url: "https://www.herzilein-papeterie.at/pages/besuche-uns-in-einem-unserer-stationaren-geschafte", mapUrl: "https://maps.google.com/?q=Papeterie+Herzilein+Wollzeile+18+Wien", coords: [48.2082947, 16.376266] },
+      { time: "16:45頃", label: "Papeterie Herzilein アム・ホーフ店", desc: "Am Hof 5。月〜土10:00〜18:00。もう一方の店舗も見て、スーパーへ。買い物が長引いた場合も17:20頃の出発を目安にし、閉店前の食料品購入を優先", icon: "✏️", url: "https://www.herzilein-papeterie.at/pages/besuche-uns-in-einem-unserer-stationaren-geschafte", mapUrl: "https://maps.google.com/?q=Herzilein+Papeterie+Am+Hof+5+Wien", coords: [48.2109555, 16.3668395] },
+      { time: "17:30頃", label: "スーパーでミラベルのモーツァルトチョコ探し", desc: "市庁舎へ向かう途中のINTERSPAR Schottentor（Schottengasse 6–8、Am Hofから徒歩約10分）。土曜08:30〜18:00。BILLA／SPAR系列でMirabellを探す計画だが、商品・在庫は店舗により異なる。水や翌朝用の軽食も必要に応じて購入", icon: "🛒", important: true, url: "https://www.interspar.at/standorte/8200", mapUrl: "https://maps.google.com/?q=INTERSPAR+Schottengasse+6-8+Wien", coords: [48.2137626, 16.3634836] },
+      { time: "18:15頃", label: "市庁舎前広場クリスマスマーケット", desc: "スーパーから徒歩約15分。2026/11/13〜12/26開催、毎日10:00〜22:00。大きなツリーと市庁舎のイルミネーションを楽しむ。夕食はカフェやソーセージなど当日決め、店・メニューは固定しない", icon: "🎄", important: true, url: "https://www.christkindlmarkt.at/besuch/", mapUrl: "https://maps.google.com/?q=Christkindlmarkt+Rathausplatz+Vienna", coords: [48.2109, 16.3575], image: RATHAUS_MARKET_IMAGE },
+      { time: "20:00頃", label: "ホテルへ移動・翌朝の荷造り", desc: "市庁舎付近からU2でVolkstheaterへ、U3・Ottakring方面に乗換えてWestbahnhof下車、徒歩でホテルへ（約30〜40分目安）。翌朝06:39発のRegioJet RJ 1030でプラハへ向かうため、閉店まで滞在せず早めに休む", icon: "🏨", coords: [48.2049, 16.3378] },
     ],
-    dinner: {
-      title: "ウィーン2日目 ディナー候補（ホテル近く＆名店）",
-      options: [
-        {
-          name: "Glacis Beisl（グラシス・バイスル）",
-          genre: "洗練されたウィーン郷土ビストロ・中庭",
-          desc: "MQ裏手、ホテルから徒歩10分。観光客の喧騒を離れ、地元の大人が通う本格グラシュや季節のウィーン料理を上質ワインとともに",
-          tel: "+43 1 5265660",
-          url: "https://www.glacisbeisl.at/",
-          mapUrl: "https://maps.google.com/?q=Glacis+Beisl+Vienna",
-          coords: [48.2040, 16.3570],
-        },
-        {
-          name: "Zum Schwarzen Kameel（黒ラクダ）",
-          genre: "1618年創業の歴史的名店・アールヌーヴォー",
-          desc: "ベートーヴェンも愛した伝説の老舗。手軽なオープンサンドイッチとワインのバーから、格調高いダイニングルームまで",
-          tel: "+43 1 5338125",
-          url: "https://www.kameel.at/",
-          mapUrl: "https://maps.google.com/?q=Zum+Schwarzen+Kameel+Vienna",
-          coords: [48.2100, 16.3686],
-        },
-        {
-          name: "Gasthaus Steman",
-          genre: "地元で愛されるアットホームな老舗バイスル",
-          desc: "6区の住宅街に佇む温かい木の内装。家庭的で丁寧なターフェルシュピッツやシュニッツェルをリーズナブルに味わえる隠れ家",
-          tel: "+43 1 5877864",
-          url: "https://www.steman.at/",
-          mapUrl: "https://maps.google.com/?q=Gasthaus+Steman+Vienna",
-          coords: [48.1970, 16.3548],
-        },
+    booking: {
+      title: "Sisi Pass（購入済み・シェーンブルン入場枠確定）",
+      url: "https://www.imperialtickets.com/en/schoenbrunn-palace/sisi-pass/247",
+      mapUrl: "https://maps.google.com/?q=Sch%C3%B6nbrunn+Palace+Vienna",
+      details: [
+        { label: "宮殿入場枠", value: "2026年11月21日（土）08:30〜08:45（時間厳守）" },
+        { label: "人数・料金", value: "大人2名・€60×2＝€120（購入済み）" },
+        { label: "含まれる施設", value: "シェーンブルン宮殿、シシィ博物館・皇帝居室、ウィーン家具博物館" },
+        { label: "利用予定", value: "11/20 シシィ博物館 → 11/21 シェーンブルン宮殿。家具博物館は旅程に含めない" },
+        { label: "利用条件", value: "指定日時は宮殿のみ。他の対象施設は購入から1年以内に各1回、時間予約不要。宮殿の入場枠に遅れると入場券は失効" },
+        { label: "当日の準備", value: "チケットをスマートフォンに保存、または印刷して持参。音声案内の受取場所は現地で確認" },
       ],
     },
+    extraBookings: [
+      {
+        key: "prunksaal-vienna-d4",
+        icon: "📚",
+        title: "国立図書館 プルンクザール＆音声ガイド（購入済み）",
+        url: "https://www.onb.ac.at/en/museums/state-hall",
+        mapUrl: "https://maps.google.com/?q=Prunksaal+der+%C3%96sterreichischen+Nationalbibliothek",
+        details: [
+          { label: "訪問予定", value: "2026年11月21日（土）14:00頃（訪問目安・日時指定の確認資料なし）" },
+          { label: "入場券", value: "大人2名・€12×2＝€24" },
+          { label: "音声ガイド", value: "2名分・€2.50×2＝€5" },
+          { label: "合計・支払", value: "€29・クレジットカード支払済み（円請求額は未反映）" },
+          { label: "場所・営業時間", value: "Josefsplatz 1、土曜09:00〜18:00。入場用チケットを持参し、音声ガイドを受け取る" },
+        ],
+      },
+    ],
     memo: {
       bg: "linear-gradient(135deg,#f8f4e8,#f5efdc)",
       border: "#e8d8a0",
       titleColor: "#8a6a10",
       textColor: "#5a4808",
       icon: "👑",
-      title: "ウィーン2日目 観光＆予約・移動メモ",
+      title: "土曜の入場枠・買い物・翌朝の準備",
       body: (
         <>
-          <b>シェーンブルン宮殿</b>：時間指定・要予約（グランドツアー推奨・日本語オーディオ付）。午前中（09:30前）が最も空いています。<br/>
-          <b>ベルヴェデーレ上宮</b>：クリムト『接吻』所蔵。<b>日時指定チケットの事前購入が必須</b>（時間枠を過ぎると入場制限あり）。<br/>
-          <b>美術史美術館カフェ</b>：大ドーム下の絶景カフェ。美術館チケットで入場可能。12:00〜13:30は混み合うため少し早めの入店がスムーズ。<br/>
-          <b>シュピッテルベルク・マーケット</b>：土曜11:00〜21:30。ホテル徒歩圏。石畳の路地に地元工芸品やオーガニック屋台が立ち並ぶ隠れ家マーケット。<br/>
-          <b>翌朝の移動（注意）</b>：Day 5はウィーン中央駅 06:39発（RegioJet RJ 1030）。日曜早朝はトラム間隔が開くため、ホテルは05:45頃に出発推奨（トラム18番約20分またはタクシー約10分）。
+          <b>宮殿入場08:30〜08:45</b>：Sisi Pass購入済み・2名€120。開館08:30〜17:00。入場枠を過ぎると宮殿の入場券は失効するため、入口へ早めに到着。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.schoenbrunn.at/en/visitor-information/opening-times" target="_blank" rel="noopener noreferrer">宮殿公式営業時間</a><br/>
+          <b>国立図書館も購入済み</b>：土曜09:00〜18:00、入場2名€24＋音声ガイド2名€5＝€29支払済み。14:00は訪問予定で日時指定の確定枠ではない。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.onb.ac.at/museen/prunksaal/oeffnungszeiten/" target="_blank" rel="noopener noreferrer">図書館公式営業時間</a><br/>
+          <b>雑貨店の季節営業時間</b>：DIE VERMISCHTE WARENHANDLUNGは、公式の2026/11/7告知でクリスマス期間は月〜土10:00〜18:00。通常期の土曜17:00閉店と混同しない。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://dievermischtewarenhandlung.tumblr.com/post/832628810510925824" target="_blank" rel="noopener noreferrer">公式の季節営業案内</a><br/>
+          <b>文具・チョコの買い物</b>：Leschanz、HerzileinのWollzeile 18店・Am Hof 5店は月〜土10:00〜18:00。翌日曜は多くの店が休みのため今日まとめて購入。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.leschanz.at/kontakt/" target="_blank" rel="noopener noreferrer">Leschanz公式</a> ／ <a className="eu-memo-link" style={{ color: "inherit" }} href="https://www.herzilein-papeterie.at/pages/besuche-uns-in-einem-unserer-stationaren-geschafte" target="_blank" rel="noopener noreferrer">Herzilein両店公式</a><br/>
+          <b>スーパーも18:00まで</b>：INTERSPAR Schottentorは土曜08:30〜18:00、17:30頃入店目標。MirabellはBILLA公式にも取扱い掲載があるが、各店の品揃え・在庫は当日確認。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://shop.billa.at/marken/mirabell" target="_blank" rel="noopener noreferrer">Mirabellの商品参考</a><br/>
+          <b>食事・休憩</b>：昼も夜も当日決定。カフェやソーセージなど、その時の空腹・混雑に合わせる。固定のレストラン予約はなし。<br/>
+          <b>翌朝は06:39発</b>：Day5はウィーン中央駅からRegioJet RJ 1030でプラハへ。夜のうちに荷造りし、ホテルは05:45頃出発を目安に当日の交通を確認。市内交通券は日曜早朝まで有効か確認。営業時間・移動時間は2026/11/15確認時点の案内と目安。
         </>
       ),
     },
@@ -2376,17 +2344,18 @@ const COSTS = [
   { item: "ブダペスト 2泊（Budapest Panorama Central）", cost: 26397, note: "予約済 換算目安 ¥26,397（スーペリア ダブルルーム スパバス付・2泊）" },
   { item: "ドナウ川 ボートクルーズ（屋上座席保証・2名）", cost: 6000, note: "予約済・GYGFWVYH6GMN ／ 金額は旧候補ツアーの目安（約¥6,000）のまま。実額は予約確認メールで要確認" },
   { item: "ウィーン カールス教会 ヴィヴァルディ「四季」コンサート（2名）", cost: 0, note: "予約済・GYG48YF59299 ／ 金額は予約確認メールで要確認（未反映）" },
-  { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "手配要 早割€13〜/人（MÁV）または €19.90〜/人（ÖBB）" },
+  { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "予約済・ÖBB RJX 162／11/20 06:30発→09:20着（変更通知反映）／実額は未反映" },
   { item: "鉄道 ウィーン→プラハ（2名）", cost: 0, note: "手配要 早割€14.90〜/人（ÖBB）または €15〜/人（RegioJet）" },
   { item: "ウィーン 2泊（ARCOTEL Wimberger Wien・2名）", cost: 40277, note: "予約済・支払済 €198.61（約¥40,277／税・サービス料込み）・予約番号 5340692962" },
   { item: "プラハ 2泊（Youngmann House・2名）", cost: 28407, note: "予約済・支払済 Booking.com（¥28,407／換算目安¥27,579）・返金不可" },
   { item: "空港バス 100E（ブダペスト空港→Astoria、2名）", cost: 2100, note: "2,500HUF×2名（クレカタッチ決済 約¥2,100）" },
   { item: "ブダペスト市内交通 24時間券（2名）", cost: 2100, note: "2,500HUF×2名（地下鉄・トラム乗り放題 約¥2,100）" },
-  { item: "ウィーン市内交通 48時間券（2名）", cost: 4650, note: "€14.10×2名（WienMobilアプリまたは券売機 約¥4,650・乗り放題）" },
+  { item: "ウィーン市内交通 24時間券×2枚／人（2名・購入案）", cost: 0, note: "未購入・デジタル€9.70×4枚＝€38.80（紙€10.20×4枚＝€40.80）／初回乗車から連続して使用／円換算額未反映" },
   { item: "国会議事堂 ガイドツアー（2名・任意）", cost: 0, note: "11/19朝8:00にビジターセンターで当日券を購入予定 14,000HUF×2名（約¥11,600）／事前予約枠は空きなし・当日券のみ（枚数限定）／外観散策は無料" },
-  { item: "シェーンブルン宮殿 グランドツアー（2名・任意）", cost: 0, note: "大人約€32×2名（要事前予約・日本語オーディオ付）" },
-  { item: "ベルヴェデーレ上宮 入場券（2名・任意）", cost: 0, note: "大人約€19×2名（クリムト『接吻』・要日時指定予約）" },
-  { item: "国立図書館 プルンクザール（2名・任意）", cost: 0, note: "大人€10×2名（約¥3,300）" },
+  { item: "Sisi Pass（大人2名）", cost: 0, note: "購入済み・€60×2＝€120／11/20シシィ博物館・11/21シェーンブルン08:30〜08:45入場／円請求額未反映（単独券との重複計上なし）" },
+  { item: "美術史美術館 入場券（大人2名）", cost: 0, note: "予約済み・クレジットカード支払済み／11/20 11:00入館／€22×2＝€44、カフェ飲食代別／円請求額未反映" },
+  { item: "シュテファン大聖堂 内部見学券（大人2名）", cost: 0, note: "未購入・大人€8×2＝€16目安／塔・地下墓所は含めない／円換算額未反映" },
+  { item: "国立図書館 プルンクザール＆音声ガイド（2名）", cost: 0, note: "購入済み・クレジットカード支払済み／入場€12×2＝€24＋音声ガイド€2.50×2＝€5、計€29／円請求額未反映" },
   { item: "ブダ城 ＆ 王宮の丘 散策", cost: 0, note: "外観・敷地散策無料（シクロー利用時 往復約5,000HUF/人）" },
   { item: "宿泊税 ブダペスト（室料の4%×2泊）", cost: 1000, note: "現地ホテル払い 目安約¥1,000" },
   { item: "宿泊税 ウィーン", cost: 0, note: "宿泊料金に市税5%を含む（追加支払いなし）" },
@@ -2740,6 +2709,27 @@ export default function EuropeTrip() {
   const [expandedBooking, setExpandedBooking] = useState(null);
   const totalFixed = COSTS.filter(c => c.cost > 0).reduce((s, c) => s + c.cost, 0);
   const historyForDay = DAY_HISTORY[DAYS[activeDay].day];
+  const navRef = useRef(null);
+  const mapStickyRef = useRef(null);
+  const timelineRef = useRef(null);
+  const mapFocusIndex = useScheduleFocus(timelineRef, mapStickyRef, `${view}-${activeDay}-${activePanel}`);
+  let pinCount = 0;
+  const pinNumbers = DAYS[activeDay].schedule.map(s => (s.coords ? ++pinCount : null));
+
+  // The sticky map sits directly below the sticky nav, whose height changes with font and viewport.
+  useEffect(() => {
+    const nav = navRef.current;
+    const root = document.documentElement;
+    if (!nav) return undefined;
+    const observer = new ResizeObserver(() => {
+      root.style.setProperty("--eu-nav-h", `${nav.getBoundingClientRect().height}px`);
+    });
+    observer.observe(nav);
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty("--eu-nav-h");
+    };
+  }, []);
 
   return (
     <div style={{ fontFamily:"'Noto Serif JP','Hiragino Mincho ProN',serif", background:"#F7F3ED", minHeight:"100vh", color:"#2C2421" }}>
@@ -2894,9 +2884,9 @@ export default function EuropeTrip() {
         .eu-history-empty p { color:#6a6058; font-size:.82rem; line-height:1.7; }
         .eu-timeline { position:relative; padding-left:2rem; list-style:none; }
         .eu-timeline::before { content:''; position:absolute; left:5px; top:8px; bottom:8px; width:1px; background:#d4cdc5; }
-        .eu-tl-item { position:relative; padding-bottom:1.8rem; padding-left:1rem; }
+        .eu-tl-item { position:relative; padding-bottom:1.8rem; padding-left:1rem; isolation:isolate; }
         .eu-tl-item:last-child { padding-bottom:0; }
-        .eu-tl-dot { position:absolute; left:-2rem; top:4px; width:11px; height:11px; border-radius:50%; background:#d4cdc5; border:2px solid #F7F3ED; z-index:1; }
+        .eu-tl-dot { position:absolute; left:-2rem; top:4px; width:11px; height:11px; border-radius:50%; background:#d4cdc5; border:2px solid #F7F3ED; z-index:1; transition:transform .2s ease-out; }
         .eu-tl-dot.important { width:13px; height:13px; }
         .eu-tl-time { font-family:'Zen Maru Gothic',sans-serif; font-size:.78rem; color:#756d65; letter-spacing:.05em; margin-bottom:.2rem; }
         .eu-tl-label { font-weight:500; font-size:1rem; letter-spacing:.04em; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
@@ -2907,6 +2897,14 @@ export default function EuropeTrip() {
         .eu-tl-links a:hover { opacity:1!important; }
         .eu-tl-links a:focus-visible { outline:2px solid #2C2421; outline-offset:1px; border-radius:2px; }
         .eu-tl-icon-link:focus-visible { outline:2px solid #2C2421; outline-offset:1px; border-radius:2px; }
+        .eu-map-sticky { --eu-map-h:clamp(150px,26vh,240px); position:sticky; top:var(--eu-nav-h,3.75rem); z-index:50; background:#F7F3ED; padding:.5rem 0; margin-bottom:1.5rem; }
+        .eu-tl-item::before { content:''; position:absolute; inset:-.45rem -.6rem 1.35rem .35rem; z-index:-1; background:white; border-radius:6px; box-shadow:inset 3px 0 0 var(--eu-day-color),0 1px 6px rgba(0,0,0,.06); opacity:0; transition:opacity .2s ease-out; pointer-events:none; }
+        .eu-tl-item:last-child::before { bottom:-.45rem; }
+        .eu-tl-item.is-map-focus::before { opacity:1; }
+        .eu-tl-item.is-map-focus .eu-tl-dot { background:var(--eu-day-color)!important; box-shadow:0 0 0 2px var(--eu-day-color); transform:scale(1.3); }
+        .eu-tl-pin { display:inline-block; min-width:1.35rem; margin-right:.4rem; padding:.05rem .35rem; border-radius:999px; background:var(--eu-day-color); color:white; font-size:.64rem; font-weight:700; line-height:1.5; text-align:center; font-variant-numeric:tabular-nums; }
+        @media (max-height:560px) { .eu-map-sticky { position:static; } }
+        @media (min-height:561px) { html:has(.eu-map-sticky) { scroll-padding-top:calc(var(--eu-nav-h,3.75rem) + clamp(150px,26vh,240px) + 1.5rem); } }
         .eu-booking-card { margin-top:2.5rem; background:white; border-radius:6px; overflow:hidden; box-shadow:0 1px 8px rgba(0,0,0,.06); cursor:pointer; transition:box-shadow .3s; }
         .eu-booking-card:hover { box-shadow:0 2px 16px rgba(0,0,0,.1); }
         .eu-booking-card:focus-visible { outline:2px solid #2C2421; outline-offset:1px; box-shadow:0 2px 16px rgba(0,0,0,.1); }
@@ -2977,7 +2975,7 @@ export default function EuropeTrip() {
         </div>
       </header>
 
-      <nav className="eu-nav-bar" aria-label="日程ナビゲーション">
+      <nav className="eu-nav-bar" aria-label="日程ナビゲーション" ref={navRef}>
         {DAYS.map((d, i) => (
           <button key={i}
             className={`eu-nav-btn ${view === "day" && activeDay === i ? "active" : ""}`}
@@ -3050,6 +3048,7 @@ export default function EuropeTrip() {
             </table>
             <div className="eu-cost-note">
               ※ 航空券（2名合計¥457,440）、ウィーン宿泊（2名2泊・¥40,277相当）、プラハ宿泊（2名2泊・¥28,407）は予約済み・支払済みです。<br />
+              Sisi Pass（2名€120）、美術史美術館（2名€44）、国立図書館の入場・音声ガイド（2名€29）は支払済みです。円請求額が未確認のため上の円小計には含めていません。<br />
               宿泊税（ブダペスト4%・プラハ50CZK/人泊）は現地払いです。ウィーン市税5%は宿泊料金に含まれています。<br />
               食費・市内交通・観光入場料は含まれていません。
             </div>
@@ -3161,22 +3160,30 @@ export default function EuropeTrip() {
 
             {/* マップ */}
             {DAYS[activeDay].schedule.some(s => s.coords) && (
-              <DayMap
-                schedule={DAYS[activeDay].schedule}
-                color={DAYS[activeDay].color}
-                dinner={DAYS[activeDay].dinner}
-              />
+              <div className="eu-map-sticky" ref={mapStickyRef}>
+                <DayMap
+                  schedule={DAYS[activeDay].schedule}
+                  color={DAYS[activeDay].color}
+                  dinner={DAYS[activeDay].dinner}
+                  focusIndex={mapFocusIndex}
+                  height="var(--eu-map-h)"
+                  style={{ marginBottom: 0 }}
+                />
+              </div>
             )}
 
-            <ol className="eu-timeline">
+            <ol className="eu-timeline" ref={timelineRef} style={{ "--eu-day-color": DAYS[activeDay].color }}>
               {DAYS[activeDay].schedule.map((item, i) => (
-                <li key={i} className={`eu-tl-item ${item.important ? "important" : ""}`}>
+                <li key={i} className={`eu-tl-item ${item.important ? "important" : ""} ${mapFocusIndex === i ? "is-map-focus" : ""}`}>
                   <div
                     className={`eu-tl-dot ${item.important ? "important" : ""}`}
                     aria-hidden="true"
                     style={item.important ? { background: DAYS[activeDay].color } : {}}
                   />
-                  <div className="eu-tl-time">{item.time}</div>
+                  <div className="eu-tl-time">
+                    {pinNumbers[i] && <span className="eu-tl-pin" aria-hidden="true">{pinNumbers[i]}</span>}
+                    {item.time}
+                  </div>
                   <div className="eu-tl-label">
                     <span className="eu-emoji" aria-hidden="true">{item.icon}</span>
                     {item.label}
