@@ -1616,9 +1616,26 @@ const DAYS = [
     color: "#5a6a8a",
     icon: "✈",
     schedule: [
-      { time: "〜21:05", label: "羽田 第3ターミナル 到着（推奨）", desc: "出発3時間前。首都圏外から向かう場合は夕方に出発。新幹線なら品川・浜松町乗換でモノレール or 京急", icon: "🚄", important: true },
-      { time: "深夜", label: "保安検査・出国", desc: "搭乗は日付が変わる直前（00:05発）。免税ショップや両替はターミナル内で", icon: "🛂" },
+      { time: "18:12", label: "名古屋駅 出発 ─ のぞみ462号", desc: "スマートEX予約。19:51 東京駅着", icon: "🚄", important: true },
+      { time: "19:51", label: "東京駅 到着 ─ 羽田空港へ", desc: "JRで浜松町駅へ移動し、東京モノレールに乗り換えて第3ターミナルへ。乗り換え時刻は当日確認", icon: "🚉" },
+      { time: "〜21:05", label: "羽田 第3ターミナル 到着（推奨）", desc: "翌00:05発の3時間前を目安に到着", icon: "✈", important: true },
+      { time: "到着後", label: "チェックイン・手荷物預け", desc: "先にエミレーツ航空の搭乗手続きを済ませ、搭乗時刻とゲートを確認。シャワー後の着替えは手元に残す", icon: "🧳", important: true },
+      { time: "手続き後", label: "羽田空港で夕食", desc: "第3ターミナルで夕食。お店は未定。営業時間や混雑状況を確認し、出発までに余裕を持って", icon: "🍽", url: "https://tokyo-haneda.com/shop_and_dine/search_r.html" },
+      { time: "夕食後", label: "第3ターミナルでシャワー", desc: "2階到着ロビー。24時間営業・予約不可。1人30分1,500円、延長15分ごとに750円。タオル・シャンプー等あり。混雑時の待ち時間に注意", icon: "🚿", url: "https://tokyo-haneda.com/service/facilities/shower_room.html?tab=terminal3" },
+      { time: "〜22:35", label: "保安検査・出国", desc: "00:05発の90分前までに済ませる目安。21:05着の場合は約90分しかないため、手続きやシャワーの待ち時間によっては夕食との両立が難しいことも。搭乗手続きを優先", icon: "🛂", important: true, url: "https://www.emirates.com/jp/japanese/manage-booking/online-check-in/" },
     ],
+    booking: {
+      title: "新幹線（往路）",
+      icon: "🚄",
+      details: [
+        { label: "予約", value: "スマートEX" },
+        { label: "列車", value: "のぞみ462号" },
+        { label: "日時", value: "2026年11月17日（火）" },
+        { label: "出発", value: "18:12 名古屋" },
+        { label: "到着", value: "19:51 東京" },
+      ],
+      url: "https://smart-ex.jp/",
+    },
   },
   {
     day: 1,
