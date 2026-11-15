@@ -1656,7 +1656,7 @@ const DAYS = [
       { time: "16:30", label: "雑貨店・おみやげ巡り ① Bomo Art（Pest店）", desc: "大聖堂から徒歩約10分、Váci通りのすぐ脇のRégi Posta utca 14。ベル・エポック風の雰囲気で知られるおしゃれな文具・雑貨店。ここから Váci通り周辺の雑貨店を巡る時間をたっぷり確保（〜18:15頃まで）。営業は月〜金 10:00〜18:30（公式サイトの案内）", icon: "🛍", url: "https://bomoart.com/en/contact", mapUrl: "https://maps.google.com/?q=Bomo+Art+R%C3%A9gi+Posta+utca+14+Budapest", coords: [47.4953, 19.0527] },
       { time: "17:00頃", label: "② Folkart Kézművesház（フォークアート）", desc: "Bomo Artのすぐ隣（Régi Posta utca 12）。ハンガリーの民芸・手工芸品のお店。刺繍やクラフトなどのこだわり雑貨を探す。営業は月〜金 10:00〜18:00（掲載情報）のため、18:00の閉店前に入る", icon: "🧵", mapUrl: "https://maps.google.com/?q=Folkart+K%C3%A9zm%C5%B1vesh%C3%A1z+R%C3%A9gi+Posta+utca+12+Budapest", coords: [47.4953, 19.0524] },
       { time: "17:30頃", label: "③ Magma（マグマ）", desc: "Petőfi Sándor utca 11。ハンガリー人デザイナー・作家の作品だけを集めたデザインショップ（ガラス・磁器・テキスタイル・おもちゃなど）。営業は月〜金 10:00〜19:00。ここから夕食のCafé Körへ徒歩約10分", icon: "🎨", mapUrl: "https://maps.google.com/?q=Magma+Pet%C5%91fi+S%C3%A1ndor+utca+11+Budapest", coords: [47.4960, 19.0538] },
-      { time: "18:30", label: "Café Kör（カフェ・ケル）でディナー", desc: "予約済（18:30）。聖イシュトヴァーン大聖堂の裏手、Sas utca 17にある地元でも評判の名店。温かみのあるクラシックな店内で、伝統的なハンガリー料理をゆっくり堪能する初日のディナー", icon: "🍽", important: true, url: "https://www.cafekor.net/", mapUrl: "https://maps.google.com/?q=Caf%C3%A9+K%C3%B6r+Sas+utca+17+Budapest", coords: [47.5018, 19.0528] },
+      { time: "18:30", label: "Café Kör（カフェ・ケル）でディナー", desc: "予約済（18:30）。聖イシュトヴァーン大聖堂の裏手、Sas utca 17にある地元でも評判の名店。温かみのあるクラシックな店内で、伝統的なハンガリー料理をゆっくり堪能する初日のディナー", icon: "🍽", important: true, url: "https://www.facebook.com/cafekorrestaurant/", urlLabel: "公式Facebook", mapUrl: "https://maps.google.com/?q=Caf%C3%A9+K%C3%B6r+Sas+utca+17+Budapest", coords: [47.5018, 19.0528] },
       { time: "20:00頃", label: "City SPAR（Károly krt.）で買い出し", desc: "ディナーの帰り道に立ち寄る。ホテルから徒歩圏、Astoria駅周辺のスーパー（Károly krt. 22–24）。ばらまき用のお菓子や現地の食品をまとめて調達し、そのままホテルへ持ち帰る。営業は21:00まで", icon: "🛒", url: "https://www.spar.hu/", mapUrl: "https://maps.google.com/?q=City+SPAR+K%C3%A1roly+k%C3%B6r%C3%BAt+22+Budapest", coords: [47.4961, 19.0570] },
       { time: "20:30頃", label: "ホテル帰着 ＆ 就寝", desc: "SPARからホテルまで徒歩数分。移動で長い一日なので早めに就寝。翌朝は国会議事堂の当日券のため07:30頃に出発", icon: "🏨", coords: [47.4947, 19.0595] },
     ],
@@ -1697,7 +1697,8 @@ const DAYS = [
         key: "cafe-kor-d1",
         icon: "🍽",
         title: "Café Kör ディナー予約（18:30）",
-        url: "https://www.cafekor.net/",
+        url: "https://www.facebook.com/cafekorrestaurant/",
+        urlLabel: "公式Facebook",
         mapUrl: "https://maps.google.com/?q=Caf%C3%A9+K%C3%B6r+Sas+utca+17+Budapest",
         details: [
           { label: "店名", value: "Café Kör（カフェ・ケル）" },
@@ -1732,13 +1733,17 @@ const DAYS = [
     day: 2,
     date: "11月19日（木）",
     weather: { name: "ブダペスト", lat: 47.4979, lon: 19.0402, tripDate: "2026-11-19", timezone: "Europe/Budapest" },
-    title: "ブダペスト ─ 国会議事堂・王宮の丘・中央市場 ＆ ナイトクルーズ",
+    title: "ブダペスト ─ 国会議事堂・英雄広場・王宮の丘 ＆ ナイトクルーズ",
     color: "#7a5c9a",
     icon: "🏰",
     schedule: [
       { time: "07:30", label: "ホテル出発 → Kossuth Lajos térへ", desc: "地下鉄M2「Astoria」駅から直通2駅で「Kossuth Lajos tér」駅へ移動（約5分・乗換なし）", icon: "🚇", coords: [47.4947, 19.0595] },
       { time: "07:45", label: "ハンガリー国会議事堂（Országház）─ 当日券を確保", desc: "ドナウ河畔に佇む壮麗なネオゴシック建築。ビジターセンターは8:00オープン（11〜3月は16:00まで）なので、開館に合わせて並び当日券を確保する（非EU大人14,000HUF）。事前予約枠は現時点で空きがないため、当日券のみで狙う。当日券は枚数限定で、議会開催日は見学できないこともあるので、開館前から並ぶ。内部ガイドツアー（約45〜50分）は購入時に指定される時刻に参加", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457], image: PARLIAMENT_IMAGE },
-      { time: "08:00頃", label: "周辺散策・朝食", desc: "ツアーの指定時刻まで、国会議事堂前のKossuth Lajos tér周辺の広場を散策したり、カフェで朝食をとって過ごす（店は当日決める。国会議事堂そばのPICK Bistro & Delが毎日8:00開店との情報あり）。英語ツアーは10:00〜15:30頃に複数回あるとの情報があり、実際の時刻はチケット購入時に確定", icon: "🥐" },
+      { time: "当日券購入後", label: "朝食・ツアー時刻の確認", desc: "当日券を確保したらツアーの集合時刻を確認。時間があれば軽く朝食をとる（店は当日決める）。8:15頃までに出発でき、10:00以降のツアーまで余裕があれば英雄広場へ。購入が長引く場合や早いツアーの場合は、見学後の立ち寄りを検討して後の予定を調整する", icon: "🥐" },
+      { time: "08:15頃", label: "国会議事堂 → 英雄広場へ", desc: "当日券の購入後、時間に余裕がある場合の目安。地下鉄M2「Kossuth Lajos tér」から「Deák Ferenc tér」でM1に乗り換え、「Hősök tere」へ。移動は乗換・待ち時間を含め約20〜30分", icon: "🚇" },
+      { time: "08:40頃", label: "英雄広場（Hősök tere）", desc: "建国千年記念碑や歴代の王・指導者の像を見学。屋外の広場は無料で、20〜25分ほど散策・写真撮影。9:05頃を出発の目安に国会議事堂へ戻る", icon: "🏛", important: true, mapUrl: "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest", coords: [47.5150, 19.07778], image: HEROES_SQUARE_IMAGE },
+      { time: "09:30頃", label: "国会議事堂へ戻りツアーに備える", desc: "M1「Hősök tere」→「Deák Ferenc tér」でM2に乗り換え「Kossuth Lajos tér」へ。9:30頃の到着は8:15頃に出発できた場合の目安。指定された集合時刻を優先し、早めにビジターセンターへ", icon: "🚇", coords: [47.5071, 19.0457] },
+      { time: "指定時刻", label: "国会議事堂 内部ガイドツアー", desc: "当日券を購入できた場合、券に記載された時刻に参加。所要約45〜50分。売り切れや議会開催で見学できない場合は外観を見て、その後の予定を調整", icon: "🏛", important: true },
       { time: "ツアー後〜", label: "ランチ・休憩（お店は未定）", desc: "国会議事堂の見学後、ブダ城へ向かう前に昼食と休憩。お店はまだ決めておらず、ツアーの時刻や当日の状況で選ぶ（候補は下の「ランチ・夕食/軽食の候補」カード参照）。国会議事堂から徒歩約5分のところに旧郵便貯金局（Hold u. 4・「ハンガリーのガウディ」ことレフネル・エデン設計のアール・ヌーヴォー建築）があるので、時間と体力に余裕があれば外観だけ見に立ち寄るのもよい", icon: "🍽" },
       { time: "13:30頃", label: "ブダ城（Budavári Palota）", desc: "ドナウ川を渡って王宮の丘へ（バス16番、ケーブルカー、またはヴァールケルト・バザールの無料エスカレーターで上がれる）。国立ギャラリーや歴史博物館を擁する壮大な城郭で、敷地周辺を時間をかけて歩き、展望テラスから対岸のペスト地区の景色を楽しむ", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.google.com/?q=Buda+Castle+Budapest", coords: [47.4962, 19.0396], image: BUDA_CASTLE_IMAGE },
       { time: "15:00頃", label: "マーチャーシュ教会（Mátyás-templom）", desc: "ブダ城から徒歩で移動（約10分）。歴代ハンガリー国王の戴冠式が行われた歴史ある教会で、色鮮やかなジョルナイ製の屋根瓦と内部の彩色装飾が見どころ。内部見学は月〜土 9:00〜17:00（11〜3月・行事で変更あり）", icon: "⛪", important: true, url: "https://matyas-templom.hu/", mapUrl: "https://maps.google.com/?q=Matthias+Church+Budapest", coords: [47.5019, 19.0342], image: MATTHIAS_CHURCH_IMAGE },
@@ -1849,6 +1854,7 @@ const DAYS = [
       body: (
         <>
           <b>国会議事堂（Országház）</b>：外観見学は無料。内部ガイドツアーは非EU大人14,000HUF（約¥5,800/人）。ビジターセンターは8:00開館（11〜3月は〜16:00）。事前予約枠は現時点で空きがないため、当日券のみで入場を狙います。当日券は枚数限定で、議会開催日は見学できないことがあります。ツアーが遅い時刻（12:00以降）になった場合は、ブダ城の到着を後ろ倒しにします。<br/>
+          <b>英雄広場（Hősök tere）</b>：屋外の広場は無料。当日券の購入が早く終わり、10:00以降のツアーまで余裕があれば、M2・M1を乗り継いで朝に往復。広場の滞在は20〜25分、移動を含め約1時間半が目安です。集合時刻に間に合わない場合はツアー後に回し、午後の日程を調整します。<br/>
           <b>旧郵便貯金局（Postatakarékpénztár）</b>：国会議事堂から徒歩約5分（Hold u. 4）。レフネル・エデン設計のアール・ヌーヴォー建築で、ジョルナイ陶器の屋根飾りや蜂・植物のレリーフが見どころ。昼食前後に余裕があれば外観のみ立ち寄り（任意）。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://maps.google.com/?q=Postatakar%C3%A9kp%C3%A9nzt%C3%A1r+Hold+utca+4+Budapest" target="_blank" rel="noopener noreferrer" aria-label="旧郵便貯金局をGoogle Mapで開く"><span aria-hidden="true">📍</span> Map</a><br/>
           <b>ブダ城・王宮の丘</b>：敷地と展望テラスの散策は無料（国立ギャラリー・歴史博物館は任意）。<br/>
           <b>マーチャーシュ教会</b>：内部見学は月〜土 9:00〜17:00（日曜は13:00〜17:00。11〜3月・礼拝や行事で変更あり）。入場料は情報が分かれるため公式サイトで要確認。<br/>
@@ -1856,7 +1862,7 @@ const DAYS = [
           <b>ブダペスト中央市場</b>：木曜 6:00〜18:00。1階は食料品、2階は民芸品。パプリカパウダー・ハチミツ・革製品などがおみやげの定番。<br/>
           <b>ドナウ川 ボートクルーズ</b>：19:40発・約50分・予約済（屋上座席保証・飲食物の持ち込み可）。予約番号 GYGFWVYH6GMN。集合場所はバウチャーで確認し、出航15分前までに到着。夕食か軽食は18:15頃にとる想定（お店は未定）。船内は飲食物の持ち込み可なので、軽食のテイクアウトも可。<br/>
           <b>ニューヨーク・カフェ（任意）</b>：Erzsébet krt. 9–11。価格は高めのため、時間と体力に余裕があれば利用。木曜は7:00〜翌1:00（公式サイトの案内）。公式サイトにテーブル予約ページあり。<br/>
-          <b>市内交通 24時間乗車券</b>：2,500HUF（約¥1,050/人）。地下鉄M1〜M4・トラム・路線バスが24時間乗り放題。BudapestGOアプリまたは券売機で購入。
+          <b>市内交通 24時間乗車券</b>：2,750HUF（約¥1,150/人）。地下鉄M1〜M4・トラム・路線バスが24時間乗り放題。BudapestGOアプリまたは券売機で購入。
         </>
       ),
     },
@@ -2063,16 +2069,18 @@ const DAYS = [
     icon: "🚄",
     schedule: [
       { time: "05:45頃", label: "ホテル チェックアウト・駅へ移動", desc: "ARCOTEL Wimbergerをチェックアウト。ウィーン中央駅へ移動し、駅構内のベーカリーで朝食やコーヒーを調達", icon: "🥐", coords: [48.1848, 16.3765] },
-      { time: "06:39", label: "ウィーン中央駅（Wien Hbf）発", desc: "RegioJet RJ 1030 ウィーン→プラハ（直通・約4時間17分）。予約済・2名。住所：Am Hauptbahnhof 1。日曜早朝のため時間に余裕を持って乗車", icon: "🚆", important: true, coords: [48.1848, 16.3765] },
-      { time: "10:56", label: "プラハ本駅（hlavní nádraží）着", desc: "百塔の街プラハに到着（Wilsonova 300/8）。地下鉄C線またはトラム・徒歩で宿（Youngmann House）へ移動（約15分）", icon: "🚉", coords: [50.0833, 14.4356] },
-      { time: "11:30", label: "Youngmann House 荷物預け", desc: "Jungmannovo náměstí 14。地下鉄Můstek駅すぐの好立地。チェックイン（15:00）前に荷物を預けて身軽に旧市街へ", icon: "🏨", important: true, mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJsWIxAaWVC0cRuI52xHJ0Zlk", coords: [50.0833, 14.4236] },
-      { time: "12:00", label: "Kantýna（カンティーナ）で絶品お肉ランチ", desc: "【ランチ】宿から徒歩約5分（Politických vězňů 1511/5）。精肉カウンター併設で、チェコ産の牛肉・豚肉を直火で焼き上げた肉料理をビールとともに味わえる人気店。予約不可のため早めの時間に。日曜は料理の注文が21時まで", icon: "🥩", important: true, url: "https://www.kantyna.ambi.cz/en/", mapUrl: "https://maps.app.goo.gl/wdmS8mcx2LvRB9hP7", coords: [50.0834, 14.4288] },
+      { time: "06:39", label: "ウィーン中央駅（Wien Hbf）発", desc: "RegioJet RJ 1030 ウィーン→プラハ（直通・約4時間17分）。Omioで予約済・2名・2号車 座席1・2。チケットはOmioアプリ（オフライン表示可）か添付PDF。住所：Am Hauptbahnhof 1。20分前までに駅へ。身分証（パスポート）を携帯", icon: "🚆", important: true, coords: [48.1848, 16.3765] },
+      { time: "10:56", label: "プラハ本駅（hlavní nádraží）着", desc: "百塔の街プラハに到着（Wilsonova 300/8）。徒歩または地下鉄で、ホテルが案内した荷物預かり所へ移動", icon: "🚉", coords: [50.0833, 14.4356] },
+      { time: "11:30", label: "Luggage Storage Prague で荷物を預ける", desc: "Youngmann Houseには荷物預かりがないため、ホテル紹介のVáclavské náměstí 785/28へ。セルフ式ロッカーでカード決済、料金はサイズと時間によって変わる。空き状況と営業時間は事前に確認し、15:40頃に受け取る", icon: "🧳", important: true, url: "https://luggagestorageprague.com/locations/vaclavske-nam-28/", mapUrl: "https://maps.app.goo.gl/gWYS8rcgEvqZJGXg6", coords: [50.0824365, 14.4251439] },
+      { time: "12:00", label: "Kantýna（カンティーナ）で絶品お肉ランチ", desc: "【ランチ】荷物預かり所から徒歩約5〜10分（Politických vězňů 1511/5）。精肉カウンター併設で、チェコ産の牛肉・豚肉を直火で焼き上げた肉料理をビールとともに味わえる人気店。予約不可のため早めの時間に。日曜は料理の注文が21時まで", icon: "🥩", important: true, url: "https://www.kantyna.ambi.cz/en/", mapUrl: "https://maps.app.goo.gl/wdmS8mcx2LvRB9hP7", coords: [50.0834, 14.4288] },
       { time: "13:30", label: "旧市街広場（Staroměstské náměstí）＆ ティーン教会", desc: "【コース1】ゴシック・バロック・ロココ建築が立ち並ぶプラハの中心広場。おとぎ話の城のような2本の尖塔を持つ「ティーン聖母教会」は外観を見学（Kantýnaから徒歩約10分）", icon: "🏰", important: true, mapUrl: "https://maps.google.com/?q=Old+Town+Square+Prague", coords: [50.0875, 14.4213], image: TYN_CHURCH_IMAGE },
       { time: "14:00", label: "旧市庁舎 天文時計（Orloj）＆ 展望塔（任意）", desc: "【コース2】600年以上の歴史を刻む世界最古級の天文時計。毎正時のからくり仕掛け「使徒の行進」を見学。時間に余裕があれば、エレベーターで高さ約70mの展望塔へ（任意・大人350 CZK）。旧市街広場と赤い屋根の海を見渡す360度の大パノラマ（徒歩すぐ）", icon: "🕰", important: true, url: "https://prague.eu/en/objevujte/old-town-hall-with-astronomical-clock-staromestska-radnice-s-orlojem/", mapUrl: "https://maps.google.com/?q=Old+Town+Hall+Prague", coords: [50.0870, 14.4207], image: ASTRONOMICAL_CLOCK_IMAGE },
-      { time: "14:45", label: "Botanicus（ボタニクス）などでお買い物", desc: "【ショッピング】旧市街広場のすぐ裏手、ティーンの中庭（Ungelt）内にあるチェコ発の自然派コスメ・ハーブ製品のお店Botanicus（Týn 3・毎日10:00〜19:00）。気になるお店をのんびり巡る（旧市庁舎から徒歩約4分）", icon: "🛍", url: "https://botanicus.cz/en/", mapUrl: "https://maps.google.com/?q=Botanicus+Ungelt+Prague", coords: [50.0881, 14.4237] },
-      { time: "16:00", label: "Youngmann House チェックイン", desc: "宿に戻りチェックイン。ダブルまたはツインルームで荷解き＆ひと息つく（徒歩約7分）", icon: "🏨", important: true, mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJsWIxAaWVC0cRuI52xHJ0Zlk", coords: [50.0833, 14.4236] },
-      { time: "18:30", label: "Lokál Dlouhááá で生ビールとチェコ料理のディナー", desc: "【ディナー】絶対に行きたかった人気ビアホール。新鮮なタンク生ピルスナー・ウルケルと手作りのチェコ料理で乾杯（宿から徒歩約12分・日曜は22時まで営業・Web予約推奨）", icon: "🍺", important: true, url: "https://lokal-dlouha.ambi.cz/en/", mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJGWh--8GUC0cR4myQM-Wv3QI", coords: [50.0907, 14.4258] },
-      { time: "21:00", label: "ホテル帰着", desc: "Lokálから徒歩約12分でYoungmann Houseへ。翌朝はプラハ城（9:00入場）へ向かうので早めに就寝", icon: "🌙", coords: [50.0833, 14.4236] },
+      { time: "14:45", label: "Botanicus（ボタニクス）などでお買い物", desc: "【ショッピング】旧市街広場のすぐ裏手、ティーンの中庭（Ungelt）内にあるチェコ発の自然派コスメ・ハーブ製品のお店Botanicus（Týn 3・毎日10:00〜19:00）。荷物の受取に向け、15:25頃を出発の目安にする", icon: "🛍", url: "https://botanicus.cz/en/", mapUrl: "https://maps.google.com/?q=Botanicus+Ungelt+Prague", coords: [50.0881, 14.4237] },
+      { time: "15:40頃", label: "預けた荷物を受け取る", desc: "Václavské náměstí 785/28の荷物預かり所へ戻る。ロッカーの暗証番号を使って荷物を取り出し、Youngmann Houseへ徒歩約4分", icon: "🧳", mapUrl: "https://maps.app.goo.gl/gWYS8rcgEvqZJGXg6", coords: [50.0824365, 14.4251439] },
+      { time: "16:00", label: "Youngmann House チェックイン", desc: "預かり所で荷物を受け取ってから宿へ。ダブルまたはツインルームで荷解き＆ひと息つく", icon: "🏨", important: true, mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJsWIxAaWVC0cRuI52xHJ0Zlk", coords: [50.0833, 14.4236] },
+      { time: "17:10頃", label: "ホテル出発 → Lokál Dlouhááá へ", desc: "17:30の予約に向け、ホテルから徒歩約12分。時間に余裕を持って出発", icon: "🚶", coords: [50.0833, 14.4236] },
+      { time: "17:30", label: "Lokál Dlouhááá で生ビールとチェコ料理のディナー", desc: "【ディナー・17:30予約済】絶対に行きたかった人気ビアホール。新鮮なタンク生ピルスナー・ウルケルと手作りのチェコ料理で乾杯（日曜は22時まで営業）", icon: "🍺", important: true, url: "https://lokal-dlouha.ambi.cz/en/", mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJGWh--8GUC0cR4myQM-Wv3QI", coords: [50.0907, 14.4258] },
+      { time: "19:30頃", label: "ホテル帰着", desc: "食事後、Lokálから徒歩約12分でYoungmann Houseへ。帰着時刻は食事の長さに合わせて調整し、翌朝のプラハ城（9:00入場）に備える", icon: "🌙", coords: [50.0833, 14.4236] },
     ],
     dinner: {
       title: "プラハ初日 ディナー（Lokál Dlouhááá）",
@@ -2080,7 +2088,7 @@ const DAYS = [
         {
           name: "Lokál Dlouhááá（ロカール）",
           genre: "活気あふれる最高品質タンク生ビール＆チェコ家庭料理",
-          desc: "アンビアンテ系列の超人気店。徹底管理された新鮮なピルスナー・ウルケル（ハラディンカ）と、手作りのチェコ伝統家庭料理をカジュアルに堪能。日曜は22時まで営業、人気店のため公式サイトからのWeb予約がおすすめ",
+          desc: "アンビアンテ系列の超人気店。徹底管理された新鮮なピルスナー・ウルケル（ハラディンカ）と、手作りのチェコ伝統家庭料理をカジュアルに堪能。11/22（日）17:30に予約済み。日曜は22時まで営業",
           tel: "+420 734 283 874",
           url: "https://lokal-dlouha.ambi.cz/en/",
           mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJGWh--8GUC0cR4myQM-Wv3QI",
@@ -2091,15 +2099,21 @@ const DAYS = [
     booking: {
       title: "鉄道チケット（ウィーン → プラハ）",
       details: [
+        { label: "予約コード", value: "0852747184（Omio）" },
         { label: "列車", value: "RegioJet RJ 1030（直通・予約済）" },
-        { label: "乗客", value: "2名" },
+        { label: "乗客", value: "Hiroki Nomura ／ Rino Nomura（大人2名）" },
         { label: "区間", value: "ウィーン中央駅（Wien Hbf）→ プラハ本駅（Praha hl.n.）" },
         { label: "出発", value: "2026年11月22日（日）06:39発" },
         { label: "到着", value: "2026年11月22日（日）10:56着" },
         { label: "所要時間", value: "4時間17分" },
-        { label: "予約先", value: "RegioJet（予約済）" },
+        { label: "クラス・座席", value: "標準（Astra車両）／ 2号車 座席1・2" },
+        { label: "手荷物", value: "1人あたり手回り品 35×25×15cmまで ＋ 旅行用荷物 80×60×30cm・30kgまで（荷物室）" },
+        { label: "料金", value: "¥8,086（チケット¥6,952＋キャビンアップグレード¥823＋サービス料¥311）" },
+        { label: "運賃条件", value: "無料キャンセル（出発15分前まで全額返金可）。予約した列車のみ有効" },
+        { label: "チケット", value: "Omioアプリ（オフライン表示可）または添付PDF。身分証を携帯し、20分前までに駅へ" },
+        { label: "予約先", value: "Omio（運行：RegioJet a.s.）" },
       ],
-      url: "https://www.regiojet.com/",
+      url: "https://www.omio.jp/",
     },
     memo: {
       bg: "linear-gradient(135deg,#eef8f0,#e8f5ec)",
@@ -2110,11 +2124,12 @@ const DAYS = [
       title: "プラハ初日 到着＆旧市街・グルメメモ",
       body: (
         <>
-          <b>市内交通（PID 24時間券）</b>：車内または駅改札のオレンジ色端末にクレカタッチで購入（150 CZK/人・約¥1,000）。地下鉄・トラムが24時間乗り放題。<br/>
+          <b>市内交通（PID 24時間券）</b>：車内または駅改札のオレンジ色端末にクレカタッチで購入（150 CZK/人・約¥1,000。PID Lítačkaアプリなら140 CZK）。地下鉄・トラムが購入（有効化）から24時間乗り放題。Day5は徒歩中心なので、11/22に買う場合は11/23朝のトラム22番まで使える。<b>11/24の駅移動には期限切れ</b>のため、当日は30分券（アプリ36・紙39 CZK/人）を別に用意。<br/>
+          <b>荷物預かり</b>：Youngmann Houseには預かり所がありません。ホテル紹介のVáclavské náměstí 785/28はセルフ式ロッカー・カード決済で、サイズと時間ごとに料金が変わります。ホテルの8/26案内はスーツケース1日€7・ハンドバッグ€5の例ですが、運営の料金表では別のVoršilská 6店の料金です。実際の料金は支払い前に端末で確認。運営サイト内で営業時間が7:00〜22:00と8:00〜19:00に分かれるため、空きと併せて事前確認。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://luggagestorageprague.com/locations/vaclavske-nam-28/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🌐</span> 預かり所公式</a><br/>
           <b>Kantýna（カンティーナ）</b>：宿から徒歩約5分。チェコ産の牛・豚肉を直火で焼き上げる肉料理が名物。予約は受け付けていないため、混み合う前の早めの時間が安心です。日曜は料理の注文が21時まで。<br/>
           <b>旧市庁舎 天文時計＆展望塔</b>：毎正時（9:00〜23:00）に使徒のからくり行進。展望塔はエレベーター完備（大人350 CZK）。広場と赤い屋根の街並みが一望できますが、今回は時間に余裕があれば立ち寄る任意プランです。<br/>
           <b>Botanicus（ボタニクス）</b>：旧市街広場のすぐ裏手、Ungelt内のお店。毎日10:00〜19:00営業。<br/>
-          <b>Lokál Dlouhááá</b>：日曜は11:00〜22:00営業。夜は混み合うため、公式サイトからのWeb予約がおすすめです。
+          <b>Lokál Dlouhááá</b>：11/22（日）17:30に予約済み。日曜は11:00〜22:00営業。ホテルから徒歩約12分のため、17:10頃に出発。
         </>
       ),
     },
@@ -2131,8 +2146,22 @@ const DAYS = [
           { label: "部屋・人数", value: "ダブルまたはツインルーム ／ 大人2名" },
           { label: "チェックイン", value: "2026年11月22日（日）15:00〜" },
           { label: "チェックアウト", value: "2026年11月24日（火）午前" },
+          { label: "荷物預かり", value: "ホテルにはなし。紹介されたVáclavské náměstí 785/28の預かり所を利用予定" },
+          { label: "部屋の要望", value: "静かなお部屋をリクエスト済み（確約ではない）" },
           { label: "料金", value: "¥28,407（支払い合計）／換算目安 ¥27,579" },
           { label: "予約状況", value: "Booking.com 予約済・返金不可" },
+        ],
+      },
+      {
+        key: "lokal-dlouha-d5",
+        icon: "🍺",
+        title: "Lokál Dlouhááá ディナー予約（17:30）",
+        url: "https://lokal-dlouha.ambi.cz/en/",
+        mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJGWh--8GUC0cR4myQM-Wv3QI",
+        details: [
+          { label: "店名", value: "Lokál Dlouhááá（ロカール）" },
+          { label: "日時", value: "2026年11月22日（日）17:30" },
+          { label: "予約状況", value: "予約済み" },
         ],
       },
     ],
@@ -2199,7 +2228,7 @@ const DAYS = [
       title: "プラハ城・衛兵交代式・クレメンティウム 観光メモ",
       body: (
         <>
-          <b>トラム22番の活用</b>：プラハ城へ徒歩で登ると長い急坂になりますが、トラム22番（Bílá Hora方面）なら城の最寄り「Pražský hrad」停留所まで楽に上がれます。乗車にはPIDの切符が必要です（Day5に購入した24時間券は購入から24時間有効なので、朝の乗車にも使えます）。<br/>
+          <b>トラム22番の活用</b>：プラハ城へ徒歩で登ると長い急坂になりますが、トラム22番（Bílá Hora方面）なら城の最寄り「Pražský hrad」停留所まで楽に上がれます。乗車にはPIDの切符が必要です（11/22午前9時以降に買った24時間券なら、購入から24時間有効なので朝の乗車にも使えます。11/24の地下鉄には使えません）。<br/>
           <b>プラハ城 メインサーキット</b>：大人 450 CZK（2日間有効）。聖ヴィート大聖堂、旧王宮、聖イジー聖堂、黄金の小路に入場可能。聖ヴィート大聖堂のミュシャ（ムハ）ステンドグラスは必見。11月の歴史的建造物の開館は9:00〜16:00（最終入場は15:30頃）。<br/>
           <b>衛兵交代式</b>：毎日12:00に第一中庭で行われる、ファンファーレと旗の交換を伴う儀式（約15分・無料）。前方で見たい場合は11:45頃までに。<br/>
           <b>聖ミクラーシュ教会</b>：11月は毎日9:00〜17:00（最終入場は閉館15分前）。入場有料。<br/>
@@ -2237,11 +2266,11 @@ const DAYS = [
     icon: "🛫",
     schedule: [
       { time: "09:00", label: "最後のお買い物（お店は未定）", desc: "【ショッピング】気になるお店の再チェックや、スーパーでお土産（チョコレートやスパイスなど）を調達（お店はまだ未定）。10:45にはホテルへ戻る", icon: "🛍" },
-      { time: "10:45", label: "Youngmann House チェックアウト ＆ 荷物ピックアップ", desc: "宿に戻りチェックアウト。荷物をピックアップし、空港移動の身支度を完了。【要確認】予約上のチェックアウト時刻は「午前」としか記載がなく、10:45で間に合うか不明です。事前にホテルへ確認し、早い場合は朝のうちにチェックアウトして荷物を預けてからお買い物へ", icon: "🧳", important: true, mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJsWIxAaWVC0cRuI52xHJ0Zlk", coords: [50.0833, 14.4236] },
-      { time: "11:00", label: "ホテル出発 → プラハ中央駅（Hlavní nádraží）へ", desc: "地下鉄A線「Můstek」→「Muzeum」でC線に乗り換え→「Hlavní nádraží」（所要約15分・乗換1回）。荷物が多いときや時間が押したときは、Bolt／タクシーなら5〜10分", icon: "🚇", important: true, coords: [50.0833, 14.4236] },
+      { time: "10:45", label: "Youngmann House チェックアウト ＆ 荷物の準備", desc: "宿に戻りチェックアウトして荷物を持って出発。【要確認】チェックアウト時刻は「午前」としか記載がないため事前に確認。早い場合は朝にチェックアウトし、ホテル外の荷物預かり所を利用して出発前に受け取る。ホテルには荷物預かりがない", icon: "🧳", important: true, mapUrl: "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJsWIxAaWVC0cRuI52xHJ0Zlk", coords: [50.0833, 14.4236] },
+      { time: "11:00", label: "プラハ中央駅（Hlavní nádraží）へ移動", desc: "ホテルまたは荷物預かり所から駅へ。地下鉄A線「Můstek」→「Muzeum」でC線に乗り換え→「Hlavní nádraží」（所要約15分・乗換1回）。11/22の24時間券は期限切れのため、30分券（アプリ36・紙39 CZK/人）を乗車前に購入。荷物の受取、徒歩と待ち時間にも余裕を持ち、時間が押した場合はBolt／タクシーを検討", icon: "🚇", important: true, coords: [50.0833, 14.4236] },
       { time: "11:20", label: "AE乗り場（Opletalova通りの臨時乗り場）へ", desc: "【乗り場】現在は駅前（Wilsonova通り）の再整備工事の影響で、AEは中央駅の脇ではなくOpletalova通りの臨時乗り場から発車（地下鉄Hlavní nádraží駅から約120m・Jeruzalémská通りの交差点を過ぎて約65m）。PID（プラハ統合交通）の案内では2026年11月頃までの臨時措置のため、出発前に最新情報を確認", icon: "📍", important: true, url: "https://pid.cz/", mapUrl: "https://maps.google.com/?q=50.0845,14.4334", coords: [50.0845, 14.4334] },
-      { time: "11:30", label: "空港直通バス AE（Airport Express）発", desc: "【直通バス】中央駅から途中停車なしで空港第1ターミナル（T1）へ（所要約30分）。11月24日の時刻表では毎時00分・30分発。運賃は大人200 CZK/人で、運転手にクレジットカードで支払い可（荷物は無料）。PIDの通常切符は使えない。T1で降車", icon: "🚌", important: true },
-      { time: "12:00", label: "プラハ・ヴァーツラフ・ハヴェル空港 第1ターミナル着", desc: "出発の約2時間45分前に到着。第1ターミナル（非シェンゲン域便）。エミレーツ航空のカウンターは12:45頃から（空港の案内では12:45〜14:05）なので、それまで免税手続き（Tax Refund）や昼食の時間に。保安検査・出国審査は13:15頃までに通過する目安", icon: "✈", important: true, coords: [50.1079, 14.2688] },
+      { time: "11:30", label: "空港直通バス AE（Airport Express）発", desc: "【直通バス】中央駅から途中停車なしで空港第1ターミナル（T1）へ（所要約40分・渋滞で延びることあり）。11月24日の時刻表では毎時00分・30分発。運賃は大人200 CZK/人で、運転手にクレジットカードで支払い可（荷物は無料）。PIDの通常切符は使えない。T1で降車", icon: "🚌", important: true },
+      { time: "12:10頃", label: "プラハ・ヴァーツラフ・ハヴェル空港 第1ターミナル着", desc: "出発の約2時間35分前に到着。第1ターミナル（非シェンゲン域便）。エミレーツ航空のカウンターは12:45頃から（空港の案内では12:45〜14:05）なので、それまで免税手続き（Tax Refund）や昼食の時間に。保安検査・出国審査は13:15頃までに通過する目安", icon: "✈", important: true, coords: [50.1079, 14.2688] },
       { time: "14:45 PRG", label: "プラハ（PRG）出発", desc: "EK140・エミレーツ。第1ターミナル。Airbus A380-800／飛行5時間55分。JST 22:45", icon: "✈", important: true, coords: [50.1079, 14.2688] },
       { time: "23:40 DXB", label: "ドバイ（DXB）着", desc: "EK140到着。乗継 3時間15分の深夜乗継。ターミナル3内で乗り継ぎ。JST 翌04:40頃", icon: "🇦🇪" },
       { time: "02:55 DXB", label: "ドバイ（DXB）発", desc: "EK318・エミレーツ。Airbus A380-800／飛行9時間25分。日付は11月25日（水）", icon: "😴" },
@@ -2255,9 +2284,9 @@ const DAYS = [
       title: "プラハ最終日 空港アクセス＆フライトメモ",
       body: (
         <>
-          <b>空港アクセス（AE直通バス）</b>：プラハ中央駅（Hlavní nádraží）から空港第1ターミナルまで、途中停車なしの直通バス「Airport Express（AE）」で約30分。11月24日の時刻表では毎時00分・30分発です。運賃は大人200 CZK/人（運転手にクレジットカード払い可・荷物無料）。PIDの通常切符は使えません。<br/>
+          <b>空港アクセス（AE直通バス）</b>：プラハ中央駅（Hlavní nádraží）から空港第1ターミナルまで、途中停車なしの直通バス「Airport Express（AE）」で約40分（渋滞で延びることあり）。11月24日の時刻表では毎時00分・30分発です。運賃は大人200 CZK/人（運転手にクレジットカード払い可・荷物無料）。PIDの通常切符は使えません。<br/>
           <b>乗り場に注意</b>：現在、駅前（Wilsonova通り）の工事の影響で、AEはOpletalova通りの臨時乗り場から発車します（地下鉄Hlavní nádraží駅から約120m）。PIDの案内では2026年11月頃までの臨時措置とされているため、出発前にpid.czで最新情報を確認してください。<br/>
-          <b>時間の余裕と代替案</b>：11:30発のAEなら空港着は12:00頃。乗り遅れた場合は12:00発（第1ターミナル着12:30頃）でも間に合いますが、12:30発（13:00頃着）は避けたいところです。どうしても間に合わない場合は、Bolt／タクシーで直接空港へ（約25〜30分）。<br/>
+          <b>時間の余裕と代替案</b>：11:30発のAEなら空港着は12:10頃。乗り遅れた場合は12:00発（第1ターミナル着12:40頃）でも間に合いますが、12:30発（13:10頃着）は避けたいところです。どうしても間に合わない場合は、Bolt／タクシーで直接空港へ（約25〜30分）。<br/>
           <b>第1ターミナル（非シェンゲン便）</b>：日本・ドバイ行きは第1ターミナル発。出国審査と保安検査が出発ゲート直前にあるため、時間に余裕を持って行動を。<br/>
           <b>ドバイ深夜乗継</b>：3時間15分。ターミナル3のカフェやラウンジで休憩し、成田行きEK318便へ搭乗。
         </>
@@ -2288,7 +2317,7 @@ const DAYS = [
     icon: "🏠",
     schedule: [
       { time: "02:55 DXB", label: "ドバイ（DXB）発", desc: "EK318・エミレーツ。Airbus A380-800／飛行9時間25分", icon: "✈" },
-      { time: "17:20 NRT", label: "成田（NRT）着", desc: "第2ターミナル。Visit Japan Web の入国・税関申告は機内で済ませておくと並ばずに済む", icon: "🏁", important: true },
+      { time: "17:20 NRT", label: "成田（NRT）着", desc: "第2ターミナル。Visit Japan Web（任意）で税関申告のQRコードを用意しておくと手続きがスムーズ。紙の携帯品・別送品申告書でも可", icon: "🏁", important: true },
       { time: "18:30頃", label: "入国・手荷物受取 完了", desc: "首都圏外へ向かう場合、この時刻から在来線＋新幹線の最終に間に合うか事前確認を。厳しければ都内1泊を検討", icon: "🚄" },
     ],
     memo: {
@@ -2300,7 +2329,7 @@ const DAYS = [
       title: "帰国前に済ませておくこと",
       body: (
         <>
-          <b>Visit Japan Web</b>：乳幼児を含む全員分。入国審査・税関申告をオンライン登録。ドバイ→成田の機内で完了させると成田での列が短い。予約画面にも必須と明記あり<br/>
+          <b>Visit Japan Web（任意）</b>：日本人の帰国では必須ではありません。使う場合は2名分の税関申告を事前登録し、QRコードを表示できるようにしておくと手続きがスムーズ。使わない場合は紙の携帯品・別送品申告書でも可<br/>
           <b>⚠ 出発空港に注意</b>：出発は羽田（HND）、帰着は成田（NRT）。羽田に車を置いた・羽田で買い物した、という前提は使えません<br/>
           <b>首都圏外への最終</b>：成田18:30頃発を起算点に在来線＋新幹線の終電を確認。厳しければ都内1泊が安全
         </>
@@ -2315,13 +2344,15 @@ const COSTS = [
   { item: "ドナウ川 ボートクルーズ（屋上座席保証・2名）", cost: 6000, note: "予約済・GYGFWVYH6GMN ／ 金額は旧候補ツアーの目安（約¥6,000）のまま。実額は予約確認メールで要確認" },
   { item: "ウィーン カールス教会 ヴィヴァルディ「四季」コンサート（2名）", cost: 0, note: "予約済・GYG48YF59299 ／ 金額は予約確認メールで要確認（未反映）" },
   { item: "鉄道 ブダペスト→ウィーン（2名）", cost: 0, note: "予約済・ÖBB RJX 162／11/20 06:30発→09:20着（変更通知反映）／実額は未反映" },
-  { item: "鉄道 ウィーン→プラハ（2名）", cost: 0, note: "手配要 早割€14.90〜/人（ÖBB）または €15〜/人（RegioJet）" },
+  { item: "鉄道 ウィーン→プラハ（2名）", cost: 8086, note: "予約済 Omio（RegioJet RJ 1030・2号車 座席1・2・アップグレード／手数料込み）" },
   { item: "ウィーン 2泊（ARCOTEL Wimberger Wien・2名）", cost: 40277, note: "予約済・支払済 €198.61（約¥40,277／税・サービス料込み）・予約番号 5340692962" },
   { item: "プラハ 2泊（Youngmann House・2名）", cost: 28407, note: "予約済・支払済 Booking.com（¥28,407／換算目安¥27,579）・返金不可" },
+  { item: "プラハ 荷物預かり", cost: 0, note: "11/22利用予定・金額未確認。Václavské náměstí 28のセルフ式はロッカー単位の料金。ホテル案内の€7／€5は別店舗の料金表と一致するため、現地で確認" },
   { item: "クレメンティウム ガイドツアー（大人2名）", cost: 0, note: "予約済み・クレジットカード支払済み／11/23 17:00・760 CZK（380 CZK×2名）／円請求額未反映／チェコ語ツアーのため英語枠への変更を要確認" },
   { item: "空港バス 100E（ブダペスト空港→Astoria、2名）", cost: 2100, note: "2,500HUF×2名（クレカタッチ決済 約¥2,100）" },
-  { item: "空港バス AE（プラハ中央駅→空港T1、2名）", cost: 2700, note: "200 CZK×2名＝400 CZK（約¥2,700／上記PID券と同じ約¥6.7/CZKで換算）／運転手にクレジットカード払い可／PIDの通常切符は使えない／Opletalova通りの臨時乗り場" },
-  { item: "ブダペスト市内交通 24時間券（2名）", cost: 2100, note: "2,500HUF×2名（地下鉄・トラム乗り放題 約¥2,100）" },
+  { item: "空港バス AE（プラハ中央駅→空港T1、2名）", cost: 2700, note: "200 CZK×2名＝400 CZK（約¥2,700／約¥6.7/CZKで換算）／運転手にクレジットカード払い可／PIDの通常切符は使えない／Opletalova通りの臨時乗り場" },
+  { item: "ブダペスト市内交通 24時間券（2名）", cost: 2300, note: "2,750HUF×2名＝5,500HUF（地下鉄・トラム乗り放題 約¥2,300）" },
+  { item: "プラハ市内交通 PID 24時間券＋30分券（2名）", cost: 2500, note: "目安・24時間券150 CZK×2名＋11/24の30分券39 CZK×2名＝378 CZK（約¥2,500）／紙券・カードタッチ想定、アプリなら24時間券140・30分券36 CZK" },
   { item: "ウィーン市内交通 24時間券×2枚／人（2名・購入案）", cost: 0, note: "未購入・デジタル€9.70×4枚＝€38.80（紙€10.20×4枚＝€40.80）／初回乗車から連続して使用／円換算額未反映" },
   { item: "国会議事堂 ガイドツアー（2名・任意）", cost: 0, note: "11/19朝8:00にビジターセンターで当日券を購入予定 14,000HUF×2名（約¥11,600）／事前予約枠は空きなし・当日券のみ（枚数限定）／外観散策は無料" },
   { item: "Sisi Pass（大人2名）", cost: 0, note: "購入済み・€60×2＝€120／11/20シシィ博物館・11/21シェーンブルン08:30〜08:45入場／円請求額未反映（単独券との重複計上なし）" },
@@ -2336,10 +2367,10 @@ const COSTS = [
 
 // ─── ヘルパー ──────────────────────────────────────────────────────────────────
 
-const WebLink = ({ href }) => href ? (
+const WebLink = ({ href, label = "公式サイト" }) => href ? (
   <a href={href} target="_blank" rel="noopener noreferrer" className="eu-tl-icon-link"
     style={{ textDecoration:"none", fontSize:".82rem", opacity:0.7, transition:"opacity 0.2s", cursor:"pointer", flexShrink:0 }}
-    aria-label="公式サイト" onClick={e => e.stopPropagation()}>
+    aria-label={label} onClick={e => e.stopPropagation()}>
     <span aria-hidden="true">🌐</span>
   </a>
 ) : null;
@@ -3013,7 +3044,7 @@ export default function EuropeTrip() {
               </tbody>
               <tfoot>
                 <tr className="eu-cost-total">
-                  <td className="eu-cost-total-label">確定済み小計</td>
+                  <td className="eu-cost-total-label">円換算できる項目の小計（目安含む）</td>
                   <td className="eu-cost-total-value">¥{totalFixed.toLocaleString()}</td>
                 </tr>
               </tfoot>
@@ -3022,7 +3053,7 @@ export default function EuropeTrip() {
               ※ 航空券（2名合計¥457,440）、ウィーン宿泊（2名2泊・¥40,277相当）、プラハ宿泊（2名2泊・¥28,407）は予約済み・支払済みです。<br />
               Sisi Pass（2名€120）、美術史美術館（2名€44）、国立図書館の入場・音声ガイド（2名€29）は支払済みです。円請求額が未確認のため上の円小計には含めていません。<br />
               宿泊税（ブダペスト4%・プラハ50CZK/人泊）は現地払いです。ウィーン市税5%は宿泊料金に含まれています。<br />
-              食費・市内交通・観光入場料は含まれていません。
+              小計には、空港バス・ブダペスト／プラハ市内交通・ドナウ川クルーズ・ブダペスト宿泊税の目安額も含みます。「─」の項目（円額未確認・未購入・現地払い）と食費は含まれていません。
             </div>
           </div>
         ) : (
@@ -3161,7 +3192,7 @@ export default function EuropeTrip() {
                     {item.label}
                     {(item.url || item.mapUrl || item.photo) && (
                       <span className="eu-tl-links">
-                        <WebLink href={item.url} />
+                        <WebLink href={item.url} label={item.urlLabel} />
                         <MapLink href={item.mapUrl} />
                         <PhotoLink href={item.photo} />
                       </span>
@@ -3200,7 +3231,7 @@ export default function EuropeTrip() {
                       <div className="eu-booking-links">
                         {DAYS[activeDay].booking.url && (
                           <a href={DAYS[activeDay].booking.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
-                            <span aria-hidden="true">🌐</span> 公式サイト
+                            <span aria-hidden="true">🌐</span> {DAYS[activeDay].booking.urlLabel || "公式サイト"}
                           </a>
                         )}
                         {DAYS[activeDay].booking.mapUrl && (
@@ -3247,7 +3278,7 @@ export default function EuropeTrip() {
                         <div className="eu-booking-links">
                           {b.url && (
                             <a href={b.url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
-                              <span aria-hidden="true">🌐</span> 公式サイト
+                              <span aria-hidden="true">🌐</span> {b.urlLabel || "公式サイト"}
                             </a>
                           )}
                           {b.mapUrl && (
