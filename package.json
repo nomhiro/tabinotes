@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:share": "node scripts/build-share.mjs",
+    "test:share": "node --test test/share.test.mjs",
     "deploy": "wrangler deploy",
     "lint": "eslint .",
     "preview": "vite preview",

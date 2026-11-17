@@ -1,0 +1,1572 @@
+[
+  {
+    "day": 0,
+    "date": "11月17日（火）",
+    "title": "前日移動 ─ 羽田第3ターミナルへ",
+    "schedule": [
+      {
+        "time": "18:12",
+        "label": "名古屋駅 出発 ─ のぞみ462号",
+        "icon": "🚄",
+        "desc": "スマートEX予約。19:51 東京駅着"
+      },
+      {
+        "time": "19:51",
+        "label": "東京駅 到着 ─ 羽田空港へ",
+        "icon": "🚉",
+        "desc": "JRで浜松町駅へ移動し、東京モノレールに乗り換えて第3ターミナルへ。乗り換え時刻は当日確認"
+      },
+      {
+        "time": "〜21:05",
+        "label": "羽田 第3ターミナル 到着（推奨）",
+        "icon": "✈",
+        "desc": "翌00:05発の3時間前を目安に到着"
+      },
+      {
+        "time": "到着後",
+        "label": "チェックイン・手荷物預け",
+        "icon": "🧳",
+        "desc": "先にエミレーツ航空の搭乗手続きを済ませ、搭乗時刻とゲートを確認。シャワー後の着替えは手元に残す"
+      },
+      {
+        "time": "手続き後",
+        "label": "羽田空港で夕食",
+        "icon": "🍽",
+        "desc": "第3ターミナルで夕食。お店は未定。営業時間や混雑状況を確認し、出発までに余裕を持って"
+      },
+      {
+        "time": "夕食後",
+        "label": "第3ターミナルでシャワー",
+        "icon": "🚿"
+      },
+      {
+        "time": "〜22:35",
+        "label": "保安検査・出国",
+        "icon": "🛂",
+        "desc": "00:05発の90分前までに済ませる目安。21:05着の場合は約90分しかないため、手続きやシャワーの待ち時間によっては夕食との両立が難しいことも。搭乗手続きを優先"
+      }
+    ],
+    "bookings": [
+      {
+        "title": "新幹線（往路）",
+        "details": [
+          {
+            "label": "予約",
+            "value": "スマートEX"
+          },
+          {
+            "label": "列車",
+            "value": "のぞみ462号"
+          },
+          {
+            "label": "日時",
+            "value": "2026年11月17日（火）"
+          },
+          {
+            "label": "出発",
+            "value": "18:12 名古屋"
+          },
+          {
+            "label": "到着",
+            "value": "19:51 東京"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 1,
+    "date": "11月18日（水）",
+    "title": "羽田発 ─ ドバイ乗継 ─ ブダペスト着 ＆ 大聖堂・雑貨巡り・ディナー",
+    "schedule": [
+      {
+        "time": "00:05 JST",
+        "label": "羽田（HND）出発",
+        "icon": "✈",
+        "desc": "EK313・エミレーツ。第3ターミナル。Boeing 777-300ER／飛行11時間50分"
+      },
+      {
+        "time": "06:55 DXB",
+        "label": "ドバイ（DXB）着",
+        "icon": "🇦🇪",
+        "desc": "EK313到着。乗継 3時間10分。ターミナル3内で乗り継ぎ"
+      },
+      {
+        "time": "10:05 DXB",
+        "label": "ドバイ（DXB）発",
+        "icon": "✈",
+        "desc": "EK111・エミレーツ。Boeing 777-300ER／飛行6時間。現地時間"
+      },
+      {
+        "time": "13:05 BUD",
+        "label": "ブダペスト（BUD）着",
+        "icon": "🏁",
+        "desc": "EK111到着。ターミナル2B。入国審査でEES（EU新入域システム）の生体登録があり通常より時間がかかる可能性あり。総所要21時間",
+        "coords": [
+          47.4369,
+          19.2556
+        ]
+      },
+      {
+        "time": "14:00頃",
+        "label": "100E エアポートエクスプレス 乗車",
+        "icon": "🚌",
+        "coords": [
+          47.4369,
+          19.2556
+        ]
+      },
+      {
+        "time": "14:35頃",
+        "label": "Astoria M 降車 ─ ホテルへ移動",
+        "icon": "🚶",
+        "desc": "Astoria Mバス停からホテル（Károly krt. 10）へ徒歩約1分。大通り沿いでアクセス抜群",
+        "coords": [
+          47.4947,
+          19.0595
+        ]
+      },
+      {
+        "time": "14:40頃",
+        "label": "Budapest Panorama Central 到着 ─ 荷物を預けて出発",
+        "icon": "🏨",
+        "desc": "チェックイン（14:00〜）して荷物を置き、身支度を整えたらすぐペスト地区の散策へ。スーペリア ダブルルーム スパバス付（2泊）。入国審査（EES）で遅れた場合は荷物を預けるだけにして出発",
+        "mapUrl": "https://maps.google.com/?q=Budapest+Panorama+Central",
+        "coords": [
+          47.4947,
+          19.0595
+        ]
+      },
+      {
+        "time": "15:00頃",
+        "label": "聖イシュトヴァーン大聖堂（Szent István-bazilika）",
+        "icon": "⛪",
+        "desc": "ホテルから徒歩約12分。初代国王を祀るブダペスト最大のカトリック教会。高さ96mの大ドームと黄金の天井装飾をじっくり鑑賞したあと、展望パノラマテラスからブダペストの街を360度見渡してスケール感を味わう。冬季のドーム・テラスは10:00〜16:30との案内が多い（資料により差あり）ため、16:00頃までには上がりたい",
+        "mapUrl": "https://maps.google.com/?q=St.+Stephen%27s+Basilica+Budapest",
+        "coords": [
+          47.5009,
+          19.054
+        ]
+      },
+      {
+        "time": "16:30",
+        "label": "雑貨店・おみやげ巡り ① Bomo Art（Pest店）",
+        "icon": "🛍",
+        "mapUrl": "https://maps.google.com/?q=Bomo+Art+R%C3%A9gi+Posta+utca+14+Budapest",
+        "coords": [
+          47.4953,
+          19.0527
+        ]
+      },
+      {
+        "time": "17:00頃",
+        "label": "② Folkart Kézművesház（フォークアート）",
+        "icon": "🧵",
+        "desc": "Bomo Artのすぐ隣（Régi Posta utca 12）。ハンガリーの民芸・手工芸品のお店。刺繍やクラフトなどのこだわり雑貨を探す。営業は月〜金 10:00〜18:00（掲載情報）のため、18:00の閉店前に入る",
+        "mapUrl": "https://maps.google.com/?q=Folkart+K%C3%A9zm%C5%B1vesh%C3%A1z+R%C3%A9gi+Posta+utca+12+Budapest",
+        "coords": [
+          47.4953,
+          19.0524
+        ]
+      },
+      {
+        "time": "17:30頃",
+        "label": "③ Magma（マグマ）",
+        "icon": "🎨",
+        "desc": "Petőfi Sándor utca 11。ハンガリー人デザイナー・作家の作品だけを集めたデザインショップ（ガラス・磁器・テキスタイル・おもちゃなど）。営業は月〜金 10:00〜19:00。ここから夕食のCafé Körへ徒歩約10分",
+        "mapUrl": "https://maps.google.com/?q=Magma+Pet%C5%91fi+S%C3%A1ndor+utca+11+Budapest",
+        "coords": [
+          47.496,
+          19.0538
+        ]
+      },
+      {
+        "time": "18:30",
+        "label": "Café Kör（カフェ・ケル）でディナー",
+        "icon": "🍽",
+        "desc": "予約済（18:30）。聖イシュトヴァーン大聖堂の裏手、Sas utca 17にある地元でも評判の名店。温かみのあるクラシックな店内で、伝統的なハンガリー料理をゆっくり堪能する初日のディナー",
+        "mapUrl": "https://maps.google.com/?q=Caf%C3%A9+K%C3%B6r+Sas+utca+17+Budapest",
+        "coords": [
+          47.5018,
+          19.0528
+        ]
+      },
+      {
+        "time": "20:00頃",
+        "label": "City SPAR（Károly krt.）で買い出し",
+        "icon": "🛒",
+        "desc": "ディナーの帰り道に立ち寄る。ホテルから徒歩圏、Astoria駅周辺のスーパー（Károly krt. 22–24）。ばらまき用のお菓子や現地の食品をまとめて調達し、そのままホテルへ持ち帰る。営業は21:00まで",
+        "mapUrl": "https://maps.google.com/?q=City+SPAR+K%C3%A1roly+k%C3%B6r%C3%BAt+22+Budapest",
+        "coords": [
+          47.4961,
+          19.057
+        ]
+      },
+      {
+        "time": "20:30頃",
+        "label": "ホテル帰着 ＆ 就寝",
+        "icon": "🏨",
+        "desc": "SPARからホテルまで徒歩数分。移動で長い一日なので早めに就寝。翌朝は国会議事堂の当日券のため07:30頃に出発",
+        "coords": [
+          47.4947,
+          19.0595
+        ]
+      }
+    ],
+    "bookings": [
+      {
+        "title": "エミレーツ航空券（往路）",
+        "details": [
+          {
+            "label": "区間",
+            "value": "東京（羽田）→ ドバイ → ブダペスト"
+          },
+          {
+            "label": "便名",
+            "value": "EK313 ／ EK111"
+          },
+          {
+            "label": "出発",
+            "value": "2026年11月18日（水）00:05 羽田（HND）"
+          },
+          {
+            "label": "到着",
+            "value": "2026年11月18日（水）13:05 ブダペスト（BUD）"
+          },
+          {
+            "label": "所要時間",
+            "value": "21時間00分（ドバイ乗継 3時間10分）"
+          },
+          {
+            "label": "機材",
+            "value": "Boeing 777-300ER（両便）"
+          }
+        ]
+      },
+      {
+        "title": "Budapest Panorama Central（ブダペスト 2泊）",
+        "details": [
+          {
+            "label": "施設名",
+            "value": "Budapest Panorama Central（ブダペスト パノラマ セントラル）"
+          },
+          {
+            "label": "宿泊期間",
+            "value": "2026年11月18日（水）〜 11月20日（金）（2泊）"
+          },
+          {
+            "label": "部屋・人数",
+            "value": "スーペリア ダブルルーム スパバス付 ／ 大人2名・1部屋"
+          },
+          {
+            "label": "住所",
+            "value": "1052 Budapest, Károly krt. 10, Hungary"
+          },
+          {
+            "label": "最寄り",
+            "value": "地下鉄M2「Astoria」駅 徒歩1分 ／ 100E空港バス「Astoria M」降車すぐ"
+          },
+          {
+            "label": "チェックイン",
+            "value": "14:00〜 ／ チェックアウト 〜11:00"
+          },
+          {
+            "label": "予約状況",
+            "value": "予約確定"
+          }
+        ]
+      },
+      {
+        "title": "Café Kör ディナー予約（18:30）",
+        "details": [
+          {
+            "label": "店名",
+            "value": "Café Kör（カフェ・ケル）"
+          },
+          {
+            "label": "日時",
+            "value": "2026年11月18日（水）18:30"
+          },
+          {
+            "label": "住所",
+            "value": "Sas utca 17, Budapest（聖イシュトヴァーン大聖堂の近く）"
+          },
+          {
+            "label": "電話（掲載情報）",
+            "value": "+36 1 311 0053"
+          },
+          {
+            "label": "予約状況",
+            "value": "予約確定"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 2,
+    "date": "11月19日（木）",
+    "title": "ブダペスト ─ 国会議事堂・英雄広場・王宮の丘 ＆ ナイトクルーズ",
+    "schedule": [
+      {
+        "time": "07:30",
+        "label": "ホテル出発 → Kossuth Lajos térへ",
+        "icon": "🚇",
+        "desc": "地下鉄M2「Astoria」駅から直通2駅で「Kossuth Lajos tér」駅へ移動（約5分・乗換なし）",
+        "coords": [
+          47.4947,
+          19.0595
+        ]
+      },
+      {
+        "time": "07:45",
+        "label": "ハンガリー国会議事堂（Országház）─ 当日券を確保",
+        "icon": "🏛",
+        "mapUrl": "https://maps.google.com/?q=Hungarian+Parliament+Building",
+        "coords": [
+          47.5071,
+          19.0457
+        ]
+      },
+      {
+        "time": "当日券購入後",
+        "label": "朝食・ツアー時刻の確認",
+        "icon": "🥐",
+        "desc": "当日券を確保したらツアーの集合時刻を確認。時間があれば軽く朝食をとる（店は当日決める）。8:15頃までに出発でき、10:00以降のツアーまで余裕があれば英雄広場へ。購入が長引く場合や早いツアーの場合は、見学後の立ち寄りを検討して後の予定を調整する"
+      },
+      {
+        "time": "08:15頃",
+        "label": "国会議事堂 → 英雄広場へ",
+        "icon": "🚇",
+        "desc": "当日券の購入後、時間に余裕がある場合の目安。地下鉄M2「Kossuth Lajos tér」から「Deák Ferenc tér」でM1に乗り換え、「Hősök tere」へ。移動は乗換・待ち時間を含め約20〜30分"
+      },
+      {
+        "time": "08:40頃",
+        "label": "英雄広場（Hősök tere）",
+        "icon": "🏛",
+        "mapUrl": "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest",
+        "coords": [
+          47.515,
+          19.07778
+        ]
+      },
+      {
+        "time": "09:30頃",
+        "label": "国会議事堂へ戻りツアーに備える",
+        "icon": "🚇",
+        "desc": "M1「Hősök tere」→「Deák Ferenc tér」でM2に乗り換え「Kossuth Lajos tér」へ。9:30頃の到着は8:15頃に出発できた場合の目安。指定された集合時刻を優先し、早めにビジターセンターへ",
+        "coords": [
+          47.5071,
+          19.0457
+        ]
+      },
+      {
+        "time": "指定時刻",
+        "label": "国会議事堂 内部ガイドツアー",
+        "icon": "🏛",
+        "desc": "当日券を購入できた場合、券に記載された時刻に参加。所要約45〜50分。売り切れや議会開催で見学できない場合は外観を見て、その後の予定を調整"
+      },
+      {
+        "time": "ツアー後〜",
+        "label": "ランチ・休憩（お店は未定）",
+        "icon": "🍽",
+        "desc": "国会議事堂の見学後、ブダ城へ向かう前に昼食と休憩。お店はまだ決めておらず、ツアーの時刻や当日の状況で選ぶ。国会議事堂から徒歩約5分のところに旧郵便貯金局（Hold u. 4・「ハンガリーのガウディ」ことレフネル・エデン設計のアール・ヌーヴォー建築）があるので、時間と体力に余裕があれば外観だけ見に立ち寄るのもよい"
+      },
+      {
+        "time": "13:30頃",
+        "label": "ブダ城（Budavári Palota）",
+        "icon": "🏰",
+        "mapUrl": "https://maps.google.com/?q=Buda+Castle+Budapest",
+        "coords": [
+          47.4962,
+          19.0396
+        ]
+      },
+      {
+        "time": "15:00頃",
+        "label": "マーチャーシュ教会（Mátyás-templom）",
+        "icon": "⛪",
+        "desc": "ブダ城から徒歩で移動（約10分）。歴代ハンガリー国王の戴冠式が行われた歴史ある教会で、色鮮やかなジョルナイ製の屋根瓦と内部の彩色装飾が見どころ。内部見学は月〜土 9:00〜17:00（11〜3月・行事で変更あり）",
+        "mapUrl": "https://maps.google.com/?q=Matthias+Church+Budapest",
+        "coords": [
+          47.5019,
+          19.0342
+        ]
+      },
+      {
+        "time": "15:40頃",
+        "label": "漁夫の砦（Halászbástya）",
+        "icon": "🏰",
+        "desc": "マーチャーシュ教会のすぐ隣。7つの尖塔と白亜の回廊が連なる展望砦で、アーチ窓越しにドナウ川と国会議事堂を一望する。ブダ地区の必見スポットをここで制覇。日没は16:00〜16:15頃で、夕景の時間帯",
+        "mapUrl": "https://maps.google.com/?q=Fisherman%27s+Bastion+Budapest",
+        "coords": [
+          47.5022,
+          19.0347
+        ]
+      },
+      {
+        "time": "16:00頃",
+        "label": "ブダ側を出発 → ペスト側の中央市場へ",
+        "icon": "🚌",
+        "desc": "三位一体広場前からバス16番でDeák Ferenc térへ（約10分）、トラム47/49番に乗り換えてFővám térへ（合計約30分）"
+      },
+      {
+        "time": "16:30",
+        "label": "ブダペスト中央市場（Nagyvásárcsarnok）",
+        "icon": "🧺",
+        "desc": "ペスト側のFővám tér、巨大な屋内市場。1階は食料品、2階は民芸品が並ぶ。パプリカパウダー、ハチミツ、革製品など定番みやげのまとめ買いに最適。閉館は木曜18:00だが、17:30にAstoriaへ戻る予定のため17:15頃までが目安（買い足したい場合は休憩を短縮して再訪）",
+        "mapUrl": "https://maps.google.com/?q=Great+Market+Hall+Budapest",
+        "coords": [
+          47.4872,
+          19.0584
+        ]
+      },
+      {
+        "time": "17:30頃",
+        "label": "Niki Kürtőskalács でおやつ（キュルテーシュカラーチ）",
+        "icon": "🍩",
+        "mapUrl": "https://maps.google.com/?q=Niki+K%C3%BCrt%C5%91skal%C3%A1cs+M%C3%BAzeum+k%C3%B6r%C3%BAt+7+Budapest",
+        "coords": [
+          47.4935039,
+          19.0602601
+        ]
+      },
+      {
+        "time": "17:45頃",
+        "label": "ホテルで休憩",
+        "icon": "🏨",
+        "desc": "Nikiからホテルまで徒歩数分。買った荷物を一度部屋に置き、夜のクルーズに向けて少しリフレッシュ（18:15の夕食まで約30分）",
+        "coords": [
+          47.4947,
+          19.0595
+        ]
+      },
+      {
+        "time": "18:15頃",
+        "label": "夕食 or 軽食（お店は未定）",
+        "icon": "🍽",
+        "desc": "どこかのお店か軽食で夕食をとる（お店はまだ未定）。クルーズ船内は飲食物の持ち込み可なので、軽食をテイクアウトして船上で食べる選択肢もある"
+      },
+      {
+        "time": "19:15頃",
+        "label": "ホテル出発 ─ 乗船場所へ",
+        "icon": "🚶",
+        "desc": "出航の15分前までに乗船場所へ。場所は予約バウチャーで要確認"
+      },
+      {
+        "time": "19:40",
+        "label": "ドナウ川 ボートクルーズ（屋上座席保証・持ち込み可）",
+        "icon": "🚢",
+        "coords": [
+          47.495,
+          19.0505
+        ]
+      },
+      {
+        "time": "21:00頃〜",
+        "label": "ニューヨーク・カフェ（余裕があれば）",
+        "icon": "☕",
+        "mapUrl": "https://maps.google.com/?q=New+York+Caf%C3%A9+Budapest",
+        "coords": [
+          47.4981,
+          19.0707
+        ]
+      },
+      {
+        "time": "21:30頃〜",
+        "label": "ホテル帰着 ＆ 翌朝の移動準備",
+        "icon": "🏨",
+        "desc": "Budapest Panorama Centralへ帰着（ニューヨーク・カフェに寄った場合は22:30頃）。翌朝のウィーン行きRJX 162（Keleti 06:30発・05:30頃チェックアウト）に向けて荷造り・就寝",
+        "coords": [
+          47.4947,
+          19.0595
+        ]
+      }
+    ],
+    "bookings": [
+      {
+        "title": "ドナウ川 ボートクルーズ（GetYourGuide・予約済）",
+        "details": [
+          {
+            "label": "ツアー名",
+            "value": "ブダペスト：屋上座席保証＆持ち込み可のボートクルーズ"
+          },
+          {
+            "label": "日時",
+            "value": "2026年11月19日（木）19:40"
+          },
+          {
+            "label": "所要時間",
+            "value": "50分"
+          },
+          {
+            "label": "人数",
+            "value": "大人2名"
+          },
+          {
+            "label": "予約状況",
+            "value": "予約済（チケットは利用日が近づくと有効化）"
+          }
+        ]
+      },
+      {
+        "title": "Budapest Panorama Central（連泊 2日目）",
+        "details": [
+          {
+            "label": "施設名",
+            "value": "Budapest Panorama Central（ブダペスト パノラマ セントラル）"
+          },
+          {
+            "label": "部屋",
+            "value": "スーペリア ダブルルーム スパバス付"
+          },
+          {
+            "label": "住所",
+            "value": "1052 Budapest, Károly krt. 10, Hungary"
+          },
+          {
+            "label": "最寄り",
+            "value": "地下鉄M2「Astoria」駅 徒歩1分"
+          },
+          {
+            "label": "翌朝アクセス",
+            "value": "チェックアウト後、地下鉄M2「Astoria」からKeleti駅へ直通2駅（約4分）"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 3,
+    "date": "11月20日（金）",
+    "title": "ブダペスト → ウィーン ─ 美術史美術館・シシィ博物館・大聖堂 ＆ スワロフスキー・コンサート",
+    "schedule": [
+      {
+        "time": "05:30頃",
+        "label": "ホテル チェックアウト・Keleti駅へ移動",
+        "icon": "🏨",
+        "desc": "Budapest Panorama Centralをチェックアウト。早朝は地下鉄の本数が少ないため、タクシーまたは徒歩併用での移動を推奨。出発30分前（06:00頃）には駅に到着",
+        "coords": [
+          47.4947,
+          19.0595
+        ]
+      },
+      {
+        "time": "06:30",
+        "label": "ブダペスト東駅（Keleti）発",
+        "icon": "🚆",
+        "desc": "ÖBB RJX 162（直通・2時間50分）。予約済・2名。住所：Budapest, Kerepesi út 2-4。ÖBBの変更通知により到着は09:20へ変更。駅の案内・運行情報も確認",
+        "coords": [
+          47.5001,
+          19.0839
+        ]
+      },
+      {
+        "time": "09:20",
+        "label": "ウィーン中央駅（Wien Hbf）着",
+        "icon": "🚉",
+        "desc": "最新のÖBB通知に基づく到着予定時刻。市内交通券は初回乗車前に用意。",
+        "coords": [
+          48.1848,
+          16.3765
+        ]
+      },
+      {
+        "time": "09:30頃",
+        "label": "トラム18番でホテルへ",
+        "icon": "🚋",
+        "desc": "中央駅からBurggasse-Stadthalle行きに乗り、終点で下車。乗車約24分を目安に、駅構内の移動・待ち時間・ホテルまでの徒歩も見込む。到着が遅れた場合は美術館までの余裕を再確認"
+      },
+      {
+        "time": "10:00頃",
+        "label": "ARCOTEL Wimberger Wienに荷物預け",
+        "icon": "🏨",
+        "desc": "Neubaugürtel 34-36。チェックインは15:00からのため、まず荷物を預けて出発。美術史美術館・シシィ博物館には大きな荷物を持ち込めない。早期入室を前提にしない",
+        "mapUrl": "https://maps.google.com/?q=ARCOTEL+Wimberger+Wien",
+        "coords": [
+          48.2049,
+          16.3378
+        ]
+      },
+      {
+        "time": "10:15頃",
+        "label": "地下鉄U3で美術史美術館へ",
+        "icon": "🚇",
+        "desc": "ホテルから徒歩約5分のWestbahnhofへ。U3・Simmering方面でVolkstheater下車、Maria-Theresien-Platzの美術館入口へ歩く。徒歩・待ち時間込み約25〜35分を見込み、11:00前に到着"
+      },
+      {
+        "time": "11:00",
+        "label": "美術史美術館（入館予約済み）＆館内カフェ",
+        "icon": "🖼",
+        "mapUrl": "https://maps.google.com/?q=Kunsthistorisches+Museum+Wien",
+        "coords": [
+          48.2038,
+          16.3617
+        ]
+      },
+      {
+        "time": "14:00頃",
+        "label": "シシィ博物館・皇帝居室（ホーフブルク王宮）",
+        "icon": "👑",
+        "desc": "購入済みSisi Passを利用。入口はMichaelerkuppel。皇妃エリザベートの展示とフランツ・ヨーゼフ夫妻の居室を見学（約60〜75分目安）。パス利用は時間予約不要。15:15頃には出発し、大聖堂へ徒歩約10〜15分",
+        "mapUrl": "https://maps.google.com/?q=Sisi+Museum+Michaelerkuppel+Wien",
+        "coords": [
+          48.2076979,
+          16.365938
+        ]
+      },
+      {
+        "time": "15:30頃",
+        "label": "シュテファン大聖堂（内部見学）",
+        "icon": "⛪",
+        "mapUrl": "https://maps.google.com/?q=Stephansdom+Vienna",
+        "coords": [
+          48.2084114,
+          16.3734707
+        ]
+      },
+      {
+        "time": "16:10頃",
+        "label": "大聖堂前クリスマスマーケット",
+        "icon": "🎄",
+        "desc": "内部見学の後、そのままStephansplatzの屋台へ。11/20は11:00〜21:00営業。工芸品や温かい飲み物を見ながら短めに散策",
+        "mapUrl": "https://maps.google.com/?q=Stephansplatz+Christmas+Market+Wien",
+        "coords": [
+          48.2082316,
+          16.3712411
+        ]
+      },
+      {
+        "time": "16:30頃",
+        "label": "Manner シュテファン広場店",
+        "icon": "🛍",
+        "desc": "Stephansplatz 7、Rotenturmstraße角（大聖堂から徒歩約2分）。毎日10:00〜21:00。定番ウエハースやピンク色のグッズを見て、ケルントナー通りへ",
+        "mapUrl": "https://maps.google.com/?q=Manner+Stephansplatz+7+Wien",
+        "coords": [
+          48.2091417,
+          16.3730432
+        ]
+      },
+      {
+        "time": "16:50頃",
+        "label": "Swarovski ケルントナー通り8番地店",
+        "icon": "💎",
+        "desc": "Kärntner Straße 8（Mannerから徒歩約5分）。金曜10:00〜18:30。こちらを先に見て、同じ通りを南へ進み24番地の旗艦店へ",
+        "mapUrl": "https://maps.google.com/?q=Swarovski+K%C3%A4rntner+Stra%C3%9Fe+8+Wien",
+        "coords": [
+          48.2072535,
+          16.3714923
+        ]
+      },
+      {
+        "time": "17:05頃",
+        "label": "Swarovski Kristallwelten Store Wien（旗艦店）",
+        "icon": "💎",
+        "desc": "Kärntner Straße 24（8番地店から徒歩約3分）。金曜09:00〜20:00。クリスタルの展示とショップを散策。夕食に向け17:15頃を退出目安にし、見足りなければ夕食後の予備時間に再訪",
+        "mapUrl": "https://maps.google.com/?q=Swarovski+Kristallwelten+Store+Wien+K%C3%A4rntner+Stra%C3%9Fe+24",
+        "coords": [
+          48.2054434,
+          16.3709487
+        ]
+      },
+      {
+        "time": "17:30頃",
+        "label": "Reinthaler's Beislでディナー",
+        "icon": "🍽",
+        "desc": "Dorotheergasse 2–4、旗艦店から旧市街側へ徒歩約8〜10分。シュニッツェルを楽しむ。予約なしなので早めに入店し、満席時は待ち時間と20:15のコンサートを優先して当日判断",
+        "mapUrl": "https://maps.google.com/?q=Reinthaler%27s+Beisl+Dorotheergasse+Wien",
+        "coords": [
+          48.2079768,
+          16.3699139
+        ]
+      },
+      {
+        "time": "19:00頃",
+        "label": "SPAR Gourmet＆予備時間",
+        "icon": "🛒",
+        "desc": "Kärntner Ring 2（夕食の店からケルントナー通り経由で徒歩約15分）。金曜07:30〜20:00。水やお菓子を購入。旗艦店へ再訪する場合はこの途中で立ち寄り、教会への移動時間を残す",
+        "mapUrl": "https://maps.google.com/?q=SPAR+Gourmet+K%C3%A4rntner+Ring+2+Wien",
+        "coords": [
+          48.2019433,
+          16.3698786
+        ]
+      },
+      {
+        "time": "19:45頃",
+        "label": "カールス教会 到着・入場準備",
+        "icon": "🚶",
+        "desc": "SPARからKarlsplatzを通り教会へ徒歩約10〜15分。19:45頃の到着を目標に、チケットの入場案内を確認。これは開場時刻ではなく余裕を持たせた到着目安",
+        "mapUrl": "https://maps.google.com/?q=Karlskirche+Vienna"
+      },
+      {
+        "time": "20:15",
+        "label": "カールス教会 ヴィヴァルディ「四季」コンサート",
+        "icon": "🎻",
+        "mapUrl": "https://maps.google.com/?q=Karlskirche+Vienna",
+        "coords": [
+          48.1983,
+          16.3719
+        ]
+      },
+      {
+        "time": "終演後",
+        "label": "ホテル帰着・翌朝の入場に備える",
+        "icon": "🏨",
+        "desc": "KarlsplatzからU4・Hütteldorf方面→LängenfeldgasseでU6・Floridsdorf方面に乗換、Burggasse-Stadthalleへ。徒歩・待ち時間込み約30〜40分目安。翌朝はシェーンブルン08:30〜08:45入場のため早めに休む",
+        "coords": [
+          48.2049,
+          16.3378
+        ]
+      }
+    ],
+    "bookings": [
+      {
+        "title": "鉄道チケット（ブダペスト → ウィーン）",
+        "details": [
+          {
+            "label": "列車",
+            "value": "ÖBB RJX 162（直通・予約済）"
+          },
+          {
+            "label": "乗客",
+            "value": "2名"
+          },
+          {
+            "label": "区間",
+            "value": "ブダペスト東駅（Keleti）→ ウィーン中央駅（Wien Hbf）"
+          },
+          {
+            "label": "出発",
+            "value": "2026年11月20日（金）06:30発"
+          },
+          {
+            "label": "到着",
+            "value": "2026年11月20日（金）09:20着（ÖBBの最新変更通知を反映）"
+          },
+          {
+            "label": "所要時間",
+            "value": "2時間50分"
+          },
+          {
+            "label": "予約先",
+            "value": "ÖBB（予約済）"
+          }
+        ]
+      },
+      {
+        "title": "美術史美術館（11:00入館・予約済み）",
+        "details": [
+          {
+            "label": "入館日時",
+            "value": "2026年11月20日（金）11:00（チケット記載）"
+          },
+          {
+            "label": "チケット",
+            "value": "2名分。スマートフォン（ウォレット／KHMアプリ）に保存、またはPDFを印刷して持参"
+          },
+          {
+            "label": "カフェ",
+            "value": "入館後すぐ列へ。通常カフェは席予約不可。入館枠は席を保証しない"
+          }
+        ]
+      },
+      {
+        "title": "ARCOTEL Wimberger Wien（ウィーン 2泊）",
+        "details": [
+          {
+            "label": "施設名",
+            "value": "ARCOTEL Wimberger Wien"
+          },
+          {
+            "label": "宿泊期間",
+            "value": "2026年11月20日（金）〜 11月22日（日）（2泊）"
+          },
+          {
+            "label": "部屋・人数",
+            "value": "コンフォート ダブルルーム ／ 大人2名・1部屋"
+          },
+          {
+            "label": "住所",
+            "value": "Neubaugürtel 34-36, 07区 ノイバウ, 1070 ウィーン, オーストリア"
+          },
+          {
+            "label": "電話",
+            "value": "+43 1 521650"
+          },
+          {
+            "label": "チェックイン",
+            "value": "15:00から（12:00〜13:00の到着・チェックインをリクエスト済み／空き状況による）"
+          },
+          {
+            "label": "チェックアウト",
+            "value": "2026年11月22日（日）11:00まで"
+          },
+          {
+            "label": "食事",
+            "value": "なし（禁煙ルーム）"
+          }
+        ]
+      },
+      {
+        "title": "カールス教会 ヴィヴァルディ「四季」コンサート（GetYourGuide・予約済）",
+        "details": [
+          {
+            "label": "ツアー名",
+            "value": "ウィーン カールス教会：ヴィヴァルディ「四季」コンサート"
+          },
+          {
+            "label": "日時",
+            "value": "2026年11月20日（金）20:15"
+          },
+          {
+            "label": "所要時間",
+            "value": "75分"
+          },
+          {
+            "label": "人数",
+            "value": "大人2名"
+          },
+          {
+            "label": "予約状況",
+            "value": "予約済（チケットは利用日が近づくと有効化）"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 4,
+    "date": "11月21日（土）",
+    "title": "ウィーン ─ シェーンブルン宮殿・国立図書館 ＆ 雑貨・文具・市庁舎前マーケット",
+    "schedule": [
+      {
+        "time": "07:30頃",
+        "label": "ホテル出発 → シェーンブルン宮殿へ",
+        "icon": "🚇",
+        "desc": "Burggasse-StadthalleからU6・Siebenhirten方面→LängenfeldgasseでU4・Hütteldorf方面に乗換、Schönbrunn下車。駅から宮殿入口への徒歩も含め約35〜45分を見込み、08:10頃到着を目標にする。当日WienMobilで運行確認",
+        "coords": [
+          48.2049,
+          16.3378
+        ]
+      },
+      {
+        "time": "08:30〜08:45",
+        "label": "シェーンブルン宮殿（購入済み入場枠）",
+        "icon": "👑",
+        "desc": "Sisi Pass・大人2名。入場枠厳守。皇帝夫妻の私室、マリア・テレジア時代の室内、大広間を巡る宮殿ツアー。音声案内付き、見学は約60〜75分目安。終了後は10:30のマーケットまで休憩など自由に過ごす",
+        "mapUrl": "https://maps.google.com/?q=Sch%C3%B6nbrunn+Palace+Vienna",
+        "coords": [
+          48.1858,
+          16.3128
+        ]
+      },
+      {
+        "time": "10:30頃",
+        "label": "シェーンブルン宮殿前クリスマスマーケット",
+        "icon": "🎄",
+        "desc": "宮殿前庭の屋台で工芸品や木製オーナメントを散策。2026/11/6〜2027/1/6開催、今日は10:00〜21:00。飲食するかは当日決める",
+        "mapUrl": "https://maps.google.com/?q=Weihnachtsmarkt+Schloss+Sch%C3%B6nbrunn",
+        "coords": [
+          48.187,
+          16.314
+        ]
+      },
+      {
+        "time": "12:00頃",
+        "label": "市内中心へ移動・昼食と休憩",
+        "icon": "🍽",
+        "desc": "Schönbrunn駅からU4・Heiligenstadt方面でKarlsplatzへ、ヨーゼフ広場方面へ徒歩。歩行・待ち時間込み約35〜45分目安。カフェやソーセージなど、食べる場所・内容は当日決める。14:00頃の図書館訪問まで余裕を確保"
+      },
+      {
+        "time": "14:00頃",
+        "label": "オーストリア国立図書館 プルンクザール",
+        "icon": "📚",
+        "mapUrl": "https://maps.google.com/?q=Prunksaal+der+%C3%96sterreichischen+Nationalbibliothek",
+        "coords": [
+          48.2064,
+          16.3669
+        ]
+      },
+      {
+        "time": "15:00頃",
+        "label": "Leschanz Wiener Schokolade König",
+        "icon": "🍫",
+        "desc": "Freisingergasse 1。月〜土10:00〜18:00。ウィーンの手作りチョコレートを選ぶ。次の雑貨店までは徒歩約10〜15分",
+        "mapUrl": "https://maps.google.com/?q=Leschanz+Freisingergasse+1+Wien",
+        "coords": [
+          48.2093271,
+          16.3707359
+        ]
+      },
+      {
+        "time": "15:35頃",
+        "label": "DIE VERMISCHTE WARENHANDLUNG",
+        "icon": "🎁",
+        "desc": "Weihburggasse 16の中庭。紙雑貨やクリスマス飾りなどを探す。公式11/7告知のクリスマス期間営業時間は月〜土10:00〜18:00。次のHerzileinヴォルツァイレ店へ徒歩約5〜10分",
+        "mapUrl": "https://maps.google.com/?q=Die+Vermischte+Warenhandlung+Weihburggasse+16+Wien",
+        "coords": [
+          48.2060793,
+          16.3744234
+        ]
+      },
+      {
+        "time": "16:10頃",
+        "label": "Papeterie Herzilein ヴォルツァイレ店",
+        "icon": "✏️",
+        "desc": "Wollzeile 18。月〜土10:00〜18:00。カードやノートなどの文具を探す。次のアム・ホーフ店までは徒歩約10〜15分",
+        "mapUrl": "https://maps.google.com/?q=Papeterie+Herzilein+Wollzeile+18+Wien",
+        "coords": [
+          48.2082947,
+          16.376266
+        ]
+      },
+      {
+        "time": "16:45頃",
+        "label": "Papeterie Herzilein アム・ホーフ店",
+        "icon": "✏️",
+        "desc": "Am Hof 5。月〜土10:00〜18:00。もう一方の店舗も見て、スーパーへ。買い物が長引いた場合も17:20頃の出発を目安にし、閉店前の食料品購入を優先",
+        "mapUrl": "https://maps.google.com/?q=Herzilein+Papeterie+Am+Hof+5+Wien",
+        "coords": [
+          48.2109555,
+          16.3668395
+        ]
+      },
+      {
+        "time": "17:30頃",
+        "label": "スーパーでミラベルのモーツァルトチョコ探し",
+        "icon": "🛒",
+        "desc": "市庁舎へ向かう途中のINTERSPAR Schottentor（Schottengasse 6–8、Am Hofから徒歩約10分）。土曜08:30〜18:00。BILLA／SPAR系列でMirabellを探す計画だが、商品・在庫は店舗により異なる。水や翌朝用の軽食も必要に応じて購入",
+        "mapUrl": "https://maps.google.com/?q=INTERSPAR+Schottengasse+6-8+Wien",
+        "coords": [
+          48.2137626,
+          16.3634836
+        ]
+      },
+      {
+        "time": "18:15頃",
+        "label": "市庁舎前広場クリスマスマーケット",
+        "icon": "🎄",
+        "desc": "スーパーから徒歩約15分。2026/11/13〜12/26開催、毎日10:00〜22:00。大きなツリーと市庁舎のイルミネーションを楽しむ。夕食はカフェやソーセージなど当日決め、店・メニューは固定しない",
+        "mapUrl": "https://maps.google.com/?q=Christkindlmarkt+Rathausplatz+Vienna",
+        "coords": [
+          48.2109,
+          16.3575
+        ]
+      },
+      {
+        "time": "20:00頃",
+        "label": "ホテルへ移動・翌朝の荷造り",
+        "icon": "🏨",
+        "desc": "市庁舎付近からU2でVolkstheaterへ、U3・Ottakring方面に乗換えてWestbahnhof下車、徒歩でホテルへ（約30〜40分目安）。翌朝06:39発のRegioJet RJ 1030でプラハへ向かうため、閉店まで滞在せず早めに休む",
+        "coords": [
+          48.2049,
+          16.3378
+        ]
+      }
+    ],
+    "bookings": [
+      {
+        "title": "Sisi Pass（購入済み・シェーンブルン入場枠確定）",
+        "details": [
+          {
+            "label": "宮殿入場枠",
+            "value": "2026年11月21日（土）08:30〜08:45（時間厳守）"
+          },
+          {
+            "label": "含まれる施設",
+            "value": "シェーンブルン宮殿、シシィ博物館・皇帝居室、ウィーン家具博物館"
+          },
+          {
+            "label": "利用予定",
+            "value": "11/20 シシィ博物館 → 11/21 シェーンブルン宮殿。家具博物館は旅程に含めない"
+          },
+          {
+            "label": "利用条件",
+            "value": "指定日時は宮殿のみ。他の対象施設は購入から1年以内に各1回、時間予約不要。宮殿の入場枠に遅れると入場券は失効"
+          },
+          {
+            "label": "当日の準備",
+            "value": "チケットをスマートフォンに保存、または印刷して持参。音声案内の受取場所は現地で確認"
+          }
+        ]
+      },
+      {
+        "title": "国立図書館 プルンクザール＆音声ガイド（購入済み）",
+        "details": [
+          {
+            "label": "訪問予定",
+            "value": "2026年11月21日（土）14:00頃（訪問目安・日時指定の確認資料なし）"
+          },
+          {
+            "label": "場所・営業時間",
+            "value": "Josefsplatz 1、土曜09:00〜18:00。入場用チケットを持参し、音声ガイドを受け取る"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 5,
+    "date": "11月22日（日）",
+    "title": "ウィーン → プラハ ＆ 旧市街の街歩きと気になるグルメ",
+    "schedule": [
+      {
+        "time": "05:45頃",
+        "label": "ホテル チェックアウト・駅へ移動",
+        "icon": "🥐",
+        "desc": "ARCOTEL Wimbergerをチェックアウト。ウィーン中央駅へ移動し、駅構内のベーカリーで朝食やコーヒーを調達",
+        "coords": [
+          48.1848,
+          16.3765
+        ]
+      },
+      {
+        "time": "06:39",
+        "label": "ウィーン中央駅（Wien Hbf）発",
+        "icon": "🚆",
+        "desc": "RegioJet RJ 1030 ウィーン→プラハ（直通・約4時間17分）。Omioで予約済・2名・2号車 座席1・2。チケットはOmioアプリ（オフライン表示可）か添付PDF。住所：Am Hauptbahnhof 1。20分前までに駅へ。身分証（パスポート）を携帯",
+        "coords": [
+          48.1848,
+          16.3765
+        ]
+      },
+      {
+        "time": "10:56",
+        "label": "プラハ本駅（hlavní nádraží）着",
+        "icon": "🚉",
+        "desc": "百塔の街プラハに到着（Wilsonova 300/8）。徒歩または地下鉄で、ホテルが案内した荷物預かり所へ移動",
+        "coords": [
+          50.0833,
+          14.4356
+        ]
+      },
+      {
+        "time": "11:30",
+        "label": "Luggage Storage Prague で荷物を預ける",
+        "icon": "🧳",
+        "mapUrl": "https://maps.app.goo.gl/gWYS8rcgEvqZJGXg6",
+        "coords": [
+          50.0824365,
+          14.4251439
+        ]
+      },
+      {
+        "time": "12:00",
+        "label": "Kantýna（カンティーナ）で絶品お肉ランチ",
+        "icon": "🥩",
+        "desc": "【ランチ】荷物預かり所から徒歩約5〜10分（Politických vězňů 1511/5）。精肉カウンター併設で、チェコ産の牛肉・豚肉を直火で焼き上げた肉料理をビールとともに味わえる人気店。予約不可のため早めの時間に。日曜は料理の注文が21時まで",
+        "mapUrl": "https://maps.app.goo.gl/wdmS8mcx2LvRB9hP7",
+        "coords": [
+          50.0834,
+          14.4288
+        ]
+      },
+      {
+        "time": "13:30",
+        "label": "旧市街広場（Staroměstské náměstí）＆ ティーン教会",
+        "icon": "🏰",
+        "desc": "【コース1】ゴシック・バロック・ロココ建築が立ち並ぶプラハの中心広場。おとぎ話の城のような2本の尖塔を持つ「ティーン聖母教会」は外観を見学（Kantýnaから徒歩約10分）",
+        "mapUrl": "https://maps.google.com/?q=Old+Town+Square+Prague",
+        "coords": [
+          50.0875,
+          14.4213
+        ]
+      },
+      {
+        "time": "14:00",
+        "label": "旧市庁舎 天文時計（Orloj）＆ 展望塔（任意）",
+        "icon": "🕰",
+        "mapUrl": "https://maps.google.com/?q=Old+Town+Hall+Prague",
+        "coords": [
+          50.087,
+          14.4207
+        ]
+      },
+      {
+        "time": "14:45",
+        "label": "Botanicus（ボタニクス）などでお買い物",
+        "icon": "🛍",
+        "desc": "【ショッピング】旧市街広場のすぐ裏手、ティーンの中庭（Ungelt）内にあるチェコ発の自然派コスメ・ハーブ製品のお店Botanicus（Týn 3・毎日10:00〜19:00）。荷物の受取に向け、15:25頃を出発の目安にする",
+        "mapUrl": "https://maps.google.com/?q=Botanicus+Ungelt+Prague",
+        "coords": [
+          50.0881,
+          14.4237
+        ]
+      },
+      {
+        "time": "15:40頃",
+        "label": "預けた荷物を受け取る",
+        "icon": "🧳",
+        "desc": "Václavské náměstí 785/28の荷物預かり所へ戻る。ロッカーの暗証番号を使って荷物を取り出し、Youngmann Houseへ徒歩約4分",
+        "mapUrl": "https://maps.app.goo.gl/gWYS8rcgEvqZJGXg6",
+        "coords": [
+          50.0824365,
+          14.4251439
+        ]
+      },
+      {
+        "time": "16:00",
+        "label": "Youngmann House チェックイン",
+        "icon": "🏨",
+        "desc": "預かり所で荷物を受け取ってから宿へ。ダブルまたはツインルームで荷解き＆ひと息つく",
+        "mapUrl": "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJsWIxAaWVC0cRuI52xHJ0Zlk",
+        "coords": [
+          50.0833,
+          14.4236
+        ]
+      },
+      {
+        "time": "17:10頃",
+        "label": "ホテル出発 → Lokál Dlouhááá へ",
+        "icon": "🚶",
+        "desc": "17:30の予約に向け、ホテルから徒歩約12分。時間に余裕を持って出発",
+        "coords": [
+          50.0833,
+          14.4236
+        ]
+      },
+      {
+        "time": "17:30",
+        "label": "Lokál Dlouhááá で生ビールとチェコ料理のディナー",
+        "icon": "🍺",
+        "mapUrl": "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJGWh--8GUC0cR4myQM-Wv3QI",
+        "coords": [
+          50.0907,
+          14.4258
+        ]
+      },
+      {
+        "time": "19:30頃",
+        "label": "ホテル帰着",
+        "icon": "🌙",
+        "desc": "食事後、Lokálから徒歩約12分でYoungmann Houseへ。帰着時刻は食事の長さに合わせて調整し、翌朝のプラハ城見学に備える。11/22予約のチケットを11/23に使えるか事前に確認",
+        "coords": [
+          50.0833,
+          14.4236
+        ]
+      }
+    ],
+    "bookings": [
+      {
+        "title": "鉄道チケット（ウィーン → プラハ）",
+        "details": [
+          {
+            "label": "列車",
+            "value": "RegioJet RJ 1030（直通・予約済）"
+          },
+          {
+            "label": "区間",
+            "value": "ウィーン中央駅（Wien Hbf）→ プラハ本駅（Praha hl.n.）"
+          },
+          {
+            "label": "出発",
+            "value": "2026年11月22日（日）06:39発"
+          },
+          {
+            "label": "到着",
+            "value": "2026年11月22日（日）10:56着"
+          },
+          {
+            "label": "所要時間",
+            "value": "4時間17分"
+          },
+          {
+            "label": "クラス・座席",
+            "value": "標準（Astra車両）／ 2号車 座席1・2"
+          },
+          {
+            "label": "手荷物",
+            "value": "1人あたり手回り品 35×25×15cmまで ＋ 旅行用荷物 80×60×30cm・30kgまで（荷物室）"
+          },
+          {
+            "label": "チケット",
+            "value": "Omioアプリ（オフライン表示可）または添付PDF。身分証を携帯し、20分前までに駅へ"
+          },
+          {
+            "label": "予約先",
+            "value": "Omio（運行：RegioJet a.s.）"
+          }
+        ]
+      },
+      {
+        "title": "Youngmann House（プラハ 2泊）",
+        "details": [
+          {
+            "label": "施設名",
+            "value": "Youngmann House"
+          },
+          {
+            "label": "住所",
+            "value": "Jungmannovo náměstí 757/14, 110 00 Praha 1, Czech Republic"
+          },
+          {
+            "label": "宿泊期間",
+            "value": "2026年11月22日（日）〜 11月24日（火）（2泊）"
+          },
+          {
+            "label": "部屋・人数",
+            "value": "ダブルまたはツインルーム ／ 大人2名"
+          },
+          {
+            "label": "チェックイン",
+            "value": "2026年11月22日（日）15:00〜"
+          },
+          {
+            "label": "チェックアウト",
+            "value": "2026年11月24日（火）午前"
+          },
+          {
+            "label": "荷物預かり",
+            "value": "ホテルにはなし。紹介されたVáclavské náměstí 785/28の預かり所を利用予定"
+          },
+          {
+            "label": "部屋の要望",
+            "value": "静かなお部屋をリクエスト済み（確約ではない）"
+          },
+          {
+            "label": "予約状況",
+            "value": "Booking.com 予約済・返金不可"
+          }
+        ]
+      },
+      {
+        "title": "Lokál Dlouhááá ディナー予約（17:30）",
+        "details": [
+          {
+            "label": "店名",
+            "value": "Lokál Dlouhááá（ロカール）"
+          },
+          {
+            "label": "日時",
+            "value": "2026年11月22日（日）17:30"
+          },
+          {
+            "label": "予約状況",
+            "value": "予約済み"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 6,
+    "date": "11月23日（月）",
+    "title": "プラハ城（衛兵交代式）、クレメンティウム ＆ Naše maso",
+    "schedule": [
+      {
+        "time": "08:00",
+        "label": "カフェで朝食（お店は未定）",
+        "icon": "☕",
+        "desc": "【朝食】ホテル周辺のカフェなどで軽く朝食をとって一日をスタート"
+      },
+      {
+        "time": "08:30",
+        "label": "ホテル出発 → トラム22番でプラハ城へ",
+        "icon": "🚋",
+        "desc": "徒歩約10分の国民劇場（Národní divadlo）停留所から名物トラム22番（Bílá Hora方面）に乗車。ヴルタヴァ川を渡りマラー・ストラナの坂を登る「動く展望台」を楽しみ、「Pražský hrad」停留所で下車（約15〜20分）",
+        "coords": [
+          50.0811,
+          14.4138
+        ]
+      },
+      {
+        "time": "09:00",
+        "label": "プラハ城（Pražský hrad）メインサーキット",
+        "icon": "🏰",
+        "desc": "【コース1】大人2名分の電子チケットは購入済み。予約に記載の日付は11/22のため、11/23に利用できるか購入先に要確認。9:00は見学予定時刻で、指定入場時刻ではない。千年の歴史を誇る城郭で、聖ヴィート大聖堂（St. Vitus）のゴシック建築とアルフォンス・ミュシャ（ムハ）のステンドグラス『聖キリルと聖メトディウス』、旧王宮のヴラディスラフ・ホール、聖イジー聖堂を見学",
+        "mapUrl": "https://maps.google.com/?q=Prague+Castle",
+        "coords": [
+          50.0909,
+          14.4005
+        ]
+      },
+      {
+        "time": "10:45",
+        "label": "黄金の小路（Zlatá ulička）",
+        "icon": "🏘",
+        "desc": "【コース2】城壁沿いに並ぶパステルカラーの可愛らしい小さな家々。かつて錬金術師や城警備兵が暮らし、作家フランツ・カフカが一時期仕事場とした22番の青い家を見学（サーキットチケットに含まれる）",
+        "mapUrl": "https://maps.google.com/?q=Golden+Lane+Prague",
+        "coords": [
+          50.0919,
+          14.404
+        ]
+      },
+      {
+        "time": "11:45",
+        "label": "第一中庭で正午の衛兵交代式",
+        "icon": "💂",
+        "mapUrl": "https://maps.google.com/?q=50.0898,14.3986",
+        "coords": [
+          50.0898,
+          14.3986
+        ]
+      },
+      {
+        "time": "12:30",
+        "label": "城下町で軽食・ランチ（お店は未定）",
+        "icon": "🥪",
+        "desc": "【ランチ】衛兵交代式のあと、城から坂を下りてマラー・ストラナ側の城下町へ。軽食やランチをゆっくり楽しむ（お店はまだ未定）"
+      },
+      {
+        "time": "14:00",
+        "label": "聖ミクラーシュ教会（マラー・ストラナ）",
+        "icon": "⛪",
+        "mapUrl": "https://maps.google.com/?q=St.+Nicholas+Church+Mala+Strana+Prague",
+        "coords": [
+          50.088,
+          14.4032
+        ]
+      },
+      {
+        "time": "15:00",
+        "label": "カレル橋を渡って旧市街側へ",
+        "icon": "🌉",
+        "desc": "【コース5】聖ミクラーシュ教会から徒歩約8分でカレル橋へ。1357年に着工した全長約500mの石橋を、両側に並ぶバロック様式の聖人像を眺めながら旧市街側へお散歩（渡り切るまで徒歩約10分）。旧市街側の橋のたもとのすぐ近くにクレメンティウムがあるので、ツアー開始まで周辺を散策・休憩",
+        "mapUrl": "https://maps.google.com/?q=Charles+Bridge+Prague",
+        "coords": [
+          50.0865,
+          14.4114
+        ]
+      },
+      {
+        "time": "17:00",
+        "label": "クレメンティウム ガイドツアー",
+        "icon": "🔭",
+        "desc": "【コース6】予約済み（2名）。バロック様式の図書館ホール（入口から見学）、子午線の間、天文塔（ギャラリー）を巡る約45〜50分のガイドツアー。開始5分前（16:55）までにMariánské náměstí側の中庭入口へ集合。【要確認】予約は「チェコ語」ツアーです。英語の枠に変更できるか予約先に確認を",
+        "mapUrl": "https://maps.google.com/?q=Klementinum+Prague",
+        "coords": [
+          50.0867,
+          14.4161
+        ]
+      },
+      {
+        "time": "18:15",
+        "label": "Naše maso（ナシェ・マソ）でお肉をテイクアウト",
+        "icon": "🍖",
+        "desc": "【テイクアウト】クレメンティウムから徒歩約12〜15分（Gurmet Pasáž Dlouhá内・Dlouhá 727/39）。チェコ産牛・Přeštice産豚・和牛や、自家製レシピのソーセージ・燻製品などを扱う精肉店で絶品お肉を購入（月曜は11:00〜22:00営業・メニューと持ち帰り可否は店頭で確認）。ホテルへ持ち帰って（徒歩約12分）夕食に",
+        "mapUrl": "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJsQAU38GUC0cRd-x_WZWOcVU",
+        "coords": [
+          50.0908,
+          14.4269
+        ]
+      },
+      {
+        "time": "19:30",
+        "label": "お土産・スーパーで買い出し（お店は未定）",
+        "icon": "🛒",
+        "desc": "【お土産】夕食のあと、余った時間でお土産の買い出しやスーパーへ（お店はまだ未定・営業時間は事前に確認）"
+      },
+      {
+        "time": "21:00",
+        "label": "ホテル帰着 ＆ 荷造り",
+        "icon": "🧳",
+        "desc": "Youngmann Houseへ戻り、荷造りして就寝。翌日は11:00にホテルを出て、プラハ中央駅から空港直通バス（AE・11:30発）で空港へ",
+        "coords": [
+          50.0833,
+          14.4236
+        ]
+      }
+    ],
+    "bookings": [
+      {
+        "title": "プラハ城 入場チケット（購入済・大人2名）",
+        "details": [
+          {
+            "label": "予約上の日付",
+            "value": "2026年11月22日（日）／見学予定 11月23日（月）9:00"
+          },
+          {
+            "label": "有効期間",
+            "value": "予約案内に「1日」と「連続2日間」の両方の記載あり。11/23に使えるかGetYourGuideに要確認"
+          },
+          {
+            "label": "対象",
+            "value": "旧王宮、聖ヴィート大聖堂、聖イジー聖堂、黄金の小路（各建物への入場は1回限り）"
+          },
+          {
+            "label": "入場方法",
+            "value": "メールまたはスマートフォンに電子チケットを表示し、各建物の入口でスキャン。窓口での引換・集合なし"
+          },
+          {
+            "label": "含まれない",
+            "value": "ガイド・音声ガイド、ロブコヴィツ宮殿"
+          },
+          {
+            "label": "注意事項",
+            "value": "フラッシュ・三脚の使用不可。ドローン・ペット不可（補助犬を除く）"
+          },
+          {
+            "label": "変更・返金",
+            "value": "旅行日の24時間前を過ぎると返金・日程変更不可"
+          }
+        ]
+      },
+      {
+        "title": "クレメンティウム ガイドツアー（予約済・2名）",
+        "details": [
+          {
+            "label": "施設名",
+            "value": "Klementinum（クレメンティウム）"
+          },
+          {
+            "label": "日時",
+            "value": "2026年11月23日（月）17:00"
+          },
+          {
+            "label": "チケット",
+            "value": "大人 eTicket × 2"
+          },
+          {
+            "label": "言語",
+            "value": "チェコ語（英語ガイドではない可能性大）／【要確認】英語ガイドの枠へ変更できるか予約先に確認"
+          },
+          {
+            "label": "受取",
+            "value": "eチケット"
+          },
+          {
+            "label": "集合",
+            "value": "Mariánské náměstí側の中庭入口（開始5分前の16:55までに）"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 7,
+    "date": "11月24日（火）",
+    "title": "最後のお買い物 ＆ AE直通バスで空港へ ─ ドバイ乗継",
+    "schedule": [
+      {
+        "time": "09:00",
+        "label": "最後のお買い物（お店は未定）",
+        "icon": "🛍",
+        "desc": "【ショッピング】気になるお店の再チェックや、スーパーでお土産（チョコレートやスパイスなど）を調達（お店はまだ未定）。10:45にはホテルへ戻る"
+      },
+      {
+        "time": "10:45",
+        "label": "Youngmann House チェックアウト ＆ 荷物の準備",
+        "icon": "🧳",
+        "desc": "宿に戻りチェックアウトして荷物を持って出発。【要確認】チェックアウト時刻は「午前」としか記載がないため事前に確認。早い場合は朝にチェックアウトし、ホテル外の荷物預かり所を利用して出発前に受け取る。ホテルには荷物預かりがない",
+        "mapUrl": "https://www.google.com/maps/place//data=!4m2!3m1!19sChIJsWIxAaWVC0cRuI52xHJ0Zlk",
+        "coords": [
+          50.0833,
+          14.4236
+        ]
+      },
+      {
+        "time": "11:00",
+        "label": "プラハ中央駅（Hlavní nádraží）へ移動",
+        "icon": "🚇",
+        "coords": [
+          50.0833,
+          14.4236
+        ]
+      },
+      {
+        "time": "11:20",
+        "label": "AE乗り場（Opletalova通りの臨時乗り場）へ",
+        "icon": "📍",
+        "mapUrl": "https://maps.google.com/?q=50.0845,14.4334",
+        "coords": [
+          50.0845,
+          14.4334
+        ]
+      },
+      {
+        "time": "11:30",
+        "label": "空港直通バス AE（Airport Express）発",
+        "icon": "🚌"
+      },
+      {
+        "time": "12:10頃",
+        "label": "プラハ・ヴァーツラフ・ハヴェル空港 第1ターミナル着",
+        "icon": "✈",
+        "desc": "出発の約2時間35分前に到着。第1ターミナル（非シェンゲン域便）。エミレーツ航空のカウンターは12:45頃から（空港の案内では12:45〜14:05）なので、それまで免税手続き（Tax Refund）や昼食の時間に。保安検査・出国審査は13:15頃までに通過する目安",
+        "coords": [
+          50.1079,
+          14.2688
+        ]
+      },
+      {
+        "time": "14:45 PRG",
+        "label": "プラハ（PRG）出発",
+        "icon": "✈",
+        "desc": "EK140・エミレーツ。第1ターミナル。Airbus A380-800／飛行5時間55分。JST 22:45",
+        "coords": [
+          50.1079,
+          14.2688
+        ]
+      },
+      {
+        "time": "23:40 DXB",
+        "label": "ドバイ（DXB）着",
+        "icon": "🇦🇪",
+        "desc": "EK140到着。乗継 3時間15分の深夜乗継。ターミナル3内で乗り継ぎ。JST 翌04:40頃"
+      },
+      {
+        "time": "02:55 DXB",
+        "label": "ドバイ（DXB）発",
+        "icon": "😴",
+        "desc": "EK318・エミレーツ。Airbus A380-800／飛行9時間25分。日付は11月25日（水）"
+      }
+    ],
+    "bookings": [
+      {
+        "title": "エミレーツ航空券（復路）",
+        "details": [
+          {
+            "label": "区間",
+            "value": "プラハ → ドバイ → 東京（成田）"
+          },
+          {
+            "label": "便名",
+            "value": "EK140 ／ EK318"
+          },
+          {
+            "label": "出発",
+            "value": "2026年11月24日（火）14:45 プラハ（PRG）"
+          },
+          {
+            "label": "到着",
+            "value": "2026年11月25日（水）17:20 成田（NRT）"
+          },
+          {
+            "label": "所要時間",
+            "value": "18時間35分（ドバイ乗継 3時間15分）"
+          },
+          {
+            "label": "機材",
+            "value": "Airbus A380-800（両便）"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "day": 8,
+    "date": "11月25日（水）",
+    "title": "成田着 ─ 帰国",
+    "schedule": [
+      {
+        "time": "02:55 DXB",
+        "label": "ドバイ（DXB）発",
+        "icon": "✈",
+        "desc": "EK318・エミレーツ。Airbus A380-800／飛行9時間25分"
+      },
+      {
+        "time": "17:20 NRT",
+        "label": "成田（NRT）着",
+        "icon": "🏁",
+        "desc": "第2ターミナル。Visit Japan Web（任意）で税関申告のQRコードを用意しておくと手続きがスムーズ。紙の携帯品・別送品申告書でも可"
+      },
+      {
+        "time": "18:30頃",
+        "label": "入国・手荷物受取 完了",
+        "icon": "🚄",
+        "desc": "首都圏外へ向かう場合、この時刻から在来線＋新幹線の最終に間に合うか事前確認を。厳しければ都内1泊を検討"
+      }
+    ],
+    "bookings": []
+  }
+]
