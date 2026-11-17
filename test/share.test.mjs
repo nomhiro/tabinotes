@@ -74,3 +74,22 @@ test("トークンを検証し、公開ビルドを独立させて再発行時�
   await buildShare(second, output);
   assert.deepEqual((await readdir(output)).sort(), [second, "_headers"].sort());
 });
+
+test("GitHub Pagesでは公開用パス以下に共有アセットだけを出力する", async t => {
+  const output = await mkdtemp(join(tmpdir(), "tabinotes-pages-"));
+  t.after(() => rm(output, { recursive: true, force: true }));
+  await assert.rejects(buildShare("europe-2026", output, { pagesRepository: "../unsafe" }), /Invalid/);
+  await assert.rejects(buildShare("../unsafe", output, { pagesRepository: "tabinotes" }), /Invalid/);
+  await buildShare("europe-2026", output, { pagesRepository: "tabinotes" });
+  assert.deepEqual(await readdir(output), ["europe-2026"]);
+  const html = await readFile(join(output, "europe-2026", "index.html"), "utf8");
+  const paths = [...html.matchAll(/(?:src|href)="(\/[^"]+\.(?:js|css))"/g)].map(match => match[1]);
+  assert.equal(paths.length, 2);
+  for (const path of paths) {
+    assert.ok(path.startsWith("/tabinotes/europe-2026/assets/"));
+    const asset = await readFile(resolve(output, `.${path.slice("/tabinotes".length)}`), "utf8");
+    for (const secret of [...members, ...passengerNames, ...passengerParts, ...bookingSecrets]) {
+      assert.ok(!asset.toLowerCase().includes(secret.toLowerCase()), "公開アセットに非公開情報が含まれています");
+    }
+  }
+});
