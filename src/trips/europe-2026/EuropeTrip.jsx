@@ -2723,6 +2723,17 @@ export default function EuropeTrip() {
   const [activeDay, setActiveDay] = useState(0);
   const [activePanel, setActivePanel] = useState("timeline");
   const [view, setView] = useState("day"); // "day" | "cost" | "phrases"
+  const [shareStatus, setShareStatus] = useState("");
+  const configuredShareUrl = import.meta.env.VITE_EUROPE_SHARE_URL || "";
+  const shareUrl = /^https:\/\/[a-zA-Z0-9.-]+(?::\d+)?\/[a-f0-9]{64}\/$/.test(configuredShareUrl) ? configuredShareUrl : "";
+  const copyShareUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setShareStatus("共有リンクをコピーしました。");
+    } catch {
+      setShareStatus("コピーできませんでした。表示されたリンクを手動でコピーしてください。");
+    }
+  };
   const showCost = view === "cost";
   const showPhrases = view === "phrases";
   const dayLang = PHRASE_LANGS.find(l => l.days.includes(DAYS[activeDay].day)) ?? null;
@@ -2961,6 +2972,12 @@ export default function EuropeTrip() {
         .eu-route-title { font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:.88rem; margin-bottom:.8rem; color:#2a5a9a; display:flex; align-items:center; gap:.4rem; }
         .eu-route-row { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; color:#4a4038; }
         .eu-route-sep { color:#d4cdc5; font-size:.7rem; }
+        .eu-share { max-width:32rem; margin:1.2rem auto 0; font-family:'Zen Maru Gothic',sans-serif; font-size:.82rem; }
+        .eu-share summary { cursor:pointer; }
+        .eu-share a { color:white; overflow-wrap:anywhere; }
+        .eu-share button { border:1px solid white; border-radius:4px; background:transparent; color:white; padding:.45rem .8rem; font:inherit; cursor:pointer; }
+        .eu-share :is(a, button, summary):focus-visible { outline:2px solid white; outline-offset:3px; }
+        .eu-share p { margin:.6rem 0; }
         @media (max-width:500px) {
           .eu-nav-btn{padding:.8rem .7rem;font-size:.72rem}
           .eu-nav-btn-date{font-size:.65rem}
@@ -2993,6 +3010,19 @@ export default function EuropeTrip() {
           <div className="eu-cover-sub">Budapest ・ Wien ・ Praha</div>
           <div className="eu-cover-date">2026. 11. 18 wed — 11. 25 wed</div>
           <div className="eu-cover-members">のむら ひろき ・ りの</div>
+          <details className="eu-share">
+            <summary>共有リンク</summary>
+            {shareUrl ? (
+              <>
+                <p>リンクを知っている人はログインせずに参照できます。予約情報と写真リンクも共有され、写真内の名前や金額は隠せません。</p>
+                <p><a href={shareUrl} target="_blank" rel="noopener noreferrer">{shareUrl}</a></p>
+                <button type="button" onClick={copyShareUrl}>リンクをコピー</button>
+                <p aria-live="polite">{shareStatus}</p>
+              </>
+            ) : (
+              <p>{configuredShareUrl ? "共有リンクの設定が正しくありません。" : "共有リンクはまだ設定されていません。"}</p>
+            )}
+          </details>
         </div>
       </header>
 
