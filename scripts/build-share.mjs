@@ -1,4 +1,4 @@
-import { mkdir, rename, writeFile } from "node:fs/promises";
+import { cp, mkdir, rename, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "vite";
@@ -29,6 +29,7 @@ export async function buildShare(token, output, { pagesRepository } = {}) {
   await mkdir(resolve(output, token), { recursive: true });
   await rename(resolve(output, "index.html"), resolve(output, token, "index.html"));
   await rename(resolve(output, "assets"), resolve(output, token, "assets"));
+  await cp(resolve("public/phrases"), resolve(output, token, "phrases"), { recursive: true });
   if (!isPages) {
     await writeFile(resolve(output, "_headers"), [
       "/*",

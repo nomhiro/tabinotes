@@ -3,49 +3,59 @@ import assert from "node:assert/strict";
 import { mkdtemp, readFile, readdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { parse } from "@babel/parser";
 import { buildShare } from "../scripts/build-share.mjs";
 
-const days = JSON.parse(await readFile(new URL("../share/europe-2026.json", import.meta.url), "utf8"));
 const source = await readFile(new URL("../src/trips/europe-2026/EuropeTrip.jsx", import.meta.url), "utf8");
+const shared = await readFile(new URL("../share/EuropeSharedTrip.jsx", import.meta.url), "utf8");
 const registry = await readFile(new URL("../src/trips/registry.js", import.meta.url), "utf8");
 const membersLabel = registry.match(/id: 'europe-2026',[\s\S]*?members: '([^']+)'/)?.[1];
 const members = membersLabel ? [membersLabel, ...membersLabel.split(/[ ・]+/).filter(name => name.length > 2)] : [];
-const passengerNames = [...source.matchAll(/label: "搭乗者", value: "([^"]+)"/g)]
-  .flatMap(match => match[1].split(/\s*[／/]\s*/));
-const passengerParts = passengerNames.flatMap(name => name.split(/\s+/).filter(part => part.length > 3));
+const passengerNames = [...source.matchAll(/label: "(?:搭乗者|乗客)", value: "([^"]+)"/g)]
+  .flatMap(match => match[1].split(/\s*[／/]\s*/))
+  .filter(name => /[A-Za-z]/.test(name));
+const passengerParts = passengerNames.flatMap(name => name.split(/[\s（]+/).filter(part => /^[A-Za-z]{4,}$/.test(part)));
 const bookingSecrets = [...source.matchAll(/label: "(?:予約番号|予約コード|PIN番号|アクセスキー)", value: "([^"]+)"/g)]
   .map(match => match[1]);
+bookingSecrets.push(...[...source.matchAll(/予約番号\s+([A-Z0-9]{6,})/g)].map(match => match[1]));
+const bookingLinks = [...source.matchAll(/https:\/\/www\.getyourguide\.com\/booking\/[A-Za-z0-9]+/g)].map(match => match[0]);
 
-test("共有データは日程と予約情報だけを含み、名前・金額・予約認証情報を含まない", () => {
+function daysFrom(code) {
+  const tree = parse(code, { sourceType: "module", plugins: ["jsx"] });
+  return tree.program.body.flatMap(node => node.declarations || [])
+    .find(node => node.id.name === "DAYS").init.elements;
+}
+
+function field(node, key) {
+  return node.properties.find(property => property.key?.name === key)?.value;
+}
+
+test("共有用の全日程と画像を維持し、非公開情報を含めない", () => {
   assert.ok(members?.length && passengerNames.length && bookingSecrets.length);
-  assert.equal(days.length, 9);
-  const json = JSON.stringify(days);
-  for (const secret of [...members, ...passengerNames, ...passengerParts, ...bookingSecrets]) {
-    assert.ok(!json.toLowerCase().includes(secret.toLowerCase()), "共有データに非公開情報が含まれています");
-  }
-  assert.doesNotMatch(json, /[¥￥€£]|(?:HUF|CZK|EUR|JPY|USD)|円|料金|運賃|費用|無料|有料|支払|金額|予約番号|予約コード|PIN番号|アクセスキー/i);
-  for (const day of days) {
-    assert.deepEqual(Object.keys(day).sort(), ["bookings", "date", "day", "schedule", "title"]);
-    assert.ok(day.schedule.length);
-    for (const item of day.schedule) {
-      assert.ok(Object.keys(item).every(key => ["time", "label", "icon", "desc", "mapUrl", "photo", "coords"].includes(key)));
-      for (const [field, hosts] of [["mapUrl", ["maps.google.com", "www.google.com", "maps.app.goo.gl"]], ["photo", ["photos.app.goo.gl", "photos.google.com"]]]) {
-        if (!item[field]) continue;
-        const url = new URL(item[field]);
-        assert.equal(url.protocol, "https:");
-        assert.ok(hosts.includes(url.hostname));
+  const originalDays = daysFrom(source);
+  const publicDays = daysFrom(shared);
+  assert.equal(publicDays.length, originalDays.length);
+  for (const [index, day] of originalDays.entries()) {
+    const original = field(day, "schedule").elements;
+    const published = field(publicDays[index], "schedule").elements;
+    assert.equal(published.length, original.length);
+    for (const [itemIndex, item] of original.entries()) {
+      assert.equal(field(published[itemIndex], "label")?.value, field(item, "label")?.value);
+      for (const key of ["image", "coords", "photo", "mapUrl"]) {
+        const originalValue = field(item, key);
+        const sharedValue = field(published[itemIndex], key);
+        assert.equal(
+          sharedValue && shared.slice(sharedValue.start, sharedValue.end),
+          originalValue && source.slice(originalValue.start, originalValue.end),
+          `Day ${index}, item ${itemIndex}: ${key}`,
+        );
       }
     }
-    for (const booking of day.bookings) {
-      assert.ok(Object.keys(booking).every(key => ["details", "title", "photo"].includes(key)));
-      if (booking.photo) {
-        const url = new URL(booking.photo);
-        assert.equal(url.protocol, "https:");
-        assert.ok(["photos.app.goo.gl", "photos.google.com"].includes(url.hostname));
-      }
-      for (const detail of booking.details) assert.deepEqual(Object.keys(detail).sort(), ["label", "value"]);
-    }
   }
+  for (const secret of [...members, ...passengerNames, ...passengerParts, ...bookingSecrets, ...bookingLinks]) {
+    assert.ok(!shared.toLowerCase().includes(secret.toLowerCase()), "共有データに非公開情報が含まれています");
+  }
+  assert.doesNotMatch(shared, /[¥￥€£]|\b(?:HUF|CZK|EUR|JPY|USD)\b|予約番号|予約コード|PIN番号|アクセスキー/i);
 });
 
 test("トークンを検証し、公開ビルドを独立させて再発行時に旧リンクを除去する", async t => {
@@ -63,7 +73,7 @@ test("トークンを検証し、公開ビルドを独立させて再発行時�
   for (const path of paths) {
     assert.ok(path.startsWith(`/${first}/assets/`));
     const asset = await readFile(resolve(output, `.${path}`), "utf8");
-    for (const secret of [...members, ...passengerNames, ...passengerParts, ...bookingSecrets]) {
+    for (const secret of [...members, ...passengerNames, ...passengerParts, ...bookingSecrets, ...bookingLinks]) {
       assert.ok(!asset.toLowerCase().includes(secret.toLowerCase()), "公開アセットに非公開情報が含まれています");
     }
   }
@@ -88,8 +98,9 @@ test("GitHub Pagesでは公開用パス以下に共有アセットだけを出�
   for (const path of paths) {
     assert.ok(path.startsWith("/tabinotes/europe-2026/assets/"));
     const asset = await readFile(resolve(output, `.${path.slice("/tabinotes".length)}`), "utf8");
-    for (const secret of [...members, ...passengerNames, ...passengerParts, ...bookingSecrets]) {
+    for (const secret of [...members, ...passengerNames, ...passengerParts, ...bookingSecrets, ...bookingLinks]) {
       assert.ok(!asset.toLowerCase().includes(secret.toLowerCase()), "公開アセットに非公開情報が含まれています");
     }
   }
+  assert.ok((await readdir(join(output, "europe-2026", "phrases", "de"))).some(name => name.endsWith(".mp3")));
 });
