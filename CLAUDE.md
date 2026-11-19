@@ -26,6 +26,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - `src/components/PhraseBook.jsx` - 会話フレーズ帳（日本語と現地語を横並び比較、音声再生、かくす／大きく表示）
 - `src/trips/europe-2026/phrases.js` - 中欧の旅の会話フレーズデータ（音声生成スクリプトと共有するため .js に分離）
 - `scripts/generate-phrase-audio.mjs` - フレーズ音声を `public/phrases/{言語}/{id}.mp3`（ゆっくり版 `{id}-slow.mp3`）に生成
+- `share/EuropeSharedTrip.jsx` - 中欧の旅の共有用コピー（氏名・金額・予約情報を除いた公開用。GitHub Pages で公開）。本体から自動生成されない
 - `src/main.jsx` - エントリポイント
 - `vite.config.js` - base を GitHub リポジトリ名に合わせて設定
 - `.github/workflows/deploy.yml` - GitHub Pages 自動デプロイ
@@ -37,6 +38,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - 未確定の観光スポット・飲食店は勝手に追加しない
 - 予約スクリーンショットは Google Photos 共有リンクで管理。schedule に `photo` フィールド（URL文字列）を追加するとタイムライン上に📷アイコンが表示される
 - ナビバーの日程タブは `Day{n}` だけでなく日付・曜日も併記する（例:「Day1 5/5(火)」）。`DAYS[].date`（"5月6日（水）"形式）から `formatShortDate()` ヘルパーで短縮日付を生成し、`.nav-btn-date` として表示する。全旅行コンポーネントで統一すること
+- 中欧の旅の本体（`src/trips/europe-2026/EuropeTrip.jsx`）の日程（DAYS の schedule・予約カード・メモ）を変更したら、同じ内容を `share/EuropeSharedTrip.jsx` にも反映する。反映するときは金額・氏名・予約番号・予約管理URLを除く。終わったら `npm run test:share` を実行して通ることを確認する（日程の件数がずれると、マージ後の共有ページ公開が失敗する。PR でも `share-check.yml` が同じテストを実行する）
 - 会話フレーズを追加・変更したら `npm run phrases:audio` で音声を作り直す。音声ファイルが無い場合は端末の読み上げで代わりに再生される
 - ナビバーは `justify-content:safe center` と `overflow-x:auto` を使い、各 `.nav-btn` に `flex:0 0 auto` を指定する。内容が画面に収まるときは中央揃え、超えるときは安全に左端から横スクロールできる状態にすること
 

@@ -1,0 +1,35 @@
+name: Check shared trip
+
+# 中欧の旅の共有用コピー（share/EuropeSharedTrip.jsx）は手作業で更新する公開用コピー。
+# 本体（EuropeTrip.jsx）だけを変えて共有用を更新し忘れると、main へのマージ後に
+# 公開ワークフロー（share-pages.yml）が失敗するため、PR の段階で同じテストを実行して検知する。
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/share-check.yml"
+      - "share/**"
+      - "scripts/build-share.mjs"
+      - "src/trips/europe-2026/**"
+      - "src/trips/registry.js"
+      - "src/components/**"
+      - "public/phrases/**"
+      - "test/share.test.mjs"
+      - "package.json"
+      - "package-lock.json"
+
+permissions:
+  contents: read
+
+jobs:
+  test-share:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: 共有用コピーが本体と一致しているか確認
+        run: npm run test:share
