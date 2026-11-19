@@ -1734,14 +1734,12 @@ const DAYS = [
     color: "#7a5c9a",
     icon: "🏰",
     schedule: [
-      { time: "07:30", label: "ホテル出発 → Kossuth Lajos térへ", desc: "地下鉄M2「Astoria」駅から直通2駅で「Kossuth Lajos tér」駅へ移動（約5分・乗換なし）", icon: "🚇", coords: [47.4947, 19.0595] },
-      { time: "07:45", label: "ハンガリー国会議事堂（Országház）─ 当日券を確保", desc: "ドナウ河畔に佇む壮麗なネオゴシック建築。ビジターセンターは8:00オープン（11〜3月は16:00まで）なので、開館に合わせて並び当日券を確保する。事前予約枠は現時点で空きがないため、当日券のみで狙う。当日券は枚数限定で、議会開催日は見学できないこともあるので、開館前から並ぶ。内部ガイドツアー（約45〜50分）は購入時に指定される時刻に参加", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457], image: PARLIAMENT_IMAGE },
-      { time: "当日券購入後", label: "朝食・ツアー時刻の確認", desc: "当日券を確保したらツアーの集合時刻を確認。時間があれば軽く朝食をとる（店は当日決める）。8:15頃までに出発でき、10:00以降のツアーまで余裕があれば英雄広場へ。購入が長引く場合や早いツアーの場合は、見学後の立ち寄りを検討して後の予定を調整する", icon: "🥐" },
-      { time: "08:15頃", label: "国会議事堂 → 英雄広場へ", desc: "当日券の購入後、時間に余裕がある場合の目安。地下鉄M2「Kossuth Lajos tér」から「Deák Ferenc tér」でM1に乗り換え、「Hősök tere」へ。移動は乗換・待ち時間を含め約20〜30分", icon: "🚇" },
-      { time: "08:40頃", label: "英雄広場（Hősök tere）", desc: "建国千年記念碑や歴代の王・指導者の像を見学。屋外の広場は無料で、20〜25分ほど散策・写真撮影。9:05頃を出発の目安に国会議事堂へ戻る", icon: "🏛", important: true, mapUrl: "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest", coords: [47.5150, 19.07778], image: HEROES_SQUARE_IMAGE },
-      { time: "09:30頃", label: "国会議事堂へ戻りツアーに備える", desc: "M1「Hősök tere」→「Deák Ferenc tér」でM2に乗り換え「Kossuth Lajos tér」へ。9:30頃の到着は8:15頃に出発できた場合の目安。指定された集合時刻を優先し、早めにビジターセンターへ", icon: "🚇", coords: [47.5071, 19.0457] },
-      { time: "指定時刻", label: "国会議事堂 内部ガイドツアー", desc: "当日券を購入できた場合、券に記載された時刻に参加。所要約45〜50分。売り切れや議会開催で見学できない場合は外観を見て、その後の予定を調整", icon: "🏛", important: true },
-      { time: "ツアー後〜", label: "ランチ・休憩（お店は未定）", desc: "国会議事堂の見学後、ブダ城へ向かう前に昼食と休憩。お店はまだ決めておらず、ツアーの時刻や当日の状況で選ぶ（候補は下の「ランチ・夕食/軽食の候補」カード参照）。国会議事堂から徒歩約5分のところに旧郵便貯金局（Hold u. 4・「ハンガリーのガウディ」ことレフネル・エデン設計のアール・ヌーヴォー建築）があるので、時間と体力に余裕があれば外観だけ見に立ち寄るのもよい", icon: "🍽" },
+      { time: "朝", label: "英雄広場へ移動中", desc: "地下鉄M2「Astoria」→「Deák Ferenc tér」でM1に乗り換え、「Hősök tere」駅で下車（乗換・待ち時間込みで約20〜25分）。国会議事堂の見学が10:15に決まったため、先に英雄広場へ向かう", icon: "🚇", coords: [47.4947, 19.0595] },
+      { time: "〜09:20頃", label: "英雄広場（Hősök tere）", desc: "建国千年記念碑や歴代の王・指導者の像を見学。屋外の広場は無料。30分ほど散策・写真撮影をして、09:20頃には広場を出発する（国会議事堂は10:00までに到着したいため、時間に余裕を持たせる）", icon: "🏛", important: true, mapUrl: "https://maps.google.com/?q=H%C5%91s%C3%B6k+tere+Budapest", coords: [47.5150, 19.07778], image: HEROES_SQUARE_IMAGE },
+      { time: "09:20頃", label: "英雄広場 → 国会議事堂へ戻る", desc: "M1「Hősök tere」→「Deák Ferenc tér」でM2に乗り換え「Kossuth Lajos tér」へ。乗換・待ち時間込みで約20〜30分。遅くとも09:30には広場を出る。遅れそうな場合は広場の見学を切り上げる", icon: "🚇", coords: [47.5150, 19.07778] },
+      { time: "10:00まで", label: "国会議事堂 ビジターセンターに到着", desc: "予約時刻（10:15）の15分前までに到着する目標。予約の確認画面やバウチャーをすぐ出せるようにし、集合場所はバウチャーで確認する", icon: "📍", important: true, coords: [47.5071, 19.0457] },
+      { time: "10:15", label: "ハンガリー国会議事堂（Országház）内部ガイドツアー（予約済）", desc: "ドナウ河畔に佇む壮麗なネオゴシック建築。所要約45〜50分のため、終了は11:05頃の見込み。議会の都合などで内容が変わる場合があるので、当日の案内も確認する", icon: "🏛", important: true, url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/", mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building", coords: [47.5071, 19.0457], image: PARLIAMENT_IMAGE },
+      { time: "11:05頃〜", label: "ランチ・休憩（お店は未定）", desc: "国会議事堂の見学後、ブダ城へ向かう前に昼食と休憩。お店はまだ決めておらず、ツアー終了後の状況で選ぶ（候補は下の「ランチ・夕食/軽食の候補」カード参照）。国会議事堂から徒歩約5分のところに旧郵便貯金局（Hold u. 4・「ハンガリーのガウディ」ことレフネル・エデン設計のアール・ヌーヴォー建築）があるので、時間と体力に余裕があれば外観だけ見に立ち寄るのもよい", icon: "🍽" },
       { time: "13:30頃", label: "ブダ城（Budavári Palota）", desc: "ドナウ川を渡って王宮の丘へ（バス16番、ケーブルカー、またはヴァールケルト・バザールの無料エスカレーターで上がれる）。国立ギャラリーや歴史博物館を擁する壮大な城郭で、敷地周辺を時間をかけて歩き、展望テラスから対岸のペスト地区の景色を楽しむ", icon: "🏰", important: true, url: "https://budacastlebudapest.com/", mapUrl: "https://maps.google.com/?q=Buda+Castle+Budapest", coords: [47.4962, 19.0396], image: BUDA_CASTLE_IMAGE },
       { time: "15:00頃", label: "マーチャーシュ教会（Mátyás-templom）", desc: "ブダ城から徒歩で移動（約10分）。歴代ハンガリー国王の戴冠式が行われた歴史ある教会で、色鮮やかなジョルナイ製の屋根瓦と内部の彩色装飾が見どころ。内部見学は月〜土 9:00〜17:00（11〜3月・行事で変更あり）", icon: "⛪", important: true, url: "https://matyas-templom.hu/", mapUrl: "https://maps.google.com/?q=Matthias+Church+Budapest", coords: [47.5019, 19.0342], image: MATTHIAS_CHURCH_IMAGE },
       { time: "15:40頃", label: "漁夫の砦（Halászbástya）", desc: "マーチャーシュ教会のすぐ隣。7つの尖塔と白亜の回廊が連なる展望砦で、アーチ窓越しにドナウ川と国会議事堂を一望する。ブダ地区の必見スポットをここで制覇。日没は16:00〜16:15頃で、夕景の時間帯", icon: "🏰", important: true, url: "https://www.fishermansbastion.com/", mapUrl: "https://maps.google.com/?q=Fisherman%27s+Bastion+Budapest", coords: [47.5022, 19.0347], image: FISHERMANS_BASTION_IMAGE },
@@ -1767,6 +1765,21 @@ const DAYS = [
       ],
     },
     extraBookings: [
+      {
+        key: "parliament-d2",
+        icon: "🏛",
+        title: "ハンガリー国会議事堂 内部ガイドツアー（10:15・予約済）",
+        url: "https://www.parlament.hu/en/web/house-of-the-national-assembly/",
+        mapUrl: "https://maps.google.com/?q=Hungarian+Parliament+Building",
+        details: [
+          { label: "施設名", value: "ハンガリー国会議事堂（Országház）" },
+          { label: "日時", value: "2026年11月19日（木）10:15" },
+          { label: "到着目安", value: "10:00まで（ビジターセンター）" },
+          { label: "所要時間", value: "約45〜50分（終了は11:05頃の見込み）" },
+          { label: "最寄り", value: "地下鉄M2「Kossuth Lajos tér」駅" },
+          { label: "予約状況", value: "予約済（予約画面・バウチャーで集合場所を確認）" },
+        ],
+      },
       {
         key: "budapest-panorama-central-d2",
         icon: "🏨",
@@ -1847,8 +1860,8 @@ const DAYS = [
       title: "ブダペスト2日目 観光＆料金メモ",
       body: (
         <>
-          <b>国会議事堂（Országház）</b>：外観見学は無料。内部ガイドツアーは有料。ビジターセンターは8:00開館（11〜3月は〜16:00）。事前予約枠は現時点で空きがないため、当日券のみで入場を狙います。当日券は枚数限定で、議会開催日は見学できないことがあります。ツアーが遅い時刻（12:00以降）になった場合は、ブダ城の到着を後ろ倒しにします。<br/>
-          <b>英雄広場（Hősök tere）</b>：屋外の広場は無料。当日券の購入が早く終わり、10:00以降のツアーまで余裕があれば、M2・M1を乗り継いで朝に往復。広場の滞在は20〜25分、移動を含め約1時間半が目安です。集合時刻に間に合わない場合はツアー後に回し、午後の日程を調整します。<br/>
+          <b>国会議事堂（Országház）</b>：10:15の内部ガイドツアーを予約済み。ビジターセンターには10:00までに着く予定です。所要は約45〜50分で、終了は11:05頃の見込み。外観見学は無料。ツアー前に英雄広場を見るため、09:20頃には広場を出発します。<br/>
+          <b>英雄広場（Hősök tere）</b>：屋外の広場は無料。M1「Hősök tere」駅が最寄りで、国会議事堂側のM2「Kossuth Lajos tér」とはDeák Ferenc térで乗り換えます。移動は乗換・待ち時間込みで約20〜30分。広場の滞在は30分ほどを目安にし、時間が押したら見学を切り上げて国会議事堂へ戻ります。<br/>
           <b>旧郵便貯金局（Postatakarékpénztár）</b>：国会議事堂から徒歩約5分（Hold u. 4）。レフネル・エデン設計のアール・ヌーヴォー建築で、ジョルナイ陶器の屋根飾りや蜂・植物のレリーフが見どころ。昼食前後に余裕があれば外観のみ立ち寄り（任意）。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://maps.google.com/?q=Postatakar%C3%A9kp%C3%A9nzt%C3%A1r+Hold+utca+4+Budapest" target="_blank" rel="noopener noreferrer" aria-label="旧郵便貯金局をGoogle Mapで開く"><span aria-hidden="true">📍</span> Map</a><br/>
           <b>ブダ城・王宮の丘</b>：敷地と展望テラスの散策は無料（国立ギャラリー・歴史博物館は任意）。<br/>
           <b>マーチャーシュ教会</b>：内部見学は月〜土 9:00〜17:00（日曜は13:00〜17:00。11〜3月・礼拝や行事で変更あり）。入場料は情報が分かれるため公式サイトで要確認。<br/>
