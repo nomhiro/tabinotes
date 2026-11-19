@@ -4,6 +4,7 @@ const LOCAL_LANGUAGES = [
   { code: "de-DE", target: "de", ttsLocale: "de-AT", label: "ドイツ語（オーストリア）" },
   { code: "hu-HU", target: "hu", ttsLocale: "hu-HU", label: "ハンガリー語" },
   { code: "cs-CZ", target: "cs", ttsLocale: "cs-CZ", label: "チェコ語" },
+  { code: "en-US", target: "en", ttsLocale: "en-US", label: "英語" },
 ];
 
 const TOKEN_ENDPOINT = import.meta.env.VITE_SPEECH_TOKEN_URL;
