@@ -2,6 +2,7 @@ import { useState } from "react";
 import DayMap from "../../components/DayMap";
 import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
+import useSwipeNavigation from "../../components/useSwipeNavigation";
 
 const BIWAKO_MARRIOTT_IMAGE = {
   src: "https://www.biwako-marriott.com/images/og/ogp.jpg",
@@ -118,8 +119,22 @@ export default function TravelItinerary() {
   const [expandedBooking, setExpandedBooking] = useState(null);
   const totalCost = COSTS.reduce((s, c) => s + c.cost, 0);
 
+  // 左右スワイプで日程を切り替える（Day1 → … → 最終日 → 費用）
+  const currentIndex = showCost ? DAYS.length : activeDay;
+  const swipeHandlers = useSwipeNavigation((direction) => {
+    const next = currentIndex + direction;
+    if (next < 0 || next > DAYS.length) return;
+    if (next === DAYS.length) {
+      setShowCost(true);
+    } else {
+      setActiveDay(next);
+      setShowCost(false);
+    }
+    setExpandedBooking(null);
+  }, currentIndex);
+
   return (
-    <div style={{ fontFamily: "'Noto Serif JP', 'Hiragino Mincho ProN', serif", background: "#F7F3ED", minHeight: "100vh", color: "#2C2421" }}>
+    <div {...swipeHandlers} style={{ fontFamily: "'Noto Serif JP', 'Hiragino Mincho ProN', serif", background: "#F7F3ED", minHeight: "100vh", color: "#2C2421" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }

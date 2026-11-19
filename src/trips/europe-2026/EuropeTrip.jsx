@@ -4,6 +4,7 @@ import useScheduleFocus from "../../components/useScheduleFocus";
 import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
 import PhraseBook from "../../components/PhraseBook";
+import useSwipeNavigation from "../../components/useSwipeNavigation";
 import { PHRASE_LANGS, PHRASE_CATEGORIES, PHRASES } from "./phrases.js";
 
 const PRAGUE_OLD_TOWN_IMAGE = {
@@ -2758,6 +2759,22 @@ export default function EuropeTrip() {
   const mapStickyRef = useRef(null);
   const timelineRef = useRef(null);
   const mapFocusIndex = useScheduleFocus(timelineRef, mapStickyRef, `${view}-${activeDay}-${activePanel}`);
+
+  // 左右スワイプで日程を切り替える（前日 → … → 最終日 → 費用）。会話フレーズ帳は操作が多いので対象外
+  const swipeIndex = showCost ? DAYS.length : activeDay;
+  const swipeHandlers = useSwipeNavigation((direction) => {
+    if (showPhrases) return;
+    const next = swipeIndex + direction;
+    if (next < 0 || next > DAYS.length) return;
+    if (next === DAYS.length) {
+      setView("cost");
+    } else {
+      setActiveDay(next);
+      setView("day");
+    }
+    setExpandedBooking(null);
+    setActivePanel("timeline");
+  }, showPhrases ? "phrases" : swipeIndex);
   let pinCount = 0;
   const pinNumbers = DAYS[activeDay].schedule.map(s => (s.coords ? ++pinCount : null));
 
@@ -2777,7 +2794,7 @@ export default function EuropeTrip() {
   }, []);
 
   return (
-    <div style={{ fontFamily:"'Noto Serif JP','Hiragino Mincho ProN',serif", background:"#F7F3ED", minHeight:"100vh", color:"#2C2421" }}>
+    <div {...swipeHandlers} style={{ fontFamily:"'Noto Serif JP','Hiragino Mincho ProN',serif", background:"#F7F3ED", minHeight:"100vh", color:"#2C2421" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
         * { box-sizing:border-box; margin:0; padding:0; }
