@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import DayMap from "../src/components/DayMap";
+import { getTodayDayIndex, useRevealActiveNavButton } from "../src/components/todayDay";
 import useScheduleFocus from "../src/components/useScheduleFocus";
 import PlacePreview from "../src/components/PlacePreview";
 import WeatherWidget from "../src/components/WeatherWidget";
@@ -2689,7 +2690,7 @@ const formatShortDate = (date) => {
 // ─── コンポーネント ────────────────────────────────────────────────────────────
 
 export default function EuropeSharedTrip() {
-  const [activeDay, setActiveDay] = useState(0);
+  const [activeDay, setActiveDay] = useState(() => getTodayDayIndex(DAYS)); // 今日（現地時間）が旅行日ならその日、なければ前日（1つ目）
   const [activePanel, setActivePanel] = useState("timeline");
   const [view, setView] = useState("day"); // "day" | "phrases"
   const showPhrases = view === "phrases";
@@ -2698,6 +2699,7 @@ export default function EuropeSharedTrip() {
   const [expandedBooking, setExpandedBooking] = useState(null);
   const historyForDay = DAY_HISTORY[DAYS[activeDay].day];
   const navRef = useRef(null);
+  useRevealActiveNavButton(navRef);
   const mapStickyRef = useRef(null);
   const timelineRef = useRef(null);
   const mapFocusIndex = useScheduleFocus(timelineRef, mapStickyRef, `${view}-${activeDay}-${activePanel}`);

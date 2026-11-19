@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { getTodayDayIndex, useRevealActiveNavButton } from "../../components/todayDay";
 import DayMap from "../../components/DayMap";
 import PlacePreview from "../../components/PlacePreview";
 import WeatherWidget from "../../components/WeatherWidget";
@@ -139,7 +140,9 @@ const formatShortDate = (date) => {
 };
 
 export default function HiroshimaTrip() {
-  const [activeDay, setActiveDay] = useState(0);
+  const [activeDay, setActiveDay] = useState(() => getTodayDayIndex(DAYS)); // 今日（日本時間）が旅行日ならその日、なければ1日目
+  const navRef = useRef(null);
+  useRevealActiveNavButton(navRef);
   const [showCost, setShowCost] = useState(false);
   const [expandedBooking, setExpandedBooking] = useState(null);
   const totalCost = COSTS.reduce((s, c) => s + c.cost, 0);
@@ -247,7 +250,7 @@ export default function HiroshimaTrip() {
         </div>
       </header>
 
-      <nav className="nav-bar" aria-label="日程ナビゲーション">
+      <nav className="nav-bar" aria-label="日程ナビゲーション" ref={navRef}>
         {DAYS.map((d, i) => (
           <button key={i} className={`nav-btn ${!showCost && activeDay === i ? "active" : ""}`}
             aria-pressed={!showCost && activeDay === i}
