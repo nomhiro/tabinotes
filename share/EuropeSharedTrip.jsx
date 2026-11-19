@@ -1750,8 +1750,9 @@ const DAYS = [
       { time: "18:15頃", label: "夕食 or 軽食（お店は未定）", desc: "どこかのお店か軽食で夕食をとる（お店はまだ未定。候補は下の「ランチ・夕食/軽食の候補」カード参照）。クルーズ船内は飲食物の持ち込み可なので、軽食をテイクアウトして船上で食べる選択肢もある", icon: "🍽" },
       { time: "19:15頃", label: "ホテル出発 ─ 乗船場所へ", desc: "出航の15分前までに乗船場所へ。場所は予約バウチャーで要確認", icon: "🚶" },
       { time: "19:40", label: "ドナウ川 ボートクルーズ（屋上座席保証・持ち込み可）", desc: "予約済（GetYourGuide・約50分）。屋上デッキの座席が保証され、飲食物の持ち込みも可能。ライトアップされた国会議事堂・ブダ城・くさり橋を船上から一望。乗船場所はバウチャーで要確認", icon: "🚢", important: true, url: "https://www.getyourguide.com/ja-jp/budapest-l29/budapest-by-night-sightseeing-cruise-with-welcome-drink-t69093/", coords: [47.4950, 19.0505] },
-      { time: "21:00頃〜", label: "ニューヨーク・カフェ（余裕があれば）", desc: "クルーズ下船後、時間と体力に余裕があればカフェ利用を検討する任意の予定（価格は高め）。豪華絢爛な内装で「世界一美しいカフェ」とも称される。公式サイトの案内では木曜は7:00〜翌1:00営業、テーブル予約ページあり。生演奏の有無・時間帯は公式で要確認。寄らない場合はそのままホテルへ", icon: "☕", url: "https://newyorkcafe.hu/en/", mapUrl: "https://maps.google.com/?q=New+York+Caf%C3%A9+Budapest", coords: [47.4981, 19.0707] },
-      { time: "21:30頃〜", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "Budapest Panorama Centralへ帰着（ニューヨーク・カフェに寄った場合は22:30頃）。翌朝のウィーン行きRJX 162（Keleti 06:30発・05:30頃チェックアウト）に向けて荷造り・就寝", icon: "🏨", coords: [47.4947, 19.0595] },
+      { time: "21:15頃〜", label: "SEVEN Cocktail Bar で Seven Hills Tokaj Gin を買う（ボトル購入のみ）", desc: "クルーズ下船後、地下鉄かタクシーでWesselényi utca 26（ペスト7区・ホテルから徒歩約10〜12分）へ。トカイの蒸溜所Seven Hills Distilleryが運営するバーで、飲まずにSeven Hills Tokaj Ginのボトルを買うだけの予定（滞在は15〜20分）。バーでの瓶の販売有無・価格・営業時間は未確認のため、事前にInstagram（seven.w26）か電話（+36 70 882 3268）で「ボトルだけ買えるか・何時まで開いているか」を確認しておく。売っていなかった場合は買えないので、そのままホテルへ戻る。翌朝は05:30頃にチェックアウトなので、遅くとも22:15頃にはバーを出る", icon: "🍸", important: true, mapUrl: "https://maps.google.com/?q=SEVEN+Cocktail+Bar+Wessel%C3%A9nyi+utca+26+Budapest", coords: [47.4990, 19.0640] },
+      { time: "21:15頃〜（任意）", label: "ニューヨーク・カフェ（余裕があれば）", desc: "SEVEN Cocktail Barでの買い物が早く済み、体力に余裕があれば立ち寄る（バーから徒歩約10分）。クルーズ下船後、時間と体力に余裕があればカフェ利用を検討する任意の予定（価格は高め）。豪華絢爛な内装で「世界一美しいカフェ」とも称される。公式サイトの案内では木曜は7:00〜翌1:00営業、テーブル予約ページあり。生演奏の有無・時間帯は公式で要確認。寄らない場合はそのままホテルへ", icon: "☕", url: "https://newyorkcafe.hu/en/", mapUrl: "https://maps.google.com/?q=New+York+Caf%C3%A9+Budapest", coords: [47.4981, 19.0707] },
+      { time: "21:30頃〜", label: "ホテル帰着 ＆ 翌朝の移動準備", desc: "Budapest Panorama Centralへ帰着（SEVEN Cocktail Barだけなら22:00頃、ニューヨーク・カフェにも寄った場合は22:45頃）。翌朝のウィーン行きRJX 162（Keleti 06:30発・05:30頃チェックアウト）に向けて荷造り・就寝", icon: "🏨", coords: [47.4947, 19.0595] },
     ],
     booking: {
       title: "ドナウ川 ボートクルーズ（GetYourGuide・予約済）",
@@ -1869,6 +1870,7 @@ const DAYS = [
           <b>ブダペスト中央市場</b>：木曜 6:00〜18:00。1階は食料品、2階は民芸品。パプリカパウダー・ハチミツ・革製品などがおみやげの定番。<br/>
           <b>ドナウ川 ボートクルーズ</b>：19:40発・約50分・予約済（屋上座席保証・飲食物の持ち込み可）。集合場所はバウチャーで確認し、出航15分前までに到着。夕食か軽食は18:15頃にとる想定（お店は未定）。船内は飲食物の持ち込み可なので、軽食のテイクアウトも可。<br/>
           <b>ニューヨーク・カフェ（任意）</b>：Erzsébet krt. 9–11。価格は高めのため、時間と体力に余裕があれば利用。木曜は7:00〜翌1:00（公式サイトの案内）。公式サイトにテーブル予約ページあり。<br/>
+          <b>SEVEN Cocktail Bar ＆ Seven Hills Tokaj Gin</b>：Wesselényi utca 26, 1077 Budapest（7区）。トカイの蒸溜所Seven Hills Distilleryが運営するバー。電話 +36 70 882 3268、Instagram は seven.w26。営業時間は確認できていないため要確認。今夜は飲まずにボトルを買うだけの予定。バーで瓶を売っているか（飲まずに買えるか）は未確認なので、事前にInstagramか電話で聞いておく。翌朝のウィーン行きが早いため、購入は今夜のうちに済ませる。帰りの飛行機では、液体の機内持込制限があるので預け荷物に入れ、割れないように梱包する。 <a className="eu-memo-link" style={{ color: "inherit" }} href="https://maps.google.com/?q=SEVEN+Cocktail+Bar+Wessel%C3%A9nyi+utca+26+Budapest" target="_blank" rel="noopener noreferrer" aria-label="SEVEN Cocktail BarをGoogle Mapで開く"><span aria-hidden="true">📍</span> Map</a><br/>
           <b>市内交通 24時間乗車券</b>：地下鉄M1〜M4・トラム・路線バスが24時間乗り放題。BudapestGOアプリまたは券売機で購入。
         </>
       ),
