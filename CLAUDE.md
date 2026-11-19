@@ -22,6 +22,7 @@ React JSX + Vite で構築し GitHub Pages でデプロイ。
 - `src/trips/registry.js` - 旅行メタデータ配列（TRIPS）
 - `src/trips/kyushu-2026/KyushuTrip.jsx` - 九州旅行しおり（データ・スタイル・UI含む）
 - `src/components/DayMap.jsx` - 日別マップコンポーネント（Leaflet、ピン＋ルート線）。`focusIndex` を渡すと、その工程のピンへ自動で寄る
+- `src/components/todayDay.js` - `getTodayDayIndex(DAYS)`（今日が旅行日ならその日の添字、無ければ 0）と `useRevealActiveNavButton`（選択中のナビボタンを見える位置へ）。全旅行の `activeDay` 初期値に使う。年は 2026 固定、日本の旅は日本時間、中欧は各日の `weather.timezone`（現地時間）で判定
 - `src/components/useScheduleFocus.js` - スクロール中に固定マップの下端に来た工程を返すフック（中欧の旅の追従マップで使用）
 - `src/components/PhraseBook.jsx` - 会話フレーズ帳（日本語と現地語を横並び比較、音声再生、かくす／大きく表示）
 - `src/trips/europe-2026/phrases.js` - 中欧の旅の会話フレーズデータ（音声生成スクリプトと共有するため .js に分離）
